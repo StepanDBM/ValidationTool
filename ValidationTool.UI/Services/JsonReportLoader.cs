@@ -1,33 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
-using ValidationTool.UI.Models;
-using ValidationTool.UI.ViewModels;
+using ValidationTool.UI.Models.Dto;
 
 namespace ValidationTool.UI.Services {
-    internal class JsonReportLoader {
-        public static List<IssueResult> LoadIssues(string filePath) {
-            var json = File.ReadAllText(filePath);
+    public static class JsonReportLoader {
+        public static ValidationRunDto Load(string path) {
+            var json = File.ReadAllText(path);
 
-            var options = new JsonSerializerOptions {
-                PropertyNameCaseInsensitive = true
-            };
-
-            var root = JsonSerializer.Deserialize<ValidationRunDto>(json, options);
-
-            var issues = new List<IssueResult>();
-
-            foreach (var asset in root.Assets)
-                foreach (var stage in asset.Stages)
-                    foreach (var issue in stage.Issues)
-                        issues.Add(issue);
-
-            return issues;
-        }
-
-        internal static ValidationRunDto Load(string path) {
-            throw new NotImplementedException();
+            return JsonSerializer.Deserialize<ValidationRunDto>(
+                json,
+                new JsonSerializerOptions {
+                    PropertyNameCaseInsensitive = true
+                });
         }
     }
 }

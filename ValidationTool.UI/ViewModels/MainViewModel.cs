@@ -10,17 +10,19 @@ namespace ValidationTool.UI.ViewModels {
         public void LoadReport(string path) {
             Issues.Clear();
 
-            var dtoIssues = JsonReportLoader.LoadIssues(path);
+            var run = JsonReportLoader.Load(path);
 
-            foreach (var issue in dtoIssues) {
-                Issues.Add(new IssueViewModel {
-                    AssetName = issue.AssetName,
-                    CheckName = issue.CheckName,
-                    Severity = issue.Severity,
-                    Message = issue.Message,
-                    Suggestion = issue.Suggestion
-                });
-            }
+            foreach (var asset in run.Assets)
+                foreach (var stage in asset.Stages)
+                    foreach (var issue in stage.Issues) {
+                        Issues.Add(new IssueViewModel {
+                            AssetName = issue.AssetName,
+                            CheckName = issue.CheckName,
+                            Severity = issue.Severity,
+                            Message = issue.Message,
+                            Suggestion = issue.Suggestion
+                        });
+                    }
         }
     }
 }
