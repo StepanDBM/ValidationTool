@@ -24,14 +24,20 @@
 
                     <HierarchicalDataTemplate.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Issues}">
-                            <TextBlock Text="{Binding StageName}" />
+                            <TextBlock Text="{Binding StageName}"
+                                       FontWeight="Bold"/>
 
                             <HierarchicalDataTemplate.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
 
                                         <TextBlock Text="{Binding CheckName}" Width="150"/>
-                                        <TextBlock Text="{Binding Severity}" Width="100"/>
+                                        <TextBlock Text="{Binding Severity}"
+                                                   FontWeight="Bold"
+                                                   Foreground="{Binding Severity,
+                                            Converter={StaticResource SeverityToBrushConverter}}"
+                                                   Width="100"/>
+                                        <TextBlock Text=" - "/>
                                         <TextBlock Text="{Binding Message}" />
 
                                     </StackPanel>

@@ -43,3 +43,6 @@ C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\StagesView.g.cs
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView.g.cs
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\App.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Themes\Colors.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Themes\Brushes.baml

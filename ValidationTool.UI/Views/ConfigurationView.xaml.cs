@@ -18,13 +18,17 @@ using System.Security.Authentication;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.ViewModels;
+using ValidationTool.UI.Models.Config;
 
 
 namespace ValidationTool.UI.Views {
     public partial class ConfigurationView : UserControl {
+        private ConfigurationViewModel _vm;
         public ConfigurationView() {
             InitializeComponent();
-            DataContext = new ConfigurationViewModel();
+            _vm = new ConfigurationViewModel();
+            DataContext = _vm;
+
         }
     }
 }

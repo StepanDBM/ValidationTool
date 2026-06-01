@@ -14,16 +14,16 @@
             <views:ValidationView/>
         </TabItem>
 
+        <TabItem Header="Budgets">
+            <views:BudgetsView/>
+        </TabItem>
+
         <TabItem Header="Configuration">
             <views:ConfigurationView/>
         </TabItem>
 
         <TabItem Header="Profiles">
             <views:ProfilesView/>
-        </TabItem>
-
-        <TabItem Header="Budgets">
-            <views:BudgetsView/>
         </TabItem>
 
         <TabItem Header="Stages">

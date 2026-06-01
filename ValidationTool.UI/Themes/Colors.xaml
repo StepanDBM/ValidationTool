@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Main Background -->
+    <Color x:Key="ColorBgMain">#1E1E1E</Color>
+
+    <!-- Panels / Tabs -->
+    <Color x:Key="ColorBgPanel">#252525</Color>
+
+    <!-- Interactive Controls -->
+    <Color x:Key="ColorBgElement">#2B2B2B</Color>
+
+    <!-- Text -->
+    <Color x:Key="ColorText">#E6E6E6</Color>
+
+    <!-- Borders -->
+    <Color x:Key="ColorBorder">#444444</Color>
+
+    <!-- Accent -->
+    <Color x:Key="ColorAccent">#3A86FF</Color>
+
+    <!-- Validation Severity -->
+    <Color x:Key="ColorError">#D9534F</Color>
+    <Color x:Key="ColorWarning">#F0AD4E</Color>
+    <Color x:Key="ColorInfo">#5BC0DE</Color>
+
+</ResourceDictionary>
