@@ -87,14 +87,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\Config\MeshBudgetModel.cs" />
+    <Compile Include="Models\Config\ValidationConfigModel.cs" />
+    <Compile Include="Models\Config\ValidationProfileModel.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
     <Compile Include="Models\ValidationModels.cs" />
+    <Compile Include="Services\Config\ConfigService.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
+    <Compile Include="ViewModels\AssetViewModel.cs" />
     <Compile Include="ViewModels\BudgetsViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
+    <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\ValidationTreeViewModels.cs" />
     <Compile Include="ViewModels\ValidationViewModel.cs" />
     <Compile Include="Views\BudgetsView.xaml.cs">

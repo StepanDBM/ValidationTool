@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Text.Json;
-using ValidationTool.UI.Models.Dto;
+using ValidationTool.UI.Models.DTOs;
 
 namespace ValidationTool.UI.Services {
     public static class JsonReportLoader {

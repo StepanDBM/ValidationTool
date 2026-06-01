@@ -12,14 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Security.Authentication;
+using ValidationTool.UI.Services;
+using ValidationTool.UI.Services.Config;
+using ValidationTool.UI.ViewModels;
+
 
 namespace ValidationTool.UI.Views {
-    /// <summary>
-    /// Lógica de interacción para ConfigurationView.xaml
-    /// </summary>
     public partial class ConfigurationView : UserControl {
         public ConfigurationView() {
             InitializeComponent();
+            DataContext = new ConfigurationViewModel();
         }
     }
 }

@@ -2,13 +2,36 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Grid>
+    <StackPanel Margin="10">
 
-        <TextBlock Text="Configuration View"
-                   FontSize="24"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal">
 
-    </Grid>
+            <Button Content="Load"
+                    Command="{Binding LoadCommand}"
+                    Width="100" />
+
+            <Button Content="Save"
+                    Command="{Binding SaveCommand}"
+                    Width="100"
+                    Margin="10,0,0,0"/>
+
+        </StackPanel>
+
+        <CheckBox Content="Strict Mode"
+                  IsChecked="{Binding Config.StrictMode}" />
+
+        <CheckBox Content="Fail on First Error"
+                  IsChecked="{Binding Config.FailOnFirstError}" />
+
+        <CheckBox Content="Auto Fix"
+                  IsChecked="{Binding Config.AutoFixEnabled}" />
+
+        <CheckBox Content="IncludeWarnings"
+                  IsChecked="{Binding Config.IncludeWarnings}" />
+
+        <CheckBox Content="DebugMode"
+                  IsChecked="{Binding Config.DebugMode}" />
+
+    </StackPanel>
 
 </UserControl>

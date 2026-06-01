@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using ValidationTool.UI.Models.Dto;
+using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 
 namespace ValidationTool.UI.ViewModels {

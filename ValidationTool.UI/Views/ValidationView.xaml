@@ -14,30 +14,37 @@
                 Width="150"
                 Height="35"/>
 
-        <ListView Grid.Row="1"
-                  ItemsSource="{Binding Issues}">
+        <TreeView
+            Grid.Row="1"
+            ItemsSource="{Binding Assets}">
+            <TreeView.ItemTemplate>
 
-            <ListView.View>
+                <HierarchicalDataTemplate ItemsSource="{Binding Stages}">
+                    <TextBlock Text="{Binding AssetName}" />
 
-                <GridView>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Issues}">
+                            <TextBlock Text="{Binding StageName}" />
 
-                    <GridViewColumn Header="Asset"
-                                    DisplayMemberBinding="{Binding AssetName}" />
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
 
-                    <GridViewColumn Header="Check"
-                                    DisplayMemberBinding="{Binding CheckName}" />
+                                        <TextBlock Text="{Binding CheckName}" Width="150"/>
+                                        <TextBlock Text="{Binding Severity}" Width="100"/>
+                                        <TextBlock Text="{Binding Message}" />
 
-                    <GridViewColumn Header="Severity"
-                                    DisplayMemberBinding="{Binding Severity}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
 
-                    <GridViewColumn Header="Message"
-                                    DisplayMemberBinding="{Binding Message}" />
+                        </HierarchicalDataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
 
-                </GridView>
+                </HierarchicalDataTemplate>
 
-            </ListView.View>
-
-        </ListView>
+            </TreeView.ItemTemplate>
+        </TreeView>
 
     </Grid>
 
