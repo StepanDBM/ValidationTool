@@ -122,6 +122,8 @@
             <Style TargetType="GroupBox">
                 <Setter Property="Foreground"
                         Value="{StaticResource BrushText}" />
+                <Setter Property="BorderThickness"
+                        Value="5" />
                 <Setter Property="BorderBrush"
                         Value="{StaticResource BrushBorder}" />
             </Style>
