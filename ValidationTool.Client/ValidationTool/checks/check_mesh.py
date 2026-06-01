@@ -72,7 +72,7 @@ def check_vertex_count(mesh: MeshContext) -> List[ValidationIssue]:
                 check_name=CHECK_VERTEX_COUNT,
                 severity=ValidationSeverity.WARNING,
                 message=(
-                    f"Vertex count ({mesh.vertex_count}) approaching limit "
+                    f"The vertex count ({mesh.vertex_count}) approaching limit "
                     f"between {warning_limit} - {error_limit}"
                 ),
                 suggestion="Review topology density."
