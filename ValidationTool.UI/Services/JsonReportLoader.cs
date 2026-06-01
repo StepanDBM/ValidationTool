@@ -25,5 +25,9 @@ namespace ValidationTool.UI.Services {
 
             return issues;
         }
+
+        internal static ValidationRunDto Load(string path) {
+            throw new NotImplementedException();
+        }
     }
 }

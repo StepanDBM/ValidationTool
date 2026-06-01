@@ -50,7 +50,7 @@ MODULES = [
 
 def reload_all():
     """
-    Hard reload all pipeline modules in correct order.
+    Hard reload all pipeline modules in cor rect order.
     """
 
     for m in MODULES_TO_CLEAR:

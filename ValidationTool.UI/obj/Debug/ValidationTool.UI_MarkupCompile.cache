@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\App.xaml
-1219584333
+6595322730
 
-10-2081260049
+21254581586
 242016293644
-MainWindow.xaml;
+MainWindow.xaml;Views\BudgetsView.xaml;Views\ConfigurationView.xaml;Views\ProfilesView.xaml;Views\StagesView.xaml;Views\ValidationView.xaml;
 
 False
 

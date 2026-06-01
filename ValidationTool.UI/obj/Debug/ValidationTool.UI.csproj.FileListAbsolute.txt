@@ -32,3 +32,14 @@ C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\bin\Debug\Syste
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\bin\Debug\System.Text.Json.xml
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Validati.EEBE7B34.Up2Date
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\BudgetsView.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ConfigurationView.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ProfilesView.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\StagesView.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\BudgetsView.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ConfigurationView.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ProfilesView.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\StagesView.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\GeneratedInternalTypeHelper.g.cs
