@@ -88,10 +88,12 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\Config\MeshBudgetModel.cs" />
+    <Compile Include="Models\Config\NamingRulesModel.cs" />
     <Compile Include="Models\Config\ValidationConfigModel.cs" />
     <Compile Include="Models\Config\ValidationProfileModel.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
     <Compile Include="Models\ValidationModels.cs" />
+    <Compile Include="Services\Config\BudgetsConfigService.cs" />
     <Compile Include="Services\Config\ConfigService.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
     <Compile Include="ViewModels\AssetViewModel.cs" />

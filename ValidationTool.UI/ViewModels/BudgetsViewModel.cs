@@ -1,10 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ValidationTool.UI.Models.Config;
+using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.ViewModels {
-    internal class BudgetsViewModel {
+    public class BudgetsViewModel {
+        private readonly BudgetsConfigService _service = new BudgetsConfigService();
+
+        public BudgetsConfigModel Config { get; set; }
+
+        public BudgetsViewModel() {
+            Load();
+        }
+
+        public void Load() {
+            Config = _service.Load();
+        }
+
+        public void Save() {
+            _service.Save(Config);
+        }
     }
 }

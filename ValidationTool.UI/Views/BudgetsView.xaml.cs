@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.Views {
-    /// <summary>
-    /// Lógica de interacción para BudgetsView.xaml
-    /// </summary>
     public partial class BudgetsView : UserControl {
+        private BudgetsViewModel _vm;
+
         public BudgetsView() {
             InitializeComponent();
+            _vm = new BudgetsViewModel();
+            DataContext = _vm;
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e) {
+            _vm.Load();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e) {
+            _vm.Save();
         }
     }
 }

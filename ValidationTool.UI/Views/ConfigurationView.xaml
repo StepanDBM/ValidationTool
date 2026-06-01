@@ -26,6 +26,9 @@
         <CheckBox Content="Auto Fix"
                   IsChecked="{Binding Config.AutoFixEnabled}" />
 
+        <CheckBox Content="include information"
+                  IsChecked="{Binding Config.IncludeInfo}" />
+
         <CheckBox Content="IncludeWarnings"
                   IsChecked="{Binding Config.IncludeWarnings}" />
 
