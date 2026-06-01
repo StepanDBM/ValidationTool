@@ -10,7 +10,7 @@
         </Grid.RowDefinitions>
 
         <Button Content="Load Report"
-                Click="Run_Click"
+                Click="loadReportUI"
                 Width="150"
                 Height="35"/>
 

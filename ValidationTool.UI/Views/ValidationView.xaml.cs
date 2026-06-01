@@ -8,10 +8,9 @@ namespace ValidationTool.UI.Views {
             InitializeComponent();
         }
 
-        private void Run_Click(object sender, RoutedEventArgs e) {
+        private void loadReportUI(object sender, RoutedEventArgs e) {
             var vm = (MainViewModel)DataContext;
-
-            vm.LoadReport(
+            vm.Validate(
                 @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports\2026-06-01_06-12-01\validation_report.json"
             );
         }
