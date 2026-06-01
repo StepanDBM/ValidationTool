@@ -1,0 +1,157 @@
+# checks/check_naming.py
+import re
+from typing import List
+
+from core.validation_system import (
+    MeshContext,
+    ValidationIssue,
+    ValidationSeverity,
+    CHECK_NAMING
+)
+
+VALID_PREFIXES = [
+    "CH",
+    "HERO",
+    "WP",
+    "WPN",
+    "PRP",
+    "PROP",
+    "ENV",
+    "MOD"
+]
+
+DEFAULT_MAYA_NAMES = [
+    "pCube",
+    "pSphere",
+    "pCylinder",
+    "pPlane",
+    "pTorus",
+    "polySurface"
+]
+
+NAME_PATTERN = re.compile(
+    r"^[A-Z]+_[A-Za-z0-9_]+$"
+)
+
+
+def check_naming(mesh: MeshContext) -> List[ValidationIssue]:
+    issues = []
+    fucked_up = False
+    name = mesh.name
+
+    upper_name = name.upper()
+
+    # ----------------------------------------
+    # Default Maya primitive naming
+    # ----------------------------------------
+
+    for default_name in DEFAULT_MAYA_NAMES:
+
+        if name.startswith(default_name):
+
+            issues.append(
+                ValidationIssue(
+                    asset_name=name,
+                    check_name=CHECK_NAMING,
+                    severity=ValidationSeverity.WARNING,
+                    message=(
+                        f"Mesh uses default Maya naming: {name}"
+                    ),
+                    suggestion="Rename mesh using studio naming conventions."
+                )
+            )
+            fucked_up = True
+            return issues
+
+    # ----------------------------------------
+    # Prefix validation
+    # ----------------------------------------
+
+    has_valid_prefix = False
+
+    for prefix in VALID_PREFIXES:
+
+        if upper_name.startswith(prefix + "_"):
+            has_valid_prefix = True
+            fucked_up = True
+            break
+    if not has_valid_prefix:
+        issues.append(
+            ValidationIssue(
+                asset_name=name,
+                check_name=CHECK_NAMING,
+                severity=ValidationSeverity.WARNING,
+                message=(
+                    "Mesh missing valid asset prefix."
+                ),
+                suggestion=(
+                    "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
+                )
+            )
+        )
+        fucked_up = True
+
+    # ----------------------------------------
+    # Regex naming convention validation
+    # ----------------------------------------
+
+    if not NAME_PATTERN.match(name):
+
+        issues.append(
+            ValidationIssue(
+                asset_name=name,
+                check_name=CHECK_NAMING,
+                severity=ValidationSeverity.WARNING,
+                message=(
+                    f"Mesh name does not follow naming convention: {name}"
+                ),
+                suggestion=(
+                    "Use format PREFIX_AssetName"
+                )
+            )
+        )
+        fucked_up = True
+    # ----------------------------------------
+    # Double underscores
+    # ----------------------------------------
+
+    if "__" in name:
+
+        issues.append(
+            ValidationIssue(
+                asset_name=name,
+                check_name=CHECK_NAMING,
+                severity=ValidationSeverity.INFO,
+                message="Mesh name contains double underscores.",
+                suggestion="Avoid redundant separators."
+            )
+        )
+        fucked_up = True
+    # ----------------------------------------
+    # Spaces
+    # ----------------------------------------
+
+    if " " in name or "." in name:
+
+        issues.append(
+            ValidationIssue(
+                asset_name=name,
+                check_name=CHECK_NAMING,
+                severity=ValidationSeverity.ERROR,
+                message="Mesh name contains spaces or dots.",
+                suggestion="Use underscores instead of spaces or other invalid characters."
+            )
+        )
+        fucked_up = True
+        if not fucked_up:
+            issues.append(
+                ValidationIssue(
+                    asset_name=name,
+                    check_name=CHECK_NAMING,
+                    severity=ValidationSeverity.INFO,
+                    message="Did great, naming correct",
+                    suggestion="Call your family, you did great."
+                )
+            )
+
+    return issues
