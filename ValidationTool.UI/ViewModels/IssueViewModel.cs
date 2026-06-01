@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ValidationTool.UI.Models;
+﻿using System.Collections.Generic;
 
 namespace ValidationTool.UI.ViewModels {
     public class IssueViewModel {
@@ -17,17 +12,4 @@ namespace ValidationTool.UI.ViewModels {
         public bool IsWarning => Severity == "WARNING";
         public bool IsInfo => Severity == "INFO";
     }
-    // minimal DTO just for navigation
-    internal class ValidationRunDto {
-        public List<AssetDto> Assets { get; set; }
-    }
-
-    internal class AssetDto {
-        public List<StageDto> Stages { get; set; }
-    }
-
-    internal class StageDto {
-        public List<IssueResult> Issues { get; set; }
-    }
-
 }

@@ -95,6 +95,7 @@
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
+    <Compile Include="ViewModels\ValidationTreeViewModels.cs" />
     <Compile Include="ViewModels\ValidationViewModel.cs" />
     <Compile Include="Views\BudgetsView.xaml.cs">
       <DependentUpon>BudgetsView.xaml</DependentUpon>
