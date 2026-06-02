@@ -30,12 +30,9 @@ import checks.check_transforms as check_transforms
 import config.exec_stages as excS
 
 import core.validation_models as valMod
-<<<<<<< HEAD
 import core.validation_context as valCtx
 
 from reporting.config_loader import ConfigLoader
-=======
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 
 def build_registry() -> MeshValidatorRegistry:
 
@@ -54,57 +51,6 @@ def build_registry() -> MeshValidatorRegistry:
 
     return registry
 
-<<<<<<< HEAD
-=======
-
-def run_validation(meshes, registry, profile):
-
-    all_issues = []
-
-    checks_by_stage = registry.resolveByProfileStage(profile)
-
-    for mesh in meshes:
-
-        for stage in excS.EXECUTION_STAGES:
-
-            stage_checks = [
-                c for c in checks_by_stage
-                if c.stage == stage
-            ]
-
-            stage_issues = []
-
-            for check in stage_checks:
-                stage_issues.extend(check.func(mesh))
-
-            all_issues.extend(stage_issues)
-
-            # STAGE GATE
-            if any(i.severity.value == "ERROR" for i in stage_issues):
-                print(f"[PIPELINE STOP] {stage} failed on {mesh.name}")
-                break
-
-    return all_issues
-
-
-def evaluate_results(
-    issues: List[ValidationIssue],
-    config: ValidationConfig
-) -> bool:
-
-    errors = [
-        issue
-        for issue in issues
-        if issue.severity == ValidationSeverity.ERROR
-    ]
-
-    if config.strict_mode and errors:
-        return False
-
-    return True
-
-
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 def print_report(issues: List[ValidationIssue]):
 
     print("\n--- VALIDATION REPORT ---\n")
@@ -119,7 +65,6 @@ def print_report(issues: List[ValidationIssue]):
 
 
 def run_pipeline(meshes, config, profile=None):
-<<<<<<< HEAD
     
     print("Shieh man")
     loader = ConfigLoader(
@@ -133,8 +78,6 @@ def run_pipeline(meshes, config, profile=None):
         naming_rules=naming_rules,
         budgets=budgets
     )
-=======
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 
     registry = build_registry()
     run_id = str(uuid.uuid4())
@@ -180,11 +123,7 @@ def run_pipeline(meshes, config, profile=None):
                 stage_start_time = time.time()
 
             # execute check
-<<<<<<< HEAD
             result = check.func(mesh, runtime_ctx)
-=======
-            result = check.func(mesh)
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 
             stage_issues.extend(result)
             all_issues_flat.extend(result)
@@ -230,9 +169,5 @@ def run_pipeline(meshes, config, profile=None):
         assets=asset_results,
         summary=summary
     )
-<<<<<<< HEAD
     json_reporter.write_json(run, r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports", pretty=True)
-=======
-    json_reporter.write_json(run, r"E:\Work\3D\my_3D\PIPELINE\reports", pretty=True)
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
     return run

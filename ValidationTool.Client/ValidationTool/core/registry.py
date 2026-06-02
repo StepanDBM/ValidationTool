@@ -5,13 +5,9 @@ from core.validation_system import MeshContext, ValidationIssue
 
 from config.validation_profile import ValidationProfile
 
-<<<<<<< HEAD
 from core.validation_context import ValidationRuntimeContext
 
 MeshCheckFunction = Callable[[MeshContext, ValidationRuntimeContext], List[ValidationIssue]]
-=======
-MeshCheckFunction = Callable[[MeshContext], List[ValidationIssue]]
->>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 
 @dataclass
 class StageResult:
