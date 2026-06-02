@@ -162,6 +162,7 @@ def run_pipeline(meshes, context, profile=None):
     run = valMod.ValidationRun(
         run_id=run_id,
         timestamp=timestamp,
+        dcc=context.get("dcc", "Unknown"),
         assets=asset_results,
         summary=summary
     )

@@ -1,7 +1,8 @@
 {
     "summary": {
-        "run_id": "f5da18c2-8449-48a3-9a1f-1dffb7f2e64a",
-        "timestamp": "2026-06-02 20:55:11.630704",
+        "run_id": "6dd992c8-8a19-4305-97ad-40b1efdfbbf8",
+        "timestamp": "2026-06-03 00:28:15.164269",
+        "dcc": "Blender",
         "total_assets": 11,
         "total_issues": 53,
         "errors": 3,

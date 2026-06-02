@@ -9,10 +9,27 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Load Report"
-                Click="loadReportUI"
-                Width="150"
-                Height="35"/>
+        <StackPanel Orientation="Horizontal">
+
+            <Button Content="Run Maya"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="RunMaya_Click"/>
+
+            <Button Content="Run Blender"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="RunBlender_Click"/>
+
+            <Button Content="Load Report"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="loadReportUI"/>
+
+        </StackPanel>
 
         <TreeView
             Grid.Row="1"
