@@ -1,0 +1,8 @@
+{
+  "StrictMode": false,
+  "FailOnFirstError": false,
+  "AutoFixEnabled": false,
+  "IncludeInfo": true,
+  "IncludeWarnings": true,
+  "DebugMode": true
+}

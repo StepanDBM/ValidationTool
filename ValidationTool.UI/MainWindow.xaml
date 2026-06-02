@@ -1,0 +1,35 @@
+﻿<Window x:Class="ValidationTool.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValidationTool.UI"
+        xmlns:views="clr-namespace:ValidationTool.UI.Views"
+        mc:Ignorable="d"
+        Title="ValidationTool" Height="450" Width="800">
+
+    <TabControl>
+
+        <TabItem Header="Validation">
+            <views:ValidationView/>
+        </TabItem>
+
+        <TabItem Header="Budgets">
+            <views:BudgetsView/>
+        </TabItem>
+
+        <TabItem Header="Configuration">
+            <views:ConfigurationView/>
+        </TabItem>
+
+        <TabItem Header="Profiles">
+            <views:ProfilesView/>
+        </TabItem>
+
+        <TabItem Header="Stages">
+            <views:StagesView/>
+        </TabItem>
+
+    </TabControl>
+
+</Window>
