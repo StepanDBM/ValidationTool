@@ -1,11 +1,8 @@
-
-from typing import List
-
-from  mathutils import Vector
-
-import bpy
-
 import sys
+import bpy
+from typing import List
+from mathutils import Vector
+
 script_dir = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\ValidationTool"
 
 if script_dir not in sys.path:
@@ -13,8 +10,7 @@ if script_dir not in sys.path:
 
 from core.validation_system import MeshContext, AssetType
 
-
-def get_asset_type_from_name(name: str) -> "AssetType":
+def getAssetTypeFromName(name: str) -> AssetType:
     name = name.upper()
 
     if name.startswith("CH_") or name.startswith("HERO_"):
@@ -43,7 +39,7 @@ def extract_Blend_scene() -> List["MeshContext"]:
         mesh = obj.data
 
         asset_name = obj.name
-        asset_type = get_asset_type_from_name(asset_name)
+        asset_type = getAssetTypeFromName(asset_name)
 
         vertex_count = len(mesh.vertices)
         triangle_count = len(mesh.polygons)
@@ -65,9 +61,6 @@ def extract_Blend_scene() -> List["MeshContext"]:
         scale = tuple(obj.scale)
         has_negative_scale = any(s < 0 for s in scale)
 
-        # -------------------------
-        # Bounding box (world space)
-        # -------------------------
         bbox_corners = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
 
         min_x = min(v.x for v in bbox_corners)

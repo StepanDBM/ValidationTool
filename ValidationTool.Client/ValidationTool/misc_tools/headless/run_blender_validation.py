@@ -29,17 +29,16 @@ def process_file(file_path: str):
     #so modifiers are applied and bounding boxes are correct
 
     meshes = extract_Blend_scene()
-
+    print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
     config = {}
 
-    result = run_pipeline(meshes, config, profile)
+    run = run_pipeline(meshes, config, profile)
 
-    print(f"[DONE] {file_path} -> {result.run_id}")
+    print(f"[DONE] {file_path} -> {run.run_id}")
 
 def main():
     files = get_Blender_files(SOURCE_DIR)
-
     print(f"Found {len(files)} Blender files")
 
     for f in files:

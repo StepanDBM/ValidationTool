@@ -37,9 +37,9 @@ def process_file(file_path: str):
 
     config = {}
 
-    result = run_pipeline(meshes, config, profile)
+    run = run_pipeline(meshes, config, profile)
 
-    print(f"[DONE] {file_path} -> {result.run_id}")
+    print(f"[DONE] {file_path} -> {run.run_id}")
 
 
 def main():

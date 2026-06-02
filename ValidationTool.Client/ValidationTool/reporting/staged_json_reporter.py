@@ -69,36 +69,17 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-
-from pathlib import Path
-from datetime import datetime
-import json
-
-
-from pathlib import Path
-from datetime import datetime
-import json
-
-
 def write_json(run, folder_path: str, pretty: bool = True):
-    """
-    Writes ValidationRun into a timestamped folder under folder_path.
-    folder_path MUST be a directory.
-    """
 
     data = export_validation_run(run)
 
-    # Ensure base directory exists
     base_dir = Path(folder_path)
     base_dir.mkdir(parents=True, exist_ok=True)
-    # Create timestamped run folder
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    run_folder = base_dir / timestamp
+    
+    run_folder = base_dir / f"RprtID_{run.run_id}"
+    
     run_folder.mkdir(parents=True, exist_ok=True)
 
-    # -------------------------
-    # MAIN REPORT
-    # -------------------------
     report_file = run_folder / "validation_report.json"
 
     with report_file.open("w", encoding="utf-8") as f:
@@ -106,10 +87,7 @@ def write_json(run, folder_path: str, pretty: bool = True):
             json.dump(data, f, indent=4, ensure_ascii=False)
         else:
             json.dump(data, f, ensure_ascii=False)
-
-    # -------------------------
-    # SUMMARY
-    # -------------------------
+    
     summary_file = run_folder / "summary.json"
 
     summary = {

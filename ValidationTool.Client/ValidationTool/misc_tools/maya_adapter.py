@@ -5,8 +5,8 @@ try:
     import maya.cmds as cmds
 except ImportError:
     cmds = None
-def getAssetTypeFromName(name: str) -> AssetType:
 
+def getAssetTypeFromName(name: str) -> AssetType:
     name = name.upper()
 
     if name.startswith("CH_") or name.startswith("HERO_"):
@@ -21,8 +21,7 @@ def getAssetTypeFromName(name: str) -> AssetType:
     elif name.startswith("MOD_") or name.startswith("ENV_"):
         return AssetType.ENVIRONMENT_MODULAR
 
-    else:
-        return AssetType.UNKNOWN
+    return AssetType.UNKNOWN
     
 def extract_Maya_scene() -> List[MeshContext]:
 
@@ -44,7 +43,9 @@ def extract_Maya_scene() -> List[MeshContext]:
         vertex_count = cmds.polyEvaluate(shape, vertex=True)
         face_count = cmds.polyEvaluate(shape, face=True)
 
-        uv_sets = cmds.polyUVSet(shape, query=True, allUVSets=True) or []
+        uv_sets = cmds.polyUVSet(shape,
+                                 query=True,
+                                 allUVSets=True) or []
         has_uv0 = len(uv_sets) > 0
         has_uv1 = len(uv_sets) > 1
 

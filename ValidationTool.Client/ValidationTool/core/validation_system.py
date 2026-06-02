@@ -43,6 +43,7 @@ class ValidationIssue:
     severity: ValidationSeverity
     message: str
     suggestion: str = ""
+
 @dataclass
 class MeshContext:
     name: str
