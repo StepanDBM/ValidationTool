@@ -75,6 +75,8 @@
             </Style>
 
             <Style TargetType="TreeView">
+                <Setter Property="FontSize"
+                        Value="14" />
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgElement}" />
                 <Setter Property="Foreground"

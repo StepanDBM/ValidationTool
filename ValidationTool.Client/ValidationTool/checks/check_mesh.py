@@ -73,7 +73,7 @@ def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
             ValidationIssue(
                 asset_name=mesh.name,
                 check_name=CHECK_VERTEX_COUNT,
-                severity=ValidationSeverity.ERROR_HARD,
+                severity=ValidationSeverity.HARD,
                 message="Less than 2 vertices found in mesh, likely an import issue or corrupted file. Aborting further checks.",
                 suggestion="Ensure the mesh has valid geometry."
             )

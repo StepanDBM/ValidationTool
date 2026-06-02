@@ -48,7 +48,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
 
-                                        <TextBlock Text="{Binding CheckName}" Width="150"/>
+                                        <TextBlock Text="{Binding CheckName}" Width="180"/>
                                         <TextBlock Text="{Binding Severity}"
                                                    FontWeight="Bold"
                                                    Foreground="{Binding Severity,
