@@ -1,12 +1,12 @@
 {
     "summary": {
-        "run_id": "3a795945-bbd0-4d52-a388-ea367ad702dc",
-        "timestamp": "2026-06-02 20:02:57.199081",
+        "run_id": "ac01e181-f48e-43f6-80ff-efd955e9c6ce",
+        "timestamp": "2026-06-02 20:43:35.262936",
         "total_assets": 10,
         "total_issues": 50,
-        "errors": 3,
+        "errors": 11,
         "warnings": 29,
-        "info": 18
+        "info": 10
     },
     "assets": [
         {
@@ -23,14 +23,14 @@
                             "asset_name": "CH_shieh",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
-                            "message": "Vertex count within acceptable range (6242)",
+                            "message": "Vertex count within acceptable range (24962)",
                             "suggestion": ""
                         },
                         {
                             "asset_name": "CH_shieh",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
-                            "message": "Triangle count within acceptable range (6240)",
+                            "message": "Triangle count within acceptable range (24960)",
                             "suggestion": ""
                         }
                     ]
@@ -92,14 +92,14 @@
                             "asset_name": "ENV_0",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
-                            "message": "Vertex count within acceptable range (98)",
+                            "message": "Vertex count within acceptable range (1538)",
                             "suggestion": ""
                         },
                         {
                             "asset_name": "ENV_0",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
-                            "message": "Triangle count within acceptable range (96)",
+                            "message": "Triangle count within acceptable range (1536)",
                             "suggestion": ""
                         }
                     ]
@@ -161,14 +161,14 @@
                             "asset_name": "ENV_1",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
-                            "message": "Vertex count within acceptable range (386)",
+                            "message": "Vertex count within acceptable range (6146)",
                             "suggestion": ""
                         },
                         {
                             "asset_name": "ENV_1",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
-                            "message": "Triangle count within acceptable range (384)",
+                            "message": "Triangle count within acceptable range (6144)",
                             "suggestion": ""
                         }
                     ]
@@ -218,27 +218,27 @@
         },
         {
             "asset_name": "ENV_2",
-            "has_errors": false,
+            "has_errors": true,
             "total_issues": 5,
             "stages": [
                 {
                     "stage": "geometry",
-                    "has_errors": false,
+                    "has_errors": true,
                     "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "ENV_2",
                             "check_name": "CHECK_VERTEX_COUNT",
-                            "severity": "INFO",
-                            "message": "Vertex count within acceptable range (1538)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "The vertex count 24578 exceeds hard limit of 13000.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         },
                         {
                             "asset_name": "ENV_2",
                             "check_name": "CHECK_TRIANGLE_COUNT",
-                            "severity": "INFO",
-                            "message": "Triangle count within acceptable range (1536)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "Triangle count 24576 exceeds hard limit of 19500.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         }
                     ]
                 },
@@ -287,27 +287,27 @@
         },
         {
             "asset_name": "ENV_3",
-            "has_errors": false,
+            "has_errors": true,
             "total_issues": 5,
             "stages": [
                 {
                     "stage": "geometry",
-                    "has_errors": false,
+                    "has_errors": true,
                     "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "ENV_3",
                             "check_name": "CHECK_VERTEX_COUNT",
-                            "severity": "INFO",
-                            "message": "Vertex count within acceptable range (6146)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "The vertex count 98306 exceeds hard limit of 13000.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         },
                         {
                             "asset_name": "ENV_3",
                             "check_name": "CHECK_TRIANGLE_COUNT",
-                            "severity": "INFO",
-                            "message": "Triangle count within acceptable range (6144)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "Triangle count 98304 exceeds hard limit of 19500.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         }
                     ]
                 },
@@ -356,27 +356,27 @@
         },
         {
             "asset_name": "ENV_shiehhhh",
-            "has_errors": false,
+            "has_errors": true,
             "total_issues": 5,
             "stages": [
                 {
                     "stage": "geometry",
-                    "has_errors": false,
+                    "has_errors": true,
                     "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_VERTEX_COUNT",
-                            "severity": "INFO",
-                            "message": "Vertex count within acceptable range (6400)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "The vertex count 25600 exceeds hard limit of 13000.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         },
                         {
                             "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_TRIANGLE_COUNT",
-                            "severity": "INFO",
-                            "message": "Triangle count within acceptable range (6400)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "Triangle count 25600 exceeds hard limit of 19500.0 for asset type ENVIRONMENT_MODULAR",
+                            "suggestion": "Reduce mesh complexity."
                         }
                     ]
                 },
@@ -437,14 +437,14 @@
                             "asset_name": "HERO__shieh",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
-                            "message": "Vertex count within acceptable range (6242)",
+                            "message": "Vertex count within acceptable range (24962)",
                             "suggestion": ""
                         },
                         {
                             "asset_name": "HERO__shieh",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
-                            "message": "Triangle count within acceptable range (6240)",
+                            "message": "Triangle count within acceptable range (24960)",
                             "suggestion": ""
                         }
                     ]
@@ -495,27 +495,27 @@
         },
         {
             "asset_name": "PRP_mine",
-            "has_errors": false,
+            "has_errors": true,
             "total_issues": 4,
             "stages": [
                 {
                     "stage": "geometry",
-                    "has_errors": false,
+                    "has_errors": true,
                     "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "PRP_mine",
                             "check_name": "CHECK_VERTEX_COUNT",
-                            "severity": "INFO",
-                            "message": "Vertex count within acceptable range (6400)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "The vertex count 102400 exceeds hard limit of 13000.0 for asset type PROP",
+                            "suggestion": "Reduce mesh complexity."
                         },
                         {
                             "asset_name": "PRP_mine",
                             "check_name": "CHECK_TRIANGLE_COUNT",
-                            "severity": "INFO",
-                            "message": "Triangle count within acceptable range (6400)",
-                            "suggestion": ""
+                            "severity": "ERROR",
+                            "message": "Triangle count 102400 exceeds hard limit of 19500.0 for asset type PROP",
+                            "suggestion": "Reduce mesh complexity."
                         }
                     ]
                 },

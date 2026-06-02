@@ -62,7 +62,7 @@ def print_report(issues: List[ValidationIssue]):
         )
 
 
-def run_pipeline(meshes, config, profile=None):
+def run_pipeline(meshes, context, profile=None):
     
     print("Shieh man")
     loader = ConfigLoader(
