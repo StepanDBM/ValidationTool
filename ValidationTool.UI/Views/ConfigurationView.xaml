@@ -69,21 +69,33 @@
                 </StackPanel>
 
                 <GroupBox Header="Name Pattern (Regex)" Grid.Row="1" Margin="0,0,0,10">
+<<<<<<< HEAD
                     <StackPanel>
+=======
+                    <StackPanel Margin="10">
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
                         <TextBox Text="{Binding NamingConfig.NamePattern}"
                              Height="25"/>
                     </StackPanel>
                 </GroupBox>
 
                 <GroupBox Header="Valid Prefixes (comma-separated)" Grid.Row="2" Margin="0,0,0,10">
+<<<<<<< HEAD
                     <StackPanel>
+=======
+                    <StackPanel Margin="10">
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
                         <TextBox Text="{Binding ValidPrefixesText}"
                              Height="25"/>
                     </StackPanel>
                 </GroupBox>
 
                 <GroupBox Header="Default Maya Names (comma-separated)" Grid.Row="3">
+<<<<<<< HEAD
                     <StackPanel>
+=======
+                    <StackPanel Margin="10">
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
                         <TextBox Text="{Binding DefaultMayaNamesText}"
                              Height="25"/>
                     </StackPanel>

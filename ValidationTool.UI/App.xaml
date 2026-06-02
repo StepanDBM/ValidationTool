@@ -18,6 +18,11 @@
             <conv:SeverityToBrushConverter
             x:Key="SeverityToBrushConverter"/>
 
+<<<<<<< HEAD
+=======
+            <!-- WINDOWS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="Window">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgMain}" />
@@ -25,6 +30,12 @@
                         Value="{StaticResource BrushText}" />
             </Style>
 
+<<<<<<< HEAD
+=======
+
+            <!-- USER CONTROLS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="UserControl">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgMain}" />
@@ -33,6 +44,11 @@
             </Style>
 
 
+<<<<<<< HEAD
+=======
+            <!-- TABS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="TabControl">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgMain}" />
@@ -51,6 +67,12 @@
                         Value="{StaticResource BrushBorder}" />
             </Style>
 
+<<<<<<< HEAD
+=======
+
+            <!-- BUTTONS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="Button">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgPanel}" />
@@ -60,6 +82,12 @@
                         Value="{StaticResource BrushBorder}" />
             </Style>
 
+<<<<<<< HEAD
+=======
+
+            <!-- INPUTS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="TextBox">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgElement}" />
@@ -74,6 +102,12 @@
                         Value="{StaticResource BrushText}" />
             </Style>
 
+<<<<<<< HEAD
+=======
+
+            <!-- LISTS -->
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             <Style TargetType="TreeView">
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgElement}" />
@@ -98,11 +132,19 @@
                 <Setter Property="Foreground"
                         Value="{StaticResource BrushText}" />
             </Style>
+<<<<<<< HEAD
+=======
+            
+
+
+            <!-- CONTAINERS -->
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
 
             <Style TargetType="GroupBox">
                 <Setter Property="Foreground"
                         Value="{StaticResource BrushText}" />
                 <Setter Property="BorderThickness"
+<<<<<<< HEAD
                         Value="0.3"/>
                 <Setter Property="BorderBrush"
                         Value="{StaticResource BrushBgMain}" />
@@ -115,6 +157,11 @@
                         Value="{StaticResource BrushBgPanel}" />
                 <Setter Property="Opacity"
                         Value="1" />
+=======
+                        Value="5" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BrushBorder}" />
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
             </Style>
 
         </ResourceDictionary>

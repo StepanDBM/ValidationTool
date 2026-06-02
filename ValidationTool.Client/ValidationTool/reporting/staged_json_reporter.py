@@ -91,6 +91,10 @@ def write_json(run, folder_path: str, pretty: bool = True):
     # Ensure base directory exists
     base_dir = Path(folder_path)
     base_dir.mkdir(parents=True, exist_ok=True)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 468b7944f2988c013412ee180b8655c75792e8d7
     # Create timestamped run folder
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     run_folder = base_dir / timestamp
