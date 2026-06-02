@@ -1,4 +1,4 @@
-from misc_tools.maya_adapter import extract_meshes_from_scene
+from misc_tools.maya_adapter import extract_Maya_scene
 
 from config.validation_config import ValidationConfig
 
@@ -16,7 +16,7 @@ def main():
         debug_mode=False
     )
 
-    meshes = extract_meshes_from_scene()
+    meshes = extract_Maya_scene()
     run_pipeline(meshes, config)
 
 

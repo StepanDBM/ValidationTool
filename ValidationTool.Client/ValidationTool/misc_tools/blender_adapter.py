@@ -6,8 +6,6 @@ from  mathutils import Vector
 import bpy
 
 import sys
-import os
-print("SCRIPT RUNNING")
 script_dir = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\ValidationTool"
 
 if script_dir not in sys.path:
@@ -34,7 +32,7 @@ def get_asset_type_from_name(name: str) -> "AssetType":
     return AssetType.UNKNOWN
 
 
-def extract_meshes_from_scene() -> List["MeshContext"]:
+def extract_Blend_scene() -> List["MeshContext"]:
     meshes: List[MeshContext] = []
 
     for obj in bpy.context.scene.objects:
@@ -47,30 +45,15 @@ def extract_meshes_from_scene() -> List["MeshContext"]:
         asset_name = obj.name
         asset_type = get_asset_type_from_name(asset_name)
 
-        # -------------------------
-        # Geometry stats
-        # -------------------------
         vertex_count = len(mesh.vertices)
-        print("vertex count:", vertex_count)
         triangle_count = len(mesh.polygons)
-        print("triangle count:", triangle_count)
-
-        # -------------------------
-        # UVs
-        # -------------------------
+        
         uv_layers = mesh.uv_layers
         uv_sets = [uv.name for uv in uv_layers] if uv_layers else []
 
         has_uv0 = len(uv_sets) > 0
         has_uv1 = len(uv_sets) > 1
-
-        print("UV sets:", uv_sets)
-        print("Has UV0:", has_uv0)
-        print("Has UV1:", has_uv1)
-
-        # -------------------------
-        # Materials
-        # -------------------------
+        
         material_slots = obj.material_slots
         materials = [
             slot.material.name
@@ -78,15 +61,9 @@ def extract_meshes_from_scene() -> List["MeshContext"]:
             if slot.material
         ]
         material_count = len(materials)
-        print("Material count:", material_count)
-
-        # -------------------------
-        # Transform / scale
-        # -------------------------
+        
         scale = tuple(obj.scale)
         has_negative_scale = any(s < 0 for s in scale)
-        print("Scale:", scale)
-        print("Has negative scale:", has_negative_scale)
 
         # -------------------------
         # Bounding box (world space)
@@ -103,10 +80,7 @@ def extract_meshes_from_scene() -> List["MeshContext"]:
 
         bounding_box_min = (min_x, min_y, min_z)
         bounding_box_max = (max_x, max_y, max_z)
-
-        # -------------------------
-        # MeshContext output
-        # -------------------------
+        
         mesh_context = MeshContext(
             name=asset_name,
             asset_type=asset_type,

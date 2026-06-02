@@ -6,10 +6,8 @@ from typing import List, Optional
 import reporting.staged_json_reporter as json_reporter
 
 from core.validation_system import (
-    ValidationIssue,
-    ValidationSeverity
+    ValidationIssue
 )
-from config.validation_config import ValidationConfig
 
 from core.registry import MeshValidatorRegistry
 

@@ -17,9 +17,8 @@ else:
 
 sys.path.insert(0, str(PROJECTROOT))
 
-print("PROJECT ROOT:", PROJECTROOT)  # debug
 
-from misc_tools.maya_adapter import extract_meshes_from_scene
+from misc_tools.maya_adapter import extract_Maya_scene
 from core.runner import run_pipeline
 from config.validation_profile import ValidationProfile
 
@@ -30,10 +29,9 @@ SOURCE_DIR = r"C:\Users\StyopaDBM\source\repos\ValidationTool\Sourcefiles\Source
 
 
 def process_file(file_path: str):
-    print(f"\n[PROCESSING] {file_path}")
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
-    meshes = extract_meshes_from_scene()
+    meshes = extract_Maya_scene()
 
     profile = ValidationProfile(enabled_categories=set())
 
@@ -47,8 +45,7 @@ def process_file(file_path: str):
 def main():
     files = get_MAYA_files(SOURCE_DIR)
 
-    print(f"Found {len(files)} Maya files")
-
+    print(f"Found {len(files)} MAYA files")
     for f in files:
         try:
             process_file(f)

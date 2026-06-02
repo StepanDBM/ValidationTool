@@ -2,10 +2,10 @@ from PySide6 import QtWidgets, QtGui, QtCore
 import maya.cmds as cmds
 
 from config.validation_profile import ValidationProfile
-from misc_tools.maya_adapter import extract_meshes_from_scene
 from core.runner import run_pipeline
 from config.validation_config import ValidationConfig
 import  config.check_categories as check_categories
+from misc_tools.maya_adapter import extract_Maya_scene
 
 
 class Severity:
@@ -126,7 +126,7 @@ class ValidatorWindow(QtWidgets.QDialog):
     def run_validation(self):
         self.model.removeRows(0, self.model.rowCount())
 
-        meshes = extract_meshes_from_scene()
+        meshes = extract_Maya_scene()
 
         config = ValidationConfig(
             strict_mode=True,

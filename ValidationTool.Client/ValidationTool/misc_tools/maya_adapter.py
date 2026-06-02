@@ -24,7 +24,7 @@ def getAssetTypeFromName(name: str) -> AssetType:
     else:
         return AssetType.UNKNOWN
     
-def extract_meshes_from_scene() -> List[MeshContext]:
+def extract_Maya_scene() -> List[MeshContext]:
 
     if cmds is None:
         raise RuntimeError("Maya API not available. Run inside Maya.")
