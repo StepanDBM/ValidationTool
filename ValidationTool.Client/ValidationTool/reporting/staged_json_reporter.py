@@ -11,6 +11,8 @@ def export_validation_run(run) -> Dict[str, Any]:
     summary = {
         "run_id": run.run_id,
         "timestamp": str(run.timestamp),
+        "dcc": run.dcc,
+
         "total_assets": len(run.assets),
         "total_issues": run.summary.total_issues,
         "errors": run.summary.errors,
@@ -76,7 +78,7 @@ def write_json(run, folder_path: str, pretty: bool = True):
     base_dir = Path(folder_path)
     base_dir.mkdir(parents=True, exist_ok=True)
     
-    run_folder = base_dir / f"RprtID_{run.run_id}"
+    run_folder = base_dir / f"{run.dcc}_runID_{run.run_id}"
     
     run_folder.mkdir(parents=True, exist_ok=True)
 
@@ -88,17 +90,3 @@ def write_json(run, folder_path: str, pretty: bool = True):
         else:
             json.dump(data, f, ensure_ascii=False)
     
-    summary_file = run_folder / "summary.json"
-
-    summary = {
-        "run_id": run.run_id,
-        "timestamp": str(run.timestamp),
-        "total_assets": len(run.assets),
-        "total_issues": run.summary.total_issues,
-        "errors": run.summary.errors,
-        "warnings": run.summary.warnings,
-        "info": run.summary.infos
-    }
-
-    with summary_file.open("w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=4 if pretty else None, ensure_ascii=False)

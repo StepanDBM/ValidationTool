@@ -31,9 +31,10 @@ def process_file(file_path: str):
     meshes = extract_Blend_scene()
     print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
-    config = {}
 
-    run = run_pipeline(meshes, config, profile)
+    context = {"dcc": "Blender"}
+
+    run = run_pipeline(meshes, context, profile)
 
     print(f"[DONE] {file_path} -> {run.run_id}")
 

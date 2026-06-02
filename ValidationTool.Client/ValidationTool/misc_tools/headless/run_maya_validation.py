@@ -35,9 +35,9 @@ def process_file(file_path: str):
 
     profile = ValidationProfile(enabled_categories=set())
 
-    config = {}
+    context = {"dcc": "Maya"}
 
-    run = run_pipeline(meshes, config, profile)
+    run = run_pipeline(meshes, context, profile)
 
     print(f"[DONE] {file_path} -> {run.run_id}")
 

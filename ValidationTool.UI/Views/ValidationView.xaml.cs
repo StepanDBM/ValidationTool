@@ -11,8 +11,17 @@ namespace ValidationTool.UI.Views {
         private void loadReportUI(object sender, RoutedEventArgs e) {
             var vm = (MainViewModel)DataContext;
             vm.LoadReport(
-                @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports\2026-06-01_06-12-01\validation_report.json"
+                @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports\RprtID_b816aa9f-4154-4f54-8853-fca4bdfe480a\validation_report.json"
             );
+        }
+        private void RunMaya_Click(object sender, RoutedEventArgs e) {
+            var vm = (MainViewModel)DataContext;
+            vm.RunMayaValidation();
+        }
+
+        private void RunBlender_Click(object sender, RoutedEventArgs e) {
+            var vm = (MainViewModel)DataContext;
+            vm.RunBlenderValidation();
         }
     }
 }

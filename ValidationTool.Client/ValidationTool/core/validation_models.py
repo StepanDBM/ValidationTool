@@ -34,5 +34,6 @@ class PipelineSummary:
 class ValidationRun:
     run_id: str
     timestamp: datetime
+    dcc: str
     assets: List[AssetValidationResult]
     summary: PipelineSummary

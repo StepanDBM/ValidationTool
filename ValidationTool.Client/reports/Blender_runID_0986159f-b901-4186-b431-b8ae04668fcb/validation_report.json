@@ -1,7 +1,8 @@
 {
     "summary": {
-        "run_id": "7ec214cd-3339-4cc2-aeee-4fb2e644005c",
-        "timestamp": "2026-06-02 23:36:11.806794",
+        "run_id": "0986159f-b901-4186-b431-b8ae04668fcb",
+        "timestamp": "2026-06-03 00:28:15.142269",
+        "dcc": "Blender",
         "total_assets": 6,
         "total_issues": 28,
         "errors": 3,
@@ -343,7 +344,7 @@
                 {
                     "stage": "naming",
                     "has_errors": false,
-                    "execution_time": 0.0009996891021728516,
+                    "execution_time": 0.0,
                     "issues": []
                 }
             ]
