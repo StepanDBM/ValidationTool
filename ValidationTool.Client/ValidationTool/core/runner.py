@@ -63,8 +63,6 @@ def print_report(issues: List[ValidationIssue]):
 
 
 def run_pipeline(meshes, context, profile=None):
-    
-    print("Shieh man")
     loader = ConfigLoader(
         r"C:\Users\StyopaDBM\source\repos\ValidationTool\configurations")
     validation_config = loader.load_validation_config()
