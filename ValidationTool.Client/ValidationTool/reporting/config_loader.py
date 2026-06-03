@@ -13,11 +13,11 @@ from config.config_models import (
 class ConfigLoader:
 
     def __init__(self, config_folder):
-        self.config_folder = Path(config_folder)
+        self.config_folder = config_folder
 
     def load_validation_config(self):
 
-        path = self.config_folder / "validation_config.json"
+        path = self.config_folder / "configurations" / "validation_config.json"
 
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -33,7 +33,7 @@ class ConfigLoader:
 
     def load_naming_rules(self):
 
-        path = self.config_folder / "naming_rules.json"
+        path = self.config_folder / "configurations" / "naming_rules.json"
 
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -46,7 +46,7 @@ class ConfigLoader:
 
     def load_budgets(self):
 
-        path = self.config_folder / "budgets.json"
+        path = self.config_folder / "configurations" / "budgets.json"
 
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)

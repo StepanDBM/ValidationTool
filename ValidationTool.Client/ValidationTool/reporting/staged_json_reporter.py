@@ -1,13 +1,11 @@
 import json
 from typing import Dict, Any
 import config.exec_stages as excS
+from pathlib import Path
 
 
 def export_validation_run(run) -> Dict[str, Any]:
-    """
-    Converts ValidationRun into structured JSON dict.
-    Keeps stage order, asset grouping, and issue hierarchy.
-    """
+    
     summary = {
         "run_id": run.run_id,
         "timestamp": str(run.timestamp),
@@ -66,19 +64,13 @@ def export_validation_run(run) -> Dict[str, Any]:
         "assets": assets_json
     }
 
-
-from pathlib import Path
-from datetime import datetime
-import json
-
-def write_json(run, folder_path: str, pretty: bool = True):
+def write_json(run, folder_path: Path, pretty: bool = True):
 
     data = export_validation_run(run)
 
-    base_dir = Path(folder_path)
-    base_dir.mkdir(parents=True, exist_ok=True)
+    folder_path.mkdir(parents=True, exist_ok=True)
     
-    run_folder = base_dir / f"{run.dcc}_runID_{run.run_id}"
+    run_folder = folder_path / f"{run.dcc}_runID_{run.run_id}"
     
     run_folder.mkdir(parents=True, exist_ok=True)
 
@@ -89,4 +81,24 @@ def write_json(run, folder_path: str, pretty: bool = True):
             json.dump(data, f, indent=4, ensure_ascii=False)
         else:
             json.dump(data, f, ensure_ascii=False)
-    
+    return str(report_file)
+
+def write_session_runs(mydcc, sessionRuns, folder_path: Path, pretty: bool = True):
+
+    data = {
+        "dcc": mydcc,
+        "runs": sessionRuns
+    }
+    print(data)
+    folder_path.mkdir(parents=True, exist_ok=True)
+    report_file = folder_path / f"{mydcc}_reports.json"
+    print (report_file)
+    try:
+
+        with report_file.open("w", encoding="utf-8") as f:
+            if pretty:
+                json.dump(data, f, indent=4, ensure_ascii=False)
+            else:
+                json.dump(data, f, ensure_ascii=False)
+    except Exception as e:
+        print(f"[write_session_runs: ERROR - {f} as {e}]")

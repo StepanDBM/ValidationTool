@@ -1,0 +1,9 @@
+{
+    "dcc": "maya",
+    "runs": [
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_40df43d1-a397-4dc9-ada5-e2dda108590c\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_c3add029-181b-43ca-9e34-cd84dfc81890\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_0b55cdcb-2a48-4be7-8832-23c91d6b49d8\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_2f0be9d5-e0d5-447e-b235-604013c5dfce\\validation_report.json"
+    ]
+}

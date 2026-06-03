@@ -37,3 +37,9 @@ class ValidationRun:
     dcc: str
     assets: List[AssetValidationResult]
     summary: PipelineSummary
+    jsonPath: str
+
+@dataclass
+class sessionRuns:
+    dcc: str
+    runs: List[str]

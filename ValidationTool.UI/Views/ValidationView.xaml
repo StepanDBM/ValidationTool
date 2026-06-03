@@ -9,13 +9,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
 
             <Button Content="Run Maya"
                     Width="120"
                     Height="35"
                     Margin="5"
-                    Click="RunMaya_Click"/>
+                    Click ="RunMaya_Click"/>
 
             <Button Content="Run Blender"
                     Width="120"
@@ -31,8 +31,21 @@
 
         </StackPanel>
 
-        <TreeView
+        <TextBlock
             Grid.Row="1"
+            Text="{Binding CurrentFile}"
+            Margin="5"/>
+
+        <ProgressBar
+            Grid.Row="2"
+            Height="25"
+            Margin="5"
+            Minimum="0"
+            Maximum="100"
+            Value="{Binding Progress}" />
+
+        <TreeView
+            Grid.Row="3"
             ItemsSource="{Binding Assets}">
             <TreeView.ItemTemplate>
 

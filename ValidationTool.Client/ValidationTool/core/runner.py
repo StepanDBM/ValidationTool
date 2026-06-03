@@ -13,6 +13,7 @@ from core.registry import MeshValidatorRegistry
 
 import checks.check_mesh as check_mesh
 
+import config.absolutePaths as absPath
 from config.check_categories import (
     GEOMETRY,
     UV,
@@ -63,8 +64,9 @@ def print_report(issues: List[ValidationIssue]):
 
 
 def run_pipeline(meshes, context, profile=None):
-    loader = ConfigLoader(
-        r"C:\Users\StyopaDBM\source\repos\ValidationTool\configurations")
+    
+    loader = ConfigLoader(absPath.ROOT_PATH)
+    
     validation_config = loader.load_validation_config()
     naming_rules = loader.load_naming_rules()
     budgets = loader.load_budgets()
@@ -83,7 +85,7 @@ def run_pipeline(meshes, context, profile=None):
     all_issues_flat = []
 
     for mesh in meshes:
-
+        print(f"Curent Mesh: {mesh.name}", flush=True)
         stage_results = []
 
         asset_has_errors = False
@@ -162,9 +164,12 @@ def run_pipeline(meshes, context, profile=None):
     run = valMod.ValidationRun(
         run_id=run_id,
         timestamp=timestamp,
-        dcc=context.get("dcc", "Unknown"),
+        dcc=context.get("dcc"),
         assets=asset_results,
-        summary=summary
+        summary=summary,
+        jsonPath=""
     )
-    json_reporter.write_json(run, r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports", pretty=True)
+    newJsonPath =json_reporter.write_json(run, absPath.REPORTS_DIR, pretty=True)
+
+    run.jsonPath = newJsonPath
     return run

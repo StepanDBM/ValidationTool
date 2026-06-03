@@ -8,18 +8,14 @@ SUPPORTED_EXTENSIONS = {
 }
 
 
-def get_MAYA_files(root: str) -> list[str]:
-    root = Path(root)
+def get_MAYA_files(root: Path) -> list[str]:
     return [str(p) for p in root.rglob("*") if p.suffix in SUPPORTED_EXTENSIONS["maya"]]
 
-def get_Blender_files(root: str) -> list[str]:
-    root = Path(root)
+def get_Blender_files(root: Path) -> list[str]:
     return [str(p) for p in root.rglob("*") if p.suffix in SUPPORTED_EXTENSIONS["blender"]]
 
-def get_3DsMax_files(root: str) -> list[str]:
-    root = Path(root)
+def get_3DsMax_files(root: Path) -> list[str]:
     return [str(p) for p in root.rglob("*") if p.suffix in SUPPORTED_EXTENSIONS["max"]]
 
-def get_Houdini_files(root: str) -> list[str]:
-    root = Path(root)
+def get_Houdini_files(root: Path) -> list[str]:
     return [str(p) for p in root.rglob("*") if p.suffix in SUPPORTED_EXTENSIONS["houdini"]]

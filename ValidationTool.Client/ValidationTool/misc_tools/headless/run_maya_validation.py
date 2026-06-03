@@ -24,6 +24,10 @@ from config.validation_profile import ValidationProfile
 
 from fileSearchers.source_finder import get_MAYA_files
 
+from reporting.staged_json_reporter import write_session_runs
+import config.dcc_list as myDCCs
+import config.absolutePaths as absPath
+
 
 SOURCE_DIR = r"C:\Users\StyopaDBM\source\repos\ValidationTool\Sourcefiles\Source_Maya"
 
@@ -40,17 +44,38 @@ def process_file(file_path: str):
     run = run_pipeline(meshes, context, profile)
 
     print(f"[DONE] {file_path} -> {run.run_id}")
+    
+    return run
 
 
 def main():
-    files = get_MAYA_files(SOURCE_DIR)
+    files = get_MAYA_files(absPath.SOURCE_MAYA)
+
+    total_MAyafiles = len(files)
+    index = 0
 
     print(f"Found {len(files)} MAYA files")
+
+    myJsonPaths = []
     for f in files:
         try:
-            process_file(f)
+            progress = int((index/total_MAyafiles)*100)
+
+            print(f"PROGRESS: [{progress}%]", flush = True)
+            print(f"CURRENT_FILE:{f}", flush=True)
+
+            index += 1
+            
+            run = process_file(f)
+            myJsonPaths.append(run.jsonPath)
         except Exception as e:
-            print(f"[ERROR] {f}: {e}")
+            print(f"[run_maya_validation_ERROR] {f}: {e}")
+
+    print("PROGRESS: [100%]", flush=True)
+    print("ALL FILES DONE")
+
+    sessionPath = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports"
+    write_session_runs(myDCCs.MAYA, myJsonPaths, absPath.REPORTS_DIR, True)
 
 
 if __name__ == "__main__":
