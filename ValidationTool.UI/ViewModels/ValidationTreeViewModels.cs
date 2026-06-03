@@ -1,18 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
+using System.IO;
 using ValidationTool.UI.Services;
-using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.ViewModels {
 
     public class ValidationTreeViewModel {
 
-        public void LoadReport(string path, ObservableCollection<AssetViewModel> myAssets) {
+        public void LoadReport(ObservableCollection<AssetViewModel> myAssets) {
+            var myPath = JsonReportLoader.LoadLastRun();
             myAssets.Clear();
-            System.Diagnostics.Debug.WriteLine(JsonReportLoader.Load(path));
+            System.Diagnostics.Debug.WriteLine(JsonReportLoader.Load(myPath));
 
 
-            var dto = JsonReportLoader.Load(path);
+            var dto = JsonReportLoader.Load(myPath);
 
             foreach (var asset in dto.Assets) {
                 var assetVm = new AssetViewModel {

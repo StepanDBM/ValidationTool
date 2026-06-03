@@ -1,26 +1,23 @@
 ﻿using System.Collections.ObjectModel;
-using ValidationTool.UI.ViewModels;
+using System.IO;
 using ValidationTool.UI.Services.external;
+using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.ViewModels {
     public class MainViewModel {
         public ObservableCollection<AssetViewModel> Assets { get; set; }
             = new ObservableCollection<AssetViewModel>();
 
-        public void LoadReport(string path) {
+        public void LoadReport() {
             ValidationTreeViewModel myValidationTreeViewModel = new ValidationTreeViewModel();
-            myValidationTreeViewModel.LoadReport(path, Assets);
+            myValidationTreeViewModel.LoadReport(Assets);
         }
         public void RunBlenderValidation() {
-            BlenderRunner.Run(
-                @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\ValidationTool\misc_tools\headless\run_blender_validation.py"
-            );
+            BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"));
         }
 
         public void RunMayaValidation() {
-            MayaRunner.Run(
-                @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\ValidationTool\misc_tools\headless\run_maya_validation.py"
-            );
+            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));
         }
     }
 }

@@ -13,5 +13,8 @@ namespace ValidationTool.UI.Services {
                     PropertyNameCaseInsensitive = true
                 });
         }
+        public static string LoadLastRun() {
+            return @"C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_e5e18491-2534-4fca-a7c3-cf1f72b0df85\\validation_report.json";
+        }
     }
 }

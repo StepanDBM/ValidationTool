@@ -10,9 +10,7 @@ namespace ValidationTool.UI.Views {
 
         private void loadReportUI(object sender, RoutedEventArgs e) {
             var vm = (MainViewModel)DataContext;
-            vm.LoadReport(
-                @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports\Maya_runID_fa110c33-7f90-4232-8b99-b04ce4416246\validation_report.json"
-            );
+            vm.LoadReport();
         }
         private void RunMaya_Click(object sender, RoutedEventArgs e) {
             var vm = (MainViewModel)DataContext;

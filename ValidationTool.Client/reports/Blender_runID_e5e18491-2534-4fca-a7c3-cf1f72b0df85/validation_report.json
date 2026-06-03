@@ -1,7 +1,7 @@
 {
     "summary": {
-        "run_id": "ba967788-bec7-4af7-b72b-95d67427a783",
-        "timestamp": "2026-06-03 17:18:18.192359",
+        "run_id": "e5e18491-2534-4fca-a7c3-cf1f72b0df85",
+        "timestamp": "2026-06-03 17:36:46.217905",
         "dcc": "Blender",
         "total_assets": 11,
         "total_issues": 53,
@@ -18,7 +18,7 @@
                 {
                     "stage": "geometry",
                     "has_errors": false,
-                    "execution_time": 0.0,
+                    "execution_time": 0.0010013580322265625,
                     "issues": [
                         {
                             "asset_name": "ENV_0",
@@ -39,7 +39,7 @@
                 {
                     "stage": "uv",
                     "has_errors": false,
-                    "execution_time": 0.0005059242248535156,
+                    "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "ENV_0",
@@ -53,7 +53,7 @@
                 {
                     "stage": "transform",
                     "has_errors": false,
-                    "execution_time": 1.5497207641601562e-05,
+                    "execution_time": 0.0,
                     "issues": [
                         {
                             "asset_name": "ENV_0",

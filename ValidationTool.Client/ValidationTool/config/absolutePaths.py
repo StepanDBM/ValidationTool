@@ -1,6 +1,6 @@
 from pathlib import Path
 
-ROOT_PATH = Path(r"C:\Users\StyopaDBM\source\repos\ValidationTool")
+ROOT_PATH = Path(r"C:\Users\StyopaDBM\source\repos\ValidationTool") #to be changed in case that the project is opened in another machine
 
 CLIENT_PATH = ROOT_PATH / "ValidationTool.Client"
 
