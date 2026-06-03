@@ -104,6 +104,7 @@
     <Compile Include="ViewModels\AssetViewModel.cs" />
     <Compile Include="ViewModels\BudgetsViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\DccViewModel.cs" />
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
