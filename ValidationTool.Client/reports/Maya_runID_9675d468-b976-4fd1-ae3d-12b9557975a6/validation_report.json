@@ -1,0 +1,691 @@
+{
+    "summary": {
+        "run_id": "9675d468-b976-4fd1-ae3d-12b9557975a6",
+        "timestamp": "2026-06-10 00:30:42.306540",
+        "dcc": "Maya",
+        "total_assets": 10,
+        "total_issues": 48,
+        "errors": 2,
+        "warnings": 27,
+        "info": 19
+    },
+    "assets": [
+        {
+            "asset_name": "CH_brother",
+            "has_errors": true,
+            "total_issues": 5,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "CH_brother",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (6242)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "CH_brother",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (6240)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "CH_brother",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": true,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "CH_brother",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "ERROR",
+                            "message": "Negative scale detected.",
+                            "suggestion": "Freeze transforms (scale)."
+                        },
+                        {
+                            "asset_name": "CH_brother",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (-5.484659382940892, 8.200464069957883, 8.200464069957883).",
+                            "suggestion": "Apply freeze transforms."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "ENV_0",
+            "has_errors": false,
+            "total_issues": 4,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_0",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (98)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "ENV_0",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (96)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_0",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_0",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (170.61770230185707, 136.49416184148566, 90.99610789432383).",
+                            "suggestion": "Apply freeze transforms."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "ENV_1",
+            "has_errors": false,
+            "total_issues": 5,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_1",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (386)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "ENV_1",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (384)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_1",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_1",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+                            "suggestion": "Apply freeze transforms."
+                        },
+                        {
+                            "asset_name": "ENV_1",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Extreme scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+                            "suggestion": "Check asset scaling consistency."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "ENV_2",
+            "has_errors": false,
+            "total_issues": 5,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_2",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (1538)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "ENV_2",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (1536)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_2",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_2",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (474.90468717878315, 3600.0, 2400.0).",
+                            "suggestion": "Apply freeze transforms."
+                        },
+                        {
+                            "asset_name": "ENV_2",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Extreme scale detected (474.90468717878315, 3600.0, 2400.0).",
+                            "suggestion": "Check asset scaling consistency."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "ENV_3",
+            "has_errors": false,
+            "total_issues": 4,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_3",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (6146)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "ENV_3",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (6144)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_3",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_3",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (600.0, 480.0, 320.0).",
+                            "suggestion": "Apply freeze transforms."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "ENV_sister",
+            "has_errors": false,
+            "total_issues": 5,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_sister",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (6400)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "ENV_sister",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (6400)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_sister",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "ENV_sister",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (2000.0, 1.0, 1.0).",
+                            "suggestion": "Apply freeze transforms."
+                        },
+                        {
+                            "asset_name": "ENV_sister",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Extreme scale detected (2000.0, 1.0, 1.0).",
+                            "suggestion": "Check asset scaling consistency."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "HERO__shieh",
+            "has_errors": false,
+            "total_issues": 5,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "HERO__shieh",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (6242)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "HERO__shieh",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (6240)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "HERO__shieh",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "HERO__shieh",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (2.0, 5.0, 0.5).",
+                            "suggestion": "Apply freeze transforms."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "HERO__shieh",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "INFO",
+                            "message": "Mesh name contains double underscores.",
+                            "suggestion": "Avoid redundant separators."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "asset_name": "PRP_mine",
+            "has_errors": false,
+            "total_issues": 4,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "PRP_mine",
+                            "check_name": "CHECK_VERTEX_COUNT",
+                            "severity": "INFO",
+                            "message": "Vertex count within acceptable range (6400)",
+                            "suggestion": ""
+                        },
+                        {
+                            "asset_name": "PRP_mine",
+                            "check_name": "CHECK_TRIANGLE_COUNT",
+                            "severity": "INFO",
+                            "message": "Triangle count within acceptable range (6400)",
+                            "suggestion": ""
+                        }
+                    ]
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "PRP_mine",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "PRP_mine",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (1.0, 3.0, 10.0).",
+                            "suggestion": "Apply freeze transforms."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                }
+            ]
+        },
+        {
+            "asset_name": "brokennaming",
+            "has_errors": false,
+            "total_issues": 4,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "brokennaming",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "brokennaming",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "INFO",
+                            "message": "All transforms are correcty",
+                            "suggestion": "Call your family, you did great."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "brokennaming",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "WARNING",
+                            "message": "Mesh missing valid asset prefix.",
+                            "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
+                        },
+                        {
+                            "asset_name": "brokennaming",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "WARNING",
+                            "message": "Mesh name does not follow naming convention: brokennaming",
+                            "suggestion": "Use format PREFIX_AssetName"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "asset_name": "some__MOD",
+            "has_errors": true,
+            "total_issues": 7,
+            "stages": [
+                {
+                    "stage": "geometry",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": []
+                },
+                {
+                    "stage": "uv",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_UV_SETS",
+                            "severity": "WARNING",
+                            "message": "Mesh contains too many UV sets (5/2).",
+                            "suggestion": "Remove unused UV sets."
+                        }
+                    ]
+                },
+                {
+                    "stage": "transform",
+                    "has_errors": true,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "ERROR",
+                            "message": "Negative scale detected.",
+                            "suggestion": "Freeze transforms (scale)."
+                        },
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Non-uniform scale detected (-3.0, 2000.0, 1e-12).",
+                            "suggestion": "Apply freeze transforms."
+                        },
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Extreme scale detected (-3.0, 2000.0, 1e-12).",
+                            "suggestion": "Check asset scaling consistency."
+                        }
+                    ]
+                },
+                {
+                    "stage": "naming",
+                    "has_errors": false,
+                    "execution_time": 0.0,
+                    "issues": [
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "WARNING",
+                            "message": "Mesh missing valid asset prefix.",
+                            "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
+                        },
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "WARNING",
+                            "message": "Mesh name does not follow naming convention: some__MOD",
+                            "suggestion": "Use format PREFIX_AssetName"
+                        },
+                        {
+                            "asset_name": "some__MOD",
+                            "check_name": "CHECK_NAMING",
+                            "severity": "INFO",
+                            "message": "Mesh name contains double underscores.",
+                            "suggestion": "Avoid redundant separators."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

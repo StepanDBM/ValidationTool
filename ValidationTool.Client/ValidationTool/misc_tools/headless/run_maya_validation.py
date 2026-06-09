@@ -29,8 +29,6 @@ import config.dcc_list as myDCCs
 import config.absolutePaths as absPath
 
 
-SOURCE_DIR = r"C:\Users\StyopaDBM\source\repos\ValidationTool\Sourcefiles\Source_Maya"
-
 
 def process_file(file_path: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)

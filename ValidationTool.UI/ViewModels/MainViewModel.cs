@@ -12,12 +12,12 @@ namespace ValidationTool.UI.ViewModels {
             ValidationTreeViewModel myValidationTreeViewModel = new ValidationTreeViewModel();
             myValidationTreeViewModel.LoadReport(Assets);
         }
+        public void RunMayaValidation() {
+            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));
+        }
         public void RunBlenderValidation() {
             BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"));
         }
 
-        public void RunMayaValidation() {
-            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));
-        }
     }
 }
