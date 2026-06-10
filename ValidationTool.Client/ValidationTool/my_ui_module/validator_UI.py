@@ -127,12 +127,6 @@ class ValidatorWindow(QtWidgets.QDialog):
         self.model.removeRows(0, self.model.rowCount())
 
         meshes = extract_Maya_scene()
-
-        config = ValidationConfig(
-            strict_mode=True,
-            fail_on_first_error=False,
-            auto_fix_enabled=False
-        )
         
         profile = ValidationProfile(
             enabled_categories={
@@ -140,23 +134,22 @@ class ValidatorWindow(QtWidgets.QDialog):
             } if self.category_combo.currentData() != "ALL" else set()
         )
         
-        result = run_pipeline(meshes, config, profile=profile)
+        context = {"dcc": "Maya", "path": "file_path"}
+        result = run_pipeline(meshes, context, profile=profile)
 
-        for asset in result.assets:
-            for stage in asset.stages:
-                for issue in stage.issues:
+        for issue in result.issues:
 
-                    severity_item = QtGui.QStandardItem(issue.severity.value)
-                    asset_item = QtGui.QStandardItem(issue.asset_name)
-                    stage_item = QtGui.QStandardItem(stage.stage)
-                    message_item = QtGui.QStandardItem(issue.message)
+            severity_item = QtGui.QStandardItem(issue.severity.value)
+            asset_item = QtGui.QStandardItem(issue.asset_name)
+            stage_item = QtGui.QStandardItem(issue.stage)
+            message_item = QtGui.QStandardItem(issue.message)
 
-                    asset_item.setData(issue.asset_name, QtCore.Qt.UserRole)
+            asset_item.setData(issue.asset_name, QtCore.Qt.UserRole)
 
-                    self.model.appendRow([severity_item,
-                                          asset_item,
-                                          stage_item,
-                                          message_item])
+            self.model.appendRow([severity_item,
+                                    asset_item,
+                                    stage_item,
+                                    message_item])
 
     # ---------------- Filtering ----------------
 
