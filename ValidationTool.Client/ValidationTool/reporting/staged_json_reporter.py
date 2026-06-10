@@ -15,7 +15,7 @@ def export_validation_run(run) -> Dict[str, Any]:
         "total_issues": run.summary.total_issues,
         "errors": run.summary.errors,
         "warnings": run.summary.warnings,
-        "info": run.summary.infos
+        "infos": run.summary.infos
     }
     
     mIssues = []

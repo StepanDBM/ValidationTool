@@ -1,13 +1,13 @@
 {
     "summary": {
-        "run_id": "b9dd4692",
-        "timestamp": "2026-06-10T19:13:50.730769",
+        "run_id": "907adfb6",
+        "timestamp": "2026-06-10T20:30:35.397846",
         "dcc": "Blender",
         "total_assets": 11,
         "total_issues": 53,
         "errors": 3,
         "warnings": 30,
-        "info": 20
+        "infos": 20
     },
     "issues": [
         {
@@ -16,7 +16,7 @@
             "asset_name": "ENV_0",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (98)",
             "suggestion": ""
@@ -27,7 +27,7 @@
             "asset_name": "ENV_0",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (96)",
             "suggestion": ""
@@ -38,7 +38,7 @@
             "asset_name": "ENV_0",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -49,7 +49,7 @@
             "asset_name": "ENV_0",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (1500.0, 1200.0, 800.0).",
             "suggestion": "Apply freeze transforms."
@@ -60,7 +60,7 @@
             "asset_name": "ENV_0",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (1500.0, 1200.0, 800.0).",
             "suggestion": "Check asset scaling consistency."
@@ -71,7 +71,7 @@
             "asset_name": "ENV_1",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (386)",
             "suggestion": ""
@@ -82,7 +82,7 @@
             "asset_name": "ENV_1",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (384)",
             "suggestion": ""
@@ -93,7 +93,7 @@
             "asset_name": "ENV_1",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -104,7 +104,7 @@
             "asset_name": "ENV_1",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (3000.0, 2400.0, 1600.0).",
             "suggestion": "Apply freeze transforms."
@@ -115,7 +115,7 @@
             "asset_name": "ENV_1",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (3000.0, 2400.0, 1600.0).",
             "suggestion": "Check asset scaling consistency."
@@ -126,7 +126,7 @@
             "asset_name": "ENV_2",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (1538)",
             "suggestion": ""
@@ -137,7 +137,7 @@
             "asset_name": "ENV_2",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (1536)",
             "suggestion": ""
@@ -148,7 +148,7 @@
             "asset_name": "ENV_2",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -159,7 +159,7 @@
             "asset_name": "ENV_2",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (4500.0, 3600.0, 2400.0).",
             "suggestion": "Apply freeze transforms."
@@ -170,7 +170,7 @@
             "asset_name": "ENV_2",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (4500.0, 3600.0, 2400.0).",
             "suggestion": "Check asset scaling consistency."
@@ -181,7 +181,7 @@
             "asset_name": "ENV_3",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (6146)",
             "suggestion": ""
@@ -192,7 +192,7 @@
             "asset_name": "ENV_3",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (6144)",
             "suggestion": ""
@@ -203,7 +203,7 @@
             "asset_name": "ENV_3",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -214,7 +214,7 @@
             "asset_name": "ENV_3",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (6000.0, 4800.0, 3200.0).",
             "suggestion": "Apply freeze transforms."
@@ -225,7 +225,7 @@
             "asset_name": "ENV_3",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (6000.0, 4800.0, 3200.0).",
             "suggestion": "Check asset scaling consistency."
@@ -236,7 +236,7 @@
             "asset_name": "CH_shieh",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (7938)",
             "suggestion": ""
@@ -247,7 +247,7 @@
             "asset_name": "CH_shieh",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (7936)",
             "suggestion": ""
@@ -258,7 +258,7 @@
             "asset_name": "CH_shieh",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -269,7 +269,7 @@
             "asset_name": "CH_shieh",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "ERROR",
             "message": "Negative scale detected.",
             "suggestion": "Freeze transforms (scale)."
@@ -280,7 +280,7 @@
             "asset_name": "CH_shieh",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (-1.0, 1.0, 1.0).",
             "suggestion": "Apply freeze transforms."
@@ -291,7 +291,7 @@
             "asset_name": "HERO__shieh",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (7938)",
             "suggestion": ""
@@ -302,7 +302,7 @@
             "asset_name": "HERO__shieh",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (7936)",
             "suggestion": ""
@@ -313,7 +313,7 @@
             "asset_name": "HERO__shieh",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -324,7 +324,7 @@
             "asset_name": "HERO__shieh",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (2.0, 5.0, 0.5).",
             "suggestion": "Apply freeze transforms."
@@ -335,7 +335,7 @@
             "asset_name": "HERO__shieh",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Mesh name contains double underscores.",
             "suggestion": "Avoid redundant separators."
@@ -346,7 +346,7 @@
             "asset_name": "EMPTY_ZERO",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Missing secondary UV set (UV1).",
             "suggestion": "Add UV1 if required for lightmaps/baking."
@@ -357,7 +357,7 @@
             "asset_name": "EMPTY_ZERO",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "All transforms are correcty",
             "suggestion": "Call your family, you did great."
@@ -368,7 +368,7 @@
             "asset_name": "EMPTY_ZERO",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh missing valid asset prefix.",
             "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
@@ -379,7 +379,7 @@
             "asset_name": "ENV_shiehhhh",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (2304)",
             "suggestion": ""
@@ -390,7 +390,7 @@
             "asset_name": "ENV_shiehhhh",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (2304)",
             "suggestion": ""
@@ -401,7 +401,7 @@
             "asset_name": "ENV_shiehhhh",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -412,7 +412,7 @@
             "asset_name": "ENV_shiehhhh",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (2000.0, 1.0, 1.0).",
             "suggestion": "Apply freeze transforms."
@@ -423,7 +423,7 @@
             "asset_name": "ENV_shiehhhh",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (2000.0, 1.0, 1.0).",
             "suggestion": "Check asset scaling consistency."
@@ -434,7 +434,7 @@
             "asset_name": "PRP_mine",
             "check_name": "CHECK_VERTEX_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Vertex count within acceptable range (9216)",
             "suggestion": ""
@@ -445,7 +445,7 @@
             "asset_name": "PRP_mine",
             "check_name": "CHECK_TRIANGLE_COUNT",
             "stage": "geometry",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "Triangle count within acceptable range (9216)",
             "suggestion": ""
@@ -456,7 +456,7 @@
             "asset_name": "PRP_mine",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -467,7 +467,7 @@
             "asset_name": "PRP_mine",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (1.0, 3.0, 10.0).",
             "suggestion": "Apply freeze transforms."
@@ -478,7 +478,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -489,7 +489,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "ERROR",
             "message": "Negative scale detected.",
             "suggestion": "Freeze transforms (scale)."
@@ -500,7 +500,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Non-uniform scale detected (-3.0, 2000.0, 0.0).",
             "suggestion": "Apply freeze transforms."
@@ -511,7 +511,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "ERROR",
             "message": "Zero scale detected on one or more axes.",
             "suggestion": "Reset scale to 1,1,1 before freezing."
@@ -522,7 +522,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Extreme scale detected (-3.0, 2000.0, 0.0).",
             "suggestion": "Check asset scaling consistency."
@@ -533,7 +533,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh missing valid asset prefix.",
             "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
@@ -544,7 +544,7 @@
             "asset_name": "some_MOD",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh name does not follow naming convention: some_MOD",
             "suggestion": "Use format PREFIX_AssetName"
@@ -555,7 +555,7 @@
             "asset_name": "brokennaming",
             "check_name": "CHECK_UV_SETS",
             "stage": "uv",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh contains too many UV sets (6/2).",
             "suggestion": "Remove unused UV sets."
@@ -566,7 +566,7 @@
             "asset_name": "brokennaming",
             "check_name": "CHECK_TRANSFORMS",
             "stage": "transform",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "INFO",
             "message": "All transforms are correcty",
             "suggestion": "Call your family, you did great."
@@ -577,7 +577,7 @@
             "asset_name": "brokennaming",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh missing valid asset prefix.",
             "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
@@ -588,7 +588,7 @@
             "asset_name": "brokennaming",
             "check_name": "CHECK_NAMING",
             "stage": "naming",
-            "timestamp": "2026-06-10T19:13:50.730769",
+            "timestamp": "2026-06-10T20:30:35.397846",
             "severity": "WARNING",
             "message": "Mesh name does not follow naming convention: brokennaming",
             "suggestion": "Use format PREFIX_AssetName"
