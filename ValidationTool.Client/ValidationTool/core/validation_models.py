@@ -6,6 +6,7 @@ from core.validation_system import ValidationSeverity
 
 @dataclass
 class AssetValidationResult:
+    artist: str
     dcc: str
     originFile: str
     asset_name: str

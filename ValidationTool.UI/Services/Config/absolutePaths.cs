@@ -21,6 +21,9 @@ namespace ValidationTool.UI.Services.Config {
         public static readonly string RUNS_BLENDER =
             Path.Combine(REPORTS_DIR, "blender_reports.json");
 
+        public static readonly string SOURCE_ARTISTS =
+            Path.Combine(ROOT_DIR, "mArtists");
+
         public static readonly string SOURCE_MAYA =
             Path.Combine(ROOT_DIR, "Sourcefiles", "Source_Maya");
 

@@ -22,7 +22,7 @@ from misc_tools.maya_adapter import extract_Maya_scene
 from core.runner import run_pipeline
 from config.validation_profile import ValidationProfile
 
-from fileSearchers.source_finder import get_MAYA_files
+from fileSearchers.source_finder import get_dcc_files
 
 from reporting.staged_json_reporter import write_session_runs
 import config.dcc_list as myDCCs
@@ -30,14 +30,14 @@ import config.absolutePaths as absPath
 
 
 
-def process_file(file_path: str):
+def process_file(file_path: str, artist: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
     meshes = extract_Maya_scene()
     print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Maya", "path": file_path}
+    context = {"dcc": "Maya", "path": file_path, "artist": artist}
 
     run = run_pipeline(meshes, context, profile)
 
@@ -45,7 +45,7 @@ def process_file(file_path: str):
     return run
 
 def main():
-    files = get_MAYA_files(absPath.SOURCE_MAYA)
+    files = get_dcc_files(absPath.SOURCE_ARTISTS, "maya")
 
     total_Mayafiles = len(files)
     index = 0
@@ -53,19 +53,22 @@ def main():
     print(f"Found {total_Mayafiles} MAYA files")
 
     myJsonPaths = []
-    for f in files:
+    for fileInfo in files:
         try:
+            file_path = fileInfo["file_path"]
+            artist_log = fileInfo["artist_log"]
+            print(f"HEYHEYHEYHE\n{file_path}\n{artist_log}\nYHEYHEYHEYHEY")
             progress = int((index/total_Mayafiles)*100)
 
             print(f"PROGRESS: [{progress}%]", flush = True)
-            print(f"CURRENT_FILE:{f}", flush=True)
+            print(f"CURRENT_FILE:{file_path}", flush=True)
 
             index += 1
             
-            run = process_file(f)
+            run = process_file(file_path, artist_log)
             myJsonPaths.append(run.jsonPath)
         except Exception as e:
-            print(f"[run_maya_validation_ERROR] {f}: {e}")
+            print(f"[run_maya_validation_ERROR] {file_path}: {e}")
 
     print("PROGRESS: [100%]", flush=True)
     print("ALL FILES DONE")

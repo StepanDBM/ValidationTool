@@ -22,6 +22,7 @@ def export_validation_run(run) -> Dict[str, Any]:
     for issue in run.issues:
 
         issue_obj = {
+            "artist": issue.artist,
             "dcc": issue.dcc,
             "originFile": issue.originFile,
             "asset_name": issue.asset_name,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.Models.DTOs {
     public class LastRunsListDto {
@@ -44,6 +45,8 @@ namespace ValidationTool.UI.Models.DTOs {
     }
 
     public class ValidationIssueDto {
+        [JsonPropertyName("artist")]
+        public ArtistDto Artist { get; set; }
         [JsonPropertyName("dcc")]
         public string Dcc { get; set; }
 
@@ -67,5 +70,16 @@ namespace ValidationTool.UI.Models.DTOs {
 
         [JsonPropertyName("suggestion")]
         public string Suggestion { get; set; }
+    }
+
+    public class ArtistDto {
+
+        [JsonPropertyName("name")]
+        public string ArtistName { get; set; }
+        [JsonPropertyName("id")]
+        public string ArtistID { get; set; }
+        [JsonPropertyName("level")]
+        public string ArtistLevel { get; set; }
+
     }
 }

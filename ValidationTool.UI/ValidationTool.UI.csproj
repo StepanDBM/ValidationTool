@@ -101,6 +101,7 @@
     <Compile Include="Services\external\MayaRunner.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
     <Compile Include="Themes\SeverityToBrushConverter.cs" />
+    <Compile Include="ViewModels\ArtistViewModel.cs" />
     <Compile Include="ViewModels\AssetViewModel.cs" />
     <Compile Include="ViewModels\BudgetsViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />

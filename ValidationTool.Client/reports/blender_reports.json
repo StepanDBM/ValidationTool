@@ -1,7 +1,19 @@
 {
     "dcc": "blender",
     "runs": [
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_7974a3a4\\validation_report.json",
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_907adfb6\\validation_report.json"
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_0d13dd0b\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_600d3486\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_2a8a97b0\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_b8844769\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_d679029b\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_55cdfee2\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_71714201\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_86ca9f27\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_22a4ec58\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_2d15c9ce\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_ea683b3d\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_a71f6c6c\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_a363051a\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_cfb18e87\\validation_report.json"
     ]
 }

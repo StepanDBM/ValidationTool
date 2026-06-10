@@ -67,22 +67,26 @@
                   ItemsSource="{Binding mIssues}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Artist"
+                                    DisplayMemberBinding="{Binding Artist}" />
+                    <GridViewColumn Header="Artist Lv"
+                                    DisplayMemberBinding="{Binding A_lv}" />
                     <GridViewColumn Header="DCC"
-                                    DisplayMemberBinding="{Binding dcc}" />
+                                    DisplayMemberBinding="{Binding Dcc}" />
                     <GridViewColumn Header="Time"
-                                    DisplayMemberBinding="{Binding timestamp}" />
+                                    DisplayMemberBinding="{Binding Timestamp}" />
                     <GridViewColumn Header="Asset"
-                                    DisplayMemberBinding="{Binding asset_name}" />
+                                    DisplayMemberBinding="{Binding Asset_name}" />
                     <GridViewColumn Header="Stage"
-                                    DisplayMemberBinding="{Binding stage}" />
+                                    DisplayMemberBinding="{Binding Stage}" />
                     <GridViewColumn Header="Check"
-                                    DisplayMemberBinding="{Binding check_name}" />
+                                    DisplayMemberBinding="{Binding Check_name}" />
                     <GridViewColumn Header="Severity"
-                                    DisplayMemberBinding="{Binding severity}" />
+                                    DisplayMemberBinding="{Binding Severity}" />
                     <GridViewColumn Header="Message"
-                                    DisplayMemberBinding="{Binding message}" />
+                                    DisplayMemberBinding="{Binding Message}" />
                     <GridViewColumn Header="Suggestion"
-                                    DisplayMemberBinding="{Binding suggestion}" />
+                                    DisplayMemberBinding="{Binding Suggestion}" />
                 </GridView>
             </ListView.View>
         </ListView>

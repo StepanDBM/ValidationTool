@@ -1,12 +1,10 @@
 import datetime
 import uuid
+import json
 from collections import Counter
 from typing import List
 import reporting.staged_json_reporter as json_reporter
 
-from core.validation_system import (
-    ValidationIssue
-)
 
 from core.registry import MeshValidatorRegistry
 
@@ -52,18 +50,6 @@ def build_registry() -> MeshValidatorRegistry:
 
     return registry
 
-def print_report(issues: List[ValidationIssue]):
-
-    print("\n--- ValidationIssue LIST REPORT ---\n")
-
-    for issue in issues:
-        print(
-            f"[{issue.severity.value}] "
-            f"{issue.asset_name} | "
-            f"{issue.check_name} -> "
-            f"{issue.message}"
-        )
-
 def print_report2(issues: List[AssetValidationResult]):
 
     print("\n--- AssetValidationResult LIST REPORT ---\n")
@@ -99,6 +85,9 @@ def run_pipeline(mObjects: valSys.ObjectContext, context, profile=None):
     run_id = str(uuid.uuid4().hex[:8])
     timestamp = datetime.datetime.now().isoformat()
 
+    with open(context.get("artist"), "r", encoding="utf-8") as f:
+        thisArtist = json.load(f)
+
     all_issues_flat = []
     allIssues = []
     for mObject in mObjects:
@@ -111,6 +100,7 @@ def run_pipeline(mObjects: valSys.ObjectContext, context, profile=None):
             all_issues_flat.extend(result)
             for issue in result:
                 newIssue = AssetValidationResult(
+                    artist = thisArtist,
                     dcc = context.get("dcc"),
                     originFile=context.get("path"),
                     asset_name = mObject.name,

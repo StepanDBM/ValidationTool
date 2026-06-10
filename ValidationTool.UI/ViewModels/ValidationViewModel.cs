@@ -60,6 +60,11 @@ namespace ValidationTool.UI.ViewModels {
 
 
         public void LoadReport() {
+            TotalAssets = 0;
+            TotalIssues = 0;
+            TotalErrors = 0;
+            TotalWarnings = 0;
+            TotalInfos = 0;
             var dtos = JsonReportLoader.Load();
 
             foreach (var dcc in dtos) {
@@ -70,14 +75,16 @@ namespace ValidationTool.UI.ViewModels {
                 TotalInfos += dcc.summary.Infos;
                 foreach (var issue in dcc.issues) {
                     mIssues.Add(new IssueViewModel {
-                        dcc = issue.Dcc,
-                        timestamp = issue.Timestamp.ToString(),
-                        asset_name = issue.AssetName,
-                        check_name = issue.CheckName,
-                        severity = issue.Severity,
-                        message = issue.Message,
-                        suggestion = issue.Suggestion,
-                        stage = issue.Stage
+                        Artist = issue.Artist.ArtistName,
+                        A_lv = issue.Artist.ArtistLevel,
+                        Dcc = issue.Dcc,
+                        Timestamp = issue.Timestamp.ToString(),
+                        Asset_name = issue.AssetName,
+                        Check_name = issue.CheckName,
+                        Severity = issue.Severity,
+                        Message = issue.Message,
+                        Suggestion = issue.Suggestion,
+                        Stage = issue.Stage
                     });
                 }
             }
@@ -93,7 +100,7 @@ namespace ValidationTool.UI.ViewModels {
                     Infos = TotalInfos,
                 }
             });
-
+            dtos.Clear();
         }
 
         public void RunMayaValidation() {

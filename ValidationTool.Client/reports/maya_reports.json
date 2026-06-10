@@ -1,9 +1,33 @@
 {
     "dcc": "maya",
     "runs": [
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_20635a55\\validation_report.json",
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_c42b31a1\\validation_report.json",
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_aed11628\\validation_report.json",
-        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_2afb9f71\\validation_report.json"
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_c676b919\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_3ee373bb\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_525800d1\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_7671541a\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_a0df832b\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_292763e4\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_43ac2b3d\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_0970a9c6\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_edcc2c91\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_72cd67e4\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_08de709a\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_e683981b\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_917f9985\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_7bc61915\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_14ba1de3\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_aed6ebaa\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_f0a0ccad\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_dc89c4cb\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_7cebf494\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_aefcabfd\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_115b302d\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_ac239595\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_8d2d0112\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_9e32efdf\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_f3e5c2c7\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_c23a8af0\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_d0b1ea6a\\validation_report.json",
+        "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Maya_runID_87888208\\validation_report.json"
     ]
 }
