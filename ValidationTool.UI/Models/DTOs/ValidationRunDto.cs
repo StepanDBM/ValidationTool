@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ValidationTool.UI.Models.DTOs {
+    public class LastRunsListDto {
+        [JsonPropertyName("dcc")]
+        public string Dcc { get; set; }
+        [JsonPropertyName("runs")]
+        public List<string> Runs { get; set; }
+    }
+
     public class ValidationRunDto {
         [JsonPropertyName("summary")]
         public RunSummaryDto summary { get; set; }

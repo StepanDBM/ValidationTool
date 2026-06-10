@@ -2,14 +2,13 @@
 
 namespace ValidationTool.UI.ViewModels {
     public class IssueViewModel {
-        public string AssetName { get; set; }
-        public string CheckName { get; set; }
-        public string Severity { get; set; }
-        public string Message { get; set; }
-        public string Suggestion { get; set; }
-
-        public bool IsError => Severity == "ERROR";
-        public bool IsWarning => Severity == "WARNING";
-        public bool IsInfo => Severity == "INFO";
+        public string dcc { get; set; }
+        public string asset_name { get; set; }
+        public string check_name { get; set; }
+        public string stage { get; set; }
+        public string timestamp { get; set; }
+        public string severity { get; set; }
+        public string message { get; set; }
+        public string suggestion { get; set; }
     }
 }

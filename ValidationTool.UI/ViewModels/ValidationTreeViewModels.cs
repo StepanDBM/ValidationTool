@@ -4,7 +4,7 @@ using System.Linq;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.ViewModels;
 
-
+/*
 public class ValidationTreeViewModel {
     public ObservableCollection<AssetViewModel> Assets { get; set; }
         = new ObservableCollection<AssetViewModel>();
@@ -39,4 +39,4 @@ public class ValidationTreeViewModel {
         foreach (var asset in grouped)
             Assets.Add(asset);
     }
-}
+}*/

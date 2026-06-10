@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-
 namespace ValidationTool.UI.Services.external {
     public static class MayaRunner {
         public static void Run(string scriptPath) {

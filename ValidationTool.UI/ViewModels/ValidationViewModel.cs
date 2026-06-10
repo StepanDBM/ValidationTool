@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using ValidationTool.UI.Services;
+using ValidationTool.UI.Services.Config;
+using ValidationTool.UI.Services.external;
+using System.IO;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel{
@@ -9,19 +12,28 @@ namespace ValidationTool.UI.ViewModels {
 
 
         public void LoadReport() {
-
-            var myPath = JsonReportLoader.LoadLastRun();
-            var dto = JsonReportLoader.Load(myPath);
-
-            foreach (var issue in dto.issues) {
-                mIssues.Add(new IssueViewModel {
-                    AssetName = issue.AssetName,
-                    CheckName = issue.CheckName,
-                    Severity = issue.Severity,
-                    Message = issue.Message,
-                    Suggestion = issue.Suggestion
-                });
+            var dtos = JsonReportLoader.Load();
+            foreach (var dcc in dtos) {
+                foreach (var issue in dcc.issues) {
+                    mIssues.Add(new IssueViewModel {
+                        dcc = issue.Dcc,
+                        timestamp = issue.Timestamp.ToString(),
+                        asset_name = issue.AssetName,
+                        check_name = issue.CheckName,
+                        severity = issue.Severity,
+                        message = issue.Message,
+                        suggestion = issue.Suggestion,
+                        stage = issue.Stage
+                    });
+                }
             }
+        }
+
+        public void RunMayaValidation() {
+            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));
+        }
+        public void RunBlenderValidation() {
+            BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"));
         }
     }
 }

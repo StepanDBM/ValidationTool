@@ -15,12 +15,12 @@ namespace ValidationTool.UI.Views {
             vm.LoadReport();
         }
         private void RunMaya_Click(object sender, RoutedEventArgs e) {
-            var vm = DataContext as MainViewModel;
+            var vm = DataContext as ValidationViewModel;
             vm.RunMayaValidation();
         }
 
         private void RunBlender_Click(object sender, RoutedEventArgs e) {
-            var vm = DataContext as MainViewModel;
+            var vm = DataContext as ValidationViewModel;
             vm.RunBlenderValidation();
         }
     }

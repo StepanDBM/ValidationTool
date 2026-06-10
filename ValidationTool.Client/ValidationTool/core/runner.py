@@ -96,7 +96,7 @@ def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
     )
 
     registry = build_registry()
-    run_id = str(uuid.uuid4())
+    run_id = str(uuid.uuid4().hex[:8])
     timestamp = datetime.datetime.now().isoformat()
 
     all_issues_flat = []

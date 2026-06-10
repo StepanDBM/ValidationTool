@@ -54,14 +54,22 @@
                   ItemsSource="{Binding mIssues}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="DCC"
+                                    DisplayMemberBinding="{Binding dcc}" />
+                    <GridViewColumn Header="Time"
+                                    DisplayMemberBinding="{Binding timestamp}" />
                     <GridViewColumn Header="Asset"
-                                    DisplayMemberBinding="{Binding AssetName}" />
+                                    DisplayMemberBinding="{Binding asset_name}" />
+                    <GridViewColumn Header="Stage"
+                                    DisplayMemberBinding="{Binding stage}" />
                     <GridViewColumn Header="Check"
-                                    DisplayMemberBinding="{Binding CheckName}" />
+                                    DisplayMemberBinding="{Binding check_name}" />
                     <GridViewColumn Header="Severity"
-                                    DisplayMemberBinding="{Binding Severity}" />
+                                    DisplayMemberBinding="{Binding severity}" />
                     <GridViewColumn Header="Message"
-                                    DisplayMemberBinding="{Binding Message}" />
+                                    DisplayMemberBinding="{Binding message}" />
+                    <GridViewColumn Header="Suggestion"
+                                    DisplayMemberBinding="{Binding suggestion}" />
                 </GridView>
             </ListView.View>
         </ListView>
