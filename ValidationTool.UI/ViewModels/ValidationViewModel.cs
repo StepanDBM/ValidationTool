@@ -1,19 +1,32 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Windows.Data;
+using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.external;
-using System.IO;
-using ValidationTool.UI.Models.DTOs;
-using System.ComponentModel;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel : INotifyPropertyChanged{
 
-        public ObservableCollection<IssueViewModel> mIssues { get; set; }
-            = new ObservableCollection<IssueViewModel>();
+        public ObservableCollection<IssueViewModel> mIssues { get; set; } = new ObservableCollection<IssueViewModel>();
         public ObservableCollection<ValidationRunDto> mRun { get; set; } = new ObservableCollection<ValidationRunDto>();
 
+
+        public ICollectionView IssuesView { get; set; }
+
+        public ValidationViewModel() {
+
+            IssuesView = CollectionViewSource.GetDefaultView(mIssues);
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         private int _totalAssets;
         public int TotalAssets {
             get => _totalAssets;
@@ -58,13 +71,13 @@ namespace ValidationTool.UI.ViewModels {
             }
         }
 
-
         public void LoadReport() {
             TotalAssets = 0;
             TotalIssues = 0;
             TotalErrors = 0;
             TotalWarnings = 0;
             TotalInfos = 0;
+            mIssues.Clear();
             var dtos = JsonReportLoader.Load();
 
             foreach (var dcc in dtos) {
@@ -75,8 +88,11 @@ namespace ValidationTool.UI.ViewModels {
                 TotalInfos += dcc.summary.Infos;
                 foreach (var issue in dcc.issues) {
                     mIssues.Add(new IssueViewModel {
-                        Artist = issue.Artist.ArtistName,
-                        A_lv = issue.Artist.ArtistLevel,
+                        Artist = new ArtistViewModel {
+                            ArtistName = issue.Artist.ArtistName,
+                            ArtistLevel = issue.Artist.ArtistLevel,
+                            ArtistID = issue.Artist.ArtistID
+                        },
                         Dcc = issue.Dcc,
                         Timestamp = issue.Timestamp.ToString(),
                         Asset_name = issue.AssetName,
@@ -101,6 +117,62 @@ namespace ValidationTool.UI.ViewModels {
                 }
             });
             dtos.Clear();
+        }
+        private Func<IssueViewModel, object> getKeySelector(string header) {
+            Func<IssueViewModel, object> keySelector = null;
+            switch (header) {
+                case "Artist":
+                case "Artist.ArtistName":
+                    keySelector = x => x.Artist?.ArtistName ?? "";
+                    break;
+
+                case "Level":
+                case "Artist.ArtistLevel":
+                    keySelector = x => x.Artist?.ArtistLevel ?? "";
+                    break;
+
+                case "Severity":
+                    keySelector = x => x.Severity ?? "";
+                    break;
+
+                case "Asset":
+                case "Asset_name":
+                    keySelector = x => x.Asset_name ?? "";
+                    break;
+
+                case "Stage":
+                    keySelector = x => x.Stage ?? "";
+                    break;
+
+                case "Message":
+                    keySelector = x => x.Message ?? "";
+                    break;
+
+                case "Suggestion":
+                    keySelector = x => x.Suggestion?? "";
+                    break;
+
+                default:
+                    keySelector = x => x.Asset_name ?? "";
+                    break;
+            }
+            return keySelector;
+        }
+        public void GridViewColumnHeader_Click(string header, bool ascending) {
+            Func<IssueViewModel, object> keySelector = null;
+
+            keySelector = getKeySelector(header);
+
+            var sorted = ascending
+                ? mIssues.OrderBy(keySelector).ToList()
+                : mIssues.OrderByDescending(keySelector).ToList();
+
+            mIssues.Clear();
+
+            foreach (var item in sorted)
+                mIssues.Add(item);
+
+            IssuesView.Refresh();
         }
 
         public void RunMayaValidation() {

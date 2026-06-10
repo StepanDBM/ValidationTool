@@ -41,4 +41,4 @@ def get_dcc_files(root: Path, dcc: str) -> list[dict]:
                     "artist_log": str(artist_log)
                 })
 
-    return result
+    return result   

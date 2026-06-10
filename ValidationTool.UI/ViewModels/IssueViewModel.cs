@@ -3,8 +3,7 @@ using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.ViewModels {
     public class IssueViewModel {
-        public string Artist { get; set; }
-        public string A_lv{ get; set; }
+        public ArtistViewModel Artist { get; set; }
         public string Dcc { get; set; }
         public string Asset_name { get; set; }
         public string Check_name { get; set; }

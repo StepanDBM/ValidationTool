@@ -64,13 +64,14 @@
         </Grid>
 
         <ListView Grid.Row="1"
-                  ItemsSource="{Binding mIssues}">
+                  ItemsSource="{Binding IssuesView}"
+                  GridViewColumnHeader.Click="GridViewHeader_Click">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Artist"
-                                    DisplayMemberBinding="{Binding Artist}" />
+                                    DisplayMemberBinding="{Binding Artist.ArtistName}" />
                     <GridViewColumn Header="Artist Lv"
-                                    DisplayMemberBinding="{Binding A_lv}" />
+                                    DisplayMemberBinding="{Binding Artist.ArtistLevel}" />
                     <GridViewColumn Header="DCC"
                                     DisplayMemberBinding="{Binding Dcc}" />
                     <GridViewColumn Header="Time"

@@ -57,7 +57,7 @@ def main():
         try:
             file_path = fileInfo["file_path"]
             artist_log = fileInfo["artist_log"]
-            print(f"HEYHEYHEYHE\n{file_path}\n{artist_log}\nYHEYHEYHEYHEY")
+            
             progress = int((index/total_Mayafiles)*100)
 
             print(f"PROGRESS: [{progress}%]", flush = True)
