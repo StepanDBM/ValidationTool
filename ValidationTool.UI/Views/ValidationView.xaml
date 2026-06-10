@@ -1,87 +1,70 @@
 ﻿<UserControl x:Class="ValidationTool.UI.Views.ValidationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <Grid Margin="10">
-
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ValidationTool.UI.ViewModels">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid Margin="10" Grid.Row="0" Height="100">
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
 
-            <Button Content="Run Maya"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click ="RunMaya_Click"/>
+                <Button Content="Run Maya"
+                        Width="120"
+                        Height="35"
+                        Margin="5"
+                        Click ="RunMaya_Click"/>
 
-            <Button Content="Run Blender"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="RunBlender_Click"/>
+                <Button Content="Run Blender"
+                        Width="120"
+                        Height="35"
+                        Margin="5"
+                        Click="RunBlender_Click"/>
 
-            <Button Content="Load Report"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="loadReportUI"/>
+                <Button Content="Load Report"
+                        Width="120"
+                        Height="35"
+                        Margin="5"
+                        Click="loadReportUI"/>
 
-        </StackPanel>
+            </StackPanel>
 
-        <TextBlock
-            Grid.Row="1"
-            Text="{Binding CurrentFile}"
-            Margin="5"/>
+            <TextBlock
+                Grid.Row="1"
+                Text="{Binding CurrentFile}"
+                Margin="5"/>
 
-        <ProgressBar
-            Grid.Row="2"
-            Height="25"
-            Margin="5"
-            Minimum="0"
-            Maximum="100"
-            Value="{Binding Progress}" />
+            <ProgressBar
+                Grid.Row="2"
+                Height="25"
+                Margin="5"
+                Minimum="0"
+                Maximum="100"
+                Value="{Binding Progress}" />
+        </Grid>
 
-        <TreeView
-            Grid.Row="3"
-            ItemsSource="{Binding Assets}">
-            <TreeView.ItemTemplate>
-
-                <HierarchicalDataTemplate ItemsSource="{Binding Stages}">
-                    <TextBlock Text="{Binding AssetName}" />
-
-                    <HierarchicalDataTemplate.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Issues}">
-                            <TextBlock Text="{Binding StageName}"
-                                       FontWeight="Bold"/>
-
-                            <HierarchicalDataTemplate.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-
-                                        <TextBlock Text="{Binding CheckName}" Width="180"/>
-                                        <TextBlock Text="{Binding Severity}"
-                                                   FontWeight="Bold"
-                                                   Foreground="{Binding Severity,
-                                            Converter={StaticResource SeverityToBrushConverter}}"
-                                                   Width="100"/>
-                                        <TextBlock Text=" - "/>
-                                        <TextBlock Text="{Binding Message}" />
-
-                                    </StackPanel>
-                                </DataTemplate>
-                            </HierarchicalDataTemplate.ItemTemplate>
-
-                        </HierarchicalDataTemplate>
-                    </HierarchicalDataTemplate.ItemTemplate>
-
-                </HierarchicalDataTemplate>
-
-            </TreeView.ItemTemplate>
-        </TreeView>
-
+        <ListView Grid.Row="1"
+                  ItemsSource="{Binding mIssues}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Asset"
+                                    DisplayMemberBinding="{Binding AssetName}" />
+                    <GridViewColumn Header="Check"
+                                    DisplayMemberBinding="{Binding CheckName}" />
+                    <GridViewColumn Header="Severity"
+                                    DisplayMemberBinding="{Binding Severity}" />
+                    <GridViewColumn Header="Message"
+                                    DisplayMemberBinding="{Binding Message}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 
 </UserControl>

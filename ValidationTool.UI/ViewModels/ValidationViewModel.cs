@@ -1,19 +1,20 @@
 ﻿using System.Collections.ObjectModel;
-using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 
 namespace ValidationTool.UI.ViewModels {
-    public class ValidationViewModel {
-        public ObservableCollection<IssueViewModel> Issues { get; set; }
+    public class ValidationViewModel{
+
+        public ObservableCollection<IssueViewModel> mIssues { get; set; }
             = new ObservableCollection<IssueViewModel>();
 
-        public void LoadReport(string path, ObservableCollection<IssueViewModel> issues) {
-            issues.Clear();
 
-            ValidationRunDto dto = JsonReportLoader.Load(path);
+        public void LoadReport() {
+
+            var myPath = JsonReportLoader.LoadLastRun();
+            var dto = JsonReportLoader.Load(myPath);
 
             foreach (var issue in dto.issues) {
-                issues.Add(new IssueViewModel {
+                mIssues.Add(new IssueViewModel {
                     AssetName = issue.AssetName,
                     CheckName = issue.CheckName,
                     Severity = issue.Severity,
