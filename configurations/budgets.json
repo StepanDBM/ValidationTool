@@ -1,6 +1,6 @@
 {
   "StaticMesh": {
-    "MaxVertices": 40000,
+    "MaxVertices": 14,
     "MaxTriangles": 60000,
     "MaxMaterialSlots": 3
   },
@@ -16,7 +16,7 @@
   },
   "Prop": {
     "MaxVertices": 10000,
-    "MaxTriangles": 15000,
+    "MaxTriangles": 1414,
     "MaxMaterialSlots": 2
   },
   "Environment": {

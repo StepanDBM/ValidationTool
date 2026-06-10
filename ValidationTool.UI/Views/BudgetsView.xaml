@@ -53,61 +53,91 @@
         <TextBlock Text="Static Mesh" Grid.Row="2" Grid.Column="0"/>
 
         <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding Config.StaticMesh.MaxVertices}" />
+         Text="{Binding Config.StaticMesh.MaxVertices,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="2" Grid.Column="2"
-                 Text="{Binding Config.StaticMesh.MaxTriangles}" />
+         Text="{Binding Config.StaticMesh.MaxTriangles,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="2" Grid.Column="3"
-                 Text="{Binding Config.StaticMesh.MaxMaterialSlots}" />
+         Text="{Binding Config.StaticMesh.MaxMaterialSlots,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- CHARACTER -->
         <TextBlock Text="Character" Grid.Row="3" Grid.Column="0"/>
 
         <TextBox Grid.Row="3" Grid.Column="1"
-                 Text="{Binding Config.Character.MaxVertices}" />
+         Text="{Binding Config.Character.MaxVertices,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="3" Grid.Column="2"
-                 Text="{Binding Config.Character.MaxTriangles}" />
+         Text="{Binding Config.Character.MaxTriangles,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="3" Grid.Column="3"
-                 Text="{Binding Config.Character.MaxMaterialSlots}" />
+         Text="{Binding Config.Character.MaxMaterialSlots,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- WEAPON -->
         <TextBlock Text="Weapon" Grid.Row="4" Grid.Column="0"/>
 
         <TextBox Grid.Row="4" Grid.Column="1"
-                 Text="{Binding Config.Weapon.MaxVertices}" />
+         Text="{Binding Config.Weapon.MaxVertices,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="4" Grid.Column="2"
-                 Text="{Binding Config.Weapon.MaxTriangles}" />
+         Text="{Binding Config.Weapon.MaxTriangles,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="4" Grid.Column="3"
-                 Text="{Binding Config.Weapon.MaxMaterialSlots}" />
+         Text="{Binding Config.Weapon.MaxMaterialSlots,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- PROP -->
         <TextBlock Text="Prop" Grid.Row="5" Grid.Column="0"/>
 
         <TextBox Grid.Row="5" Grid.Column="1"
-                 Text="{Binding Config.Prop.MaxVertices}" />
+         Text="{Binding Config.Prop.MaxVertices,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="5" Grid.Column="2"
-                 Text="{Binding Config.Prop.MaxTriangles}" />
+         Text="{Binding Config.Prop.MaxTriangles,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="5" Grid.Column="3"
-                 Text="{Binding Config.Prop.MaxMaterialSlots}" />
+         Text="{Binding Config.Prop.MaxMaterialSlots,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- ENVIRONMENT -->
         <TextBlock Text="Environment" Grid.Row="6" Grid.Column="0"/>
 
         <TextBox Grid.Row="6" Grid.Column="1"
-                 Text="{Binding Config.Environment.MaxVertices}" />
+         Text="{Binding Config.Environment.MaxVertices,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="6" Grid.Column="2"
-                 Text="{Binding Config.Environment.MaxTriangles}" />
+         Text="{Binding Config.Environment.MaxTriangles,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox Grid.Row="6" Grid.Column="3"
-                 Text="{Binding Config.Environment.MaxMaterialSlots}" />
+         Text="{Binding Config.Environment.MaxMaterialSlots,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 

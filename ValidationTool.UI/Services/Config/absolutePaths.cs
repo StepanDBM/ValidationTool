@@ -35,5 +35,8 @@ namespace ValidationTool.UI.Services.Config {
 
         public static readonly string HEADLESS =
             Path.Combine(CLIENT_DIR, "ValidationTool", "misc_tools", "headless");
+
+        public static readonly string GEN_CONFIGS =
+            Path.Combine(ROOT_DIR, "configurations");
     }
 }

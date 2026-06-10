@@ -15,7 +15,6 @@ namespace ValidationTool.UI.Views {
         private void Load_Click(object sender, RoutedEventArgs e) {
             _vm.Load();
         }
-
         private void Save_Click(object sender, RoutedEventArgs e) {
             _vm.Save();
         }

@@ -1,0 +1,782 @@
+{
+    "summary": {
+        "run_id": "5c1007fa",
+        "timestamp": "2026-06-11T00:24:27.714702",
+        "dcc": "Maya",
+        "total_assets": 10,
+        "total_issues": 48,
+        "errors": 2,
+        "warnings": 27,
+        "infos": 19
+    },
+    "issues": [
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "CH_brother",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (6242)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "CH_brother",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6240)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "CH_brother",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "CH_brother",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "ERROR",
+            "message": "Negative scale detected.",
+            "suggestion": "Freeze transforms (scale)."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "CH_brother",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (-5.484659382940892, 8.200464069957883, 8.200464069957883).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_0",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (98)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_0",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (96)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_0",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_0",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (170.61770230185707, 136.49416184148566, 90.99610789432383).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_1",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (386)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_1",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (384)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_1",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_1",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_1",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_2",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (1538)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_2",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (1536)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_2",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_2",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (474.90468717878315, 3600.0, 2400.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_2",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (474.90468717878315, 3600.0, 2400.0).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_3",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (6146)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_3",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6144)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_3",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_3",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (600.0, 480.0, 320.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_sister",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (6400)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_sister",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6400)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_sister",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_sister",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (2000.0, 1.0, 1.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "ENV_sister",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (2000.0, 1.0, 1.0).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "HERO__shieh",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (6242)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "HERO__shieh",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6240)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "HERO__shieh",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "HERO__shieh",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (2.0, 5.0, 0.5).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "HERO__shieh",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Mesh name contains double underscores.",
+            "suggestion": "Avoid redundant separators."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "PRP_mine",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (6400)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "PRP_mine",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6400)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "PRP_mine",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "PRP_mine",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (1.0, 3.0, 10.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh missing valid asset prefix.",
+            "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: brokennaming",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "ERROR",
+            "message": "Negative scale detected.",
+            "suggestion": "Freeze transforms (scale)."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (-3.0, 2000.0, 1e-12).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (-3.0, 2000.0, 1e-12).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh missing valid asset prefix.",
+            "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: some__MOD",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "artist": {
+                "name": "Stepan DBM",
+                "id": "hjklhjklhjkl",
+                "level": "Junior"
+            },
+            "dcc": "Maya",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Styopa_DBM\\Source_Maya\\brokenScene_02.ma",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T00:24:27.714702",
+            "severity": "INFO",
+            "message": "Mesh name contains double underscores.",
+            "suggestion": "Avoid redundant separators."
+        }
+    ]
+}

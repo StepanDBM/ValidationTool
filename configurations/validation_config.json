@@ -1,6 +1,6 @@
 {
-  "StrictMode": false,
-  "FailOnFirstError": false,
+  "StrictMode": true,
+  "FailOnFirstError": true,
   "AutoFixEnabled": false,
   "IncludeInfo": true,
   "IncludeWarnings": true,

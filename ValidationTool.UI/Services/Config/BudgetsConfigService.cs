@@ -1,16 +1,17 @@
 ﻿using System.IO;
 using System.Text.Json;
 using ValidationTool.UI.Models.Config;
+using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.Services.Config {
     public class BudgetsConfigService {
-        private const string Path = @"C:\Users\StyopaDBM\source\repos\ValidationTool\configurations\budgets.json";
+        private static readonly string budgetPath = Path.Combine(Paths.GEN_CONFIGS.ToString(), "budgets.json");
 
         public BudgetsConfigModel Load() {
-            if (!File.Exists(Path))
+            if (!File.Exists(budgetPath))
                 return CreateDefault();
 
-            var json = File.ReadAllText(Path);
+            var json = File.ReadAllText(budgetPath);
 
             var config = JsonSerializer.Deserialize<BudgetsConfigModel>(json,
                 new JsonSerializerOptions {
@@ -25,7 +26,7 @@ namespace ValidationTool.UI.Services.Config {
                 WriteIndented = true
             });
 
-            File.WriteAllText(Path, json);
+            File.WriteAllText(budgetPath, json);
         }
 
         private BudgetsConfigModel Repair(BudgetsConfigModel c) {
