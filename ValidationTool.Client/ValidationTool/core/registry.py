@@ -1,13 +1,13 @@
 from typing import List, Callable, Optional
 from dataclasses import dataclass, field
 import config.exec_stages as excS
-from core.validation_system import MeshContext, ValidationIssue
+from core.validation_system import ObjectContext, ValidationIssue
 
 from config.validation_profile import ValidationProfile
 
 from core.validation_context import ValidationRuntimeContext
 
-MeshCheckFunction = Callable[[MeshContext, ValidationRuntimeContext], List[ValidationIssue]]
+MeshCheckFunction = Callable[[ObjectContext, ValidationRuntimeContext], List[ValidationIssue]]
 
 @dataclass
 class StageResult:

@@ -81,7 +81,7 @@ def print_report2(issues: List[AssetValidationResult]):
         )
 
 
-def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
+def run_pipeline(mObjects: valSys.ObjectContext, context, profile=None):
     
     loader = ConfigLoader(absPath.ROOT_PATH)
     
@@ -112,6 +112,7 @@ def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
             for issue in result:
                 newIssue = AssetValidationResult(
                     dcc = context.get("dcc"),
+                    originFile=context.get("path"),
                     asset_name = mObject.name,
                     check_name = issue.check_name,
                     stage = check.stage,
@@ -141,9 +142,6 @@ def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
         jsonPath = ""
     )
 
-
-    #print_report2(allIssues)
-    #print_report(all_issues_flat)
     newJsonPath = json_reporter.write_json(run, absPath.REPORTS_DIR, pretty=True)
     run.jsonPath = newJsonPath
     return run

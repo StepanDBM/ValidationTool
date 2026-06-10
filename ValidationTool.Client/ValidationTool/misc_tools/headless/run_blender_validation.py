@@ -30,7 +30,6 @@ def load_blend(file_path: str):
 
 
 def process_file(file_path: str):
-    print(f"\n[PROCESSING BLEND] {file_path}")
 
     load_blend(file_path)
 
@@ -42,7 +41,7 @@ def process_file(file_path: str):
     print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Blender"}
+    context = {"dcc": "Blender", "path": "file_path"}
 
     run = run_pipeline(meshes, context, profile)
     
@@ -55,7 +54,7 @@ def main():
     total_blendFiles = len(files)
     index = 0
     
-    print(f"Found {total_blendFiles} Blender files")
+    print(f"Found {total_blendFiles} .BLENDs")
 
     myJsonPaths = []
     for f in files:
@@ -63,7 +62,7 @@ def main():
             progress = int((index/total_blendFiles)*100)
 
             print(f"PROGRESS: [{progress}%]", flush = True)
-            print(f"CURRENT_FILE:{f}", flush=True)
+            print(f"\n[PROCESSING .BLEND]{f}", flush=True)
 
             index += 1
 

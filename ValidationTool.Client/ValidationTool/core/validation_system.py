@@ -45,7 +45,7 @@ class ValidationIssue:
     suggestion: str = ""
 
 @dataclass
-class MeshContext:
+class ObjectContext:
     name: str
     asset_type: AssetType
 

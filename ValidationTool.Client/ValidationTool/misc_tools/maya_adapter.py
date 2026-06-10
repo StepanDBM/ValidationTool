@@ -1,5 +1,5 @@
 from typing import List
-from core.validation_system import MeshContext, AssetType
+from core.validation_system import ObjectContext, AssetType
 
 try:
     import maya.cmds as cmds
@@ -23,12 +23,12 @@ def getAssetTypeFromName(name: str) -> AssetType:
 
     return AssetType.UNKNOWN
     
-def extract_Maya_scene() -> List[MeshContext]:
+def extract_Maya_scene() -> List[ObjectContext]:
 
     if cmds is None:
         raise RuntimeError("Maya API not available. Run inside Maya.")
     mesh_shapes = cmds.ls(type="mesh", long=True) or []
-    meshes: List[MeshContext] = []
+    meshes: List[ObjectContext] = []
 
     for shape in mesh_shapes:
         transform = cmds.listRelatives(shape,
@@ -59,7 +59,7 @@ def extract_Maya_scene() -> List[MeshContext]:
 
         bounding_box_min = (bbox[0], bbox[1], bbox[2])
         bounding_box_max = (bbox[3], bbox[4], bbox[5])
-        mesh = MeshContext(
+        mesh = ObjectContext(
             name=asset_name,
             asset_type=myAssetType,
 

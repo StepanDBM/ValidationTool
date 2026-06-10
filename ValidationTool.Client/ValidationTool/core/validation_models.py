@@ -7,6 +7,7 @@ from core.validation_system import ValidationSeverity
 @dataclass
 class AssetValidationResult:
     dcc: str
+    originFile: str
     asset_name: str
     check_name: str
     stage: str

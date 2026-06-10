@@ -4,7 +4,7 @@ from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
-    MeshContext,
+    ObjectContext,
     ValidationIssue,
     ValidationSeverity,
     CHECK_TRANSFORMS
@@ -13,7 +13,7 @@ from core.validation_system import (
 MAX_SCALE = 1000.0
 
 
-def check_transforms(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_transforms(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
     fucked_up = False
     # ----------------------------------------

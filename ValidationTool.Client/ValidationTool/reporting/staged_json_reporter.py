@@ -23,6 +23,7 @@ def export_validation_run(run) -> Dict[str, Any]:
 
         issue_obj = {
             "dcc": issue.dcc,
+            "originFile": issue.originFile,
             "asset_name": issue.asset_name,
             "check_name": issue.check_name,
             "stage": issue.stage,
@@ -64,12 +65,10 @@ def write_session_runs(mydcc, sessionRuns, folder_path: Path, pretty: bool = Tru
         "dcc": mydcc,
         "runs": sessionRuns
     }
-    print("THE FINAL DATA inside write_session_runs inside staged_json_reporter", data)
     folder_path.mkdir(parents=True, exist_ok=True)
     report_file = folder_path / f"{mydcc}_reports.json"
-    print (report_file)
+    
     try:
-
         with report_file.open("w", encoding="utf-8") as f:
             if pretty:
                 json.dump(data, f, indent=4, ensure_ascii=False)

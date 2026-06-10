@@ -8,7 +8,7 @@ script_dir = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Cli
 if script_dir not in sys.path:
     sys.path.append(script_dir)
 
-from core.validation_system import MeshContext, AssetType
+from core.validation_system import ObjectContext, AssetType
 
 def getAssetTypeFromName(name: str) -> AssetType:
     name = name.upper()
@@ -28,8 +28,8 @@ def getAssetTypeFromName(name: str) -> AssetType:
     return AssetType.UNKNOWN
 
 
-def extract_Blend_scene() -> List["MeshContext"]:
-    meshes: List[MeshContext] = []
+def extract_Blend_scene() -> List["ObjectContext"]:
+    meshes: List[ObjectContext] = []
 
     for obj in bpy.context.scene.objects:
 
@@ -74,7 +74,7 @@ def extract_Blend_scene() -> List["MeshContext"]:
         bounding_box_min = (min_x, min_y, min_z)
         bounding_box_max = (max_x, max_y, max_z)
         
-        mesh_context = MeshContext(
+        mesh_context = ObjectContext(
             name=asset_name,
             asset_type=asset_type,
 

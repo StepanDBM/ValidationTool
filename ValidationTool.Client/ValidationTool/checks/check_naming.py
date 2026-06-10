@@ -4,7 +4,7 @@ from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
-    MeshContext,
+    ObjectContext,
     ValidationIssue,
     ValidationSeverity,
     CHECK_NAMING
@@ -35,7 +35,7 @@ NAME_PATTERN = re.compile(
 )
 
 
-def check_naming(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
     fucked_up = False
     name = mesh.name

@@ -37,7 +37,7 @@ def process_file(file_path: str):
     print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Maya"}
+    context = {"dcc": "Maya", "path": file_path}
 
     run = run_pipeline(meshes, context, profile)
 
@@ -47,15 +47,15 @@ def process_file(file_path: str):
 def main():
     files = get_MAYA_files(absPath.SOURCE_MAYA)
 
-    total_MAyafiles = len(files)
+    total_Mayafiles = len(files)
     index = 0
 
-    print(f"Found {total_MAyafiles} MAYA files")
+    print(f"Found {total_Mayafiles} MAYA files")
 
     myJsonPaths = []
     for f in files:
         try:
-            progress = int((index/total_MAyafiles)*100)
+            progress = int((index/total_Mayafiles)*100)
 
             print(f"PROGRESS: [{progress}%]", flush = True)
             print(f"CURRENT_FILE:{f}", flush=True)

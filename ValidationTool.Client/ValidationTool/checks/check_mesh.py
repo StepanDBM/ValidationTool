@@ -2,7 +2,7 @@ from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
-    MeshContext,
+    ObjectContext,
     ValidationIssue,
     ValidationSeverity,
     AssetType,
@@ -31,7 +31,7 @@ def getLimitsForAssetType(asset_type: AssetType, budgets):
     else:
         return None
 
-def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_vertex_count(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
     warning_limit = None
     error_limit = None
@@ -92,7 +92,7 @@ def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
         )
     return issues
 
-def check_triangle_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_triangle_count(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
 
@@ -146,7 +146,7 @@ def check_triangle_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContex
     return issues
 
 
-def check_zero_area_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_zero_area_faces(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for zero-area face detection
@@ -165,7 +165,7 @@ def check_zero_area_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeConte
 
     return issues
 
-def check_ngons(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_ngons(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for ngon detection
@@ -184,7 +184,7 @@ def check_ngons(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> Lis
 
     return issues
 
-def check_isolated_vertices(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_isolated_vertices(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for isolated vertex detection
@@ -203,7 +203,7 @@ def check_isolated_vertices(mesh: MeshContext, runtime_ctx: ValidationRuntimeCon
 
     return issues
 
-def check_overlapping_geometry(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_overlapping_geometry(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for overlapping geometry detection
@@ -222,7 +222,7 @@ def check_overlapping_geometry(mesh: MeshContext, runtime_ctx: ValidationRuntime
 
     return issues
 
-def check_normals(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_normals(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for normal issues detection
@@ -241,7 +241,7 @@ def check_normals(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> L
 
     return issues
 
-def check_hard_edges(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_hard_edges(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for hard edge detection
@@ -260,7 +260,7 @@ def check_hard_edges(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -
 
     return issues
 
-def check_history(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_history(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for construction history detection
@@ -279,7 +279,7 @@ def check_history(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> L
 
     return issues
 
-def check_lamina_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_lamina_faces(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for lamina face detection
@@ -298,7 +298,7 @@ def check_lamina_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
 
     return issues
 
-def material_slots(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def material_slots(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for material slot count check
@@ -315,7 +315,7 @@ def material_slots(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> 
 
     return issues
 
-def check_boundingBox(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_boundingBox(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
 
     # Placeholder logic for bounding box size check

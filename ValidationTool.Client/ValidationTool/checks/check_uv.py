@@ -4,7 +4,7 @@ from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
-    MeshContext,
+    ObjectContext,
     ValidationIssue,
     ValidationSeverity,
     CHECK_UV_SETS
@@ -14,7 +14,7 @@ from core.validation_system import (
 MAX_UV_SETS = 2
 
 
-def check_uv_sets(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_uv_sets(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
 
     issues = []
 
