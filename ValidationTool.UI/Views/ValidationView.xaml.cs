@@ -1,9 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using ValidationTool.UI.ViewModels;
-using System.Windows.Controls;
 
 namespace ValidationTool.UI.Views {
     public partial class ValidationView : UserControl {

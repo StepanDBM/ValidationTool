@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using System.Windows.Documents;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services.Config;
 

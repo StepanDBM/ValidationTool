@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
+using System.Windows;
 using System.Windows.Data;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
@@ -26,6 +26,23 @@ namespace ValidationTool.UI.ViewModels {
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private string _currentFile;
+        public string CurrentFile {
+            get => _currentFile;
+            set {
+                _currentFile = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentFile)));
+            }
+        }
+        private int _progress;
+        public int Progress {
+            get => _progress;
+            set {
+                _progress = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Progress)));
+            }
+        }
+
 
         private int _totalAssets;
         public int TotalAssets {
@@ -176,10 +193,52 @@ namespace ValidationTool.UI.ViewModels {
         }
 
         public void RunMayaValidation() {
-            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));
+            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"),
+                line =>
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    if (line.StartsWith("PROGRESS:")) {
+                        var percentText = line
+                            .Replace("PROGRESS:", "")
+                            .Replace("[", "")
+                            .Replace("%]", "")
+                            .Trim();
+
+                        if (int.TryParse(percentText, out int value)) {
+                            Progress = value;
+                        }
+                    }
+
+                    if (line.StartsWith("CURRENT_FILE:")) {
+                        CurrentFile = line.Replace("CURRENT_FILE:", "").Trim();
+                    }
+                });
+            });
         }
         public void RunBlenderValidation() {
-            BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"));
+            BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"),
+                line =>
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        if (line.StartsWith("PROGRESS:")) {
+                            var percentText = line
+                                .Replace("PROGRESS:", "")
+                                .Replace("[", "")
+                                .Replace("%]", "")
+                                .Trim();
+
+                            if (int.TryParse(percentText, out int value)) {
+                                Progress = value;
+                            }
+                        }
+
+                        if (line.StartsWith("CURRENT_FILE:")) {
+                            CurrentFile = line.Replace("CURRENT_FILE:", "").Trim();
+                        }
+                    });
+                });
         }
     }
 }
