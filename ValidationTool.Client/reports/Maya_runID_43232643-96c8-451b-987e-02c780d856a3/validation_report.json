@@ -1,0 +1,64 @@
+{
+    "summary": {
+        "run_id": "43232643-96c8-451b-987e-02c780d856a3",
+        "timestamp": "2026-06-10 04:50:42.274760",
+        "dcc": "Maya",
+        "total_assets": 5,
+        "total_issues": 48,
+        "errors": 2,
+        "warnings": 27,
+        "info": 19
+    },
+    "issues": [
+        {
+            "dcc": "Maya",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:50:42.276761",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: brokennaming",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "dcc": "Maya",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:50:42.276761",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: brokennaming",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "dcc": "Maya",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-10 04:50:42.276761",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (5/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "dcc": "Maya",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-10 04:50:42.276761",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (-3.0, 2000.0, 1e-12).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "dcc": "Maya",
+            "asset_name": "some__MOD",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-10 04:50:42.276761",
+            "severity": "INFO",
+            "message": "Mesh name contains double underscores.",
+            "suggestion": "Avoid redundant separators."
+        }
+    ]
+}

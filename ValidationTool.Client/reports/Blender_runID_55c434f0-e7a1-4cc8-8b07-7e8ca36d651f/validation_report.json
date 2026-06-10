@@ -1,0 +1,64 @@
+{
+    "summary": {
+        "run_id": "55c434f0-e7a1-4cc8-8b07-7e8ca36d651f",
+        "timestamp": "2026-06-10 04:47:38.251919",
+        "dcc": "Blender",
+        "total_assets": 5,
+        "total_issues": 28,
+        "errors": 3,
+        "warnings": 5,
+        "info": 20
+    },
+    "issues": [
+        {
+            "dcc": "Blender",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:47:38.253917",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (576)",
+            "suggestion": ""
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:47:38.253917",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (576)",
+            "suggestion": ""
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-10 04:47:38.253917",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-10 04:47:38.253917",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "naming",
+            "timestamp": "2026-06-10 04:47:38.253917",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "summary": {
+        "run_id": "4d5a93f9-39ff-4ce3-b356-303979118842",
+        "timestamp": "2026-06-10 04:45:18.572490",
+        "dcc": "Blender",
+        "total_assets": 5,
+        "total_issues": 53,
+        "errors": 3,
+        "warnings": 30,
+        "info": 20
+    },
+    "issues": [
+        {
+            "dcc": "Blender",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_NAMING",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:45:18.576490",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: some_MOD",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_NAMING",
+            "stage": "geometry",
+            "timestamp": "2026-06-10 04:45:18.576490",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: some_MOD",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-10 04:45:18.576490",
+            "severity": "WARNING",
+            "message": "Mesh contains too many UV sets (6/2).",
+            "suggestion": "Remove unused UV sets."
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-10 04:45:18.576490",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        },
+        {
+            "dcc": "Blender",
+            "asset_name": "brokennaming",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-10 04:45:18.576490",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: brokennaming",
+            "suggestion": "Use format PREFIX_AssetName"
+        }
+    ]
+}

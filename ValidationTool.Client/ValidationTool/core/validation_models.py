@@ -1,10 +1,10 @@
-from dataclasses import dataclass, field
-from typing import List, Dict
+from dataclasses import dataclass
+from typing import List
 from datetime import datetime
 
-from core.validation_system import ValidationIssue
+from core.validation_system import ValidationSeverity
 
-
+"""
 @dataclass
 class StageResult:
     stage: str
@@ -12,17 +12,30 @@ class StageResult:
     has_errors: bool
     execution_time: float
 
+@dataclass
+class sessionRuns:
+    dcc: str
+    runs: List[str]
+"""
+
 
 @dataclass
 class AssetValidationResult:
+    dcc: str
     asset_name: str
-    stages: List[StageResult]
-    total_issues: int
-    has_errors: bool
+    check_name: str
+    stage: str
+    timestamp: datetime
+    severity: ValidationSeverity
+    message: str
+    suggestion: str = ""
 
 
 @dataclass
-class PipelineSummary:
+class RunSummary:
+    run_id: str
+    timestamp: datetime
+    dcc: str
     total_assets: int
     total_issues: int
     errors: int
@@ -32,14 +45,6 @@ class PipelineSummary:
 
 @dataclass
 class ValidationRun:
-    run_id: str
-    timestamp: datetime
-    dcc: str
-    assets: List[AssetValidationResult]
-    summary: PipelineSummary
+    summary: RunSummary
+    issues: List[AssetValidationResult]
     jsonPath: str
-
-@dataclass
-class sessionRuns:
-    dcc: str
-    runs: List[str]

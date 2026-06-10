@@ -34,17 +34,15 @@ def process_file(file_path: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
     meshes = extract_Maya_scene()
-
+    print (f"Extracted {len(meshes)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
     context = {"dcc": "Maya"}
 
     run = run_pipeline(meshes, context, profile)
 
-    print(f"[DONE] {file_path} -> {run.run_id}")
-    
+    print(f"[DONE] {file_path} -> {run.summary.run_id}")
     return run
-
 
 def main():
     files = get_MAYA_files(absPath.SOURCE_MAYA)
@@ -52,7 +50,7 @@ def main():
     total_MAyafiles = len(files)
     index = 0
 
-    print(f"Found {len(files)} MAYA files")
+    print(f"Found {total_MAyafiles} MAYA files")
 
     myJsonPaths = []
     for f in files:
@@ -72,7 +70,6 @@ def main():
     print("PROGRESS: [100%]", flush=True)
     print("ALL FILES DONE")
 
-    sessionPath = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports"
     write_session_runs(myDCCs.MAYA, myJsonPaths, absPath.REPORTS_DIR, True)
 
 

@@ -1,10 +1,19 @@
-import bpy
+from pathlib import Path
 import sys
 
-script_dir = r"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\ValidationTool"
+p = Path(__file__).resolve()
 
-if script_dir not in sys.path:
-    sys.path.insert(0, script_dir)
+# Walk upward until we find the project root
+for parent in p.parents:
+    if (parent / ".validation_tool").exists():
+        PROJECTROOT = parent
+        break
+else:
+    raise RuntimeError("Could not locate project root")
+
+sys.path.insert(0, str(PROJECTROOT))
+
+import bpy
 
 from core.runner import run_pipeline
 from config.validation_profile import ValidationProfile
@@ -36,8 +45,8 @@ def process_file(file_path: str):
     context = {"dcc": "Blender"}
 
     run = run_pipeline(meshes, context, profile)
-
-    print(f"[DONE] {file_path} -> {run.run_id}")
+    
+    print(f"[DONE] {file_path} -> {run.summary.run_id}")
     return run
 
 def main():
