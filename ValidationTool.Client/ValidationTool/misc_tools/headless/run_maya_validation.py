@@ -1,21 +1,21 @@
 from pathlib import Path
 import sys
 
-import maya.standalone
-maya.standalone.initialize(name="python")
-import maya.cmds as cmds
-
 p = Path(__file__).resolve()
 
 # Walk upward until we find the project root
 for parent in p.parents:
-    if (parent / "misc_tools").exists():
+    if (parent / ".validation_tool").exists():
         PROJECTROOT = parent
         break
 else:
     raise RuntimeError("Could not locate project root")
 
 sys.path.insert(0, str(PROJECTROOT))
+
+import maya.standalone
+maya.standalone.initialize(name="python")
+import maya.cmds as cmds
 
 
 from misc_tools.maya_adapter import extract_Maya_scene

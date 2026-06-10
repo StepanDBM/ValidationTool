@@ -1,6 +1,17 @@
 from pathlib import Path
 
-ROOT_PATH = Path(r"C:\Users\StyopaDBM\source\repos\ValidationTool") #to be changed in case that the project is opened in another machine
+
+def find_root() -> Path:
+    p = Path(__file__).resolve()
+
+    for parent in p.parents:
+        if (parent / ".validation_root").exists():
+            return parent
+
+    raise RuntimeError("Root not found")
+
+
+ROOT_PATH = find_root()
 
 CLIENT_PATH = ROOT_PATH / "ValidationTool.Client"
 

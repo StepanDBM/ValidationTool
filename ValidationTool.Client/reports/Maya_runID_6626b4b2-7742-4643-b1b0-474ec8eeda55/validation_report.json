@@ -1,17 +1,17 @@
 {
     "summary": {
-        "run_id": "1d6480bc-5d88-4bb3-ad00-3543d9edf59c",
-        "timestamp": "2026-06-03 17:35:50.338939",
+        "run_id": "6626b4b2-7742-4643-b1b0-474ec8eeda55",
+        "timestamp": "2026-06-10 02:16:27.099247",
         "dcc": "Maya",
         "total_assets": 10,
         "total_issues": 48,
         "errors": 2,
-        "warnings": 27,
-        "info": 19
+        "warnings": 28,
+        "info": 18
     },
     "assets": [
         {
-            "asset_name": "CH_brother",
+            "asset_name": "CH_shieh",
             "has_errors": true,
             "total_issues": 5,
             "stages": [
@@ -21,14 +21,14 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "CH_brother",
+                            "asset_name": "CH_shieh",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
                             "message": "Vertex count within acceptable range (6242)",
                             "suggestion": ""
                         },
                         {
-                            "asset_name": "CH_brother",
+                            "asset_name": "CH_shieh",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
                             "message": "Triangle count within acceptable range (6240)",
@@ -42,7 +42,7 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "CH_brother",
+                            "asset_name": "CH_shieh",
                             "check_name": "CHECK_UV_SETS",
                             "severity": "WARNING",
                             "message": "Mesh contains too many UV sets (5/2).",
@@ -56,14 +56,14 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "CH_brother",
+                            "asset_name": "CH_shieh",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "ERROR",
                             "message": "Negative scale detected.",
                             "suggestion": "Freeze transforms (scale)."
                         },
                         {
-                            "asset_name": "CH_brother",
+                            "asset_name": "CH_shieh",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
                             "message": "Non-uniform scale detected (-5.484659382940892, 8.200464069957883, 8.200464069957883).",
@@ -82,7 +82,7 @@
         {
             "asset_name": "ENV_0",
             "has_errors": false,
-            "total_issues": 4,
+            "total_issues": 5,
             "stages": [
                 {
                     "stage": "geometry",
@@ -128,8 +128,15 @@
                             "asset_name": "ENV_0",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
-                            "message": "Non-uniform scale detected (170.61770230185707, 136.49416184148566, 90.99610789432383).",
+                            "message": "Non-uniform scale detected (1500.0, 1200.0, 800.0).",
                             "suggestion": "Apply freeze transforms."
+                        },
+                        {
+                            "asset_name": "ENV_0",
+                            "check_name": "CHECK_TRANSFORMS",
+                            "severity": "WARNING",
+                            "message": "Extreme scale detected (1500.0, 1200.0, 800.0).",
+                            "suggestion": "Check asset scaling consistency."
                         }
                     ]
                 },
@@ -190,14 +197,14 @@
                             "asset_name": "ENV_1",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
-                            "message": "Non-uniform scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+                            "message": "Non-uniform scale detected (3000.0, 2400.0, 1600.0).",
                             "suggestion": "Apply freeze transforms."
                         },
                         {
                             "asset_name": "ENV_1",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
-                            "message": "Extreme scale detected (1105.4044469987414, 884.3235575989944, 589.5490383993291).",
+                            "message": "Extreme scale detected (3000.0, 2400.0, 1600.0).",
                             "suggestion": "Check asset scaling consistency."
                         }
                     ]
@@ -259,14 +266,14 @@
                             "asset_name": "ENV_2",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
-                            "message": "Non-uniform scale detected (474.90468717878315, 3600.0, 2400.0).",
+                            "message": "Non-uniform scale detected (4500.0, 3600.0, 2400.0).",
                             "suggestion": "Apply freeze transforms."
                         },
                         {
                             "asset_name": "ENV_2",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
-                            "message": "Extreme scale detected (474.90468717878315, 3600.0, 2400.0).",
+                            "message": "Extreme scale detected (4500.0, 3600.0, 2400.0).",
                             "suggestion": "Check asset scaling consistency."
                         }
                     ]
@@ -342,7 +349,7 @@
             ]
         },
         {
-            "asset_name": "ENV_sister",
+            "asset_name": "ENV_shiehhhh",
             "has_errors": false,
             "total_issues": 5,
             "stages": [
@@ -352,14 +359,14 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "ENV_sister",
+                            "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_VERTEX_COUNT",
                             "severity": "INFO",
                             "message": "Vertex count within acceptable range (6400)",
                             "suggestion": ""
                         },
                         {
-                            "asset_name": "ENV_sister",
+                            "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_TRIANGLE_COUNT",
                             "severity": "INFO",
                             "message": "Triangle count within acceptable range (6400)",
@@ -373,7 +380,7 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "ENV_sister",
+                            "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_UV_SETS",
                             "severity": "WARNING",
                             "message": "Mesh contains too many UV sets (5/2).",
@@ -387,14 +394,14 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "ENV_sister",
+                            "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
                             "message": "Non-uniform scale detected (2000.0, 1.0, 1.0).",
                             "suggestion": "Apply freeze transforms."
                         },
                         {
-                            "asset_name": "ENV_sister",
+                            "asset_name": "ENV_shiehhhh",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
                             "message": "Extreme scale detected (2000.0, 1.0, 1.0).",
@@ -570,7 +577,7 @@
                 {
                     "stage": "transform",
                     "has_errors": false,
-                    "execution_time": 0.0,
+                    "execution_time": 0.0009992122650146484,
                     "issues": [
                         {
                             "asset_name": "brokennaming",
@@ -605,9 +612,9 @@
             ]
         },
         {
-            "asset_name": "some__MOD",
+            "asset_name": "some_MOD",
             "has_errors": true,
-            "total_issues": 7,
+            "total_issues": 6,
             "stages": [
                 {
                     "stage": "geometry",
@@ -621,7 +628,7 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_UV_SETS",
                             "severity": "WARNING",
                             "message": "Mesh contains too many UV sets (5/2).",
@@ -635,21 +642,21 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "ERROR",
                             "message": "Negative scale detected.",
                             "suggestion": "Freeze transforms (scale)."
                         },
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
                             "message": "Non-uniform scale detected (-3.0, 2000.0, 1e-12).",
                             "suggestion": "Apply freeze transforms."
                         },
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_TRANSFORMS",
                             "severity": "WARNING",
                             "message": "Extreme scale detected (-3.0, 2000.0, 1e-12).",
@@ -663,25 +670,18 @@
                     "execution_time": 0.0,
                     "issues": [
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_NAMING",
                             "severity": "WARNING",
                             "message": "Mesh missing valid asset prefix.",
                             "suggestion": "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
                         },
                         {
-                            "asset_name": "some__MOD",
+                            "asset_name": "some_MOD",
                             "check_name": "CHECK_NAMING",
                             "severity": "WARNING",
-                            "message": "Mesh name does not follow naming convention: some__MOD",
+                            "message": "Mesh name does not follow naming convention: some_MOD",
                             "suggestion": "Use format PREFIX_AssetName"
-                        },
-                        {
-                            "asset_name": "some__MOD",
-                            "check_name": "CHECK_NAMING",
-                            "severity": "INFO",
-                            "message": "Mesh name contains double underscores.",
-                            "suggestion": "Avoid redundant separators."
                         }
                     ]
                 }
