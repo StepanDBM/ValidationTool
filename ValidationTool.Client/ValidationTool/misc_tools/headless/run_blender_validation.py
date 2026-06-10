@@ -54,7 +54,7 @@ def main():
     total_blendFiles = len(files)
     index = 0
     
-    print(f"Found {total_blendFiles} .BLENDs")
+    print(f"Found {total_blendFiles} .blends")
 
     myJsonPaths = []
     for f in files:
