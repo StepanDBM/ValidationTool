@@ -11,7 +11,7 @@ def export_validation_run(run) -> Dict[str, Any]:
         "timestamp": str(run.summary.timestamp),
         "dcc": run.summary.dcc,
 
-        "total_assets": len(run.issues),
+        "total_assets": run.summary.total_objects,
         "total_issues": run.summary.total_issues,
         "errors": run.summary.errors,
         "warnings": run.summary.warnings,

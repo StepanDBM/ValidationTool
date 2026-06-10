@@ -12,17 +12,15 @@ namespace ValidationTool.UI.ViewModels {
 
             ValidationRunDto dto = JsonReportLoader.Load(path);
 
-            foreach (var asset in dto.Assets)
-                foreach (var stage in asset.Stages)
-                    foreach (var issue in stage.Issues) {
-                        issues.Add(new IssueViewModel {
-                            AssetName = issue.AssetName,
-                            CheckName = issue.CheckName,
-                            Severity = issue.Severity,
-                            Message = issue.Message,
-                            Suggestion = issue.Suggestion
-                        });
-                    }
+            foreach (var issue in dto.issues) {
+                issues.Add(new IssueViewModel {
+                    AssetName = issue.AssetName,
+                    CheckName = issue.CheckName,
+                    Severity = issue.Severity,
+                    Message = issue.Message,
+                    Suggestion = issue.Suggestion
+                });
+            }
         }
     }
 }

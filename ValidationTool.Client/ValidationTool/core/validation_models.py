@@ -4,21 +4,6 @@ from datetime import datetime
 
 from core.validation_system import ValidationSeverity
 
-"""
-@dataclass
-class StageResult:
-    stage: str
-    issues: List[ValidationIssue]
-    has_errors: bool
-    execution_time: float
-
-@dataclass
-class sessionRuns:
-    dcc: str
-    runs: List[str]
-"""
-
-
 @dataclass
 class AssetValidationResult:
     dcc: str
@@ -36,7 +21,7 @@ class RunSummary:
     run_id: str
     timestamp: datetime
     dcc: str
-    total_assets: int
+    total_objects: int
     total_issues: int
     errors: int
     warnings: int

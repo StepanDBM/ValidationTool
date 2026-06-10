@@ -10,7 +10,7 @@ namespace ValidationTool.UI.ViewModels {
 
         public void LoadReport() {
             ValidationTreeViewModel myValidationTreeViewModel = new ValidationTreeViewModel();
-            myValidationTreeViewModel.LoadReport(Assets);
+            myValidationTreeViewModel.LoadReport();
         }
         public void RunMayaValidation() {
             MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"));

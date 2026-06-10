@@ -54,7 +54,7 @@ def build_registry() -> MeshValidatorRegistry:
 
 def print_report(issues: List[ValidationIssue]):
 
-    print("\n--- VALIDATION REPORT ---\n")
+    print("\n--- ValidationIssue LIST REPORT ---\n")
 
     for issue in issues:
         print(
@@ -62,6 +62,22 @@ def print_report(issues: List[ValidationIssue]):
             f"{issue.asset_name} | "
             f"{issue.check_name} -> "
             f"{issue.message}"
+        )
+
+def print_report2(issues: List[AssetValidationResult]):
+
+    print("\n--- AssetValidationResult LIST REPORT ---\n")
+
+    for issue in issues:
+        print(
+            f"[{issue.dcc}] "
+            f"{issue.asset_name} | "
+            f"{issue.check_name} -> "
+            f"{issue.stage}."
+            f"{issue.timestamp}"
+            f"{issue.severity}"
+            f"{issue.message}"
+            f"{issue.suggestion}"
         )
 
 
@@ -81,45 +97,37 @@ def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
 
     registry = build_registry()
     run_id = str(uuid.uuid4())
-    timestamp = datetime.datetime.now()
+    timestamp = datetime.datetime.now().isoformat()
 
     all_issues_flat = []
-
+    allIssues = []
     for mObject in mObjects:
-        print(f"Curent mObject: {mObject.name}", flush=True)
-
-        asset_issue_count = 0
 
         ordered_checks = registry.resolveByProfileStage(profile)
-        allIssues = []
 
         for check in ordered_checks:
             result = check.func(mObject, runtime_ctx)
 
             all_issues_flat.extend(result)
-            
-            asset_issue_count += len(result)
-            thispos = len(all_issues_flat)-1
-            newIssue = AssetValidationResult(
-                dcc = context.get("dcc"),
-                asset_name = mObject.name,
-                check_name = all_issues_flat[thispos].check_name,
-                stage = check.stage,
-                timestamp = datetime.datetime.now(),
-                severity = all_issues_flat[thispos].severity,
-                message = all_issues_flat[thispos].message,
-                suggestion = all_issues_flat[thispos].suggestion
-            )
-
-            allIssues.append(newIssue)
+            for issue in result:
+                newIssue = AssetValidationResult(
+                    dcc = context.get("dcc"),
+                    asset_name = mObject.name,
+                    check_name = issue.check_name,
+                    stage = check.stage,
+                    timestamp = timestamp,
+                    severity = issue.severity,
+                    message = issue.message,
+                    suggestion = issue.suggestion
+                )
+                allIssues.append(newIssue)
 
     counts = Counter(i.severity.value for i in all_issues_flat)
-
     summary = valMod.RunSummary(
         run_id = run_id,
         timestamp = timestamp,
         dcc = context.get("dcc"),
-        total_assets = len(mObjects),
+        total_objects = len(mObjects),
         total_issues = len(all_issues_flat),
         errors = counts.get("ERROR", 0),
         warnings = counts.get("WARNING", 0),
@@ -132,6 +140,10 @@ def run_pipeline(mObjects: valSys.MeshContext, context, profile=None):
         issues = allIssues,
         jsonPath = ""
     )
+
+
+    #print_report2(allIssues)
+    #print_report(all_issues_flat)
     newJsonPath = json_reporter.write_json(run, absPath.REPORTS_DIR, pretty=True)
     run.jsonPath = newJsonPath
     return run

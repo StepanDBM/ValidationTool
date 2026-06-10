@@ -14,7 +14,7 @@ namespace ValidationTool.UI.Services {
                 });
         }
         public static string LoadLastRun() {
-            return @"C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\ValidationTool.Client\\reports\\Blender_runID_e5e18491-2534-4fca-a7c3-cf1f72b0df85\\validation_report.json";
+            return @"C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.Client\reports\Maya_runID_ed1c1c71-504e-433f-9aa9-eefd6d2a734e\validation_report.json";
         }
     }
 }

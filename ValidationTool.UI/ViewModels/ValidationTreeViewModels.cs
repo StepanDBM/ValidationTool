@@ -1,44 +1,42 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using ValidationTool.UI.Services;
-
-namespace ValidationTool.UI.ViewModels {
-
-    public class ValidationTreeViewModel {
-
-        public void LoadReport(ObservableCollection<AssetViewModel> myAssets) {
-            var myPath = JsonReportLoader.LoadLastRun();
-            myAssets.Clear();
-            System.Diagnostics.Debug.WriteLine(JsonReportLoader.Load(myPath));
+using ValidationTool.UI.ViewModels;
 
 
-            var dto = JsonReportLoader.Load(myPath);
+public class ValidationTreeViewModel {
+    public ObservableCollection<AssetViewModel> Assets { get; set; }
+        = new ObservableCollection<AssetViewModel>();
 
-            foreach (var asset in dto.Assets) {
-                var assetVm = new AssetViewModel {
-                    AssetName = asset.AssetName
-                };
+    public void LoadReport() {
+        var myPath = JsonReportLoader.LoadLastRun();
+        var dto = JsonReportLoader.Load(myPath);
 
-                foreach (var stage in asset.Stages) {
-                    var stageVm = new StageViewModel {
-                        StageName = stage.StageName
-                    };
+        Assets.Clear();
 
-                    foreach (var issue in stage.Issues) {
-                        stageVm.Issues.Add(new IssueViewModel {
-                            AssetName = issue.AssetName,
-                            CheckName = issue.CheckName,
-                            Severity = issue.Severity,
-                            Message = issue.Message,
-                            Suggestion = issue.Suggestion
-                        });
-                    }
+        var grouped =
+            dto.issues.GroupBy(i => i.AssetName)
+            .Select(assetGroup => new AssetViewModel {
+                AssetName = assetGroup.Key,
+                Stages = new ObservableCollection<StageViewModel>(
+                    assetGroup.GroupBy(i => i.Stage)
+                    .Select(stageGroup => new StageViewModel {
+                        StageName = stageGroup.Key,
+                        Issues = new ObservableCollection<IssueViewModel>(
+                            stageGroup.Select(issue => new IssueViewModel {
+                                AssetName = issue.AssetName,
+                                CheckName = issue.CheckName,
+                                Severity = issue.Severity,
+                                Message = issue.Message,
+                                Suggestion = issue.Suggestion
+                            })
+                        )
+                    })
+                )
+            });
 
-                    assetVm.Stages.Add(stageVm);
-                }
-
-                myAssets.Add(assetVm);
-            }
-        }
+        foreach (var asset in grouped)
+            Assets.Add(asset);
     }
 }
