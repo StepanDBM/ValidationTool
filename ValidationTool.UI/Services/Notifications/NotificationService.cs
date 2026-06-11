@@ -26,7 +26,7 @@ namespace ValidationTool.Services.Notifications {
             {
                 new SlackDmNotificationProvider(
                     httpClient,
-                    "xoxb-11332573096805-11337848082193-HcJG03IYWsLh3T9UY1PqFlJP"),
+                    ""),
 
                 new TeamsNotificationProvider(
                     httpClient,
