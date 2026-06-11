@@ -49,6 +49,8 @@ namespace ValidationTool.UI.Models.DTOs {
         public ArtistDto Artist { get; set; }
         [JsonPropertyName("dcc")]
         public string Dcc { get; set; }
+        [JsonPropertyName("originFile")]
+        public string OriginFile { get; set; }
 
         [JsonPropertyName("asset_name")]
         public string AssetName { get; set; }
@@ -80,6 +82,16 @@ namespace ValidationTool.UI.Models.DTOs {
         public string ArtistID { get; set; }
         [JsonPropertyName("level")]
         public string ArtistLevel { get; set; }
+        [JsonPropertyName("lead")]
+        public string LeadArtist { get; set; }
+        [JsonPropertyName("team")]
+        public string Team { get; set; }
+        [JsonPropertyName("project")]
+        public string Project { get; set; }
+        [JsonPropertyName("slack_id")]
+        public string SlackID { get; set; }
+        [JsonPropertyName("teams_id")]
+        public string TeamsID { get; set; }
 
     }
 }

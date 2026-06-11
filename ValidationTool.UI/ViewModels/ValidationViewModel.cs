@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.external;
+using ValidationTool.UI.Services.Notifications;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel : INotifyPropertyChanged{
@@ -16,7 +18,7 @@ namespace ValidationTool.UI.ViewModels {
         public ObservableCollection<IssueViewModel> mIssues { get; set; } = new ObservableCollection<IssueViewModel>();
         public ObservableCollection<ValidationRunDto> mRun { get; set; } = new ObservableCollection<ValidationRunDto>();
 
-
+        private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
         public ICollectionView IssuesView { get; set; }
 
         public ValidationViewModel() {
@@ -108,9 +110,14 @@ namespace ValidationTool.UI.ViewModels {
                         Artist = new ArtistViewModel {
                             ArtistName = issue.Artist.ArtistName,
                             ArtistLevel = issue.Artist.ArtistLevel,
-                            ArtistID = issue.Artist.ArtistID
+                            ArtistID = issue.Artist.ArtistID,
+                            LeadArtist = issue.Artist.LeadArtist,
+                            Team = issue.Artist.Team,
+                            SlackID = issue.Artist.SlackID,
+                            TeamsID= issue.Artist.TeamsID
                         },
                         Dcc = issue.Dcc,
+                        OriginFile = issue.OriginFile,
                         Timestamp = issue.Timestamp.ToString(),
                         Asset_name = issue.AssetName,
                         Check_name = issue.CheckName,
@@ -133,12 +140,18 @@ namespace ValidationTool.UI.ViewModels {
                     Infos = TotalInfos,
                 }
             });
+            mNotService.SendErrorReportAsync(mIssues);
             dtos.Clear();
         }
         private Func<IssueViewModel, object> getKeySelector(string header) {
             Func<IssueViewModel, object> keySelector = null;
             switch (header) {
-                case "Artist":
+                case "Artist.Team":
+                    keySelector = x => x.Artist?.Team ?? "";
+                    break;
+                case "Artist.LeadArtist":
+                    keySelector = x => x.Artist?.LeadArtist ?? "";
+                    break;
                 case "Artist.ArtistName":
                     keySelector = x => x.Artist?.ArtistName ?? "";
                     break;

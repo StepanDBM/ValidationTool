@@ -74,6 +74,10 @@
                   GridViewColumnHeader.Click="GridViewHeader_Click">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Team"
+                                    DisplayMemberBinding="{Binding Artist.Team}" />
+                    <GridViewColumn Header="Lead"
+                                    DisplayMemberBinding="{Binding Artist.LeadArtist}" />
                     <GridViewColumn Header="Artist"
                                     DisplayMemberBinding="{Binding Artist.ArtistName}" />
                     <GridViewColumn Header="Artist Lv"
@@ -94,6 +98,8 @@
                                     DisplayMemberBinding="{Binding Message}" />
                     <GridViewColumn Header="Suggestion"
                                     DisplayMemberBinding="{Binding Suggestion}" />
+                    <GridViewColumn Header="File Path"
+                                    DisplayMemberBinding="{Binding OriginFile}" />
                 </GridView>
             </ListView.View>
         </ListView>

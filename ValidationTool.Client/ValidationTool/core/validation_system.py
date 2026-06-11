@@ -34,11 +34,6 @@ class AssetType(Enum):
     ENVIRONMENT_MODULAR = "ENVIRONMENT_MODULAR"
     UNKNOWN = "UNKNOWN"
 
-class ArtistDto:
-    name: str
-    id: str
-    level: str
-
 @dataclass
 class ValidationIssue:
     asset_name: str

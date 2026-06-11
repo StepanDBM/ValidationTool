@@ -4,9 +4,19 @@ from datetime import datetime
 
 from core.validation_system import ValidationSeverity
 
+class ArtistDto:
+    name: str
+    id: str
+    level: str
+    lead: str
+    team: str
+    project: str
+    slack_id: str
+    teams_id: str
+
 @dataclass
 class AssetValidationResult:
-    artist: str
+    artist: ArtistDto
     dcc: str
     originFile: str
     asset_name: str

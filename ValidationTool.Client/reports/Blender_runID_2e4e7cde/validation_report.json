@@ -1,0 +1,602 @@
+{
+    "summary": {
+        "run_id": "2e4e7cde",
+        "timestamp": "2026-06-11T13:52:08.266992",
+        "dcc": "Blender",
+        "total_assets": 6,
+        "total_issues": 28,
+        "errors": 3,
+        "warnings": 5,
+        "infos": 20
+    },
+    "issues": [
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (8)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (1.0, 3.307260274887085, 1.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "WP_thingie",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (8)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "WP_thingie",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (6)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "WP_thingie",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "WP_thingie",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "ERROR",
+            "message": "Negative scale detected.",
+            "suggestion": "Freeze transforms (scale)."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (482)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (512)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "WARNING",
+            "message": "Mesh name does not follow naming convention: CH_shieh_.002",
+            "suggestion": "Use format PREFIX_AssetName"
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_shieh_.002",
+            "check_name": "CHECK_NAMING",
+            "stage": "naming",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "ERROR",
+            "message": "Mesh name contains spaces or dots.",
+            "suggestion": "Use underscores instead of spaces or other invalid characters."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "PROP_bigTime",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (482)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "PROP_bigTime",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (512)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "PROP_bigTime",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "PROP_bigTime",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (1220.61328125, 1220.61328125, 3790.824462890625).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "PROP_bigTime",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "WARNING",
+            "message": "Extreme scale detected (1220.61328125, 1220.61328125, 3790.824462890625).",
+            "suggestion": "Check asset scaling consistency."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_icospher",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (42)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_icospher",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (80)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_icospher",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_icospher",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "ERROR",
+            "message": "Negative scale detected.",
+            "suggestion": "Freeze transforms (scale)."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "CH_icospher",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "WARNING",
+            "message": "Non-uniform scale detected (1.0, 1.0, -1.0).",
+            "suggestion": "Apply freeze transforms."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_VERTEX_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Vertex count within acceptable range (576)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_TRIANGLE_COUNT",
+            "stage": "geometry",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Triangle count within acceptable range (576)",
+            "suggestion": ""
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_UV_SETS",
+            "stage": "uv",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "Missing secondary UV set (UV1).",
+            "suggestion": "Add UV1 if required for lightmaps/baking."
+        },
+        {
+            "artist": {
+                "name": "Albert GT",
+                "id": "jklñjklñjklñ",
+                "level": "Intern",
+                "lead": "Esteve GR",
+                "team": "rigging",
+                "project": "ValidationTool",
+                "slack_id": "U0BAQ7DS0L8",
+                "teams_id": "ZXCVZXCV"
+            },
+            "dcc": "Blender",
+            "originFile": "C:\\Users\\StyopaDBM\\source\\repos\\ValidationTool\\mArtists\\Albert_GT\\Source_Blender\\brokenFile_Blender.blend",
+            "asset_name": "MOD_shieh",
+            "check_name": "CHECK_TRANSFORMS",
+            "stage": "transform",
+            "timestamp": "2026-06-11T13:52:08.266992",
+            "severity": "INFO",
+            "message": "All transforms are correcty",
+            "suggestion": "Call your family, you did great."
+        }
+    ]
+}

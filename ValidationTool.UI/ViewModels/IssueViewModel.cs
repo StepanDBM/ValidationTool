@@ -5,6 +5,7 @@ namespace ValidationTool.UI.ViewModels {
     public class IssueViewModel {
         public ArtistViewModel Artist { get; set; }
         public string Dcc { get; set; }
+        public string OriginFile { get; set; }
         public string Asset_name { get; set; }
         public string Check_name { get; set; }
         public string Stage { get; set; }

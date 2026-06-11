@@ -91,6 +91,9 @@
     <Compile Include="Models\Config\NamingRulesModel.cs" />
     <Compile Include="Models\Config\ValidationConfigModel.cs" />
     <Compile Include="Models\Config\ValidationProfileModel.cs" />
+    <Compile Include="Models\DTOs\Notifications\NotificationMessage.cs" />
+    <Compile Include="Models\DTOs\Notifications\SlackMessageDto.cs" />
+    <Compile Include="Models\DTOs\Notifications\TeamsMessageDto.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
@@ -100,6 +103,13 @@
     <Compile Include="Services\external\BlenderRunner.cs" />
     <Compile Include="Services\external\MayaRunner.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
+    <Compile Include="Services\Notifications\EmailNotificationProvider.cs" />
+    <Compile Include="Services\Notifications\INotificationProvider.cs" />
+    <Compile Include="Services\Notifications\NotificationMessageBuiler.cs" />
+    <Compile Include="Services\Notifications\NotificationService.cs" />
+    <Compile Include="Services\Notifications\SlackChNotificationProvider.cs" />
+    <Compile Include="Services\Notifications\SlackDmNotificationProvider.cs" />
+    <Compile Include="Services\Notifications\TeamsNotificationProvider.cs" />
     <Compile Include="Themes\SeverityToBrushConverter.cs" />
     <Compile Include="ViewModels\ArtistViewModel.cs" />
     <Compile Include="ViewModels\AssetViewModel.cs" />
