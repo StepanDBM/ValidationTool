@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.ValidationView_Controls.UC_ArtistList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="300">
+    <Grid Background="Red">
+        <Label Grid.Row="0" 
+           Content="Team" FontSize="30"
+           Margin="15 15 15 15" />
+        <ListView Grid.Row="1" ItemsSource="{Binding ArtistList}"
+                  SelectedItem="{Binding SelectedArtistVM, Mode=TwoWay}"
+>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding ArtistName}" />
+                    <GridViewColumn Header="gmail" DisplayMemberBinding="{Binding ArtistGmail}" />
+                    <GridViewColumn Header="Seniority" DisplayMemberBinding="{Binding ArtistLv}" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ArtistID}" />
+                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Issues}" />
+                    <GridViewColumn Header="Warnings" DisplayMemberBinding="{Binding Warnings}" />
+                    <GridViewColumn Header="ERRORS" DisplayMemberBinding="{Binding Errors}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

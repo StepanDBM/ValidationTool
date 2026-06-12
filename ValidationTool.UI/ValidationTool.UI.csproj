@@ -91,9 +91,7 @@
     <Compile Include="Models\Config\NamingRulesModel.cs" />
     <Compile Include="Models\Config\ValidationConfigModel.cs" />
     <Compile Include="Models\Config\ValidationProfileModel.cs" />
-    <Compile Include="Models\DTOs\Notifications\NotificationMessage.cs" />
-    <Compile Include="Models\DTOs\Notifications\SlackMessageDto.cs" />
-    <Compile Include="Models\DTOs\Notifications\TeamsMessageDto.cs" />
+    <Compile Include="Models\DTOs\SelectionContext.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
@@ -103,6 +101,7 @@
     <Compile Include="Services\external\BlenderRunner.cs" />
     <Compile Include="Services\external\MayaRunner.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
+    <Compile Include="Services\Notifications\DiscordNotificationProvider.cs" />
     <Compile Include="Services\Notifications\EmailNotificationProvider.cs" />
     <Compile Include="Services\Notifications\INotificationProvider.cs" />
     <Compile Include="Services\Notifications\NotificationMessageBuiler.cs" />
@@ -121,8 +120,14 @@
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
+    <Compile Include="ViewModels\UC_ArtistListViewModel.cs" />
+    <Compile Include="ViewModels\UC_FileListViewModel.cs" />
+    <Compile Include="ViewModels\UC_TeamListViewModel.cs" />
     <Compile Include="ViewModels\ValidationTreeViewModels.cs" />
     <Compile Include="ViewModels\ValidationViewModel.cs" />
+    <Compile Include="ViewModels\ValidationView_Models\ArtistStatsViewModel.cs" />
+    <Compile Include="ViewModels\ValidationView_Models\FileStatsViewModel.cs" />
+    <Compile Include="ViewModels\ValidationView_Models\TeamStatsViewModel.cs" />
     <Compile Include="Views\BudgetsView.xaml.cs">
       <DependentUpon>BudgetsView.xaml</DependentUpon>
     </Compile>
@@ -137,6 +142,18 @@
     </Compile>
     <Compile Include="Views\ValidationView.xaml.cs">
       <DependentUpon>ValidationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidationView_Controls\UC_FileList.xaml.cs">
+      <DependentUpon>UC_FileList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidationView_Controls\UC_ArtistList.xaml.cs">
+      <DependentUpon>UC_ArtistList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidationView_Controls\UC_IssueList.xaml.cs">
+      <DependentUpon>UC_IssueList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidationView_Controls\UC_TeamList.xaml.cs">
+      <DependentUpon>UC_TeamList.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +193,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ValidationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationView_Controls\UC_FileList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationView_Controls\UC_ArtistList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationView_Controls\UC_IssueList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationView_Controls\UC_TeamList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,17 +13,25 @@ using ValidationTool.UI.Services.external;
 using ValidationTool.UI.Services.Notifications;
 
 namespace ValidationTool.UI.ViewModels {
-    public class ValidationViewModel : INotifyPropertyChanged{
-
+    public class ValidationViewModel : INotifyPropertyChanged {
+        public SelectionContext Selection { get; } = new SelectionContext();
+        public UC_TeamListViewModel TeamListVM { get; }
+        public UC_ArtistListViewModel ArtistListVM { get; }
+        public UC_FileListViewModel FileListVM { get; }
         public ObservableCollection<IssueViewModel> mIssues { get; set; } = new ObservableCollection<IssueViewModel>();
         public ObservableCollection<ValidationRunDto> mRun { get; set; } = new ObservableCollection<ValidationRunDto>();
 
-        private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
+        //private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
         public ICollectionView IssuesView { get; set; }
 
         public ValidationViewModel() {
 
             IssuesView = CollectionViewSource.GetDefaultView(mIssues);
+            TeamListVM = new UC_TeamListViewModel(mIssues, Selection);
+            ArtistListVM = new UC_ArtistListViewModel(mIssues, Selection);
+            FileListVM = new UC_FileListViewModel(mIssues, Selection);
+
+            Selection.PropertyChanged += OnSelectionChanged;
         }
 
 
@@ -90,7 +98,18 @@ namespace ValidationTool.UI.ViewModels {
             }
         }
 
+
+        private string _myNewText;
+        public string myNewText {
+            get => _myNewText;
+            set {
+                _myNewText = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(myNewText)));
+            }
+        }
+
         public void LoadReport() {
+            myNewText = "SHIEHHHHHH";
             TotalAssets = 0;
             TotalIssues = 0;
             TotalErrors = 0;
@@ -141,7 +160,8 @@ namespace ValidationTool.UI.ViewModels {
                     Infos = TotalInfos,
                 }
             });
-            mNotService.SendErrorReportAsync(mIssues);
+            TeamListVM.AggregateAll();
+            //mNotService.SendErrorReportAsync(mIssues);
             dtos.Clear();
         }
         private Func<IssueViewModel, object> getKeySelector(string header) {
@@ -202,6 +222,38 @@ namespace ValidationTool.UI.ViewModels {
 
             foreach (var item in sorted)
                 mIssues.Add(item);
+
+            IssuesView.Refresh();
+        }
+
+        private void OnSelectionChanged(object sender, PropertyChangedEventArgs e) {
+            if (e.PropertyName == nameof(Selection.SelectedTeam) ||
+                e.PropertyName == nameof(Selection.SelectedArtist) ||
+                e.PropertyName == nameof(Selection.SelectedFile)) {
+                ApplyIssueFilter();
+            }
+        }
+
+        private void ApplyIssueFilter() {
+            IssuesView.Filter = obj =>
+            {
+                var issue = obj as IssueViewModel;
+                if (issue == null) return false;
+
+                if (!string.IsNullOrEmpty(Selection.SelectedTeam) &&
+                    issue.Artist?.ArtistTeam != Selection.SelectedTeam)
+                    return false;
+
+                if (!string.IsNullOrEmpty(Selection.SelectedArtist) &&
+                    issue.Artist?.ArtistName != Selection.SelectedArtist)
+                    return false;
+
+                if (!string.IsNullOrEmpty(Selection.SelectedFile) &&
+                    issue.OriginFile != Selection.SelectedFile)
+                    return false;
+
+                return true;
+            };
 
             IssuesView.Refresh();
         }

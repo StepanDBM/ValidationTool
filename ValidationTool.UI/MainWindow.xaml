@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValidationTool.UI"
         xmlns:views="clr-namespace:ValidationTool.UI.Views"
+        xmlns:controls="clr-namespace:ValidationTool.UI.Views.ValidationView_Controls"
         mc:Ignorable="d"
         Title="ValidationTool" Height="450" Width="800">
 

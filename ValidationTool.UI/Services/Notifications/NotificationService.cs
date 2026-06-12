@@ -26,7 +26,8 @@ namespace ValidationTool.Services.Notifications {
             _providers = new List<INotificationProvider>{
                 new SlackDmNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.SLACK_STYOPA_KEY),
 
-                new TeamsNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.TEAMS_STYOPA_KEY)
+                new TeamsNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.TEAMS_STYOPA_KEY)/*,
+                new DiscordNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.DISCORD_STYOPA_KEY)*/
             };
         }
         public async Task SendErrorReportAsync(ObservableCollection<IssueViewModel> issues) {

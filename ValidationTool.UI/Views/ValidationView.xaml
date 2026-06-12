@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="ValidationTool.UI.Views.ValidationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ValidationTool.UI.ViewModels">
+             xmlns:mControls="clr-namespace:ValidationTool.UI.Views.ValidationView_Controls">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -68,49 +68,71 @@
                 </TextBlock.Text>
             </TextBlock>
         </Grid>
-
-        <ListView Grid.Row="1"
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <mControls:UC_TeamList Grid.Column="0"
+                                       DataContext="{Binding TeamListVM}"/>
+                <mControls:UC_ArtistList Grid.Column="1"
+                                       DataContext="{Binding ArtistListVM}"/>
+                <mControls:UC_FileList Grid.Column="2"
+                                       DataContext="{Binding FileListVM}"/>
+            </Grid>
+            <!--<Grid Grid.Row="1">
+                <ListView Grid.Row="1"
                   ItemsSource="{Binding IssuesView}"
                   GridViewColumnHeader.Click="GridViewHeader_Click">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Team"
+                    <ListView.View> 
+                        <GridView>
+                            <GridViewColumn Header="Team"
                                     DisplayMemberBinding="{Binding Artist.ArtistTeam}" />
-                    <GridViewColumn Header="Lead"
+                            <GridViewColumn Header="Lead"
                                     DisplayMemberBinding="{Binding Artist.LeadArtist}" />
-                    <GridViewColumn Header="Artist Name"
+                            <GridViewColumn Header="Artist Name"
                                     DisplayMemberBinding="{Binding Artist.ArtistName}" />
-                    <GridViewColumn Header="Artist ID"
+                            <GridViewColumn Header="Artist ID"
                                     DisplayMemberBinding="{Binding Artist.ArtistID}" />
-                    <GridViewColumn Header="Slack ID"
+                            <GridViewColumn Header="Slack ID"
                                     DisplayMemberBinding="{Binding Artist.ArtistSlackID}" />
-                    <GridViewColumn Header="Teams ID"
+                            <GridViewColumn Header="Teams ID"
                                     DisplayMemberBinding="{Binding Artist.ArtistTeamsID}" />
-                    <GridViewColumn Header="Artist Gmail"
+                            <GridViewColumn Header="Artist Gmail"
                                     DisplayMemberBinding="{Binding Artist.ArtistGmail}" />
-                    <GridViewColumn Header="Artist Lv"
+                            <GridViewColumn Header="Artist Lv"
                                     DisplayMemberBinding="{Binding Artist.ArtistLevel}" />
-                    <GridViewColumn Header="DCC"
+                            <GridViewColumn Header="DCC"
                                     DisplayMemberBinding="{Binding Dcc}" />
-                    <GridViewColumn Header="Time"
+                            <GridViewColumn Header="Time"
                                     DisplayMemberBinding="{Binding Timestamp}" />
-                    <GridViewColumn Header="Asset"
+                            <GridViewColumn Header="Asset"
                                     DisplayMemberBinding="{Binding Asset_name}" />
-                    <GridViewColumn Header="Stage"
+                            <GridViewColumn Header="Stage"
                                     DisplayMemberBinding="{Binding Stage}" />
-                    <GridViewColumn Header="Check"
+                            <GridViewColumn Header="Check"
                                     DisplayMemberBinding="{Binding Check_name}" />
-                    <GridViewColumn Header="Severity"
+                            <GridViewColumn Header="Severity"
                                     DisplayMemberBinding="{Binding Severity}" />
-                    <GridViewColumn Header="Message"
+                            <GridViewColumn Header="Message"
                                     DisplayMemberBinding="{Binding Message}" />
-                    <GridViewColumn Header="Suggestion"
+                            <GridViewColumn Header="Suggestion"
                                     DisplayMemberBinding="{Binding Suggestion}" />
-                    <GridViewColumn Header="File Path"
+                            <GridViewColumn Header="File Path"
                                     DisplayMemberBinding="{Binding OriginFile}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>-->
+            <mControls:UC_IssueList Grid.Row="1"
+                        DataContext="{Binding}" />
+        </Grid>
     </Grid>
 
 </UserControl>

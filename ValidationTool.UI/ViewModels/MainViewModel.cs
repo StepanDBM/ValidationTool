@@ -6,7 +6,7 @@ using ValidationTool.UI.Models.DTOs;
 
 namespace ValidationTool.UI.ViewModels {
     public class MainViewModel {
-        public ObservableCollection<IssueViewModel> Assets { get; set; }
-            = new ObservableCollection<IssueViewModel>();
+        public ObservableCollection<IssueViewModel> Assets { get; set; } = new ObservableCollection<IssueViewModel>();
+        public string someText { get; set; }
     }
 }

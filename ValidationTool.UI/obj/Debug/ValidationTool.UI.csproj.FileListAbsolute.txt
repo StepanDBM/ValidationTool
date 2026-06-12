@@ -46,3 +46,11 @@ C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Gener
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\App.baml
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Themes\Colors.baml
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Themes\Brushes.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_ArtistList.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_FileList.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_ArtistList.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_FileList.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_TeamList.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_TeamList.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_IssueList.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_IssueList.g.cs
