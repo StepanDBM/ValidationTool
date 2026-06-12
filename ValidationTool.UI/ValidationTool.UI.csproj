@@ -111,6 +111,7 @@
     <Compile Include="Services\Notifications\SlackDmNotificationProvider.cs" />
     <Compile Include="Services\Notifications\TeamsNotificationProvider.cs" />
     <Compile Include="Themes\SeverityToBrushConverter.cs" />
+    <Compile Include="TOKEN_KEYS_GITIGNORE\KEY_TOKENS_GITIGNORE.cs" />
     <Compile Include="ViewModels\ArtistViewModel.cs" />
     <Compile Include="ViewModels\AssetViewModel.cs" />
     <Compile Include="ViewModels\BudgetsViewModel.cs" />

@@ -85,13 +85,15 @@ namespace ValidationTool.UI.Models.DTOs {
         [JsonPropertyName("lead")]
         public string LeadArtist { get; set; }
         [JsonPropertyName("team")]
-        public string Team { get; set; }
+        public string ArtistTeam { get; set; }
         [JsonPropertyName("project")]
-        public string Project { get; set; }
+        public string ArtistProject { get; set; }
         [JsonPropertyName("slack_id")]
-        public string SlackID { get; set; }
+        public string ArtistSlackID { get; set; }
         [JsonPropertyName("teams_id")]
-        public string TeamsID { get; set; }
+        public string ArtistTeamsID { get; set; }
+        [JsonPropertyName("gmail")]
+        public string ArtistGmail { get; set; }
 
     }
 }

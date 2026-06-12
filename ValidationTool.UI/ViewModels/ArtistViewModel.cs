@@ -10,9 +10,10 @@ namespace ValidationTool.UI.ViewModels {
         public string ArtistID { get; set; }
         public string ArtistLevel { get; set; }
         public string LeadArtist {  get; set; }
-        public string Team { get; set; }
-        public string Project { get; set;  }
-        public string SlackID { get; set; }
-        public string TeamsID { get; set; }
+        public string ArtistTeam { get; set; }
+        public string ArtistProject { get; set;  }
+        public string ArtistSlackID { get; set; }
+        public string ArtistTeamsID { get; set; }
+        public string ArtistGmail { get; set; }
     }
 }

@@ -112,9 +112,10 @@ namespace ValidationTool.UI.ViewModels {
                             ArtistLevel = issue.Artist.ArtistLevel,
                             ArtistID = issue.Artist.ArtistID,
                             LeadArtist = issue.Artist.LeadArtist,
-                            Team = issue.Artist.Team,
-                            SlackID = issue.Artist.SlackID,
-                            TeamsID= issue.Artist.TeamsID
+                            ArtistTeam = issue.Artist.ArtistTeam,
+                            ArtistSlackID = issue.Artist.ArtistSlackID,
+                            ArtistTeamsID = issue.Artist.ArtistTeamsID,
+                            ArtistGmail = issue.Artist.ArtistGmail
                         },
                         Dcc = issue.Dcc,
                         OriginFile = issue.OriginFile,
@@ -147,7 +148,7 @@ namespace ValidationTool.UI.ViewModels {
             Func<IssueViewModel, object> keySelector = null;
             switch (header) {
                 case "Artist.Team":
-                    keySelector = x => x.Artist?.Team ?? "";
+                    keySelector = x => x.Artist?.ArtistTeam ?? "";
                     break;
                 case "Artist.LeadArtist":
                     keySelector = x => x.Artist?.LeadArtist ?? "";

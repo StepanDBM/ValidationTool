@@ -19,10 +19,10 @@ namespace ValidationTool.Services.Notifications {
 
             var first = orderedIssues[0];
 
-            sb.AppendLine($"Project: {first.Artist?.Project}");
+            sb.AppendLine($"Project: {first.Artist?.ArtistProject}");
             sb.AppendLine($"DCC: {first.Dcc}");
             sb.AppendLine($"Artist: {first.Artist?.ArtistName}");
-            sb.AppendLine($"Team: {first.Artist?.Team}");
+            sb.AppendLine($"Team: {first.Artist?.ArtistTeam}");
             sb.AppendLine();
 
             string currentFile = null;
@@ -48,15 +48,13 @@ namespace ValidationTool.Services.Notifications {
                 sb.AppendLine();
             }
 
-            NotificationMessage shieh = new NotificationMessage {
+            NotificationMessage completeMessage = new NotificationMessage {
                 Title = $"Validation Report ({orderedIssues.Count} issues)",
                 Body = sb.ToString(),
-                RecipientId = orderedIssues[0].Artist?.SlackID
-                               ?? orderedIssues[0].Artist?.TeamsID
-                               ?? orderedIssues[0].Artist?.ArtistID
-                               ?? string.Empty
+                RecipientId = orderedIssues[0].Artist?.ArtistGmail
+                            ?? string.Empty
             };
-            return shieh;
+            return completeMessage;
         }
     }
 }

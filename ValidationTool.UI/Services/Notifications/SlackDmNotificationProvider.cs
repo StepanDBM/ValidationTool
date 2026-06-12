@@ -19,7 +19,7 @@ namespace ValidationTool.Services.Notifications {
 
         public async Task SendAsync(NotificationMessage message){
 
-            var slackUserId = await GetUserIdByEmail("stepanbatllorigt@gmail.com");
+            var slackUserId = await GetUserIdByEmail(message.RecipientId);
             var dmChannel = await OpenDmChannel(slackUserId);
 
             await PostMessage(dmChannel, message);

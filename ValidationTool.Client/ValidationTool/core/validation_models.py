@@ -13,6 +13,7 @@ class ArtistDto:
     project: str
     slack_id: str
     teams_id: str
+    gmail: str
 
 @dataclass
 class AssetValidationResult:

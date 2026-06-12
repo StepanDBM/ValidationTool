@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ValidationTool.UI.ViewModels;
+using ValidationTool.UI.TOKEN_KEYS_GITIGNORE;
 
 namespace ValidationTool.Services.Notifications {
     public class NotificationService {
@@ -22,15 +23,10 @@ namespace ValidationTool.Services.Notifications {
 
             var httpClient = new HttpClient();
 
-            _providers = new List<INotificationProvider>
-            {
-                new SlackDmNotificationProvider(
-                    httpClient,
-                    ""),
+            _providers = new List<INotificationProvider>{
+                new SlackDmNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.SLACK_STYOPA_KEY),
 
-                new TeamsNotificationProvider(
-                    httpClient,
-                    "https://outlook.office.com/webhook/DEBUG/WEBHOOK")
+                new TeamsNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.TEAMS_STYOPA_KEY)
             };
         }
         public async Task SendErrorReportAsync(ObservableCollection<IssueViewModel> issues) {

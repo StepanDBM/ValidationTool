@@ -75,11 +75,19 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Team"
-                                    DisplayMemberBinding="{Binding Artist.Team}" />
+                                    DisplayMemberBinding="{Binding Artist.ArtistTeam}" />
                     <GridViewColumn Header="Lead"
                                     DisplayMemberBinding="{Binding Artist.LeadArtist}" />
-                    <GridViewColumn Header="Artist"
+                    <GridViewColumn Header="Artist Name"
                                     DisplayMemberBinding="{Binding Artist.ArtistName}" />
+                    <GridViewColumn Header="Artist ID"
+                                    DisplayMemberBinding="{Binding Artist.ArtistID}" />
+                    <GridViewColumn Header="Slack ID"
+                                    DisplayMemberBinding="{Binding Artist.ArtistSlackID}" />
+                    <GridViewColumn Header="Teams ID"
+                                    DisplayMemberBinding="{Binding Artist.ArtistTeamsID}" />
+                    <GridViewColumn Header="Artist Gmail"
+                                    DisplayMemberBinding="{Binding Artist.ArtistGmail}" />
                     <GridViewColumn Header="Artist Lv"
                                     DisplayMemberBinding="{Binding Artist.ArtistLevel}" />
                     <GridViewColumn Header="DCC"
