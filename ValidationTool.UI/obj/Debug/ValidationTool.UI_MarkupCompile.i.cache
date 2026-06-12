@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\App.xaml
-12218442165
+1345812693
 
-581143215420
+58-1940818187
 242016293644
-MainWindow.xaml;Themes\Brushes.xaml;Themes\Colors.xaml;Views\BudgetsView.xaml;Views\ConfigurationView.xaml;Views\ProfilesView.xaml;Views\StagesView.xaml;Views\ValidationView.xaml;Views\ValidationView_Controls\UC_FileList.xaml;Views\ValidationView_Controls\UC_ArtistList.xaml;Views\ValidationView_Controls\UC_IssueList.xaml;Views\ValidationView_Controls\UC_TeamList.xaml;
+MainWindow.xaml;Themes\Brushes.xaml;Themes\Colors.xaml;Views\BudgetsView.xaml;Views\ConfigurationView.xaml;Views\ProfilesView.xaml;Views\StagesView.xaml;Views\ValidationView.xaml;Views\ValidationView_Controls\UC_ChargingBar.xaml;Views\ValidationView_Controls\UC_FileList.xaml;Views\ValidationView_Controls\UC_ArtistList.xaml;Views\ValidationView_Controls\UC_IssueList.xaml;Views\ValidationView_Controls\UC_TeamList.xaml;
 
 True
 

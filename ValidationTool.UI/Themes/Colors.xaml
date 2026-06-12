@@ -6,12 +6,14 @@
 
     <!-- Panels / Tabs -->
     <Color x:Key="ColorBgPanel">#252525</Color>
+    <Color x:Key="ColorBgRowAlt">#323232</Color>
 
     <!-- Interactive Controls -->
     <Color x:Key="ColorBgElement">#2B2B2B</Color>
 
     <!-- Text -->
     <Color x:Key="ColorText">#E6E6E6</Color>
+    
 
     <!-- Borders -->
     <Color x:Key="ColorBorder">#444444</Color>

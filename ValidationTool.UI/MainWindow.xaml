@@ -7,30 +7,84 @@
         xmlns:views="clr-namespace:ValidationTool.UI.Views"
         xmlns:controls="clr-namespace:ValidationTool.UI.Views.ValidationView_Controls"
         mc:Ignorable="d"
-        Title="ValidationTool" Height="450" Width="800">
+        Title="ValidationTool - by Styopa DBM" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="{StaticResource BrushBgMain}">
 
-    <TabControl>
 
-        <TabItem Header="Validation">
-            <views:ValidationView/>
-        </TabItem>
+    <Grid>
 
-        <TabItem Header="Budgets">
-            <views:BudgetsView/>
-        </TabItem>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <!-- Custom title bar -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <TabItem Header="Configuration">
-            <views:ConfigurationView/>
-        </TabItem>
+        <!-- Custom Title Bar -->
+        <Border Grid.Row="0"
+            Background="{StaticResource BrushBgPanel}"
+            MouseDown="TitleBar_MouseDown">
 
-        <TabItem Header="Profiles">
-            <views:ProfilesView/>
-        </TabItem>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-        <TabItem Header="Stages">
-            <views:StagesView/>
-        </TabItem>
+                <!-- Title -->
+                <TextBlock Text="ValidationTool"
+                       VerticalAlignment="Center"
+                       Margin="10,0"
+                       Foreground="{StaticResource BrushText}" />
 
-    </TabControl>
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+
+                    <Button Content="_"
+                        Width="40"
+                        Click="Minimize_Click"/>
+
+                    <Button Content="□"
+                        Width="40"
+                        Click="Maximize_Click"/>
+
+                    <Button Content="X"
+                        Width="40"
+                        Click="Close_Click"/>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+
+
+            <TabControl>
+
+                <TabItem Header="Validation">
+                    <views:ValidationView/>
+                </TabItem>
+
+                <TabItem Header="Budgets">
+                    <views:BudgetsView/>
+                </TabItem>
+
+                <TabItem Header="Configuration">
+                    <views:ConfigurationView/>
+                </TabItem>
+
+                <TabItem Header="Profiles">
+                    <views:ProfilesView/>
+                </TabItem>
+
+                <TabItem Header="Stages">
+                    <views:StagesView/>
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+
+    </Grid>
 
 </Window>

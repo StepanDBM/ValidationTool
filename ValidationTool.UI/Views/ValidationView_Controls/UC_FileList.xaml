@@ -9,17 +9,36 @@
         <Label Grid.Row="0" 
            Content="Team" FontSize="30"
            Margin="15 15 15 15" />
-        <ListView Grid.Row="1" ItemsSource="{Binding FileList}"
-                  SelectedItem="{Binding SelectedFileVM, Mode=TwoWay}"
->
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="File" DisplayMemberBinding="{Binding FileName}" />
-                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Issues}" />
-                    <GridViewColumn Header="Warnings" DisplayMemberBinding="{Binding Warnings}" />
-                    <GridViewColumn Header="ERRORS" DisplayMemberBinding="{Binding Errors}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Grid.Row="1"
+          ItemsSource="{Binding FileList}"
+          SelectedItem="{Binding SelectedFileVM, Mode=TwoWay}"
+          AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <!-- File name (main column → wider) -->
+                <DataGridTextColumn Header="File"
+                            Binding="{Binding FileName}"
+                            Width="2*" />
+
+                <!-- Numbers -->
+                <DataGridTextColumn Header="Issues"
+                            Binding="{Binding Issues}"
+                            Width="*"
+                            SortMemberPath="Issues" />
+
+                <DataGridTextColumn Header="Warnings"
+                            Binding="{Binding Warnings}"
+                            Width="*"
+                            SortMemberPath="Warnings" />
+
+                <DataGridTextColumn Header="Errors"
+                            Binding="{Binding Errors}"
+                            Width="*"
+                            SortMemberPath="Errors" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -34,6 +34,7 @@
 
 
             <Style TargetType="TabControl">
+                
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgMain}" />
                 <Setter Property="Foreground"
@@ -43,13 +44,64 @@
             </Style>
 
             <Style TargetType="TabItem">
-                <Setter Property="Background"
-                        Value="{StaticResource BrushBgPanel}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource BrushText}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource BrushBorder}" />
+
+                <Setter Property="Background" Value="{StaticResource BrushBgPanel}" />
+                <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+                <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="Margin" Value="2,0,2,0" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabItem">
+
+                            <Border x:Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="4,4,0,0"
+                        SnapsToDevicePixels="True">
+
+                                <ContentPresenter
+                        Margin="10,4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RecognizesAccessKey="True"
+                        ContentSource="Header"/>
+
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+
+                                <!-- Selected -->
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushBgMain}" />
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Trigger>
+
+                                <!-- Hover -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushBgElement}" />
+                                </Trigger>
+
+                                <!-- Disabled -->
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground"
+                                Value="#777777"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
             </Style>
+
 
             <Style TargetType="Button">
                 <Setter Property="Background"
@@ -119,6 +171,94 @@
                         Value="1" />
             </Style>
 
+
+            <Style TargetType="DataGrid">
+
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+
+                <Setter Property="Background" Value="{StaticResource BrushBgElement}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushText}"/>
+
+                <Setter Property="RowBackground" Value="{StaticResource BrushBgElement}"/>
+                <Setter Property="AlternatingRowBackground" Value="{StaticResource BrushBgPanel}"/>
+                <Setter Property="AlternationCount" Value="2"/>
+
+                <Setter Property="GridLinesVisibility" Value="None"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+            </Style>
+
+            <Style TargetType="DataGridColumnHeader">
+
+                <Setter Property="Background" Value="{StaticResource BrushBgPanel}" />
+                <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+                <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
+                <Setter Property="BorderThickness" Value="0,0,1,1" />
+                <Setter Property="Padding" Value="8,5" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+
+
+                <Style.Triggers>
+
+                    <!-- Hover -->
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background"
+                    Value="{StaticResource BrushBgElement}" />
+                    </Trigger>
+
+                    <!-- Pressed -->
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background"
+                    Value="{StaticResource BrushAccent}" />
+                        <Setter Property="Foreground"
+                    Value="White"/>
+                    </Trigger>
+
+                </Style.Triggers>
+
+            </Style>
+
+
+
+            <!-- ScrollViewer background -->
+            <Style TargetType="ScrollViewer">
+                <Setter Property="Background"
+                        Value="{StaticResource BrushBgElement}" />
+            </Style>
+            <Style TargetType="ScrollBar">
+
+                <Setter Property="Background"
+                        Value="{StaticResource BrushBgPanel}" />
+
+
+            </Style>
+            <!-- Thumb (draggable thingie) -->
+            <Style TargetType="Thumb">
+
+                <Setter Property="Background"
+                        Value="{StaticResource BrushBorder}" />
+
+                <Setter Property="Opacity" Value="0.8"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Thumb">
+                            <Border x:Name="Bd"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="4"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd"
+                                            Property="Background"
+                                            Value="{StaticResource BrushAccent}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
 
     </Application.Resources>

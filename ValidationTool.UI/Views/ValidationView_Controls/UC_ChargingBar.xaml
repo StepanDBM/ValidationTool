@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.ValidationView_Controls.UC_ChargingBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="10"
+          Background="{StaticResource BrushBgPanel}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+            <Button Content="Run Maya"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="RunMaya_Click"/>
+
+            <Button Content="Run Blender"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="RunBlender_Click"/>
+
+            <Button Content="Load Report"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="LoadReport_Click"/>
+        </StackPanel>
+
+        <!-- Current file -->
+        <TextBlock Grid.Row="1"
+                   Text="{Binding CurrentFile}"
+                   Margin="5"/>
+
+        <!-- Progress -->
+        <Grid Grid.Row="2">
+            <ProgressBar Height="25"
+                         Margin="5"
+                         Minimum="0"
+                         Maximum="100"
+                         Width="Auto"
+                         
+                         Background="{StaticResource BrushBgElement}"
+                         Foreground="{StaticResource BrushAccent}"
+
+                         Value="{Binding Progress}"/>
+
+            <TextBlock Text="{Binding Progress}"
+                       Foreground="White"
+                       Background="Transparent"
+                       VerticalAlignment="Center"
+                       Margin="20,0,0,0"/>
+        </Grid>
+
+        <!-- Summary -->
+        <TextBlock Grid.Row="3" Margin="5">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Assets {0} | Issues: {1} | Errors: {2} | Warnings: {3} | Info: {4}">
+                    <Binding Path="TotalAssets"/>
+                    <Binding Path="TotalIssues"/>
+                    <Binding Path="TotalErrors"/>
+                    <Binding Path="TotalWarnings"/>
+                    <Binding Path="TotalInfos"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+    </Grid>
+</UserControl>

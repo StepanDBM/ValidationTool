@@ -54,3 +54,5 @@ C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_TeamList.g.cs
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_IssueList.baml
 C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_IssueList.g.cs
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_ChargingBar.baml
+C:\Users\StyopaDBM\source\repos\ValidationTool\ValidationTool.UI\obj\Debug\Views\ValidationView_Controls\UC_ChargingBar.g.cs

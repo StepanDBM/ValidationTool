@@ -8,6 +8,8 @@
     <!-- Panels -->
     <SolidColorBrush x:Key="BrushBgPanel"
                      Color="{StaticResource ColorBgPanel}" />
+    <SolidColorBrush x:Key="BrushBgRowAlt"
+                 Color="{StaticResource ColorBgRowAlt}" />
 
     <!-- Controls -->
     <SolidColorBrush x:Key="BrushBgElement"
@@ -34,5 +36,12 @@
 
     <SolidColorBrush x:Key="BrushInfo"
                      Color="{StaticResource ColorInfo}" />
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
+                 Color="{Binding Color, Source={StaticResource BrushBgPanel}}" />
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}"
+                 Color="{Binding Color, Source={StaticResource BrushText}}" />
+
 
 </ResourceDictionary>

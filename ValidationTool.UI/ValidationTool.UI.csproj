@@ -123,7 +123,6 @@
     <Compile Include="ViewModels\UC_ArtistListViewModel.cs" />
     <Compile Include="ViewModels\UC_FileListViewModel.cs" />
     <Compile Include="ViewModels\UC_TeamListViewModel.cs" />
-    <Compile Include="ViewModels\ValidationTreeViewModels.cs" />
     <Compile Include="ViewModels\ValidationViewModel.cs" />
     <Compile Include="ViewModels\ValidationView_Models\ArtistStatsViewModel.cs" />
     <Compile Include="ViewModels\ValidationView_Models\FileStatsViewModel.cs" />
@@ -142,6 +141,9 @@
     </Compile>
     <Compile Include="Views\ValidationView.xaml.cs">
       <DependentUpon>ValidationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidationView_Controls\UC_ChargingBar.xaml.cs">
+      <DependentUpon>UC_ChargingBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ValidationView_Controls\UC_FileList.xaml.cs">
       <DependentUpon>UC_FileList.xaml</DependentUpon>
@@ -193,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ValidationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationView_Controls\UC_ChargingBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

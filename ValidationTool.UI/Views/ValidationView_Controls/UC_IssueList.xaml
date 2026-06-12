@@ -3,66 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Grid>
-        <ListView ItemsSource="{Binding IssuesView}"
-                  GridViewColumnHeader.Click="GridViewHeader_Click">
+        <DataGrid ItemsSource="{Binding IssuesView}"
+          AutoGenerateColumns="False"
+          IsReadOnly="True">
 
-            <ListView.View>
-                <GridView>
-
-                    <GridViewColumn Header="Team"
-                        DisplayMemberBinding="{Binding Artist.ArtistTeam}" />
-
-                    <GridViewColumn Header="Lead"
-                        DisplayMemberBinding="{Binding Artist.LeadArtist}" />
-
-                    <GridViewColumn Header="Artist Name"
-                        DisplayMemberBinding="{Binding Artist.ArtistName}" />
-
-                    <GridViewColumn Header="Artist ID"
-                        DisplayMemberBinding="{Binding Artist.ArtistID}" />
-
-                    <GridViewColumn Header="Slack ID"
-                        DisplayMemberBinding="{Binding Artist.ArtistSlackID}" />
-
-                    <GridViewColumn Header="Teams ID"
-                        DisplayMemberBinding="{Binding Artist.ArtistTeamsID}" />
-
-                    <GridViewColumn Header="Artist Gmail"
-                        DisplayMemberBinding="{Binding Artist.ArtistGmail}" />
-
-                    <GridViewColumn Header="Artist Lv"
-                        DisplayMemberBinding="{Binding Artist.ArtistLevel}" />
-
-                    <GridViewColumn Header="DCC"
-                        DisplayMemberBinding="{Binding Dcc}" />
-
-                    <GridViewColumn Header="Time"
-                        DisplayMemberBinding="{Binding Timestamp}" />
-
-                    <GridViewColumn Header="Asset"
-                        DisplayMemberBinding="{Binding Asset_name}" />
-
-                    <GridViewColumn Header="Stage"
-                        DisplayMemberBinding="{Binding Stage}" />
-
-                    <GridViewColumn Header="Check"
-                        DisplayMemberBinding="{Binding Check_name}" />
-
-                    <GridViewColumn Header="Severity"
-                        DisplayMemberBinding="{Binding Severity}" />
-
-                    <GridViewColumn Header="Message"
-                        DisplayMemberBinding="{Binding Message}" />
-
-                    <GridViewColumn Header="Suggestion"
-                        DisplayMemberBinding="{Binding Suggestion}" />
-
-                    <GridViewColumn Header="File Path"
-                        DisplayMemberBinding="{Binding OriginFile}" />
-
-                </GridView>
-            </ListView.View>
-
-        </ListView>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Time" Binding="{Binding Timestamp}" Width="*" />
+                <DataGridTextColumn Header="Asset" Binding="{Binding Asset_name}" Width="*" />
+                <DataGridTextColumn Header="Stage" Binding="{Binding Stage}" Width="*" />
+                <DataGridTextColumn Header="Check" Binding="{Binding Check_name}" Width="*" />
+                <DataGridTextColumn Header="Severity" Binding="{Binding Severity}" Width="*" />
+                <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="2*" />
+                <DataGridTextColumn Header="Suggestion" Binding="{Binding Suggestion}" Width="2*" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

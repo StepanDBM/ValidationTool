@@ -7,67 +7,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="10" Grid.Row="0">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
-
-                <Button Content="Run Maya"
-                        Width="120"
-                        Height="35"
-                        Margin="5"
-                        Click ="RunMaya_Click"/>
-
-                <Button Content="Run Blender"
-                        Width="120"
-                        Height="35"
-                        Margin="5"
-                        Click="RunBlender_Click"/>
-
-                <Button Content="Load Report"
-                        Width="120"
-                        Height="35"
-                        Margin="5"
-                        Click="loadReportUI"/>
-
-            </StackPanel>
-
-            <TextBlock
-                Grid.Row="1"
-                Text="{Binding CurrentFile}"
-                Margin="5"/>
-
-            <ProgressBar
-                Grid.Row="2"
-                Height="25"
-                Margin="5"
-                Minimum="0"
-                Maximum="100"
-                Value="{Binding Progress}"/>
-            <TextBlock Grid.Row="2"
-                       Text="{Binding Progress}"
-                       Foreground="White"
-                       VerticalAlignment ="Center"
-                       Margin="20,0,0,0"
-                       Background="Transparent"></TextBlock>
-
-            <TextBlock Grid.Row="3">
-                <TextBlock.Text>
-                    <MultiBinding StringFormat="Assets {0} | Issues: {1} | Errors: {2} | Warnings: {3} | Info: {4}">
-                        <Binding Path="TotalAssets"/>
-                        <Binding Path="TotalIssues"/>
-                        <Binding Path="TotalErrors"/>
-                        <Binding Path="TotalWarnings"/>
-                        <Binding Path="TotalInfos"/>
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
-        </Grid>
+        <mControls:UC_ChargingBar Grid.Row="0" DataContext="{Binding}"/>
+        
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -86,50 +28,6 @@
                 <mControls:UC_FileList Grid.Column="2"
                                        DataContext="{Binding FileListVM}"/>
             </Grid>
-            <!--<Grid Grid.Row="1">
-                <ListView Grid.Row="1"
-                  ItemsSource="{Binding IssuesView}"
-                  GridViewColumnHeader.Click="GridViewHeader_Click">
-                    <ListView.View> 
-                        <GridView>
-                            <GridViewColumn Header="Team"
-                                    DisplayMemberBinding="{Binding Artist.ArtistTeam}" />
-                            <GridViewColumn Header="Lead"
-                                    DisplayMemberBinding="{Binding Artist.LeadArtist}" />
-                            <GridViewColumn Header="Artist Name"
-                                    DisplayMemberBinding="{Binding Artist.ArtistName}" />
-                            <GridViewColumn Header="Artist ID"
-                                    DisplayMemberBinding="{Binding Artist.ArtistID}" />
-                            <GridViewColumn Header="Slack ID"
-                                    DisplayMemberBinding="{Binding Artist.ArtistSlackID}" />
-                            <GridViewColumn Header="Teams ID"
-                                    DisplayMemberBinding="{Binding Artist.ArtistTeamsID}" />
-                            <GridViewColumn Header="Artist Gmail"
-                                    DisplayMemberBinding="{Binding Artist.ArtistGmail}" />
-                            <GridViewColumn Header="Artist Lv"
-                                    DisplayMemberBinding="{Binding Artist.ArtistLevel}" />
-                            <GridViewColumn Header="DCC"
-                                    DisplayMemberBinding="{Binding Dcc}" />
-                            <GridViewColumn Header="Time"
-                                    DisplayMemberBinding="{Binding Timestamp}" />
-                            <GridViewColumn Header="Asset"
-                                    DisplayMemberBinding="{Binding Asset_name}" />
-                            <GridViewColumn Header="Stage"
-                                    DisplayMemberBinding="{Binding Stage}" />
-                            <GridViewColumn Header="Check"
-                                    DisplayMemberBinding="{Binding Check_name}" />
-                            <GridViewColumn Header="Severity"
-                                    DisplayMemberBinding="{Binding Severity}" />
-                            <GridViewColumn Header="Message"
-                                    DisplayMemberBinding="{Binding Message}" />
-                            <GridViewColumn Header="Suggestion"
-                                    DisplayMemberBinding="{Binding Suggestion}" />
-                            <GridViewColumn Header="File Path"
-                                    DisplayMemberBinding="{Binding OriginFile}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>-->
             <mControls:UC_IssueList Grid.Row="1"
                         DataContext="{Binding}" />
         </Grid>

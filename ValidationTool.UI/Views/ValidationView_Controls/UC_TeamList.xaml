@@ -9,16 +9,34 @@
             <Label Grid.Row="0" 
                    Content="Team" FontSize="30"
                    Margin="15 15 15 15" />
-            <ListView Grid.Row="1" ItemsSource="{Binding TeamList}"
-                      SelectedItem="{Binding SelectedTeamVM, Mode=TwoWay}">
-                <ListView.View>
-                    <GridView>
-                    <GridViewColumn Header="Team" DisplayMemberBinding="{Binding TeamName}" />
-                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Issues}" />
-                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Warnings}" />
-                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Errors}" />
-                </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
+        <DataGrid Grid.Row="1"
+          ItemsSource="{Binding TeamList}"
+          SelectedItem="{Binding SelectedTeamVM, Mode=TwoWay}"
+          AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Team"
+                            Binding="{Binding TeamName}"
+                            Width="2*" />
+
+                <DataGridTextColumn Header="Issues"
+                            Binding="{Binding Issues}"
+                            Width="*"
+                            SortMemberPath="Issues" />
+
+                <DataGridTextColumn Header="Warnings"
+                            Binding="{Binding Warnings}"
+                            Width="*"
+                            SortMemberPath="Warnings" />
+
+                <DataGridTextColumn Header="Errors"
+                            Binding="{Binding Errors}"
+                            Width="*"
+                            SortMemberPath="Errors" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
     </UserControl>

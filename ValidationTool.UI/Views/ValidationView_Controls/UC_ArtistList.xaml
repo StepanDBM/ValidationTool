@@ -5,24 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="300">
-    <Grid Background="Red">
+    <Grid>
         <Label Grid.Row="0" 
            Content="Team" FontSize="30"
            Margin="15 15 15 15" />
-        <ListView Grid.Row="1" ItemsSource="{Binding ArtistList}"
-                  SelectedItem="{Binding SelectedArtistVM, Mode=TwoWay}"
->
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding ArtistName}" />
-                    <GridViewColumn Header="gmail" DisplayMemberBinding="{Binding ArtistGmail}" />
-                    <GridViewColumn Header="Seniority" DisplayMemberBinding="{Binding ArtistLv}" />
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ArtistID}" />
-                    <GridViewColumn Header="Issues" DisplayMemberBinding="{Binding Issues}" />
-                    <GridViewColumn Header="Warnings" DisplayMemberBinding="{Binding Warnings}" />
-                    <GridViewColumn Header="ERRORS" DisplayMemberBinding="{Binding Errors}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Grid.Row="1"
+          ItemsSource="{Binding ArtistList}"
+          SelectedItem="{Binding SelectedArtistVM, Mode=TwoWay}"
+          AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Artist"
+                            Binding="{Binding ArtistName}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="Gmail"
+                            Binding="{Binding ArtistGmail}"
+                            Width="2*" />
+
+                <DataGridTextColumn Header="Seniority"
+                            Binding="{Binding ArtistLv}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="ID"
+                            Binding="{Binding ArtistID}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="Issues"
+                            Binding="{Binding Issues}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="Warnings"
+                            Binding="{Binding Warnings}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="Errors"
+                            Binding="{Binding Errors}"
+                            Width="*" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>
