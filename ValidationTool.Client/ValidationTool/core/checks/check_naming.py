@@ -37,7 +37,6 @@ NAME_PATTERN = re.compile(
 
 def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
-    fucked_up = False
     name = mesh.name
 
     upper_name = name.upper()
@@ -61,7 +60,6 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                     suggestion="Rename mesh using studio naming conventions."
                 )
             )
-            fucked_up = True
             return issues
 
     # ----------------------------------------
@@ -74,7 +72,6 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
 
         if upper_name.startswith(prefix + "_"):
             has_valid_prefix = True
-            fucked_up = True
             break
     if not has_valid_prefix:
         issues.append(
@@ -90,7 +87,6 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 )
             )
         )
-        fucked_up = True
 
     # ----------------------------------------
     # Regex naming convention validation
@@ -111,7 +107,6 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 )
             )
         )
-        fucked_up = True
     # ----------------------------------------
     # Double underscores
     # ----------------------------------------
@@ -122,12 +117,11 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
             ValidationIssue(
                 asset_name=name,
                 check_name=CHECK_NAMING,
-                severity=ValidationSeverity.INFO,
+                severity=ValidationSeverity.WARNING,
                 message="Mesh name contains double underscores.",
                 suggestion="Avoid redundant separators."
             )
         )
-        fucked_up = True
     # ----------------------------------------
     # Spaces
     # ----------------------------------------
@@ -143,16 +137,5 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 suggestion="Use underscores instead of spaces or other invalid characters."
             )
         )
-        fucked_up = True
-        if not fucked_up:
-            issues.append(
-                ValidationIssue(
-                    asset_name=name,
-                    check_name=CHECK_NAMING,
-                    severity=ValidationSeverity.INFO,
-                    message="Did great, naming correct",
-                    suggestion="Call your family, you did great."
-                )
-            )
 
     return issues

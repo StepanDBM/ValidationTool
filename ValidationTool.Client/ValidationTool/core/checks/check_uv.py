@@ -4,17 +4,17 @@ from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
-    ObjectContext,
     ValidationIssue,
     ValidationSeverity,
     CHECK_UV_SETS
 )
+from core.context.mesh_context import MeshContext
 
 
 MAX_UV_SETS = 2
 
 
-def check_uv_sets(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
+def check_uv_sets(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
 
     issues = []
 
@@ -47,7 +47,7 @@ def check_uv_sets(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) ->
             ValidationIssue(
                 asset_name=mesh.name,
                 check_name=CHECK_UV_SETS,
-                severity=ValidationSeverity.INFO,
+                severity=ValidationSeverity.WARNING,
                 message="Missing secondary UV set (UV1).",
                 suggestion="Add UV1 if required for lightmaps/baking."
             )

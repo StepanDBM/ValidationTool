@@ -18,7 +18,7 @@ maya.standalone.initialize(name="python")
 import maya.cmds as cmds
 
 
-from misc_tools.maya_adapter import extract_Maya_scene
+from misc_tools.DCC.Maya.maya_adapter import extract_maya_scene
 from core.runner import run_pipeline
 from config.validation_profile import ValidationProfile
 
@@ -33,13 +33,13 @@ import config.absolutePaths as absPath
 def process_file(file_path: str, artist: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
-    meshes = extract_Maya_scene()
-    print (f"Extracted {len(meshes)} meshes from the scene")
+    objects = extract_maya_scene()
+    print (f"Extracted {len(objects)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
     context = {"dcc": "Maya", "path": file_path, "artist": artist}
 
-    run = run_pipeline(meshes, context, profile)
+    run = run_pipeline(objects, context, profile)
 
     print(f"[DONE] {file_path} -> {run.summary.run_id}")
     return run

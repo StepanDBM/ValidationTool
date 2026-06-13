@@ -49,11 +49,11 @@ namespace ValidationTool.UI.Models.DTOs {
         public ArtistDto Artist { get; set; }
         [JsonPropertyName("dcc")]
         public string Dcc { get; set; }
-        [JsonPropertyName("originFile")]
+        [JsonPropertyName("origin_file")]
         public string OriginFile { get; set; }
 
-        [JsonPropertyName("asset_name")]
-        public string AssetName { get; set; }
+        [JsonPropertyName("object_name")]
+        public string ObjectName { get; set; }
 
         [JsonPropertyName("check_name")]
         public string CheckName { get; set; }

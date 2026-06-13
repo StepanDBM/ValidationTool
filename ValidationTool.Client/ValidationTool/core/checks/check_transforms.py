@@ -96,15 +96,4 @@ def check_transforms(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext)
             )
             fucked_up = True
     
-    if not fucked_up:
-        issues.append(
-                ValidationIssue(
-                    asset_name=mesh.name,
-                    check_name=CHECK_TRANSFORMS,
-                    severity=ValidationSeverity.INFO,
-                    message=f"All transforms are correcty",
-                    suggestion="Call your family, you did great."
-                )
-            )
-    
     return issues

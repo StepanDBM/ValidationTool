@@ -16,11 +16,11 @@ class ArtistDto:
     gmail: str
 
 @dataclass
-class AssetValidationResult:
+class ValidationResult:
     artist: ArtistDto
     dcc: str
-    originFile: str
-    asset_name: str
+    origin_file: str
+    object_name: str
     check_name: str
     stage: str
     timestamp: datetime
@@ -44,5 +44,5 @@ class RunSummary:
 @dataclass
 class ValidationRun:
     summary: RunSummary
-    issues: List[AssetValidationResult]
+    issues: List[ValidationResult]
     jsonPath: str

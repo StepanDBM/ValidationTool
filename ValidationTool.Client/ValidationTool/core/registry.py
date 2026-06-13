@@ -1,13 +1,16 @@
 from typing import List, Callable, Optional
 from dataclasses import dataclass, field
 import config.exec_stages as excS
-from core.validation_system import ObjectContext, ValidationIssue
+from core.validation_system import ObjectContext
+
+from core.context.baseContext import BaseContext
+from core.validation_system import ValidationIssue
 
 from config.validation_profile import ValidationProfile
 
 from core.validation_context import ValidationRuntimeContext
 
-MeshCheckFunction = Callable[[ObjectContext, ValidationRuntimeContext], List[ValidationIssue]]
+CheckFunction = Callable[[BaseContext, ValidationRuntimeContext], List[ValidationIssue]]
 
 @dataclass
 class StageResult:
@@ -17,14 +20,15 @@ class StageResult:
 
 @dataclass(frozen=True)
 class CheckDefinition:
-    func: MeshCheckFunction
+    func: CheckFunction
     id: str
+    target_types: List[type]
     category: str = "uncategorized"
     stage: str = "geometry"
     tags: List[str] = field(default_factory=list)
     enabled: bool = True
 
-class MeshValidatorRegistry:
+class ValidationRegistry:
     def __init__(self):
         self.by_id: dict[str, CheckDefinition] = {}
         self.by_category: dict[str, list[CheckDefinition]] = {}
@@ -32,7 +36,8 @@ class MeshValidatorRegistry:
 
     def register(
         self,
-        check: MeshCheckFunction,
+        check: CheckFunction,
+        target_types: List[type],
         check_id: str = None,
         category: str = "uncategorized",
         stage: str = "geometry",
@@ -41,6 +46,7 @@ class MeshValidatorRegistry:
         definition = CheckDefinition(
             func=check,
             id=check_id or check.__name__,
+            target_types=target_types,
             category=category,
             stage=stage,
             tags=tags or []

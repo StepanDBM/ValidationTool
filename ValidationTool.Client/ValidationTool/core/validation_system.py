@@ -25,14 +25,34 @@ class ValidationSeverity(Enum):
     ERROR = "ERROR"
     HARD = "ERROR_HARD"  # Subsequent issues should be avoided. IE: no-faces means NO UVs, so no UV check needed.
 
+
+class ObjectType(Enum):
+    MESH = "MESH"
+    CAMERA = "CAMERA"
+    LIGHT = "LIGHT"
+    CURVE = "CURVE"
+    NURBS = "NURBS"
+    TRANSFORM = "TRANSFORM"
+    RIG = "RIG"
+    SCENE = "SCENE"
+    REFERENCE = "REFERENCE"
+    UNKNOWN = "UNKNOWN"
+
 class AssetType(Enum):
-    STATIC_MESH = "STATIC_MESH"
-    SKELETAL_MESH = "SKELETAL_MESH"
     PROP = "PROP"
+    STATIC_MESH = "STATIC_MESH"
     CHARACTER = "CHARACTER"
     WEAPON = "WEAPON"
+    VEHICLE = "VEHICLE"
+    ENVIRONMENT = "ENVIRONMENT"
     ENVIRONMENT_MODULAR = "ENVIRONMENT_MODULAR"
+    VFX = "VFX"
+    UI = "UI"
     UNKNOWN = "UNKNOWN"
+class GeometryType(Enum):
+    STATIC = "STATIC"
+    SKELETAL = "SKELETAL"
+    DEFORMABLE = "DEFORMABLE"
 
 @dataclass
 class ValidationIssue:
@@ -41,6 +61,10 @@ class ValidationIssue:
     severity: ValidationSeverity
     message: str
     suggestion: str = ""
+
+#NEW CLASS, 13/06/2026 BaseContext is abstracted from and into every context afterwards.
+
+
 
 @dataclass
 class ObjectContext:

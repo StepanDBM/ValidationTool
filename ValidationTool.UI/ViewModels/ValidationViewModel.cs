@@ -139,7 +139,7 @@ namespace ValidationTool.UI.ViewModels {
                         Dcc = issue.Dcc,
                         OriginFile = issue.OriginFile,
                         Timestamp = issue.Timestamp.ToString(),
-                        Asset_name = issue.AssetName,
+                        Asset_name = issue.ObjectName,
                         Check_name = issue.CheckName,
                         Severity = issue.Severity,
                         Message = issue.Message,
