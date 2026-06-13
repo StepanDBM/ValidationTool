@@ -58,7 +58,6 @@ def extract_cameras() -> List[CameraContext]:
             scale=scale,
             is_render_camera=is_renderable,
         )
-
         cameras.append(camera)
 
     return cameras

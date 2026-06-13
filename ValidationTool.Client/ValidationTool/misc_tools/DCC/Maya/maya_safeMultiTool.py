@@ -3,6 +3,19 @@ try:
 except ImportError:
     cmds = None
 
+MAYA_LIGHT_TYPES = {
+    "ambientLight": "AMBIENT",
+    "directionalLight": "DIRECTIONAL",
+    "pointLight": "POINT",
+    "spotLight": "SPOT",
+    "areaLight": "AREA",
+    "volumeLight": "VOLUME",
+
+    "aiAreaLight": "ARNOLD_AREA",
+    "aiSkyDomeLight": "ARNOLD_SKYDOME",
+    "aiPhotometricLight": "ARNOLD_PHOTOMETRIC",
+    "aiMeshLight": "ARNOLD_MESH",
+}
 
 def _get_parent_path(full_path: str) -> str:
     parts = full_path.split("|")
@@ -36,6 +49,8 @@ def _safe_poly_evaluate(shape: str, component: str) -> int:
     except Exception:
         return 0
 
+
+#for most things, but in this case I made them for cameras.
 def _get_parent_path(full_path: str) -> str:
     parts = full_path.split("|")
     if len(parts) <= 2:
@@ -81,3 +96,19 @@ def _safe_get_str(attr_name: str, default: str = "") -> str:
     except Exception:
         pass
     return default
+
+#for lights, mainly
+
+def _get_light_type(shape: str) -> str:
+    node_type = cmds.nodeType(shape)
+    return MAYA_LIGHT_TYPES.get(node_type, node_type.upper())
+
+
+def _safe_get_color(attr_name: str) -> tuple[float, float, float]:
+    try:
+        value = cmds.getAttr(attr_name)
+        if value and isinstance(value, list):
+            return tuple(float(v) for v in value[0])
+    except Exception:
+        pass
+    return (1.0, 1.0, 1.0)
