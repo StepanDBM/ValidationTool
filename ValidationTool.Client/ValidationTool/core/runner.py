@@ -8,7 +8,7 @@ import reporting.staged_json_reporter as json_reporter
 
 from core.registry import MeshValidatorRegistry
 
-import checks.check_mesh as check_mesh
+import core.checks.check_mesh as check_mesh
 
 import config.absolutePaths as absPath
 from config.check_categories import (
@@ -18,10 +18,10 @@ from config.check_categories import (
     NAMING
 )
 
-import checks.check_naming as check_naming
-import checks.check_uv as check_uv
+import core.checks.check_naming as check_naming
+import core.checks.check_uv as check_uv
 
-import checks.check_transforms as check_transforms
+import core.checks.check_transforms as check_transforms
 
 import config.exec_stages as excS
 
