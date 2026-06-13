@@ -17,6 +17,13 @@ MAYA_LIGHT_TYPES = {
     "aiMeshLight": "ARNOLD_MESH",
 }
 
+
+def _get_scene_path() -> str:
+    try:
+        return cmds.file(query=True, sceneName=True) or ""
+    except Exception:
+        return ""
+
 def _get_parent_path(full_path: str) -> str:
     parts = full_path.split("|")
     if len(parts) <= 2:
@@ -67,7 +74,25 @@ def _safe_get_vec3(attr_name: str) -> tuple[float, float, float]:
         pass
     return (0.0, 0.0, 0.0)
 
+def _safe_get_int(attr_name: str, default: int = 0) -> int:
+    try:
+        value = cmds.getAttr(attr_name)
 
+        if value is None:
+            return default
+
+        if isinstance(value, list):
+            if value and isinstance(value[0], (list, tuple)) and value[0]:
+                return int(value[0][0])
+            if value:
+                return int(value[0])
+
+        return int(value)
+
+    except Exception:
+        return default
+    
+    
 def _safe_get_float(attr_name: str, default: float = 0.0) -> float:
     try:
         value = cmds.getAttr(attr_name)

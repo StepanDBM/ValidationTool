@@ -49,6 +49,7 @@ class AssetType(Enum):
     VFX = "VFX"
     UI = "UI"
     UNKNOWN = "UNKNOWN"
+    
 class GeometryType(Enum):
     STATIC = "STATIC"
     SKELETAL = "SKELETAL"

@@ -1,9 +1,11 @@
 from typing import List
 
 from core.context.baseContext import BaseContext
+
 from misc_tools.DCC.Maya.maya_extract_meshes import extract_meshes
 from misc_tools.DCC.Maya.maya_extract_cameras import extract_cameras
 from misc_tools.DCC.Maya.maya_extract_lights import extract_lights
+from misc_tools.DCC.Maya.maya_extract_SceneSetup.maya_extract_SSContext import extract_scene_setup_context
 """
 Future extractors:
 from core.dcc.maya.extract_curves import extract_curves
@@ -21,7 +23,7 @@ def extract_maya_scene() -> List[BaseContext]:
         raise RuntimeError("Maya API not available. Run inside Maya.")
 
     objects: List[BaseContext] = []
-
+    objects.append(extract_scene_setup_context())
     objects.extend(extract_meshes())
     objects.extend(extract_cameras())
     objects.extend(extract_lights())
