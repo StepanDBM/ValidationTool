@@ -55,9 +55,9 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                     check_name=CHECK_NAMING,
                     severity=ValidationSeverity.WARNING,
                     message=(
-                        f"Mesh uses default Maya naming: {name}"
+                        f"Object uses default Maya naming: {name}"
                     ),
-                    suggestion="Rename mesh using studio naming conventions."
+                    suggestion="Rename Object using studio naming conventions."
                 )
             )
             return issues
@@ -80,7 +80,7 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 check_name=CHECK_NAMING,
                 severity=ValidationSeverity.WARNING,
                 message=(
-                    "Mesh missing valid asset prefix."
+                    "Object missing valid asset prefix."
                 ),
                 suggestion=(
                     "Use prefixes like CH_, ENV_, PRP_, WPN_, etc."
@@ -100,7 +100,7 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 check_name=CHECK_NAMING,
                 severity=ValidationSeverity.WARNING,
                 message=(
-                    f"Mesh name does not follow naming convention: {name}"
+                    f"Object name does not follow naming convention: {name}"
                 ),
                 suggestion=(
                     "Use format PREFIX_AssetName"
@@ -118,7 +118,7 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 asset_name=name,
                 check_name=CHECK_NAMING,
                 severity=ValidationSeverity.WARNING,
-                message="Mesh name contains double underscores.",
+                message="Object name contains double underscores.",
                 suggestion="Avoid redundant separators."
             )
         )
@@ -133,7 +133,7 @@ def check_naming(mesh: ObjectContext, runtime_ctx: ValidationRuntimeContext) -> 
                 asset_name=name,
                 check_name=CHECK_NAMING,
                 severity=ValidationSeverity.ERROR,
-                message="Mesh name contains spaces or dots.",
+                message="Object name contains spaces or dots.",
                 suggestion="Use underscores instead of spaces or other invalid characters."
             )
         )

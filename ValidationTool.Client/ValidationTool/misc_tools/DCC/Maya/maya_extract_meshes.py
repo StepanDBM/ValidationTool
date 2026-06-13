@@ -3,6 +3,15 @@ from typing import List
 from core.context.mesh_context import MeshContext
 from core.validation_system import AssetType, ObjectType
 
+from misc_tools.DCC.Maya.maya_safeMultiTool import (
+    _get_parent_path,
+    _safe_list_connections,
+    _safe_poly_uv_sets,
+    _safe_scale,
+    _safe_bbox,
+    _safe_poly_evaluate
+)
+
 try:
     import maya.cmds as cmds
 except ImportError:
@@ -28,41 +37,6 @@ def get_asset_type_from_name(name: str) -> AssetType:
             return asset_type
 
     return AssetType.UNKNOWN
-
-
-def _get_parent_path(full_path: str) -> str:
-    parts = full_path.split("|")
-    if len(parts) <= 2:
-        return ""
-    return "|".join(parts[:-1])
-
-
-def _safe_list_connections(node: str, type_name: str) -> list:
-    return cmds.listConnections(node, type=type_name) or []
-
-
-def _safe_poly_uv_sets(shape: str) -> list:
-    return cmds.polyUVSet(shape, query=True, allUVSets=True) or []
-
-
-def _safe_scale(transform: str) -> tuple[float, float, float]:
-    value = cmds.getAttr(f"{transform}.scale")
-    if value and isinstance(value, list):
-        return tuple(value[0])
-    return (1.0, 1.0, 1.0)
-
-
-def _safe_bbox(node: str) -> tuple[tuple[float, float, float], tuple[float, float, float]]:
-    bbox = cmds.exactWorldBoundingBox(node)
-    return (bbox[0], bbox[1], bbox[2]), (bbox[3], bbox[4], bbox[5])
-
-
-def _safe_poly_evaluate(shape: str, component: str) -> int:
-    try:
-        return cmds.polyEvaluate(shape, **{component: True}) or 0
-    except Exception:
-        return 0
-
 
 def extract_meshes() -> List[MeshContext]:
     if cmds is None:
