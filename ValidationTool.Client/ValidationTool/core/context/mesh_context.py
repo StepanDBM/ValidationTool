@@ -14,15 +14,31 @@ class MeshContext(BaseContext):
 
     material_slot_count: int
 
-    has_uv0: bool
-    has_uv1: bool
+    has_ngons: bool
+    ngons_quant: int
 
-    has_negative_scale: bool
     has_non_manifold_geo: bool
+    has_zeroArea_faces: bool
+
+    has_hidden_faces: bool
+    hidden_faces_quant: int
+
+    has_isolated_faces: bool
+    isolated_faces_quant: int
+
+    has_lamina_faces:bool
     has_degenerate_faces: bool
+
+    has_normals:bool
+    has_broken_normals:bool
+
+    has_overlapping_geo: bool
 
     bounding_box_min: tuple
     bounding_box_max: tuple
+    collision_readiness: bool
+
+    has_hard_edges: bool
 
     skeleton_name: str = ""
 

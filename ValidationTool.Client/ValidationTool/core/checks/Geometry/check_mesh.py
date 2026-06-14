@@ -1,126 +1,31 @@
-from typing import List
+"""from typing import List
 
 from core.validation_context import ValidationRuntimeContext
 from core.validation_system import (
     ValidationIssue,
     ValidationSeverity,
-    AssetType,
+    AssetType
+)
+
+from config.exec_stages import (
     CHECK_VERTEX_COUNT,
     CHECK_TRIANGLE_COUNT,
+    CHECK_ZERO_AREA_FACES,
+    CHECK_NGONS,
+    CHECK_ISOLATED_VERTICES,
+    CHECK_OVERLAPPING_GEOMETRY,
+    CHECK_NORMALS,
+    CHECK_HARD_EDGES,
+    CHECK_HISTORY,
+    CHECK_LAMINA_FACES,
+    CHECK_MATERIAL_SLOTS,
+    CHECK_BOUNDING_BOX,
     CHECK_NON_MANIFOLD,
     CHECK_DEGENERATE_FACES,
-    CHECK_TRANSFORMS,
-    CHECK_BOUNDING_BOX,
-    CHECK_MATERIAL_SLOTS,
-    CHECK_UV_SETS,
-    CHECK_NAMING
+    CHECK_HIDDEN_GEOMETRY,
+    CHECK_COLLISION_READINESS
 )
 from core.context.mesh_context import MeshContext
-
-def getLimitsForAssetType(asset_type: AssetType, budgets):
-    if asset_type == AssetType.STATIC_MESH:
-        return budgets.static_mesh
-    elif asset_type == AssetType.CHARACTER:
-        return budgets.character
-    elif asset_type == AssetType.WEAPON:
-        return budgets.weapon
-    elif asset_type == AssetType.PROP:
-        return budgets.prop
-    elif asset_type == AssetType.ENVIRONMENT_MODULAR:
-        return budgets.environment
-    else:
-        return None
-
-def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
-    issues = []
-    warning_limit = None
-    error_limit = None
-    limits = getLimitsForAssetType(mesh.asset_type, runtime_ctx.budgets)
-    if limits:
-        warning_limit = limits.max_vertices
-        error_limit = limits.max_vertices * 1.3
-    else:
-        return issues
-    
-    if mesh.vertex_count >= error_limit:
-        issues.append(
-            ValidationIssue(
-                asset_name=mesh.name,
-                check_name=CHECK_VERTEX_COUNT,
-                severity=ValidationSeverity.ERROR,
-                message=(
-                    f"The vertex count {mesh.vertex_count} exceeds hard limit "
-                    f"of {error_limit} for asset type {mesh.asset_type.value}"
-                ),
-                suggestion="Reduce mesh complexity."
-            )
-        )
-    elif mesh.vertex_count >= warning_limit:
-        issues.append(
-            ValidationIssue(
-                asset_name=mesh.name,
-                check_name=CHECK_VERTEX_COUNT,
-                severity=ValidationSeverity.WARNING,
-                message=(
-                    f"The vertex count ({mesh.vertex_count}) approaching limit "
-                    f"between {warning_limit} - {error_limit}"
-                ),
-                suggestion="Review topology density."
-            )
-        )
-    elif mesh.vertex_count < 2:
-        issues.append(
-            ValidationIssue(
-                asset_name=mesh.name,
-                check_name=CHECK_VERTEX_COUNT,
-                severity=ValidationSeverity.HARD,
-                message="Less than 2 vertices found in mesh, likely an import issue or corrupted file. Aborting further checks.",
-                suggestion="Ensure the mesh has valid geometry."
-            )
-        )
-    return issues
-
-def check_triangle_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
-    issues = []
-
-
-    warning_limit = None
-    error_limit = None
-    limits = getLimitsForAssetType(mesh.asset_type, runtime_ctx.budgets)
-    if limits:
-        warning_limit = limits.max_triangles
-        error_limit = limits.max_triangles * 1.3
-    else:
-        return issues
-
-    if mesh.triangle_count >= error_limit:
-        issues.append(
-            ValidationIssue(
-                asset_name=mesh.name,
-                check_name="CHECK_TRIANGLE_COUNT",
-                severity=ValidationSeverity.ERROR,
-                message=(
-                    f"Triangle count {mesh.triangle_count} exceeds hard limit "
-                    f"of {error_limit} for asset type {mesh.asset_type.value}"
-                ),
-                suggestion="Reduce mesh complexity."
-            )
-        )
-    elif mesh.triangle_count >= warning_limit:
-        issues.append(
-            ValidationIssue(
-                asset_name=mesh.name,
-                check_name="CHECK_TRIANGLE_COUNT",
-                severity=ValidationSeverity.WARNING,
-                message=(
-                    f"Triangle count ({mesh.triangle_count}) approaching limit "
-                    f"between {warning_limit} - {error_limit}"
-                ),
-                suggestion="Review topology density."
-            )
-        )
-    return issues
-
 
 def check_zero_area_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> List[ValidationIssue]:
     issues = []
@@ -132,7 +37,7 @@ def check_zero_area_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeConte
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_ZERO_AREA_FACES",
+                check_name=CHECK_ZERO_AREA_FACES,
                 severity=ValidationSeverity.WARNING,
                 message="Mesh contains zero-area faces which can cause rendering issues.",
                 suggestion="Identify and fix zero-area faces in the mesh."
@@ -151,7 +56,7 @@ def check_ngons(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> Lis
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_NGONS",
+                check_name=CHECK_NGONS,
                 severity=ValidationSeverity.WARNING,
                 message="Mesh contains ngons which can cause issues in some game engines.",
                 suggestion="Convert ngons to quads or tris."
@@ -170,7 +75,7 @@ def check_isolated_vertices(mesh: MeshContext, runtime_ctx: ValidationRuntimeCon
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_ISOLATED_VERTICES",
+                check_name=CHECK_ISOLATED_VERTICES,
                 severity=ValidationSeverity.INFO,
                 message="Mesh contains isolated vertices that are not connected to any faces.",
                 suggestion="Remove or connect isolated vertices to the mesh."
@@ -189,7 +94,7 @@ def check_overlapping_geometry(mesh: MeshContext, runtime_ctx: ValidationRuntime
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_OVERLAPPING_GEOMETRY",
+                check_name=CHECK_OVERLAPPING_GEOMETRY,
                 severity=ValidationSeverity.WARNING,
                 message="Mesh contains overlapping geometry which can cause z-fighting.",
                 suggestion="Identify and resolve overlapping faces in the mesh."
@@ -208,7 +113,7 @@ def check_normals(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> L
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_NORMALS",
+                check_name=CHECK_NORMALS,
                 severity=ValidationSeverity.INFO,
                 message="Mesh contains normal issues such as flipped or inconsistent normals.",
                 suggestion="Recalculate or manually fix normals in the mesh."
@@ -227,7 +132,7 @@ def check_hard_edges(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_HARD_EDGES",
+                check_name=CHECK_HARD_EDGES,
                 severity=ValidationSeverity.INFO,
                 message="Mesh contains hard edges which may affect shading.",
                 suggestion="Review and adjust hard edge settings as needed."
@@ -246,7 +151,7 @@ def check_history(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> L
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_HISTORY",
+                check_name=CHECK_HISTORY,
                 severity=ValidationSeverity.INFO,
                 message="Mesh has construction history which can cause performance issues.",
                 suggestion="Delete construction history for the mesh."
@@ -265,7 +170,7 @@ def check_lamina_faces(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_LAMINA_FACES",
+                check_name=CHECK_LAMINA_FACES,
                 severity=ValidationSeverity.INFO,
                 message="Mesh contains lamina faces which are faces that share all vertices with another face.",
                 suggestion="Identify and resolve lamina faces in the mesh."
@@ -282,7 +187,7 @@ def material_slots(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> 
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_MATERIAL_SLOTS",
+                check_name=CHECK_MATERIAL_SLOTS,
                 severity=ValidationSeverity.WARNING,
                 message=f"Mesh has {mesh.material_slot_count} material slots which may exceed engine limits.",
                 suggestion="Reduce the number of material slots used by the mesh."
@@ -305,7 +210,7 @@ def check_boundingBox(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) 
         issues.append(
             ValidationIssue(
                 asset_name=mesh.name,
-                check_name="CHECK_BOUNDING_BOX",
+                check_name=CHECK_BOUNDING_BOX,
                 severity=ValidationSeverity.WARNING,
                 message=f"Mesh has a bounding box size of {bbox_size} which may be too large for the target engine.",
                 suggestion="Scale down the mesh or adjust its pivot to reduce bounding box size."
@@ -313,3 +218,4 @@ def check_boundingBox(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) 
         )
 
     return issues
+    """

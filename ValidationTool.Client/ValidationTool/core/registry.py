@@ -10,7 +10,7 @@ from config.validation_profile import ValidationProfile
 
 from core.validation_context import ValidationRuntimeContext
 
-CheckFunction = Callable[[BaseContext, ValidationRuntimeContext], List[ValidationIssue]]
+CheckFunction = Callable[[BaseContext, ValidationRuntimeContext], ValidationIssue]
 
 @dataclass
 class StageResult:

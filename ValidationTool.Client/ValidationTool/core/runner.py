@@ -9,12 +9,26 @@ import core.validation_models as valMod
 from core.registry import ValidationRegistry
 
 from core.context.baseContext import BaseContext
-from core.context import baseContext, mesh_context
+from core.context import baseContext, mesh_context, camera_context, light_context
 
-import core.checks.check_transforms as check_transforms
-import core.checks.check_naming as check_naming
-import core.checks.check_mesh as check_mesh
-import core.checks.check_uv as check_uv
+
+import core.checks.Naming.check_default_dcc_name as Check_DefDCCName
+import core.checks.Naming.check_double_underscore as Check_DublUnderscore
+import core.checks.Naming.check_invalid_characters as Check_InvChars
+import core.checks.Naming.check_name_pattern as Check_NamePattern
+import core.checks.Naming.check_valid_prefix as Check_ValPrefix
+
+import core.checks.Transform.check_zero_scale as Check_0Scl
+import core.checks.Transform.check_non_uniform_scale as Check_NonUniScl
+import core.checks.Transform.check_negative_scale as Check_NegScl
+import core.checks.Transform.check_extreme_scale as Check_XtrmScl
+
+import core.checks.Geometry.check_vertex_count as Check_VtxCount
+import core.checks.Geometry.check_triangle_count as Check_TrisCount
+
+import core.checks.Uv.check_empty_uv_set_names as Check_EmptUVSetNames
+import core.checks.Uv.check_duplicate_uv_set_names as Check_DuplUVSetNames
+import core.checks.Uv.check_missing_uv as Check_MissingUV
 
 import config.absolutePaths as absPath
 from config.check_categories import (
@@ -34,47 +48,58 @@ from reporting.config_loader import ConfigLoader
 def build_registry() -> ValidationRegistry:
 
     registry = ValidationRegistry()
-    registry.register(check_mesh.check_vertex_count,
+    registry.register(Check_VtxCount.check_vertex_count,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
-    registry.register(check_mesh.check_triangle_count,
+    registry.register(Check_TrisCount.check_triangle_count,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
 
     #registry.register(check_material_slots)
-    registry.register(check_uv.check_uv_sets,
+    registry.register(Check_EmptUVSetNames.check_empty_uv_set_names,
+                      target_types=[mesh_context.MeshContext],
+                      category=UV, stage=excS.UV)
+    registry.register(Check_DuplUVSetNames.check_duplicate_uv_set_names,
+                      target_types=[mesh_context.MeshContext],
+                      category=UV, stage=excS.UV)
+    registry.register(Check_MissingUV.check_missing_uvs,
                       target_types=[mesh_context.MeshContext],
                       category=UV, stage=excS.UV)
     #registry.register(check_non_manifold)
     #registry.register(check_degenerate_faces)
     
-    registry.register(check_transforms.check_transforms,
-                      target_types=[mesh_context.MeshContext],#could add CameraContext, SkeletonContext...
+    registry.register(Check_0Scl.check_negative_scale,
+                      target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
                       category=TRANSFORM, stage=excS.TRANSFORM)
-    registry.register(check_naming.check_naming,
-                      target_types=[baseContext.BaseContext], #everything should have correct naming
+    registry.register(Check_NonUniScl.check_negative_scale,
+                      target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
+                      category=TRANSFORM, stage=excS.TRANSFORM)
+    registry.register(Check_NegScl.check_negative_scale,
+                      target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
+                      category=TRANSFORM, stage=excS.TRANSFORM)
+    registry.register(Check_XtrmScl.check_extreme_scale,
+                      target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
+                      category=TRANSFORM, stage=excS.TRANSFORM)
+    
+    registry.register(Check_DefDCCName.check_default_dcc_naming,
+                      target_types=[baseContext.BaseContext],
                       category=NAMING, stage=excS.NAMING)
+    registry.register(Check_DublUnderscore.check_double_underscore,
+                      target_types=[baseContext.BaseContext],
+                      category=NAMING, stage=excS.NAMING)
+    registry.register(Check_InvChars.check_invalid_characters,
+                      target_types=[baseContext.BaseContext],
+                      category=NAMING, stage=excS.NAMING)
+    registry.register(Check_NamePattern.check_name_pattern,
+                      target_types=[baseContext.BaseContext],
+                      category=NAMING, stage=excS.NAMING)
+    registry.register(Check_ValPrefix.check_valid_prefix,
+                      target_types=[baseContext.BaseContext],
+                      category=NAMING, stage=excS.NAMING)
+    
     #registry.register(check_bounding_box)
 
     return registry
-
-def print_report2(issues: List[valMod.ValidationResult]):
-
-    print("\n--- ValidationResult LIST REPORT ---\n")
-
-    for issue in issues:
-        print(
-            f"[{issue.dcc}] "
-            f"{issue.asset_name} | "
-            f"{issue.check_name} -> "
-            f"{issue.stage}."
-            f"{issue.timestamp}"
-            f"{issue.severity}"
-            f"{issue.message}"
-            f"{issue.suggestion}"
-        )
-
-
 
 def run_pipeline(objects: List[BaseContext], context, profile=None):
     loader = ConfigLoader(absPath.ROOT_PATH)
@@ -96,15 +121,17 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
     with open(context.get("artist"), "r", encoding="utf-8") as f:
         this_artist = json.load(f)
 
-    all_issues_flat = []
+    all_results_flat = []
     all_issues = []
 
     ordered_checks = registry.resolveByProfileStage(profile)
 
     for obj in objects:
+        print("got HERE 1")
         hard_stop = False
 
         for check in ordered_checks:
+            print("got HERE 2")
             # Skip checks that do not apply to this context type
             
             if not isinstance(obj, tuple(check.target_types)):
@@ -114,38 +141,39 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
             if not result:
                 continue
 
+            print("got HERE 3")
 
-            all_issues_flat.extend(result)
+            all_results_flat.append(result)
+            new_issue = valMod.ValidationResult(
+                artist=this_artist,
+                dcc=context.get("dcc"),
+                origin_file=context.get("path"),
+                object_name=obj.name,
+                check_name=result.check_name,
+                stage=check.stage,
+                timestamp=timestamp,
+                severity=result.severity,
+                message=result.message,
+                suggestion=result.suggestion
+            )
+            print("got HERE 4")
+            all_issues.append(new_issue)
 
-            for issue in result:
-                new_issue = valMod.ValidationResult(
-                    artist=this_artist,
-                    dcc=context.get("dcc"),
-                    origin_file=context.get("path"),
-                    object_name=obj.name,
-                    check_name=issue.check_name,
-                    stage=check.stage,
-                    timestamp=timestamp,
-                    severity=issue.severity,
-                    message=issue.message,
-                    suggestion=issue.suggestion
-                )
-                all_issues.append(new_issue)
-
-                if issue.severity == valMod.ValidationSeverity.HARD:
-                    hard_stop = True
+            if result.severity == valMod.ValidationSeverity.HARD:
+                hard_stop = True
 
             if hard_stop:
                 break
+            print("got HERE 5")
 
-    counts = Counter(i.severity.value for i in all_issues_flat)
+    counts = Counter(i.severity.value for i in all_results_flat)
 
     summary = valMod.RunSummary(
         run_id=run_id,
         timestamp=timestamp,
         dcc=context.get("dcc"),
         total_objects=len(objects),
-        total_issues=len(all_issues_flat),
+        total_issues=len(all_results_flat),
         errors=counts.get("ERROR", 0),
         warnings=counts.get("WARNING", 0),
         infos=counts.get("INFO", 0)

@@ -64,7 +64,6 @@ def main():
             print(f"CURRENT_FILE:{file_path}", flush=True)
 
             index += 1
-            
             run = process_file(file_path, artist_log)
             myJsonPaths.append(run.jsonPath)
         except Exception as e:
