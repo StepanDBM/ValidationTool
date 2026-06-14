@@ -23,7 +23,7 @@ class MeshContext(BaseContext):
     has_hidden_faces: bool
     hidden_faces_quant: int
 
-    has_isolated_faces: bool
+    has_isolated_vertices: bool
     isolated_faces_quant: int
 
     has_lamina_faces:bool
@@ -39,6 +39,8 @@ class MeshContext(BaseContext):
     collision_readiness: bool
 
     has_hard_edges: bool
+
+    has_history: bool
 
     skeleton_name: str = ""
 

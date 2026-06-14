@@ -25,6 +25,18 @@ import core.checks.Transform.check_extreme_scale as Check_XtrmScl
 
 import core.checks.Geometry.check_vertex_count as Check_VtxCount
 import core.checks.Geometry.check_triangle_count as Check_TrisCount
+import core.checks.Geometry.check_collision_readiness as Check_CollisionReady
+import core.checks.Geometry.check_bounding_box as Check_BoundBox
+import core.checks.Geometry.check_degenerate_faces as Check_DegenFaces
+import core.checks.Geometry.check_hard_edges as Check_HardEdges
+import core.checks.Geometry.check_hidden_geometry as Check_HiddenGeo
+import core.checks.Geometry.check_isolated_vertices as Check_IsolVtx
+import core.checks.Geometry.check_lamina_faces as Check_LaminaFaces
+import core.checks.Geometry.check_ngons as Check_NGons
+import core.checks.Geometry.check_non_manifold as Check_NonManifold
+import core.checks.Geometry.check_normals_exist as Check_NormalsExist
+import core.checks.Geometry.check_normals as Check_Normals
+import core.checks.Geometry.check_overlapping_geometry as Check_OverlapGeo
 
 import core.checks.Uv.check_empty_uv_set_names as Check_EmptUVSetNames
 import core.checks.Uv.check_duplicate_uv_set_names as Check_DuplUVSetNames
@@ -54,8 +66,29 @@ def build_registry() -> ValidationRegistry:
     registry.register(Check_TrisCount.check_triangle_count,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_HardEdges.check_hard_edges,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_IsolVtx.check_isolated_vertices,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_LaminaFaces.check_lamina_faces,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_NGons.check_ngons,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_NormalsExist.check_normals_exist,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_Normals.check_broken_normals,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_OverlapGeo.check_overlapping_geo,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
 
-    #registry.register(check_material_slots)
+
     registry.register(Check_EmptUVSetNames.check_empty_uv_set_names,
                       target_types=[mesh_context.MeshContext],
                       category=UV, stage=excS.UV)
@@ -65,8 +98,7 @@ def build_registry() -> ValidationRegistry:
     registry.register(Check_MissingUV.check_missing_uvs,
                       target_types=[mesh_context.MeshContext],
                       category=UV, stage=excS.UV)
-    #registry.register(check_non_manifold)
-    #registry.register(check_degenerate_faces)
+    
     
     registry.register(Check_0Scl.check_negative_scale,
                       target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
@@ -80,6 +112,7 @@ def build_registry() -> ValidationRegistry:
     registry.register(Check_XtrmScl.check_extreme_scale,
                       target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
                       category=TRANSFORM, stage=excS.TRANSFORM)
+    
     
     registry.register(Check_DefDCCName.check_default_dcc_naming,
                       target_types=[baseContext.BaseContext],
@@ -97,8 +130,6 @@ def build_registry() -> ValidationRegistry:
                       target_types=[baseContext.BaseContext],
                       category=NAMING, stage=excS.NAMING)
     
-    #registry.register(check_bounding_box)
-
     return registry
 
 def run_pipeline(objects: List[BaseContext], context, profile=None):
@@ -127,11 +158,9 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
     ordered_checks = registry.resolveByProfileStage(profile)
 
     for obj in objects:
-        print("got HERE 1")
         hard_stop = False
 
         for check in ordered_checks:
-            print("got HERE 2")
             # Skip checks that do not apply to this context type
             
             if not isinstance(obj, tuple(check.target_types)):
@@ -140,8 +169,6 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
             result = check.func(obj, runtime_ctx)
             if not result:
                 continue
-
-            print("got HERE 3")
 
             all_results_flat.append(result)
             new_issue = valMod.ValidationResult(
@@ -156,7 +183,6 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
                 message=result.message,
                 suggestion=result.suggestion
             )
-            print("got HERE 4")
             all_issues.append(new_issue)
 
             if result.severity == valMod.ValidationSeverity.HARD:
@@ -164,7 +190,6 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
 
             if hard_stop:
                 break
-            print("got HERE 5")
 
     counts = Counter(i.severity.value for i in all_results_flat)
 

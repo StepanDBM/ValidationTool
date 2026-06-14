@@ -5,16 +5,16 @@ from core.validation_system import (
     ValidationSeverity
 )
 
-from core.checks.validation_check_ids import CHECK_BROKEN_NORMALS
+from core.checks.validation_check_ids import CHECK_NORMALS
 
 
-def check_broken_normals(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> ValidationIssue:
-    if mesh.has_broken_normals:
+def check_normals_exist(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> ValidationIssue:
+    if not mesh.has_normals:
         return ValidationIssue(
             asset_name=mesh.name,
-            check_name=CHECK_BROKEN_NORMALS,
+            check_name=CHECK_NORMALS,
             severity=ValidationSeverity.WARNING,
-            message="Mesh contains normal issues such as flipped or inconsistent normals.",
+            message="Mesh has party o completely lost its normals",
             suggestion="Recalculate or manually fix normals in the mesh."
         )
     return None

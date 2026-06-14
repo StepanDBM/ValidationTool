@@ -94,7 +94,7 @@ def extract_meshes() -> List[MeshContext]:
             has_zeroArea_faces=False,
             has_hidden_faces=False,
             hidden_faces_quant=0,
-            has_isolated_faces=False,
+            has_isolated_vertices=False,
             isolated_faces_quant=0,
             has_lamina_faces=False,
             has_degenerate_faces=False,
@@ -105,6 +105,7 @@ def extract_meshes() -> List[MeshContext]:
             bounding_box_max=bbox_max,
             collision_readiness=True,
             has_hard_edges=False,
+            has_history=False
             skeleton_name="",
             uv_sets=uv_sets,
             materials=materials,

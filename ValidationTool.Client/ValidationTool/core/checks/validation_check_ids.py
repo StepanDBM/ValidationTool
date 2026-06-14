@@ -64,7 +64,8 @@ CHECK_ZERO_AREA_FACES = "CHECK_ZERO_AREA_FACES"
 CHECK_NGONS = "CHECK_NGONS"
 CHECK_ISOLATED_VERTICES = "CHECK_ISOLATED_VERTICES"
 CHECK_OVERLAPPING_GEOMETRY = "CHECK_OVERLAPPING_GEOMETRY"
-CHECK_NORMALS= "CHECK_NORMALS"
+CHECK_NORMALS = "CHECK_NORMALS"
+CHECK_BROKEN_NORMALS = "CHECK_BROKEN_NORMALS"
 CHECK_HARD_EDGES = "CHECK_HARD_EDGES"
 CHECK_LAMINA_FACES = "CHECK_LAMINA_FACES" #Mesh contains lamina faces which are faces that share all vertices with another face.
 # ============================================================
@@ -84,6 +85,7 @@ CHECK_DUPLICATE_UV_SET_NAMES = "CHECK_DUPLICATE_UV_SET_NAMES"  # Duplicate UV se
 # ============================================================
 
 CHECK_MATERIAL_SLOTS = "CHECK_MATERIAL_SLOTS"  # Material slot count invalid
+CHECK_MATERIAL_SLOTS_EXIST = "CHECK_MATERIAL_SLOTS_EXIST"  # Material slot count invalid
 
 
 # ============================================================
@@ -246,6 +248,8 @@ CHECKS_BY_STAGE = {
         CHECK_BOUNDING_BOX,
         CHECK_HIDDEN_GEOMETRY,
         CHECK_COLLISION_READINESS,
+        CHECK_NORMALS,
+        CHECK_BROKEN_NORMALS
     ],
 
     "UV": [
