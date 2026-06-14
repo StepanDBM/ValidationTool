@@ -105,10 +105,10 @@ def extract_meshes() -> List[MeshContext]:
             bounding_box_max=bbox_max,
             collision_readiness=True,
             has_hard_edges=False,
-            has_history=False
+            has_history=False,
             skeleton_name="",
             uv_sets=uv_sets,
-            materials=materials,
+            materials=materials
         )
 
         meshes.append(mesh_context)
