@@ -46,7 +46,7 @@ def process_file(file_path: str, artist: str):
 
 def main():
     files = get_dcc_files(absPath.SOURCE_ARTISTS, "maya")
-
+    print(files)
     total_Mayafiles = len(files)
     index = 0
 

@@ -1,12 +1,13 @@
 ﻿
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using ValidationTool.UI.ViewModels.ValidationView_Models;
 using ValidationTool.UI.Models.DTOs;
+using ValidationTool.UI.ViewModels.ValidationView_Models;
 
 namespace ValidationTool.UI.ViewModels {
     public class UC_TeamListViewModel {
@@ -41,10 +42,11 @@ namespace ValidationTool.UI.ViewModels {
                 int errors = g.Count(i => i.Severity == "ERROR");
                 int warnings = g.Count(i => i.Severity == "WARNING");
                 int infos = g.Count(i => i.Severity == "INFO");
-
+                Debug.WriteLine($"TEAM AGGREGATION - ISSUE COUNT: {_issues.Count}");
                 TeamList.Add(new TeamStatsViewModel {
                     TeamName = g.Key,
                     ArtistsCount = g.Select(i => i.Artist?.ArtistName).Distinct().Count(),
+                    ScenesCount = g.Select(i => i.OriginFile).Distinct().Count(),
                     Errors = errors,
                     Warnings = warnings,
                     Issues = errors + warnings + infos

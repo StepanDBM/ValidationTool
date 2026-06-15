@@ -3,3 +3,5 @@ Sourcefiles/
 mArtists/
 ValidationTool.Client/reports/
 ValidationTool.UI/TOKEN_KEYS_GITIGNORE/
+ValidationTool.UI/bin/
+ValidationTool.UI/obj/

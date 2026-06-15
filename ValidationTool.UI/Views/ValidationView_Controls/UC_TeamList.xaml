@@ -24,6 +24,11 @@
                             Binding="{Binding ArtistsCount}"
                             Width="*"
                             SortMemberPath="Artists" />
+
+                <DataGridTextColumn Header="Scenes"
+                            Binding="{Binding ScenesCount}"
+                            Width="*"
+                            SortMemberPath="Scenes" />
                 <DataGridTextColumn Header="Issues"
                             Binding="{Binding Issues}"
                             Width="*"

@@ -103,12 +103,12 @@ namespace ValidationTool.UI.ViewModels {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalWarnings)));
             }
         }
-        private int _totalInfos;
-        public int TotalInfos {
-            get => _totalInfos;
+        private int _totalScenes;
+        public int TotalScenes {
+            get => _totalScenes;
             set {
-                _totalInfos = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalInfos)));
+                _totalScenes = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalScenes)));
             }
         }
 
@@ -128,17 +128,17 @@ namespace ValidationTool.UI.ViewModels {
             TotalIssues = 0;
             TotalErrors = 0;
             TotalWarnings = 0;
-            TotalInfos = 0;
+            TotalScenes = 0;
             mIssues.Clear();
             var dtos = JsonReportLoader.Load();
 
-            foreach (var dcc in dtos) {
-                TotalAssets += dcc.summary.TotalAssets;
-                TotalIssues += dcc.summary.TotalIssues;
-                TotalErrors += dcc.summary.Errors;
-                TotalWarnings += dcc.summary.Warnings;
-                TotalInfos += dcc.summary.Infos;
-                foreach (var issue in dcc.issues) {
+            foreach (var scene in dtos) {
+                TotalAssets += scene.summary.TotalAssets;
+                TotalIssues += scene.summary.TotalIssues;
+                TotalErrors += scene.summary.Errors;
+                TotalWarnings += scene.summary.Warnings;
+                TotalScenes += 1;
+                foreach (var issue in scene.issues) {
                     mIssues.Add(new IssueViewModel {
                         Artist = new ArtistViewModel {
                             ArtistName = issue.Artist.ArtistName,
@@ -171,7 +171,7 @@ namespace ValidationTool.UI.ViewModels {
                     TotalIssues = TotalIssues,
                     Errors = TotalErrors,
                     Warnings = TotalWarnings,
-                    Infos = TotalInfos,
+                    Infos = TotalScenes,
                 }
             });
             TeamListVM.AggregateAll();

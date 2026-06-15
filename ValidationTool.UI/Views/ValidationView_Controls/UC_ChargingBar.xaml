@@ -74,12 +74,12 @@
         <!-- Summary -->
         <TextBlock Grid.Row="3" Margin="5">
             <TextBlock.Text>
-                <MultiBinding StringFormat="Assets {0} | Issues: {1} | Errors: {2} | Warnings: {3} | Info: {4}">
-                    <Binding Path="TotalAssets"/>
+                <MultiBinding StringFormat="[Issues: {0} | Errors: {1} | Warnings: {2}] in: {3} ObjectContexts from {4} Scenes">
                     <Binding Path="TotalIssues"/>
                     <Binding Path="TotalErrors"/>
                     <Binding Path="TotalWarnings"/>
-                    <Binding Path="TotalInfos"/>
+                    <Binding Path="TotalAssets"/>
+                    <Binding Path="TotalScenes"/>
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
