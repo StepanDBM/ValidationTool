@@ -32,7 +32,7 @@ namespace ValidationTool.Services.Notifications {
             var sb = new StringBuilder();
 
             // --------------------------------------------------
-            // HEADER
+            // HEADER // added icons jeej
             // --------------------------------------------------
             sb.AppendLine("*Validation report* 🚨");
             sb.AppendLine();
