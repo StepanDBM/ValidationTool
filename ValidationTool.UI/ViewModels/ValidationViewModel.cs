@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,7 @@ using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.external;
+using ValidationTool.UI.Services.External;
 using ValidationTool.UI.Services.Notifications;
 
 namespace ValidationTool.UI.ViewModels {
@@ -327,6 +329,24 @@ namespace ValidationTool.UI.ViewModels {
                                 ProcessLine(line);
                             });
                         });
+                });
+            } finally {
+                IsBusy = false;
+            }
+        }
+        public async Task LoadProxy() {
+            IsBusy = true;
+
+            try {
+                await Task.Run(() =>
+                {
+                    ArtistsDataSetCreator.Run(line =>
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ProcessLine(line);
+                        });
+                    });
                 });
             } finally {
                 IsBusy = false;

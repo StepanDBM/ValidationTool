@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using ValidationTool.UI.ViewModels;
 
@@ -20,6 +21,12 @@ namespace ValidationTool.UI.Views.ValidationView_Controls {
 
         private void LoadReport_Click(object sender, RoutedEventArgs e) {
             VM?.LoadReport();
+
+            Console.WriteLine("This is actualy being done");
+        }
+
+        private void LoadProxy_Click(object sender, RoutedEventArgs e) {
+            VM?.LoadProxy();
         }
     }
 }

@@ -99,6 +99,7 @@
     <Compile Include="Services\Config\ConfigService.cs" />
     <Compile Include="Services\Config\NamingRulesService.cs" />
     <Compile Include="Services\Config\absolutePaths.cs" />
+    <Compile Include="Services\external\ArtistsDataSetCreator.cs" />
     <Compile Include="Services\external\BlenderRunner.cs" />
     <Compile Include="Services\external\MayaRunner.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />

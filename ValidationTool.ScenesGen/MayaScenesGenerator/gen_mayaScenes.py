@@ -150,29 +150,44 @@ def main():
     ARTISTS_DIR.mkdir(exist_ok=True)
 
     total_files = 0
+    artists_data = []
 
     for artist_dir in ARTISTS_DIR.iterdir():
-
         if not artist_dir.is_dir():
             continue
 
         artist = artist_dir.name
+        num_files = random.randint(2, 5)
+
+        artists_data.append((artist_dir, artist, num_files))
+        total_files += num_files
+
+    current_index = 0
+
+    print(f"TOTAL_FILES: {total_files}")
+
+    for artist_dir, artist, num_Mayafiles in artists_data:
 
         artistMaya_dir = artist_dir / "Source_Maya"
         artistMaya_dir.mkdir(parents=True, exist_ok=True)
 
-        num_Mayafiles = random.randint(2, 5)
-
-        print(f"Creating {num_Mayafiles} scenes for {artist}")
+        print(f"[INFO] Creating {num_Mayafiles} Maya scenes for {artist}")
 
         for i in range(num_Mayafiles):
             file_name = f"{artist}_brokenScene_{i}.ma"
             file_path = artistMaya_dir / file_name
 
-            create_mayaScene_with_random_issues(file_path)
-            total_files += 1
+            print(f"CURRENT_FILE: {file_path}")
 
-    print(f"\nDONE. Created {total_files} scenes.")
+            create_mayaScene_with_random_issues(file_path)
+
+            current_index += 1
+
+            percent = int((current_index / total_files) * 100)
+
+            print(f"PROGRESS: [{percent}%]")
+
+    print(f"\nDONE. Created {current_index} scenes.")
 
 if __name__ == "__main__":
     main()

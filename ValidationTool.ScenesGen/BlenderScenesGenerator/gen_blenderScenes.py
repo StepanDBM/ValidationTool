@@ -177,31 +177,44 @@ def main():
     ARTISTS_DIR.mkdir(exist_ok=True)
 
     total_files = 0
+    artists_data = []
 
     for artist_dir in ARTISTS_DIR.iterdir():
-
         if not artist_dir.is_dir():
             continue
 
         artist = artist_dir.name
+        num_files = random.randint(2, 5)
+
+        artists_data.append((artist_dir, artist, num_files))
+        total_files += num_files
+
+    current_index = 0
+
+    print(f"TOTAL_FILES: {total_files}")
+
+    for artist_dir, artist, num_Blenderfiles in artists_data:
 
         artistBlender_dir = artist_dir / "Source_Blender"
         artistBlender_dir.mkdir(parents=True, exist_ok=True)
 
-        num_Blenderfiles = random.randint(2, 5)
-
-        print(f"Creating {num_Blenderfiles} scenes for {artist}")
+        print(f"[INFO] Creating {num_Blenderfiles} Blender scenes for {artist}")
 
         for i in range(num_Blenderfiles):
             file_name = f"{artist}_brokenScene_{i}.blend"
             file_path = artistBlender_dir / file_name
 
+            print(f"CURRENT_FILE: {file_path}")
+
             create_blenderScene_with_random_issues(file_path)
-            total_files += 1
 
-    print(f"\nDONE. Created {total_files} scenes.")
+            current_index += 1
 
+            percent = int((current_index / total_files) * 100)
 
+            print(f"PROGRESS: [{percent}%]")
+
+    print(f"\nDONE. Created {current_index} scenes.")
 
 if __name__ == "__main__":
     main()

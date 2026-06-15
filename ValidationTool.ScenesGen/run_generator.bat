@@ -68,4 +68,4 @@ echo ==========================
 echo   ALL DONE SUCCESSFULLY
 echo ==========================
 
-pause
+exit

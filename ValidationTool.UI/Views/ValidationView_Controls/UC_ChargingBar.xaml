@@ -1,7 +1,9 @@
 ﻿<UserControl x:Class="ValidationTool.UI.Views.ValidationView_Controls.UC_ChargingBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid Margin="10"
           Background="{StaticResource BrushBgPanel}">
 
@@ -19,19 +21,29 @@
                     Width="120"
                     Height="35"
                     Margin="5"
-                    Click="RunMaya_Click"/>
+                    Click="RunMaya_Click"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Button Content="Run Blender"
                     Width="120"
                     Height="35"
                     Margin="5"
-                    Click="RunBlender_Click"/>
+                    Click="RunBlender_Click"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Button Content="Load Report"
                     Width="120"
                     Height="35"
                     Margin="5"
-                    Click="LoadReport_Click"/>
+                    Click="LoadReport_Click"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Button Content="Load Proxy"
+                    Width="120"
+                    Height="35"
+                    Margin="5"
+                    Click="LoadProxy_Click"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
 
         <!-- Current file -->
