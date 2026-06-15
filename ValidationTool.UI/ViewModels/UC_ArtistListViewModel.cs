@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.ViewModels.ValidationView_Models;
 
@@ -13,7 +15,12 @@ namespace ValidationTool.UI.ViewModels {
         private readonly ObservableCollection<IssueViewModel> _issues;
         private readonly SelectionContext _selection;
         public ObservableCollection<ArtistStatsViewModel> ArtistList { get; set; } = new ObservableCollection<ArtistStatsViewModel>();
-        public UC_ArtistListViewModel(ObservableCollection<IssueViewModel> issues, SelectionContext selection) {//MVVM injection
+
+        private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
+        public ICommand SendReportCommand { get; }
+
+        public UC_ArtistListViewModel(ObservableCollection<IssueViewModel> issues, SelectionContext selection) {
+            SendReportCommand = new AsyncRelayCommand<ArtistStatsViewModel>(SendReport);
             _issues = issues;
             _selection = selection;
             _selection.PropertyChanged += OnSelectionChanged;
@@ -60,6 +67,25 @@ namespace ValidationTool.UI.ViewModels {
                     Issues = errors + warnings + infos
                 });
             }
+        }
+
+
+        private async Task SendReport(ArtistStatsViewModel artist) {
+            try {
+                if (artist == null) return;
+
+                var artistIssues = new ObservableCollection<IssueViewModel>(
+                    _issues.Where(i => 
+                    i.Artist?.ArtistName == artist.ArtistName &&
+                    i.Artist?.ArtistTeam == _selection.SelectedTeam
+                        )
+                );
+
+                await mNotService.SendErrorReportAsync(artistIssues);
+            } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
+            }
+
         }
     }
 }

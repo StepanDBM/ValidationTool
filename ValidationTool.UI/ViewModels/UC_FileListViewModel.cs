@@ -20,9 +20,7 @@ namespace ValidationTool.UI.ViewModels {
 
         public ObservableCollection<FileStatsViewModel> FileList { get; } =new ObservableCollection<FileStatsViewModel>();
 
-        public UC_FileListViewModel(
-            ObservableCollection<IssueViewModel> issues,
-            SelectionContext selection) {
+        public UC_FileListViewModel( ObservableCollection<IssueViewModel> issues, SelectionContext selection) {
             SendReportCommand = new AsyncRelayCommand<FileStatsViewModel>(SendReport);
             _issues = issues;
             _selection = selection;
