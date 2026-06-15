@@ -8,13 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
-using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
-using ValidationTool.UI.Services.external;
 using ValidationTool.UI.Services.External;
-using ValidationTool.UI.Services.Notifications;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel : INotifyPropertyChanged {

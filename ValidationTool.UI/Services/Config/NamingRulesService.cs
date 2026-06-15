@@ -4,7 +4,7 @@ using ValidationTool.UI.Models.Config;
 
 namespace ValidationTool.UI.Services.Config {
     public class NamingRulesService {
-        private const string namingPath = @"C:\Users\StyopaDBM\source\repos\ValidationTool\configurations\naming_rules.json";
+        private static string namingPath = Path.Combine(Paths.GEN_CONFIGS, "naming_rules.json");
 
         public NamingRulesModel LoadNamingRules() {
             if (!File.Exists(namingPath))

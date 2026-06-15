@@ -14,16 +14,18 @@ namespace ValidationTool.UI.Services {
 
             foreach (var dcc in lastRuns) {
                 foreach (var reportPath in dcc.Runs) {
-                    var json = File.ReadAllText(reportPath);
+                    try {
+                        var json = File.ReadAllText(reportPath);
+                        var report = JsonSerializer.Deserialize<ValidationRunDto>(
+                            json,
+                            new JsonSerializerOptions {
+                                PropertyNameCaseInsensitive = true
+                            });
 
-                    var report = JsonSerializer.Deserialize<ValidationRunDto>(
-                        json,
-                        new JsonSerializerOptions {
-                            PropertyNameCaseInsensitive = true
-                        });
-
-                    if (report != null) {
-                        reports.Add(report);
+                        if (report != null) {
+                            reports.Add(report);
+                        }
+                    } catch {
                     }
                 }
             }

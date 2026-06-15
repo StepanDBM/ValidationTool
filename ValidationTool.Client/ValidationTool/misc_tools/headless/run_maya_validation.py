@@ -26,9 +26,8 @@ from fileSearchers.source_finder import get_dcc_files
 
 from reporting.staged_json_reporter import write_session_runs
 import config.dcc_list as myDCCs
+
 import config.absolutePaths as absPath
-
-
 
 def process_file(file_path: str, artist: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
@@ -45,7 +44,8 @@ def process_file(file_path: str, artist: str):
     return run
 
 def main():
-    files = get_dcc_files(absPath.SOURCE_ARTISTS, "maya")
+
+    files = get_dcc_files(absPath.ARTISTS_DIR, "maya")
     print(files)
     total_Mayafiles = len(files)
     index = 0

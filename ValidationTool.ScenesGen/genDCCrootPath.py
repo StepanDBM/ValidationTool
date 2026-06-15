@@ -10,8 +10,12 @@ from artistJsonCreator import(
     create_artist_json
 )
 from mArtists import ARTISTS
-ARTISTS_DIR = Path.home() / "Documents" / "Artists"
+APP_DIR = Path.home() / "Documents" / "ValidationTool"
+APP_DIR.mkdir(parents=True, exist_ok=True)
+ARTISTS_DIR = APP_DIR / "Artists"
 ARTISTS_DIR.mkdir(parents=True, exist_ok=True)
+REPORTS_DIR = APP_DIR / "Reports"
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
     print("Starting scene generation...\n")

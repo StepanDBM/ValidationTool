@@ -4,7 +4,7 @@ using ValidationTool.UI.Models.Config;
 
 namespace ValidationTool.UI.Services.Config {
     public class ConfigService {
-        private const string ConfigPath = @"C:\Users\StyopaDBM\source\repos\ValidationTool\configurations\validation_config.json";
+        private static string ConfigPath = Path.Combine(Paths.GEN_CONFIGS, "validation_config.json");
 
         public ValidationConfigModel LoadConfig() {
             if (!File.Exists(ConfigPath))

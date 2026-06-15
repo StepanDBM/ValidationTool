@@ -9,9 +9,9 @@ import sys
 PARENT_DIR = Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(PARENT_DIR))
 
-ARTISTS_DIR = Path.home() / "Documents" / "Artists"
-ARTISTS_DIR.mkdir(parents=True, exist_ok=True)
-
+from genDCCrootPath import (
+    ARTISTS_DIR
+)
 
 def maybe(func, *args, probability=0.5): #this is honestly so cool, I feel quite proud of it.
     if random.random() < probability:

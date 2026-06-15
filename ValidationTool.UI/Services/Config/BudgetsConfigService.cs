@@ -5,7 +5,7 @@ using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.Services.Config {
     public class BudgetsConfigService {
-        private static readonly string budgetPath = Path.Combine(Paths.GEN_CONFIGS.ToString(), "budgets.json");
+        private static readonly string budgetPath = Path.Combine(Paths.GEN_CONFIGS, "budgets.json");
 
         public BudgetsConfigModel Load() {
             if (!File.Exists(budgetPath))

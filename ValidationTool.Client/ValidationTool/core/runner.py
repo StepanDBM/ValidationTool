@@ -25,15 +25,15 @@ import core.checks.Transform.check_extreme_scale as Check_XtrmScl
 
 import core.checks.Geometry.check_vertex_count as Check_VtxCount
 import core.checks.Geometry.check_triangle_count as Check_TrisCount
-import core.checks.Geometry.check_collision_readiness as Check_CollisionReady
-import core.checks.Geometry.check_bounding_box as Check_BoundBox
-import core.checks.Geometry.check_degenerate_faces as Check_DegenFaces
+#import core.checks.Geometry.check_collision_readiness as Check_CollisionReady
+#import core.checks.Geometry.check_bounding_box as Check_BoundBox
+#import core.checks.Geometry.check_degenerate_faces as Check_DegenFaces
 import core.checks.Geometry.check_hard_edges as Check_HardEdges
-import core.checks.Geometry.check_hidden_geometry as Check_HiddenGeo
+#import core.checks.Geometry.check_hidden_geometry as Check_HiddenGeo
 import core.checks.Geometry.check_isolated_vertices as Check_IsolVtx
 import core.checks.Geometry.check_lamina_faces as Check_LaminaFaces
 import core.checks.Geometry.check_ngons as Check_NGons
-import core.checks.Geometry.check_non_manifold as Check_NonManifold
+#import core.checks.Geometry.check_non_manifold as Check_NonManifold
 import core.checks.Geometry.check_normals_exist as Check_NormalsExist
 import core.checks.Geometry.check_normals as Check_Normals
 import core.checks.Geometry.check_overlapping_geometry as Check_OverlapGeo
@@ -133,7 +133,7 @@ def build_registry() -> ValidationRegistry:
     return registry
 
 def run_pipeline(objects: List[BaseContext], context, profile=None):
-    loader = ConfigLoader(absPath.ROOT_PATH)
+    loader = ConfigLoader(absPath.TOOLS_ROOT)
 
     validation_config = loader.load_validation_config()
     naming_rules = loader.load_naming_rules()
