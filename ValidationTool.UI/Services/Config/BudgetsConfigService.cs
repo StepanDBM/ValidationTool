@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text.Json;
 using ValidationTool.UI.Models.Config;
-using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.Services.Config {
     public class BudgetsConfigService {

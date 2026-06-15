@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ValidationTool.UI.Services.Config;
 
 namespace ValidationTool.UI.Services.External {
     public static class ArtistsDataSetCreator {
@@ -8,11 +9,10 @@ namespace ValidationTool.UI.Services.External {
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
 
             // Navigate to solution root
-            var solutionRoot = Path.GetFullPath(Path.Combine(baseDir, @"..\..\.."));
+            var solutionRoot = Paths.TOOLS_ROOT;
 
             // Build path to .bat
-            var batPath = Path.Combine(
-                solutionRoot,
+            var batPath = Path.Combine(solutionRoot,
                 "ValidationTool.ScenesGen",
                 "run_generator.bat"
             );
