@@ -44,6 +44,7 @@ namespace ValidationTool.UI.ViewModels {
 
                 TeamList.Add(new TeamStatsViewModel {
                     TeamName = g.Key,
+                    ArtistsCount = g.Select(i => i.Artist?.ArtistName).Distinct().Count(),
                     Errors = errors,
                     Warnings = warnings,
                     Issues = errors + warnings + infos

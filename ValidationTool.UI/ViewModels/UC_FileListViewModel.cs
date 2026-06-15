@@ -1,7 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using ValidationTool.Services.Notifications;
+using ValidationTool.UI.Commands;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.ViewModels.ValidationView_Models;
 
@@ -10,11 +15,15 @@ namespace ValidationTool.UI.ViewModels {
         private readonly ObservableCollection<IssueViewModel> _issues;
         private readonly SelectionContext _selection;
 
+        private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
+        public ICommand SendReportCommand { get; }
+
         public ObservableCollection<FileStatsViewModel> FileList { get; } =new ObservableCollection<FileStatsViewModel>();
 
         public UC_FileListViewModel(
             ObservableCollection<IssueViewModel> issues,
             SelectionContext selection) {
+            SendReportCommand = new AsyncRelayCommand<FileStatsViewModel>(SendReport);
             _issues = issues;
             _selection = selection;
 
@@ -68,5 +77,22 @@ namespace ValidationTool.UI.ViewModels {
                 });
             }
         }
+
+        private async Task SendReport(FileStatsViewModel file) {
+            try {
+                if (file == null) return;
+
+                var fileIssues = new ObservableCollection<IssueViewModel>(
+                    _issues.Where(i => i.OriginFile == file.FilePath)
+                );
+
+                await mNotService.SendErrorReportAsync(fileIssues);
+            } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
+            }
+
+        }
+
+
     }
 }

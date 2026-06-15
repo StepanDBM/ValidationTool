@@ -15,6 +15,7 @@ namespace ValidationTool.Services.Notifications {
         public SlackDmNotificationProvider(HttpClient httpClient, string botToken) {
             _httpClient = httpClient;
             _botToken = botToken;
+            Console.WriteLine(_botToken);
         }
 
         public async Task SendAsync(NotificationMessage message){

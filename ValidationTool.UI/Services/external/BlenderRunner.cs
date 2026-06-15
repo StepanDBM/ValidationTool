@@ -29,6 +29,8 @@ namespace ValidationTool.UI.Services.external {
             process.Start();
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
+
+            process.WaitForExit(); // For the async added into the RunBlender/RunMaya buttons
         }
     }
 }

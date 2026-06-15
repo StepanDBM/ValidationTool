@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using ValidationTool.Services.Notifications;
@@ -36,6 +38,16 @@ namespace ValidationTool.UI.ViewModels {
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _isBusy;
+        public bool IsBusy {
+            get => _isBusy;
+            set {
+                _isBusy = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsBusy)));
+            }
+        }
+
         private string _currentFile;
         public string CurrentFile {
             get => _currentFile;
@@ -257,54 +269,68 @@ namespace ValidationTool.UI.ViewModels {
 
             IssuesView.Refresh();
         }
+        private void ProcessLine(string line) {
+            if (line.StartsWith("PROGRESS:")) {
+                var percentText = line
+                    .Replace("PROGRESS:", "")
+                    .Replace("[", "")
+                    .Replace("%]", "")
+                    .Trim();
 
-        public void RunMayaValidation() {
-            MayaRunner.Run(Path.Combine(Paths.HEADLESS, "run_maya_validation.py"),
-                line =>
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    if (line.StartsWith("PROGRESS:")) {
-                        var percentText = line
-                            .Replace("PROGRESS:", "")
-                            .Replace("[", "")
-                            .Replace("%]", "")
-                            .Trim();
+                if (int.TryParse(percentText, out int value)) {
+                    Progress = value;
+                }
+            }
 
-                        if (int.TryParse(percentText, out int value)) {
-                            Progress = value;
-                        }
-                    }
-
-                    if (line.StartsWith("CURRENT_FILE:")) {
-                        CurrentFile = line.Replace("CURRENT_FILE:", "").Trim();
-                    }
-                });
-            });
+            if (line.StartsWith("CURRENT_FILE:")) {
+                CurrentFile = line.Replace("CURRENT_FILE:", "").Trim();
+            }
         }
-        public void RunBlenderValidation() {
-            BlenderRunner.Run(Path.Combine(Paths.HEADLESS, "run_blender_validation.py"),
-                line =>
+
+        public class InverseBoolConverter : IValueConverter {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+                return !(bool)value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+                return !(bool)value;
+            }
+        }
+
+        public async Task RunMayaValidation() {
+            IsBusy = true;
+
+            try {
+                await Task.Run(() =>
                 {
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        if (line.StartsWith("PROGRESS:")) {
-                            var percentText = line
-                                .Replace("PROGRESS:", "")
-                                .Replace("[", "")
-                                .Replace("%]", "")
-                                .Trim();
-
-                            if (int.TryParse(percentText, out int value)) {
-                                Progress = value;
-                            }
-                        }
-
-                        if (line.StartsWith("CURRENT_FILE:")) {
-                            CurrentFile = line.Replace("CURRENT_FILE:", "").Trim();
-                        }
-                    });
+                    MayaRunner.Run(
+                        Path.Combine(Paths.HEADLESS, "run_maya_validation.py"),
+                        line => {
+                            Application.Current.Dispatcher.Invoke(() => {
+                                ProcessLine(line);
+                            });
+                        });
                 });
+            } finally {
+                IsBusy = false;
+            }
+        }
+
+        public async Task RunBlenderValidation() {
+            IsBusy = true;
+            try {
+                await Task.Run(() => {
+                    BlenderRunner.Run(
+                        Path.Combine(Paths.HEADLESS, "run_blender_validation.py"),
+                        line => {
+                            Application.Current.Dispatcher.Invoke(() => {
+                                ProcessLine(line);
+                            });
+                        });
+                });
+            } finally {
+                IsBusy = false;
+            }
         }
     }
 }

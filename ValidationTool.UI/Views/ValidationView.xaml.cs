@@ -14,14 +14,15 @@ namespace ValidationTool.UI.Views {
             var vm = DataContext as ValidationViewModel;
             vm.LoadReport();
         }
-        private void RunMaya_Click(object sender, RoutedEventArgs e) {
+        private async void RunMaya_Click(object sender, RoutedEventArgs e) {
             var vm = DataContext as ValidationViewModel;
-            vm.RunMayaValidation();
+            await vm.RunMayaValidation();
         }
 
-        private void RunBlender_Click(object sender, RoutedEventArgs e) {
+
+        private async void RunBlender_Click(object sender, RoutedEventArgs e) {
             var vm = DataContext as ValidationViewModel;
-            vm.RunBlenderValidation();
+            await vm.RunBlenderValidation();
         }
         private void GridViewHeader_Click(object sender, RoutedEventArgs e) {
             var vm = DataContext as ValidationViewModel;

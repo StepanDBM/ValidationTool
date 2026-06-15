@@ -37,6 +37,16 @@
                             Width="*"
                             SortMemberPath="Errors" />
 
+                <DataGridTemplateColumn Header="Report" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Report"
+                        Command="{Binding DataContext.SendReportCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                        CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
             </DataGrid.Columns>
 
         </DataGrid>

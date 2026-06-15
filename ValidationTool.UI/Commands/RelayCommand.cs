@@ -4,10 +4,6 @@ using System.Windows.Input;
 namespace ValidationTool.UI.Commands {
     public class RelayCommand : ICommand {
         private readonly Action _execute;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand"/> class.
-        /// </summary>
-        /// <param name="execute">The action to execute.</param>
         public RelayCommand(Action execute) {
             _execute = execute;
         }

@@ -20,6 +20,10 @@
                             Binding="{Binding TeamName}"
                             Width="2*" />
 
+                <DataGridTextColumn Header="Artists"
+                            Binding="{Binding ArtistsCount}"
+                            Width="*"
+                            SortMemberPath="Artists" />
                 <DataGridTextColumn Header="Issues"
                             Binding="{Binding Issues}"
                             Width="*"

@@ -6,6 +6,7 @@ SUPPORTED_EXTENSIONS = {
     "max": [".max"],
     "houdini": [".hip", ".hipnc"]
 }
+
 DCC_FOLDER_MAP = {
     "maya": "Source_Maya",
     "blender": "Source_Blender",
@@ -13,6 +14,8 @@ DCC_FOLDER_MAP = {
     "houdini": "Source_Houdini"
 }
 
+def get_documents_scenes_root() -> Path:
+    return Path.home() / "Documents" / "Artists"
 
 def get_dcc_files(root: Path, dcc: str) -> list[dict]:
     if dcc not in SUPPORTED_EXTENSIONS:
@@ -22,6 +25,7 @@ def get_dcc_files(root: Path, dcc: str) -> list[dict]:
     extensions = SUPPORTED_EXTENSIONS[dcc]
 
     result = []
+    root = get_documents_scenes_root()
 
     for artist_dir in root.iterdir():
         if not artist_dir.is_dir():
