@@ -65,10 +65,17 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Scene Setup Context"
-                           VerticalAlignment="Center"
+                <TextBlock VerticalAlignment="Center"
                            Margin="10,0"
-                           Foreground="{StaticResource BrushText}" />
+                           Foreground="{StaticResource BrushText}">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="Scene: {0} on {1}.{2}">
+                            <Binding Path="SceneSetup.SceneName"/>
+                            <Binding Path="SceneSetup.DccName"/>
+                            <Binding Path="SceneSetup.DccVersion"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Button Content="_" Width="40" Click="Minimize_Click"/>

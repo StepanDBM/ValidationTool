@@ -110,17 +110,7 @@ namespace ValidationTool.UI.ViewModels {
         }
 
 
-        private string _myNewText;
-        public string myNewText {
-            get => _myNewText;
-            set {
-                _myNewText = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(myNewText)));
-            }
-        }
-
         public void LoadReport() {
-            myNewText = "SHIEHHHHHH";
             TotalAssets = 0;
             TotalIssues = 0;
             TotalErrors = 0;
@@ -291,6 +281,7 @@ namespace ValidationTool.UI.ViewModels {
                 });
             } finally {
                 IsBusy = false;
+                LoadReport();
             }
         }
 
@@ -308,6 +299,7 @@ namespace ValidationTool.UI.ViewModels {
                 });
             } finally {
                 IsBusy = false;
+                LoadReport();
             }
         }
         public async Task LoadProxy() {

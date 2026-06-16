@@ -16,12 +16,12 @@
 
             <DataGrid.Columns>
 
-                <!-- File name (main column → wider) -->
+                
                 <DataGridTextColumn Header="File"
                             Binding="{Binding FileName}"
                             Width="2*" />
 
-                <!-- Numbers -->
+                
                 <DataGridTextColumn Header="Issues"
                             Binding="{Binding Issues}"
                             Width="*"
