@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_SamplingSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Sampling Settings"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding SamplingSettings.CameraAaSamples, StringFormat=Camera AA Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.DiffuseSamples, StringFormat=Diffuse Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.SpecularSamples, StringFormat=Specular Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.TransmissionSamples, StringFormat=Transmission Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.SssSamples, StringFormat=SSS Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.VolumeSamples, StringFormat=Volume Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.LightSamples, StringFormat=Light Samples: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.AdaptiveSamplingEnabled, StringFormat=Adaptive Sampling Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.AdaptiveThreshold, StringFormat=Adaptive Threshold: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.NoiseThreshold, StringFormat=Noise Threshold: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.MaxSubdivIterations, StringFormat=Max Subdiv Iterations: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.TextureBlur, StringFormat=Texture Blur: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.TextureSamplingMode, StringFormat=Texture Sampling Mode: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.ClampSampleValues, StringFormat=Clamp Sample Values: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.SampleClampDirect, StringFormat=Sample Clamp Direct: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SamplingSettings.SampleClampIndirect, StringFormat=Sample Clamp Indirect: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_Aovs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <DataGrid ItemsSource="{Binding Aovs}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="2*"/>
+                <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding Enabled}" Width="*"/>
+                <DataGridTextColumn Header="Data Type" Binding="{Binding DataType}" Width="*"/>
+                <DataGridTextColumn Header="Source Type" Binding="{Binding SourceType}" Width="*"/>
+                <DataGridTextColumn Header="Driver" Binding="{Binding Driver}" Width="*"/>
+                <DataGridTextColumn Header="Filter" Binding="{Binding Filter}" Width="*"/>
+                <DataGridTextColumn Header="Light Group" Binding="{Binding LightGroup}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Built-in" Binding="{Binding IsBuiltin}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Valid Name" Binding="{Binding HasValidName}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Required" Binding="{Binding IsRequired}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

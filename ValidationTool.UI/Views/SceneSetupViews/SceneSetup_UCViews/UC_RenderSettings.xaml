@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_RenderSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Render Settings"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding RenderSettings.RendererName, StringFormat=Renderer: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.RendererVersion, StringFormat=Renderer Version: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.RenderDevice, StringFormat=Render Device: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.RenderMode, StringFormat=Render Mode: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.BucketScanningMode, StringFormat=Bucket Scanning: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.IsProgressive, StringFormat=Progressive: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.IsBucket, StringFormat=Bucket: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.DenoiserEnabled, StringFormat=Denoiser Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.DenoiserType, StringFormat=Denoiser Type: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.AdaptiveSamplingEnabled, StringFormat=Adaptive Sampling: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.AdaptiveThreshold, StringFormat=Adaptive Threshold: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.NoiseThreshold, StringFormat=Noise Threshold: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.MotionBlurEnabled, StringFormat=Motion Blur: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.DepthOfFieldEnabled, StringFormat=Depth Of Field: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.ThreadMode, StringFormat=Thread Mode: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.ThreadCount, StringFormat=Thread Count: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.UseDisplacement, StringFormat=Use Displacement: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.UseSubsurface, StringFormat=Use Subsurface: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.UseVolumes, StringFormat=Use Volumes: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.UseCaustics, StringFormat=Use Caustics: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.TextureAutoTxEnabled, StringFormat=Auto TX: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.ForceLinearTextures, StringFormat=Force Linear Textures: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.RenderEngineMode, StringFormat=Render Engine Mode: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.TileSizeX, StringFormat=Tile Size X: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RenderSettings.TileSizeY, StringFormat=Tile Size Y: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

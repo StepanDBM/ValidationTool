@@ -3,11 +3,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Commands;
 using ValidationTool.UI.Models.DTOs;
+using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.ViewModels.ValidationView_Models;
 using ValidationTool.UI.Views;
 
@@ -23,13 +26,19 @@ namespace ValidationTool.UI.ViewModels {
 
         public ICommand OpenSceneConfigViewCommand { get; }
 
-        public UC_FileListViewModel( ObservableCollection<IssueViewModel> issues, SelectionContext selection) {
+        private readonly ObservableCollection<ValidationRunDto> _runs;
+
+        public UC_FileListViewModel(
+            ObservableCollection<IssueViewModel> issues,
+            ObservableCollection<ValidationRunDto> runs,
+            SelectionContext selection) {
             SendReportCommand = new AsyncRelayCommand<FileStatsViewModel>(SendReport);
             _issues = issues;
+            _runs = runs;
             _selection = selection;
 
             _selection.PropertyChanged += OnSelectionChanged;
-            OpenSceneConfigViewCommand = new RelayCommand<FileStatsViewModel>(OpenSceneConfigView);
+            OpenSceneConfigViewCommand = new RelayCommand(OpenSceneConfigView);
         }
         private FileStatsViewModel _selectedFileVM;
         public FileStatsViewModel SelectedFileVM {
@@ -57,25 +66,35 @@ namespace ValidationTool.UI.ViewModels {
                 string.IsNullOrEmpty(_selection.SelectedArtist))
                 return;
 
-            var filtered = _issues
-                .Where(i =>
-                    i.Artist?.ArtistTeam == _selection.SelectedTeam &&
-                    i.Artist?.ArtistName == _selection.SelectedArtist)
-                .GroupBy(i => i.OriginFile);
+            var filteredRuns = _runs
+                .Where(r =>
+                    r.issues != null &&
+                    r.issues.Any(i =>
+                        i.Artist?.ArtistTeam == _selection.SelectedTeam &&
+                        i.Artist?.ArtistName == _selection.SelectedArtist));
 
-            foreach (var g in filtered) {
-                int errors = g.Count(i => i.Severity == "ERROR");
-                int warnings = g.Count(i => i.Severity == "WARNING");
-                int infos = g.Count(i => i.Severity == "INFO");
-                string thisName = Path.GetFileName(g.Key);
+            foreach (var run in filteredRuns) {
+                if (run.issues == null || run.issues.Count == 0)
+                    continue;
 
-                //string extension = Path.GetExtension(g.Key);
+                var firstIssue = run.issues.FirstOrDefault();
+                if (firstIssue == null)
+                    continue;
+
+                int errors = run.issues.Count(i => i.Severity == "ERROR");
+                int warnings = run.issues.Count(i => i.Severity == "WARNING");
+                int infos = run.issues.Count(i => i.Severity == "INFO");
+
+                string filePath = firstIssue.OriginFile;
+                string fileName = Path.GetFileName(filePath);
+
                 FileList.Add(new FileStatsViewModel {
-                    FileName = thisName,
-                    FilePath = g.Key,
+                    FileName = fileName,
+                    FilePath = filePath,
                     Errors = errors,
                     Warnings = warnings,
-                    Issues = errors + warnings + infos
+                    Issues = errors + warnings + infos,
+                    SceneSetup = run.scene_setup
                 });
             }
         }
@@ -94,17 +113,27 @@ namespace ValidationTool.UI.ViewModels {
             }
         }
 
-        private void OpenSceneConfigView(FileStatsViewModel file) {
-            if (file == null)
+        private void OpenSceneConfigView() {
+            if (SelectedFileVM == null) {
+                MessageBox.Show(
+                    "Select a file first.",
+                    "Scene Setup",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
                 return;
+            }
 
-            //SceneSetupDto sceneSetup = LoadSceneSetupForFile(file.FilePath);
+            if (SelectedFileVM.SceneSetup == null) {
+                MessageBox.Show(
+                    "No Scene Setup data found for the selected file.",
+                    "Scene Setup",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
 
-            //var wnd = new SceneSetupWndw(sceneSetup);
-            var wnd = new SceneSetupWndw();
+            var wnd = new SceneSetupWndw(SelectedFileVM.SceneSetup);
             wnd.Show();
         }
-
-
     }
 }

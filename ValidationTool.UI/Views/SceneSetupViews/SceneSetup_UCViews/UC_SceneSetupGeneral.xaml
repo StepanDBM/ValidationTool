@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_SceneSetupGeneral"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="General"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding SceneSetup.SceneName, StringFormat=Scene: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.DccName, StringFormat=DCC: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.DccVersion, StringFormat=Version: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.ScenePath, StringFormat=Scene Path: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.ProjectPath, StringFormat=Project Path: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.ShotName, StringFormat=Shot: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SceneSetup.SequenceName, StringFormat=Sequence: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

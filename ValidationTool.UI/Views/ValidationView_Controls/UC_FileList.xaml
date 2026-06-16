@@ -41,8 +41,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="View"
-                                    Command="{Binding DataContext.OpenSceneConfigViewCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                    CommandParameter="{Binding}" />
+                                    Command="{Binding DataContext.OpenSceneConfigViewCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_RayDepthSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Ray Depth Settings"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding RayDepthSettings.TotalRayDepth, StringFormat=Total Ray Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.DiffuseRayDepth, StringFormat=Diffuse Ray Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.SpecularRayDepth, StringFormat=Specular Ray Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.TransmissionRayDepth, StringFormat=Transmission Ray Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.VolumeRayDepth, StringFormat=Volume Ray Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.TransparencyDepth, StringFormat=Transparency Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding RayDepthSettings.SssDepth, StringFormat=SSS Depth: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

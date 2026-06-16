@@ -30,7 +30,7 @@ namespace ValidationTool.UI.ViewModels {
             IssuesView = CollectionViewSource.GetDefaultView(mIssues);
             TeamListVM = new UC_TeamListViewModel(mIssues, Selection);
             ArtistListVM = new UC_ArtistListViewModel(mIssues, Selection);
-            FileListVM = new UC_FileListViewModel(mIssues, Selection);
+            FileListVM = new UC_FileListViewModel(mIssues, mRun, Selection);
 
             Selection.PropertyChanged += OnSelectionChanged;
         }
@@ -130,6 +130,7 @@ namespace ValidationTool.UI.ViewModels {
             var dtos = JsonReportLoader.Load();
 
             foreach (var scene in dtos) {
+                mRun.Add(scene);
                 TotalAssets += scene.summary.TotalAssets;
                 TotalIssues += scene.summary.TotalIssues;
                 TotalErrors += scene.summary.Errors;
@@ -159,18 +160,6 @@ namespace ValidationTool.UI.ViewModels {
                     });
                 }
             }
-            mRun.Add(new ValidationRunDto {
-                summary = new RunSummaryDto {
-                    RunId = "",
-                    Timestamp = System.DateTime.Now,
-                    Dcc = "",
-                    TotalAssets = TotalAssets,
-                    TotalIssues = TotalIssues,
-                    Errors = TotalErrors,
-                    Warnings = TotalWarnings,
-                    Infos = TotalScenes,
-                }
-            });
             TeamListVM.AggregateAll();
             //mNotService.SendErrorReportAsync(mIssues);
             dtos.Clear();

@@ -13,15 +13,41 @@
         Background="{StaticResource BrushBgMain}">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type dto:SceneSetupDto}">
+        <DataTemplate DataType="{x:Type vm:SceneSetupGeneralViewModel}">
             <views:UC_SceneSetupGeneral />
         </DataTemplate>
 
-        <!-- Here Ill put more templates such as:
-        <DataTemplate DataType="{x:Type dto:RenderSettingsDto}">
+        <DataTemplate DataType="{x:Type vm:RenderSettingsViewModel}">
             <views:UC_RenderSettings />
         </DataTemplate>
-        -->
+
+        <DataTemplate DataType="{x:Type vm:OutputSettingsViewModel}">
+            <views:UC_OutputSettings />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SamplingSettingsViewModel}">
+            <views:UC_SamplingSettings />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RayDepthSettingsViewModel}">
+            <views:UC_RayDepthSettings />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ColorManagementViewModel}">
+            <views:UC_ColorManagement />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CameraSetupViewModel}">
+            <views:UC_CameraSetup />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RenderLayersViewModel}">
+            <views:UC_RenderLayers />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:AovsViewModel}">
+            <views:UC_Aovs />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid Background="#1E1E1E" Margin="10">

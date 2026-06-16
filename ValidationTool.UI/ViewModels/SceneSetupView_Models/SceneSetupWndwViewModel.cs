@@ -1,13 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using ValidationTool.UI.Models.DTOs;
+using ValidationTool.UI.Models.DTOs.SceneSetup;
 
 namespace ValidationTool.UI.ViewModels.SceneSetupView_Models {
     public class SceneSetupWndwViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaisePropertyChanged(string name) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        private void RaisePropertyChanged(string propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public SceneSetupDto SceneSetup { get; }
@@ -35,7 +37,16 @@ namespace ValidationTool.UI.ViewModels.SceneSetupView_Models {
         }
 
         public SceneSetupWndwViewModel(SceneSetupDto sceneSetup) {
-            SceneSetup = sceneSetup;
+            SceneSetup = sceneSetup ?? new SceneSetupDto();
+            //just for null-cases
+            SceneSetup.RenderSettings = SceneSetup.RenderSettings ?? new RenderSettingsDto();
+            SceneSetup.OutputSettings = SceneSetup.OutputSettings ?? new OutputSettingsDto();
+            SceneSetup.SamplingSettings = SceneSetup.SamplingSettings ?? new SamplingSettingsDto();
+            SceneSetup.RayDepthSettings = SceneSetup.RayDepthSettings ?? new RayDepthSettingsDto();
+            SceneSetup.ColorManagement = SceneSetup.ColorManagement ?? new ColorManagementDto();
+            SceneSetup.CameraSetup = SceneSetup.CameraSetup ?? new CameraSetupDto();
+            SceneSetup.RenderLayers = SceneSetup.RenderLayers ?? new System.Collections.Generic.List<RenderLayerDto>();
+            SceneSetup.Aovs = SceneSetup.Aovs ?? new System.Collections.Generic.List<AovDto>();
 
             Sections.Add(new SceneSetupNavItem { Key = "general", Title = "General" });
             Sections.Add(new SceneSetupNavItem { Key = "render", Title = "Render Settings" });
@@ -47,7 +58,9 @@ namespace ValidationTool.UI.ViewModels.SceneSetupView_Models {
             Sections.Add(new SceneSetupNavItem { Key = "layers", Title = "Render Layers" });
             Sections.Add(new SceneSetupNavItem { Key = "aovs", Title = "AOVs" });
 
-            SelectedSection = Sections[0];
+            if (Sections.Count > 0) {
+                SelectedSection = Sections[0];
+            }
         }
 
         private void UpdateCurrentSection() {
@@ -58,39 +71,39 @@ namespace ValidationTool.UI.ViewModels.SceneSetupView_Models {
 
             switch (SelectedSection.Key) {
                 case "general":
-                    CurrentSectionData = SceneSetup;
+                    CurrentSectionData = new SceneSetupGeneralViewModel(SceneSetup);
                     break;
 
                 case "render":
-                    CurrentSectionData = SceneSetup.RenderSettings;
+                    CurrentSectionData = new RenderSettingsViewModel(SceneSetup.RenderSettings);
                     break;
 
                 case "output":
-                    CurrentSectionData = SceneSetup.OutputSettings;
+                    CurrentSectionData = new OutputSettingsViewModel(SceneSetup.OutputSettings);
                     break;
 
                 case "sampling":
-                    CurrentSectionData = SceneSetup.SamplingSettings;
+                    CurrentSectionData = new SamplingSettingsViewModel(SceneSetup.SamplingSettings);
                     break;
 
                 case "raydepth":
-                    CurrentSectionData = SceneSetup.RayDepthSettings;
+                    CurrentSectionData = new RayDepthSettingsViewModel(SceneSetup.RayDepthSettings);
                     break;
 
                 case "color":
-                    CurrentSectionData = SceneSetup.ColorManagement;
+                    CurrentSectionData = new ColorManagementViewModel(SceneSetup.ColorManagement);
                     break;
 
                 case "camera":
-                    CurrentSectionData = SceneSetup.CameraSetup;
+                    CurrentSectionData = new CameraSetupViewModel(SceneSetup.CameraSetup);
                     break;
 
                 case "layers":
-                    CurrentSectionData = SceneSetup.RenderLayers;
+                    CurrentSectionData = new RenderLayersViewModel(SceneSetup.RenderLayers);
                     break;
 
                 case "aovs":
-                    CurrentSectionData = SceneSetup.Aovs;
+                    CurrentSectionData = new AovsViewModel(SceneSetup.Aovs);
                     break;
 
                 default:

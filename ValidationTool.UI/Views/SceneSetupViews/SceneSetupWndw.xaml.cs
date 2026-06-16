@@ -6,7 +6,7 @@ using ValidationTool.UI.ViewModels.SceneSetupView_Models;
 
 namespace ValidationTool.UI.Views {
     public partial class SceneSetupWndw : Window {
-        public SceneSetupWndw(SceneSetupDto sceneSetup = null) { // temporary
+        public SceneSetupWndw(SceneSetupDto sceneSetup) {
             InitializeComponent();
             DataContext = new SceneSetupWndwViewModel(sceneSetup);
         }

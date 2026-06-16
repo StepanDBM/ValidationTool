@@ -14,6 +14,7 @@ namespace ValidationTool.UI.Models.DTOs {
     public class ValidationRunDto {
         [JsonPropertyName("summary")]
         public RunSummaryDto summary { get; set; }
+        [JsonPropertyName("scene_setup")]
         public SceneSetupDto scene_setup {  get; set; }
         [JsonPropertyName("issues")]
         public List<ValidationIssueDto> issues { get; set; }

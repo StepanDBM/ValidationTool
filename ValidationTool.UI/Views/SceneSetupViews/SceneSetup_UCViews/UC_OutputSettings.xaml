@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_OutputSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Output Settings"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding OutputSettings.OutputPath, StringFormat=Output Path: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.OutputPrefix, StringFormat=Output Prefix: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.FileNamingPattern, StringFormat=File Naming Pattern: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.ImageFormat, StringFormat=Image Format: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.BitDepth, StringFormat=Bit Depth: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.Compression, StringFormat=Compression: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.CompressionQuality, StringFormat=Compression Quality: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.ColorSpace, StringFormat=Color Space: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.HasEmbeddedMetadata, StringFormat=Embedded Metadata: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.MultilayerEnabled, StringFormat=Multilayer Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.AlphaEnabled, StringFormat=Alpha Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.PremultipliedAlpha, StringFormat=Premultiplied Alpha: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.TileOutputEnabled, StringFormat=Tile Output Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.ResolutionX, StringFormat=Resolution X: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.ResolutionY, StringFormat=Resolution Y: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.RenderScalePercent, StringFormat=Render Scale %: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.DeviceAspectRatio, StringFormat=Device Aspect Ratio: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.PixelAspectRatio, StringFormat=Pixel Aspect Ratio: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.OverscanEnabled, StringFormat=Overscan Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.OverscanValue, StringFormat=Overscan Value: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.SafeFrameEnabled, StringFormat=Safe Frame Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding OutputSettings.OutputWritable, StringFormat=Output Writable: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

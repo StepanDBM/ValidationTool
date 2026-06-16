@@ -173,6 +173,15 @@
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\SceneSetupView_Models\SceneSetupWndwViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\AovsViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\CameraSetupViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\ColorManagementViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\OutputSettingsViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\RayDepthSettingsViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\RenderLayersViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\RenderSettingsViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\SamplingSettingsViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\wrappers\SceneSetupGeneralViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\UC_ArtistListViewModel.cs" />
@@ -194,8 +203,35 @@
     <Compile Include="Views\SceneSetupViews\SceneSetupWndw.xaml.cs">
       <DependentUpon>SceneSetupWndw.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SceneSetupViews\UC_SceneSetupGeneral.xaml.cs">
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_Aovs.xaml.cs">
+      <DependentUpon>UC_Aovs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_CameraSetup.xaml.cs">
+      <DependentUpon>UC_CameraSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_ColorManagement.xaml.cs">
+      <DependentUpon>UC_ColorManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_OutputSettings.xaml.cs">
+      <DependentUpon>UC_OutputSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RayDepthSettings.xaml.cs">
+      <DependentUpon>UC_RayDepthSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RenderLayers.xaml.cs">
+      <DependentUpon>UC_RenderLayers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RenderSettings.xaml.cs">
+      <DependentUpon>UC_RenderSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_SamplingSettings.xaml.cs">
+      <DependentUpon>UC_SamplingSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_SceneSetupGeneral.xaml.cs">
       <DependentUpon>UC_SceneSetupGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\UC_SceneSetupSelector.xaml.cs">
+      <DependentUpon>UC_SceneSetupSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StagesView.xaml.cs">
       <DependentUpon>StagesView.xaml</DependentUpon>
@@ -255,7 +291,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SceneSetupViews\UC_SceneSetupGeneral.xaml">
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_Aovs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_CameraSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_ColorManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_OutputSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RayDepthSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RenderLayers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_RenderSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_SamplingSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetup_UCViews\UC_SceneSetupGeneral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\UC_SceneSetupSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_ColorManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Color Management"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding ColorManagement.ViewTransform, StringFormat=View Transform: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.DisplayDevice, StringFormat=Display Device: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.RenderColorSpace, StringFormat=Render Color Space: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.TextureColorManagementMode, StringFormat=Texture Color Mgmt: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.OcioConfig, StringFormat=OCIO Config: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.LinearWorkflowEnabled, StringFormat=Linear Workflow Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.AcesEnabled, StringFormat=ACES Enabled: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.Gamma, StringFormat=Gamma: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.Exposure, StringFormat=Exposure: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ColorManagement.Look, StringFormat=Look: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
