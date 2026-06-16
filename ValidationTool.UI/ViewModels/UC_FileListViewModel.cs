@@ -88,6 +88,9 @@ namespace ValidationTool.UI.ViewModels {
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
             }
+        }
+
+        private void OpenSceneConfigView(FileStatsViewModel file) {
 
         }
 

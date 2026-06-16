@@ -23,7 +23,7 @@ def extract_maya_scene() -> List[BaseContext]:
         raise RuntimeError("Maya API not available. Run inside Maya.")
 
     objects: List[BaseContext] = []
-    objects.append(extract_scene_setup_context())
+    scene_setup = extract_scene_setup_context()
     objects.extend(extract_meshes())
     objects.extend(extract_cameras())
     objects.extend(extract_lights())
@@ -34,4 +34,4 @@ def extract_maya_scene() -> List[BaseContext]:
     """
 
 
-    return objects
+    return scene_setup, objects

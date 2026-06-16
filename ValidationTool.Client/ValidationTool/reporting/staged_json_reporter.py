@@ -2,6 +2,56 @@ import json
 from typing import Dict, Any
 from pathlib import Path
 
+import json
+from typing import Dict, Any
+from pathlib import Path
+from dataclasses import is_dataclass, asdict
+from datetime import datetime
+
+import json
+from pathlib import Path
+from dataclasses import is_dataclass, asdict
+from datetime import datetime
+from enum import Enum
+
+
+def _to_json_safe(value):
+    """
+    Recursively converts dataclasses and common Python objects
+    into JSON-serializable structures.
+    """
+    if value is None:
+        return None
+
+    if is_dataclass(value):
+        return {
+            k: _to_json_safe(v)
+            for k, v in asdict(value).items()
+        }
+
+    if isinstance(value, dict):
+        return {
+            str(k): _to_json_safe(v)
+            for k, v in value.items()
+        }
+
+    if isinstance(value, list):
+        return [_to_json_safe(v) for v in value]
+
+    if isinstance(value, tuple):
+        return [_to_json_safe(v) for v in value]
+
+    if isinstance(value, datetime):
+        return str(value)
+
+    if isinstance(value, Path):
+        return str(value)
+
+    if isinstance(value, Enum):
+        return value.value if hasattr(value, "value") else str(value)
+
+    return value
+
 
 def export_validation_run(run) -> Dict[str, Any]:
     
@@ -34,8 +84,15 @@ def export_validation_run(run) -> Dict[str, Any]:
         }
         mIssues.append(issue_obj)
 
+    scene_setup = None
+    if hasattr(run, "scene_setup_context"):
+        scene_setup = _to_json_safe(run.scene_setup_context)
+    elif hasattr(run, "scene_setup"):
+        scene_setup = _to_json_safe(run.scene_setup)
+
     return {
         "summary": summary,
+        "scene_setup": scene_setup,
         "issues": mIssues
     }
 

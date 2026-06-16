@@ -3,6 +3,7 @@ from typing import List
 from datetime import datetime
 
 from core.validation_system import ValidationSeverity
+from core.context.SceneContext.SceneSetupContext import SceneSetupContext
 
 class ArtistDto:
     name: str
@@ -44,5 +45,6 @@ class RunSummary:
 @dataclass
 class ValidationRun:
     summary: RunSummary
+    scene_setup: SceneSetupContext
     issues: List[ValidationResult]
     jsonPath: str

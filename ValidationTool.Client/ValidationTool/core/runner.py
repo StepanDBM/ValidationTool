@@ -206,6 +206,7 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
 
     run = valMod.ValidationRun(
         summary=summary,
+        scene_setup=context.get("scene_setup"),
         issues=all_issues,
         jsonPath=""
     )

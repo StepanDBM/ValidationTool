@@ -32,11 +32,13 @@ import config.absolutePaths as absPath
 def process_file(file_path: str, artist: str):
     cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
-    objects = extract_maya_scene()
+    
+    scene_setup, objects = extract_maya_scene()
+    objects = objects[1:]
     print (f"Extracted {len(objects)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Maya", "path": file_path, "artist": artist}
+    context = {"dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)
 

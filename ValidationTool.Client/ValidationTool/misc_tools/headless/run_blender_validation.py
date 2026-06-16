@@ -35,11 +35,11 @@ def process_file(file_path: str, artist: str):
     depsgraph = bpy.context.evaluated_depsgraph_get() #forces update of evaluated data,
     #so modifiers are applied and bounding boxes are correct
 
-    objects = extract_Blend_scene()
+    scene_setup, objects = extract_Blend_scene()
     print (f"Extracted {len(objects)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Blender", "path": file_path, "artist": artist}
+    context = {"dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)
     

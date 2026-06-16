@@ -36,7 +36,7 @@
         </Grid>
 
 
-    <!-- ✅ GLOBAL BLOCKING OVERLAY -->
+    <!-- GLOBAL BLOCKING OVERLAY -->
     <Grid Background="Transparent"
               Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
               Panel.ZIndex="999">

@@ -37,6 +37,15 @@
                             Width="*"
                             SortMemberPath="Errors" />
 
+                <DataGridTemplateColumn Header="SceneConfig" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View"
+                                    Command="{Binding DataContext.OpenSceneConfigView}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Header="Report" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
