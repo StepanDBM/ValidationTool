@@ -7,3 +7,4 @@ ValidationTool.UI/bin/
 ValidationTool.UI/obj/
 */obj/
 */bin/
+*/__pycache__/
