@@ -35,20 +35,20 @@ namespace ValidationTool.UI.Services {
         public static List<LastRunsListDto> LoadLastReportList() {
             var result = new List<LastRunsListDto>();
 
-            // ✅ Check directory exists
+            // Check directory exists
             if (!Directory.Exists(Paths.REPORTS_DIR))
                 return result;
 
             var reportFiles = Directory.GetFiles(Paths.REPORTS_DIR, "*_reports.json");
 
             foreach (string reportFile in reportFiles) {
-                // ✅ Skip missing file (paranoia-safe)
+                // Skip missing file (paranoia-safe)
                 if (!File.Exists(reportFile))
                     continue;
 
                 var json = File.ReadAllText(reportFile);
 
-                // ✅ Skip empty or whitespace-only files
+                // Skip empty or whitespace-only files
                 if (string.IsNullOrWhiteSpace(json))
                     continue;
 
