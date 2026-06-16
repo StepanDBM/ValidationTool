@@ -1,3 +1,6 @@
+from dataclasses import asdict, is_dataclass
+from pprint import pformat
+
 try:
     import maya.cmds as cmds
 except ImportError:
@@ -16,6 +19,16 @@ MAYA_LIGHT_TYPES = {
     "aiPhotometricLight": "ARNOLD_PHOTOMETRIC",
     "aiMeshLight": "ARNOLD_MESH",
 }
+
+def _pretty_print_context(title: str, obj):
+    print(f"\n[{title}]")
+    print("-" * (len(title) + 2))
+
+    if is_dataclass(obj):
+        print(pformat(asdict(obj), sort_dicts=False, width=120))
+    else:
+        print(pformat(obj, sort_dicts=False, width=120))
+
 
 
 def _get_scene_path() -> str:

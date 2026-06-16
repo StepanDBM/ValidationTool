@@ -1,11 +1,9 @@
 import os
 
-from core.context.baseContext import BaseContext
 from core.context.SceneContext.SceneSetupContext import SceneSetupContext
+from misc_tools.DCC.Maya.maya_safeMultiTool import _pretty_print_context
 from core.validation_system import ObjectType
 
-from dataclasses import asdict, is_dataclass
-from pprint import pformat
 
 from misc_tools.DCC.Maya.maya_extract_SceneSetup.maya_extract_render_settings import extract_render_settings
 from misc_tools.DCC.Maya.maya_extract_SceneSetup.maya_extract_output_settings import extract_output_settings
@@ -20,18 +18,6 @@ try:
     import maya.cmds as cmds
 except ImportError:
     cmds = None
-
-
-
-def pretty_print_context(title: str, obj):
-    print(f"\n[{title}]")
-    print("-" * (len(title) + 2))
-
-    if is_dataclass(obj):
-        print(pformat(asdict(obj), sort_dicts=False, width=120))
-    else:
-        print(pformat(obj, sort_dicts=False, width=120))
-
 
 
 def _get_scene_path() -> str:
@@ -83,21 +69,21 @@ def extract_scene_setup_context() -> SceneSetupContext:
     project_path = _get_project_path()
 
     render_settings = extract_render_settings()
-    #pretty_print_context("[RENDER SETTINGS]: ", render_settings)
+    #_pretty_print_context("[RENDER SETTINGS]: ", render_settings)
     output_settings = extract_output_settings()
-    #pretty_print_context("[OUTPUT SETTINGS]: ", output_settings)
+    #_pretty_print_context("[OUTPUT SETTINGS]: ", output_settings)
     sampling_settings = extract_sampling_settings()
-    #pretty_print_context("[SAMPLING SETTINGS]: ", sampling_settings)
+    #_pretty_print_context("[SAMPLING SETTINGS]: ", sampling_settings)
     ray_depth_settings = extract_ray_depth_settings()
-    #pretty_print_context("[RAY DEPTH SETTINGS]: ", ray_depth_settings)
+    #_pretty_print_context("[RAY DEPTH SETTINGS]: ", ray_depth_settings)
     color_management = extract_color_management()
-    #pretty_print_context("[COLORM ANAGEMENT]: ", color_management)
+    #_pretty_print_context("[COLORM ANAGEMENT]: ", color_management)
     camera_setup = extract_camera_setup()
-    #pretty_print_context("[CAMERA SETUP]: ", camera_setup)
+    #_pretty_print_context("[CAMERA SETUP]: ", camera_setup)
     render_layers = extract_render_layers()
-    #pretty_print_context("[RENDER LAYERS]: ", render_layers)
+    #_pretty_print_context("[RENDER LAYERS]: ", render_layers)
     aovs = extract_aovs()
-    #pretty_print_context("[AOVs]: ", aovs)
+    #_pretty_print_context("[AOVs]: ", aovs)
 
     scene_setup = SceneSetupContext(
         name=scene_name,

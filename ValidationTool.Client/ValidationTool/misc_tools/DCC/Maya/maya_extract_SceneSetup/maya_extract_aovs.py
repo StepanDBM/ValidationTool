@@ -72,11 +72,6 @@ def _get_default_output_path() -> str:
     except Exception:
         return ""
 
-
-def _get_ai_aov_nodes() -> list[str]:
-    return cmds.ls(type="aiAOV") or []
-
-
 def _get_aov_name(aov_node: str) -> str:
     return _safe_get_str(f"{aov_node}.name", aov_node)
 
@@ -186,32 +181,100 @@ def _get_output_path_for_aov(aov_node: str) -> str:
     return _get_default_output_path()
 
 
+""" might as well follow blender's suit and create a nice list of disabled aovs in the result window
+def _get_ai_aov_nodes() -> list[str]:
+    return cmds.ls(type="aiAOV") or []
+"""
+
+def _get_ai_aov_nodes() -> dict[str, str]:
+    """
+    Returns a mapping:
+        { aov_name_lower : aiAOV_node_name }
+
+    Only real scene-configured aiAOV nodes are returned here.
+    """
+    nodes = cmds.ls(type="aiAOV") or []
+    result: dict[str, str] = {}
+
+    for node in nodes:
+        name = _get_aov_name(node)
+        if not name:
+            continue
+
+        result[name.lower()] = node
+
+    return result
+
+
+def _get_available_aov_entries() -> list[tuple[str, str | None]]:
+    """
+    Returns a merged list of:
+    - all built-in available AOV names (implicit Maya/Arnold options)
+    - real scene aiAOV nodes where they exist
+    - custom aiAOV nodes not present in the built-in list
+
+    Output shape:
+        [(aov_name, aiAOV_node_or_None), ...]
+    """
+    node_map = _get_ai_aov_nodes()
+    entries: list[tuple[str, str | None]] = []
+    seen = set()
+
+    # 1) Built-in / implicit AOVs, even if they do not exist as nodes yet
+    for builtin_name in sorted(_BUILTIN_AOVS):
+        node = node_map.get(builtin_name.lower())
+        entries.append((builtin_name, node))
+        seen.add(builtin_name.lower())
+
+    # 2) Any custom scene nodes not already represented above
+    for node_name_lower, node in node_map.items():
+        if node_name_lower in seen:
+            continue
+
+        real_name = _get_aov_name(node) or node_name_lower
+        entries.append((real_name, node))
+        seen.add(node_name_lower)
+
+    return entries
+
+
+def _make_implicit_aov_context(name: str, output_prefix: str) -> AovContext:
+    source_type = "CRYPTOMATTE" if name.lower().startswith("crypto_") else "BUILTIN"
+    data_type = _guess_data_type(name, source_type)
+
+    # Treat beauty / rgba / rgb as implicitly enabled outputs
+    implicitly_enabled = name.lower() in {"beauty", "rgba", "rgb"}
+
+    return AovContext(
+        name=name,
+        enabled=implicitly_enabled,
+        data_type=data_type,
+        source_type=source_type,
+        driver="defaultArnoldDriver" if cmds.objExists("defaultArnoldDriver") else "",
+        filter="",
+        light_group="",
+        is_builtin=_is_builtin(name),
+        output_path=_get_default_output_path(),
+        output_prefix=output_prefix,
+        has_valid_name=_has_valid_name(name),
+        is_required=_is_required(name),
+    )
+
+
 def extract_aovs() -> list[AovContext]:
-    """
-    Extract Arnold AOV setup from the current Maya scene.
-
-    Returns:
-        list[AovContext]: One context per aiAOV node.
-
-    Notes:
-        - This is Arnold-centric (`aiAOV`).
-        - `beauty` is usually implicit and may not exist as an aiAOV node.
-        - Driver/filter/light-group detection is best-effort because Maya/Arnold
-          wiring can vary by version and studio setup.
-    """
-
     if cmds is None:
         raise RuntimeError("Maya API not available. Run inside Maya.")
 
-    aov_nodes = _get_ai_aov_nodes()
     output_prefix = _get_output_prefix()
-
     contexts: list[AovContext] = []
 
-    for aov_node in aov_nodes:
-        name = _get_aov_name(aov_node)
-        enabled = _is_aov_enabled(aov_node)
+    for name, aov_node in _get_available_aov_entries():
+        # Built-in implicit entry with no real aiAOV node in scene yet
+        if not aov_node:
+            contexts.append(_make_implicit_aov_context(name, output_prefix))
+            continue
 
+        enabled = _is_aov_enabled(aov_node)
         source_type = _guess_source_type(name, aov_node)
         light_group = _get_light_group(aov_node)
         is_builtin = _is_builtin(name)
@@ -219,7 +282,6 @@ def extract_aovs() -> list[AovContext]:
         driver = _get_driver_name(aov_node)
         filter_name = _get_filter_name(aov_node)
         data_type = _guess_data_type(name, source_type)
-
         output_path = _get_output_path_for_aov(aov_node)
 
         context = AovContext(
