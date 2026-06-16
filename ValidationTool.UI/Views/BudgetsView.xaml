@@ -6,9 +6,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- buttons -->
+            
             <RowDefinition Height="Auto"/>
-            <!-- headers -->
+            
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- BUTTONS -->
+        
         <Button Content="Load"
                 Click="Load_Click"
                 Width="120"/>
@@ -33,7 +33,7 @@
                 Width="120"
                 Grid.Column="1"/>
 
-        <!-- HEADERS -->
+        
         <TextBlock Grid.Row="1" Grid.Column="1"
                    Text="Max_V"
                    FontWeight="Bold"
@@ -49,7 +49,7 @@
                    FontWeight="Bold"
                    HorizontalAlignment="Center"/>
 
-        <!-- STATIC MESH -->
+        
         <TextBlock Text="Static Mesh" Grid.Row="2" Grid.Column="0"/>
 
         <TextBox Grid.Row="2" Grid.Column="1"
@@ -67,7 +67,7 @@
                 Mode=TwoWay,
                 UpdateSourceTrigger=PropertyChanged}" />
 
-        <!-- CHARACTER -->
+        
         <TextBlock Text="Character" Grid.Row="3" Grid.Column="0"/>
 
         <TextBox Grid.Row="3" Grid.Column="1"
@@ -85,7 +85,7 @@
                 Mode=TwoWay,
                 UpdateSourceTrigger=PropertyChanged}" />
 
-        <!-- WEAPON -->
+        
         <TextBlock Text="Weapon" Grid.Row="4" Grid.Column="0"/>
 
         <TextBox Grid.Row="4" Grid.Column="1"
@@ -103,7 +103,7 @@
                 Mode=TwoWay,
                 UpdateSourceTrigger=PropertyChanged}" />
 
-        <!-- PROP -->
+        
         <TextBlock Text="Prop" Grid.Row="5" Grid.Column="0"/>
 
         <TextBox Grid.Row="5" Grid.Column="1"
@@ -121,7 +121,7 @@
                 Mode=TwoWay,
                 UpdateSourceTrigger=PropertyChanged}" />
 
-        <!-- ENVIRONMENT -->
+        
         <TextBlock Text="Environment" Grid.Row="6" Grid.Column="0"/>
 
         <TextBox Grid.Row="6" Grid.Column="1"

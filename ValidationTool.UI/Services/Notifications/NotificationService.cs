@@ -23,8 +23,6 @@ namespace ValidationTool.Services.Notifications {
 
             var httpClient = new HttpClient();
 
-            Console.WriteLine($"TOKEN: '{KEY_TOKENS_GITIGNORE.SLACK_STYOPA_KEY}'");
-
             _providers = new List<INotificationProvider>{
                 new SlackDmNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.SLACK_STYOPA_KEY),
 

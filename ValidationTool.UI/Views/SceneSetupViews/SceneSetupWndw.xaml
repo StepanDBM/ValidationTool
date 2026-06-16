@@ -1,0 +1,79 @@
+﻿<Window x:Class="ValidationTool.UI.Views.SceneSetupWndw"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ValidationTool.UI.ViewModels.SceneSetupView_Models"
+        xmlns:dto="clr-namespace:ValidationTool.UI.Models.DTOs"
+        xmlns:views="clr-namespace:ValidationTool.UI.Views.SceneSetupView_Controls"
+        Title="Scene Setup"
+        Height="500"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="{StaticResource BrushBgMain}">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type dto:SceneSetupDto}">
+            <views:UC_SceneSetupGeneral />
+        </DataTemplate>
+
+        <!-- Here Ill put more templates such as:
+        <DataTemplate DataType="{x:Type dto:RenderSettingsDto}">
+            <views:UC_RenderSettings />
+        </DataTemplate>
+        -->
+    </Window.Resources>
+
+    <Grid Background="#1E1E1E" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource BrushBgPanel}"
+                MouseDown="TitleBar_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Scene Setup Context"
+                           VerticalAlignment="Center"
+                           Margin="10,0"
+                           Foreground="{StaticResource BrushText}" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Button Content="_" Width="40" Click="Minimize_Click"/>
+                    <Button Content="□" Width="40" Click="Maximize_Click"/>
+                    <Button Content="X" Width="40" Click="Close_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="{StaticResource BrushBgPanel}"
+                    Margin="0,0,8,0">
+                <ListBox ItemsSource="{Binding Sections}"
+                         SelectedItem="{Binding SelectedSection, Mode=TwoWay}"
+                         DisplayMemberPath="Title"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Foreground="{StaticResource BrushText}" />
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="{StaticResource BrushBgPanel}"
+                    Padding="10">
+                <ContentControl Content="{Binding CurrentSectionData}" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

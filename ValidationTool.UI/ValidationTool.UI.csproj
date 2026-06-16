@@ -126,13 +126,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AsyncRelayCommand.cs" />
+    <Compile Include="Commands\GenRelatCommand.cs" />
+    <Compile Include="Commands\parameters\SceneSetupOpenParameters.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\Config\MeshBudgetModel.cs" />
     <Compile Include="Models\Config\NamingRulesModel.cs" />
     <Compile Include="Models\Config\ValidationConfigModel.cs" />
     <Compile Include="Models\Config\ValidationProfileModel.cs" />
+    <Compile Include="Models\DTOs\SceneSetupDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\AovDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\CameraSetupDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\ColorManagementDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\OutputSettingsDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\RayDepthSettingsDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\RenderLayerDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\RenderSettingsDto.cs" />
+    <Compile Include="Models\DTOs\SceneSetup\SamplingSettingsDto.cs" />
     <Compile Include="Models\DTOs\SelectionContext.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
+    <Compile Include="Models\Items\SceneSetupNavItem.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
     <Compile Include="Services\Config\ConfigService.cs" />
@@ -160,6 +172,7 @@
     <Compile Include="ViewModels\DccViewModel.cs" />
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
+    <Compile Include="ViewModels\SceneSetupView_Models\SceneSetupWndwViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\UC_ArtistListViewModel.cs" />
@@ -177,6 +190,12 @@
     </Compile>
     <Compile Include="Views\ProfilesView.xaml.cs">
       <DependentUpon>ProfilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\SceneSetupWndw.xaml.cs">
+      <DependentUpon>SceneSetupWndw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SceneSetupViews\UC_SceneSetupGeneral.xaml.cs">
+      <DependentUpon>UC_SceneSetupGeneral.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StagesView.xaml.cs">
       <DependentUpon>StagesView.xaml</DependentUpon>
@@ -229,6 +248,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProfilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\SceneSetupWndw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SceneSetupViews\UC_SceneSetupGeneral.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

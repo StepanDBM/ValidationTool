@@ -9,6 +9,7 @@ using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Commands;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.ViewModels.ValidationView_Models;
+using ValidationTool.UI.Views;
 
 namespace ValidationTool.UI.ViewModels {
     public class UC_FileListViewModel {
@@ -20,12 +21,15 @@ namespace ValidationTool.UI.ViewModels {
 
         public ObservableCollection<FileStatsViewModel> FileList { get; } =new ObservableCollection<FileStatsViewModel>();
 
+        public ICommand OpenSceneConfigViewCommand { get; }
+
         public UC_FileListViewModel( ObservableCollection<IssueViewModel> issues, SelectionContext selection) {
             SendReportCommand = new AsyncRelayCommand<FileStatsViewModel>(SendReport);
             _issues = issues;
             _selection = selection;
 
             _selection.PropertyChanged += OnSelectionChanged;
+            OpenSceneConfigViewCommand = new RelayCommand<FileStatsViewModel>(OpenSceneConfigView);
         }
         private FileStatsViewModel _selectedFileVM;
         public FileStatsViewModel SelectedFileVM {
@@ -91,7 +95,14 @@ namespace ValidationTool.UI.ViewModels {
         }
 
         private void OpenSceneConfigView(FileStatsViewModel file) {
+            if (file == null)
+                return;
 
+            //SceneSetupDto sceneSetup = LoadSceneSetupForFile(file.FilePath);
+
+            //var wnd = new SceneSetupWndw(sceneSetup);
+            var wnd = new SceneSetupWndw();
+            wnd.Show();
         }
 
 

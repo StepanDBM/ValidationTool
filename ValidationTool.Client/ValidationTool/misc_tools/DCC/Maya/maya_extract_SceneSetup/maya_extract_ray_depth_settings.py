@@ -148,3 +148,18 @@ def extract_ray_depth_settings() -> RayDepthSettingsContext:
 
     total_ray_depth = _get_total_ray_depth(renderer_name)
     diffuse_ray_depth = _get_diffuse_ray_depth(renderer_name)
+    specular_ray_depth = _get_specular_ray_depth(renderer_name)
+    transmission_ray_depth = _get_transmission_ray_depth(renderer_name)
+    volume_ray_depth = _get_volume_ray_depth(renderer_name)
+    transparency_depth = _get_transparency_depth(renderer_name)
+    sss_depth = _get_sss_depth(renderer_name)
+
+    return RayDepthSettingsContext(
+        total_ray_depth=total_ray_depth,
+        diffuse_ray_depth=diffuse_ray_depth,
+        specular_ray_depth=specular_ray_depth,
+        transmission_ray_depth=transmission_ray_depth,
+        volume_ray_depth=volume_ray_depth,
+        transparency_depth=transparency_depth,
+        sss_depth=sss_depth,
+    )

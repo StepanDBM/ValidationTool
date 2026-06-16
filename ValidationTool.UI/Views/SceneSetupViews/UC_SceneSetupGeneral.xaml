@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.SceneSetupView_Controls.UC_SceneSetupGeneral"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="General"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="{Binding SceneName, StringFormat=Scene: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding DccName, StringFormat=DCC: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding DccVersion, StringFormat=Version: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ScenePath, StringFormat=Scene Path: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ProjectPath, StringFormat=Project Path: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding ShotName, StringFormat=Shot: {0}}" Margin="0,3"/>
+            <TextBlock Text="{Binding SequenceName, StringFormat=Sequence: {0}}" Margin="0,3"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
