@@ -32,13 +32,14 @@ namespace ValidationTool.UI.ViewModels {
             ObservableCollection<IssueViewModel> issues,
             ObservableCollection<ValidationRunDto> runs,
             SelectionContext selection) {
+
             SendReportCommand = new AsyncRelayCommand<FileStatsViewModel>(SendReport);
             _issues = issues;
             _runs = runs;
             _selection = selection;
 
             _selection.PropertyChanged += OnSelectionChanged;
-            OpenSceneConfigViewCommand = new RelayCommand(OpenSceneConfigView);
+            OpenSceneConfigViewCommand = new RelayCommand<FileStatsViewModel>(OpenSceneConfigView);
         }
         private FileStatsViewModel _selectedFileVM;
         public FileStatsViewModel SelectedFileVM {
@@ -113,17 +114,17 @@ namespace ValidationTool.UI.ViewModels {
             }
         }
 
-        private void OpenSceneConfigView() {
-            if (SelectedFileVM == null) {
+        private void OpenSceneConfigView(FileStatsViewModel file) {
+            if (file == null) {
                 MessageBox.Show(
-                    "Select a file first.",
+                    "No file was passed to the Scene Setup view.",
                     "Scene Setup",
                     MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                    MessageBoxImage.Warning);
                 return;
             }
 
-            if (SelectedFileVM.SceneSetup == null) {
+            if (file.SceneSetup == null) {
                 MessageBox.Show(
                     "No Scene Setup data found for the selected file.",
                     "Scene Setup",
@@ -132,7 +133,7 @@ namespace ValidationTool.UI.ViewModels {
                 return;
             }
 
-            var wnd = new SceneSetupWndw(SelectedFileVM.SceneSetup);
+            var wnd = new SceneSetupWndw(file.SceneSetup);
             wnd.Show();
         }
     }
