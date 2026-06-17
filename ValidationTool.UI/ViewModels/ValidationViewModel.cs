@@ -134,8 +134,6 @@ namespace ValidationTool.UI.ViewModels {
                 length++;
             }
             foreach (var scene in dtos) {
-                string line = "Loaded: " + scene.scene_setup.SceneName+ " TOTAL PROGRESS: [" + Progress + "%]";
-                ProcessLine(line);
                 mRun.Add(scene);
                 TotalAssets += scene.summary.TotalAssets;
                 TotalIssues += scene.summary.TotalIssues;
@@ -143,7 +141,7 @@ namespace ValidationTool.UI.ViewModels {
                 TotalWarnings += scene.summary.Warnings;
                 TotalScenes += 1;
                 foreach (var issue in scene.issues) {
-                    mIssues.Add(new IssueViewModel {
+                    var someIssue = new IssueViewModel {
                         Artist = new ArtistViewModel {
                             ArtistName = issue.Artist.ArtistName,
                             ArtistLevel = issue.Artist.ArtistLevel,
@@ -164,10 +162,13 @@ namespace ValidationTool.UI.ViewModels {
                         Message = issue.Message,
                         Suggestion = issue.Suggestion,
                         FixModeRaw = issue.FixMode
-                    });
+                    };
+                    mIssues.Add(someIssue);
                 }
                 current++;
                 Progress = (int)((double)current / length * 100);
+                string line = "Loaded: " + scene.scene_setup.SceneName + " TOTAL PROGRESS: [" + Progress + "%]";
+                ProcessLine(line);
             }
             TeamListVM.AggregateAll();
 

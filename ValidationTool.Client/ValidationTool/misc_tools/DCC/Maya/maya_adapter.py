@@ -37,5 +37,4 @@ def extract_maya_scene() -> List[BaseContext]:
     objects.extend(extract_references())
     """
 
-
     return scene_setup, objects

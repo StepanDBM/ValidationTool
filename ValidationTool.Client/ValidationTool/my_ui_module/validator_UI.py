@@ -3,9 +3,12 @@ import maya.cmds as cmds
 
 from config.validation_profile import ValidationProfile
 from core.runner import run_pipeline
-from config.validation_config import ValidationConfig
-import  config.check_categories as check_categories
-from misc_tools.maya_adapter import extract_Maya_scene
+
+
+from core.validation_system import FixMode
+import config.check_categories as check_categories
+from misc_tools.DCC.Maya.maya_adapter import extract_maya_scene
+from misc_tools.DCC.Maya.maya_safeMultiTool import _get_scene_path
 
 
 class Severity:
@@ -15,23 +18,24 @@ class Severity:
     INFO = "INFO"
 
 
+# ===================== COLOR DELEGATE =====================
+
 class ColorDelegate(QtWidgets.QStyledItemDelegate):
 
     def paint(self, painter, option, index):
-
         severity = index.model().data(index.sibling(index.row(), 0), QtCore.Qt.DisplayRole)
 
         if severity == "ERROR":
             option.palette.setColor(QtGui.QPalette.Text, QtGui.QColor(255, 80, 80))
-
         elif severity == "WARNING":
             option.palette.setColor(QtGui.QPalette.Text, QtGui.QColor(255, 180, 0))
-
         else:
             option.palette.setColor(QtGui.QPalette.Text, QtGui.QColor(180, 180, 180))
 
         super().paint(painter, option, index)
 
+
+# ===================== MAIN WINDOW =====================
 
 class ValidatorWindow(QtWidgets.QDialog):
 
@@ -39,7 +43,7 @@ class ValidatorWindow(QtWidgets.QDialog):
         super().__init__(parent)
 
         self.setWindowTitle("Validation Tool")
-        self.resize(900, 500)
+        self.resize(950, 520)
 
         self.current_filter = Severity.ALL
 
@@ -67,9 +71,20 @@ class ValidatorWindow(QtWidgets.QDialog):
         self.view = QtWidgets.QTreeView()
 
         self.model = QtGui.QStandardItemModel()
-        self.model.setHorizontalHeaderLabels(["Severity", "Asset", "Stage", "Message"])
+        self.model.setHorizontalHeaderLabels(
+            ["Severity", "Asset", "Stage", "Message", "Fix"]
+        )
 
         self.view.setModel(self.model)
+        header = self.view.header()
+        self.view.setSortingEnabled(True)
+        
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)  # Severity
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)           # Asset
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)  # Stage
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)           # Message
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)  # Fix 
+
         self.view.setRootIsDecorated(False)
         self.view.setAlternatingRowColors(True)
         self.view.setItemDelegate(ColorDelegate())
@@ -82,7 +97,7 @@ class ValidatorWindow(QtWidgets.QDialog):
         filter_layout.addWidget(self.btn_warning)
         filter_layout.addWidget(self.btn_info)
 
-        # ---------------- TOP BAR (CLEANER LAYOUT) ----------------
+        # ---------------- TOP BAR ----------------
 
         top_bar = QtWidgets.QHBoxLayout()
 
@@ -94,7 +109,6 @@ class ValidatorWindow(QtWidgets.QDialog):
 
         top_bar.addSpacing(20)
         top_bar.addStretch()
-
         top_bar.addLayout(filter_layout)
 
         # ---------------- MAIN LAYOUT ----------------
@@ -110,7 +124,6 @@ class ValidatorWindow(QtWidgets.QDialog):
     def create_connections(self):
 
         self.run_button.clicked.connect(self.run_validation)
-
         self.category_combo.currentIndexChanged.connect(self.run_validation)
 
         self.btn_all.clicked.connect(lambda: self.apply_filter(Severity.ALL))
@@ -118,40 +131,70 @@ class ValidatorWindow(QtWidgets.QDialog):
         self.btn_warning.clicked.connect(lambda: self.apply_filter(Severity.WARNING))
         self.btn_info.clicked.connect(lambda: self.apply_filter(Severity.INFO))
 
-        self.view.clicked.connect(self.select_mesh)
+        self.view.clicked.connect(self.on_view_clicked)
         self.view.doubleClicked.connect(self.frame_mesh)
 
-    # ---------------- Core ----------------
+    # ---------------- CORE ----------------
 
     def run_validation(self):
         self.model.removeRows(0, self.model.rowCount())
 
-        meshes = extract_Maya_scene()
-        
+        scene_setup, objects = extract_maya_scene()
         profile = ValidationProfile(
             enabled_categories={
                 self.category_combo.currentData()
             } if self.category_combo.currentData() != "ALL" else set()
         )
-        
-        context = {"dcc": "Maya", "path": "file_path"}
-        result = run_pipeline(meshes, context, profile=profile)
 
+        context = {
+            "headless": 0,
+            "dcc": "Maya",
+            "path": _get_scene_path(),
+            "scene_setup": scene_setup
+        }
+
+        result = run_pipeline(objects, context, profile=profile)
+
+        
         for issue in result.issues:
 
             severity_item = QtGui.QStandardItem(issue.severity.value)
-            asset_item = QtGui.QStandardItem(issue.asset_name)
+            asset_item = QtGui.QStandardItem(issue.object_name)
             stage_item = QtGui.QStandardItem(issue.stage)
             message_item = QtGui.QStandardItem(issue.message)
 
-            asset_item.setData(issue.asset_name, QtCore.Qt.UserRole)
+            fix_item = QtGui.QStandardItem("")
 
-            self.model.appendRow([severity_item,
-                                    asset_item,
-                                    stage_item,
-                                    message_item])
+            asset_item.setData(issue.object_name, QtCore.Qt.UserRole)
+            
 
-    # ---------------- Filtering ----------------
+            self.model.appendRow([
+                severity_item,
+                asset_item,
+                stage_item,
+                message_item,
+                fix_item
+            ])
+            button = None
+
+            if issue.fix_mode == FixMode.SEMI:
+                button = QtWidgets.QPushButton("Fix")
+                button.clicked.connect(lambda _, i=issue: self.run_fix(i))
+
+            elif issue.fix_mode == FixMode.NONE:
+                 fix_item.setText("Manual Fixing")
+
+            if button:
+                button.setFixedHeight(22)
+                button.setMinimumWidth(80)
+
+                index = self.model.index(row_index, 4)
+                self.view.setIndexWidget(index, button)
+
+
+            row_index = self.model.rowCount() - 1
+
+    # ---------------- FILTERING ----------------
 
     def apply_filter(self, severity):
 
@@ -169,21 +212,68 @@ class ValidatorWindow(QtWidgets.QDialog):
 
             self.view.setRowHidden(row, QtCore.QModelIndex(), not visible)
 
-    # ---------------- Maya Actions ----------------
+    # ---------------- CLICK HANDLER ----------------
 
-    def select_mesh(self, index):
+    def on_view_clicked(self, index):
 
-        asset_index = index.sibling(index.row(), 1)
+        row = index.row()
+        column = index.column()
+
+        if column == 4:
+
+            item = self.model.item(row, 4)
+            issue = item.data(QtCore.Qt.UserRole)
+
+            if issue and issue.fix_mode.value == "SEMI":
+                self.run_fix(issue)
+
+            return
+
+        asset_index = index.sibling(row, 1)
         asset_name = self.model.data(asset_index, QtCore.Qt.UserRole)
 
-        if asset_name:
+        if asset_name and cmds.objExists(asset_name):
             cmds.select(asset_name)
+
+
+    def run_fix(self, issue):
+        print(f"[FIXING THIS: ] {issue.check_name} → {issue.object_name}")
+
 
     def frame_mesh(self, index):
 
         asset_index = index.sibling(index.row(), 1)
         asset_name = self.model.data(asset_index, QtCore.Qt.UserRole)
 
-        if asset_name:
+        if asset_name and cmds.objExists(asset_name):
             cmds.select(asset_name)
             cmds.viewFit()
+
+
+class IssueSortProxy(QtCore.QSortFilterProxyModel):
+
+    def lessThan(self, left, right):
+
+        model = self.sourceModel()
+
+        issue_left = model.item(left.row(), 4).data(QtCore.Qt.UserRole)
+        issue_right = model.item(right.row(), 4).data(QtCore.Qt.UserRole)
+
+        from core.validation_system import FixMode
+
+        left_priority = 0
+        right_priority = 0
+
+        if issue_left and issue_left.fix_mode == FixMode.SEMI:
+            left_priority = -1  # button-having rows are _prior_ to char 'a' in alphabetic sorting
+
+        if issue_right and issue_right.fix_mode == FixMode.SEMI:
+            right_priority = -1
+
+        if left_priority != right_priority:
+            return left_priority < right_priority
+
+        left_data = model.data(left)
+        right_data = model.data(right)
+
+        return str(left_data).lower() < str(right_data).lower()

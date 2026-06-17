@@ -11,7 +11,7 @@ from core.checks.validation_check_ids import (
 )
 
 
-def check_negative_scale(mObj: BaseContext,
+def check_null_scale(mObj: BaseContext,
                          context: ValidationRuntimeContext
                          ) -> ValidationIssue:
     if any(s == 0 for s in mObj.scale):

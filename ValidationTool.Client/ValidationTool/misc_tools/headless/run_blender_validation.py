@@ -1,6 +1,12 @@
 from pathlib import Path
 import sys
 
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+    sys.stderr.reconfigure(line_buffering=True)
+except Exception:
+    pass
+
 p = Path(__file__).resolve()
 
 # Walk upward until we find the project root
@@ -36,14 +42,14 @@ def process_file(file_path: str, artist: str):
     depsgraph = bpy.context.evaluated_depsgraph_get() #forces update of evaluated data,
     #so modifiers are applied and bounding boxes are correct
     scene_setup, objects = extract_blender_scene()
-    print (f"Extracted {len(objects)} meshes from the scene")
+    print (f"Extracted {len(objects)} meshes from the scene", flush=True)
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
+    context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)
     
-    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}")
+    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}", flush=True)
     return run
 
 def main():
@@ -51,7 +57,7 @@ def main():
     total_blendFiles = len(files)
     index = 0
     
-    print(f"Found {total_blendFiles} .BLENDs")
+    print(f"Found {total_blendFiles} Blender files.")
 
     myJsonPaths = []
     for fileInfo in files:
@@ -61,18 +67,18 @@ def main():
             
             progress = int((index/total_blendFiles)*100)
 
-            print(f"PROGRESS: [{progress}%]", flush = True)
-            print(f"\n[PROCESSING .BLEND]{file_path}", flush=True)
+            print(f"PROGRESS: [{progress}%]", flush=True)
+            print(f"CURRENT FILE: {file_path}", flush=True)
 
             index += 1
 
             run = process_file(file_path, artist_log)
             myJsonPaths.append(run.jsonPath)
         except Exception as e:
-            print(f"[run_blender_validation_ERROR] {file_path}: {e}")
+            print(f"[run_blender_validation_ERROR] {file_path}: {e}", flush=True)
 
     print("PROGRESS: [100%]", flush=True)
-    print("ALL FILES DONE")
+    print("ALL FILES DONE", flush=True)
     write_session_runs(myDCCs.BLENDER, myJsonPaths, True)
 
 

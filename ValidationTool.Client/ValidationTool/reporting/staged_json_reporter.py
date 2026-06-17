@@ -111,6 +111,7 @@ def write_json(run, pretty: bool = True):
     folder_path.mkdir(parents=True, exist_ok=True)
 
     report_file = folder_path / "validation_report.json"
+    print (report_file)
     
     with report_file.open("w", encoding="utf-8") as f:
         if pretty:

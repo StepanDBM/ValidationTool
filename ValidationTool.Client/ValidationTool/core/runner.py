@@ -4,6 +4,7 @@ import json
 from collections import Counter
 from typing import List
 import reporting.staged_json_reporter as json_reporter
+from pathlib import Path
 
 import core.validation_models as valMod
 from core.registry import ValidationRegistry
@@ -101,10 +102,10 @@ def build_registry() -> ValidationRegistry:
                       category=UV, stage=excS.UV)
     
     
-    registry.register(Check_0Scl.check_negative_scale,
+    registry.register(Check_0Scl.check_null_scale,
                       target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
                       category=TRANSFORM, stage=excS.TRANSFORM)
-    registry.register(Check_NonUniScl.check_negative_scale,
+    registry.register(Check_NonUniScl.check_nonUni_scale,
                       target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
                       category=TRANSFORM, stage=excS.TRANSFORM)
     registry.register(Check_NegScl.check_negative_scale,
@@ -149,25 +150,26 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
     registry = build_registry()
     run_id = str(uuid.uuid4().hex[:8])
     timestamp = datetime.datetime.now().isoformat()
-    
-    with open(absPath.ARTISTS_DIR / context.get("artist"),
-              "r", encoding="utf-8") as f:
-        this_artist = json.load(f)
-
+    this_artist = Path.home() / "Documents/ValidationTool/Artists/StepanBatlloriMartinez/artistLog.json"
+    if(context.get("headless") == 1):
+        with open(absPath.ARTISTS_DIR / context.get("artist"),
+                "r", encoding="utf-8") as f:
+            this_artist = json.load(f)
+    else:
+        with open(this_artist,
+                "r", encoding="utf-8") as f:
+            this_artist = json.load(f)
     all_results_flat = []
     all_issues = []
 
     ordered_checks = registry.resolveByProfileStage(profile)
-
     for obj in objects:
         hard_stop = False
 
         for check in ordered_checks:
-            # Skip checks that do not apply to this context type
-            
+            # Skip checks that do not apply to this context type            
             if not isinstance(obj, tuple(check.target_types)):
                     continue
-
             result = check.func(obj, runtime_ctx)
             if not result:
                 continue

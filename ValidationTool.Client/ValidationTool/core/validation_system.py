@@ -13,7 +13,7 @@ class ValidationSeverity(Enum):
     HARD = "ERROR_HARD"  # Subsequent issues should be avoided. IE: no-faces means NO UVs, so no UV check needed.
 
 class FixMode(str, Enum):
-    NONE = "wont"
+    NONE = "dccFix"
     AUTO = "auto"
     SEMI = "semi"
 

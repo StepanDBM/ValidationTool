@@ -66,7 +66,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UniversityPresentation|AnyCPU'">
-    <OutputPath>..\..\..\..\Desktop\ValidationTool\</OutputPath>
+    <OutputPath>..\..\..\..\Desktop\ValdiationToolShip\ValidationTool\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>

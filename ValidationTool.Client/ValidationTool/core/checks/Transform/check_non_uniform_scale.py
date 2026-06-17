@@ -10,11 +10,10 @@ from core.checks.validation_check_ids import (
     CHECK_NON_UNIFORM_SCALE,
 )
 
-def check_negative_scale(mObj: BaseContext,
+def check_nonUni_scale(mObj: BaseContext,
                          context: ValidationRuntimeContext
                          ) -> ValidationIssue:
     sx, sy, sz = mObj.scale
-
     if not (abs(sx - sy) < 1e-5 and abs(sy - sz) < 1e-5):
 
         return ValidationIssue(

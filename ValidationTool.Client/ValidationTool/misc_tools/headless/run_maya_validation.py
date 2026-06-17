@@ -29,6 +29,7 @@ from reporting.staged_json_reporter import write_session_runs
 import config.dcc_list as myDCCs
 
 
+
 def process_file(file_path: str, artist: str):
 
     artistFilePath = absPath.ARTISTS_DIR / file_path
@@ -36,14 +37,14 @@ def process_file(file_path: str, artist: str):
 
     scene_setup, objects = extract_maya_scene()
     objects = objects[1:]
-    print (f"Extracted {len(objects)} meshes from the scene")
+    print (f"Extracted {len(objects)} meshes from the scene", flush=True)
     profile = ValidationProfile(enabled_categories=set())
 
-    context = {"dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
+    context = {"headless": 1, "dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)
 
-    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}")
+    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}", flush=True)
     return run
 
 def main():
@@ -52,7 +53,7 @@ def main():
     total_Mayafiles = len(files)
     index = 0
 
-    print(f"Found {total_Mayafiles} MAYA files")
+    print(f"Found {total_Mayafiles} MAYA files.")
 
     myJsonPaths = []
     for fileInfo in files:
@@ -62,17 +63,17 @@ def main():
             
             progress = int((index/total_Mayafiles)*100)
 
-            print(f"PROGRESS: [{progress}%]", flush = True)
-            print(f"PROCESSING .MA:{file_path}", flush=True)
+            print(f"PROGRESS: [{progress}%]", flush=True)
+            print(f"CURRENT FILE: {file_path}", flush=True)
 
             index += 1
             run = process_file(file_path, artist_log)
             myJsonPaths.append(run.jsonPath)
         except Exception as e:
-            print(f"[run_maya_validation_ERROR] {file_path}: {e}")
+            print(f"[run_maya_validation_ERROR] {file_path}: {e}", flush=True)
 
     print("PROGRESS: [100%]", flush=True)
-    print("ALL FILES DONE")
+    print("ALL FILES DONE", flush=True)
     write_session_runs(myDCCs.MAYA, myJsonPaths, True)
 
 
