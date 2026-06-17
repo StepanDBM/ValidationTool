@@ -148,8 +148,9 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
     registry = build_registry()
     run_id = str(uuid.uuid4().hex[:8])
     timestamp = datetime.datetime.now().isoformat()
-
-    with open(context.get("artist"), "r", encoding="utf-8") as f:
+    
+    with open(absPath.ARTISTS_DIR / context.get("artist"),
+              "r", encoding="utf-8") as f:
         this_artist = json.load(f)
 
     all_results_flat = []
@@ -211,6 +212,6 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
         jsonPath=""
     )
 
-    new_json_path = json_reporter.write_json(run, absPath.REPORTS_DIR, pretty=True)
+    new_json_path = json_reporter.write_json(run, pretty=True)
     run.jsonPath = new_json_path
     return run

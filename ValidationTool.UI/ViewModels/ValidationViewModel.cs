@@ -8,10 +8,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
+using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.External;
+using ValidationTool.UI.ViewModels.ValidationView_Models;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel : INotifyPropertyChanged {
@@ -22,7 +25,10 @@ namespace ValidationTool.UI.ViewModels {
         public ObservableCollection<IssueViewModel> mIssues { get; set; } = new ObservableCollection<IssueViewModel>();
         public ObservableCollection<ValidationRunDto> mRun { get; set; } = new ObservableCollection<ValidationRunDto>();
 
-        //private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
+
+        private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
+        public ICommand SendReportCommand { get; }
+
         public ICollectionView IssuesView { get; set; }
 
         public ValidationViewModel() {
@@ -33,6 +39,9 @@ namespace ValidationTool.UI.ViewModels {
             FileListVM = new UC_FileListViewModel(mIssues, mRun, Selection);
 
             Selection.PropertyChanged += OnSelectionChanged;
+
+
+            SendReportCommand = new AsyncRelayCommand<IssueViewModel>(SendReport);
         }
 
 
@@ -151,7 +160,7 @@ namespace ValidationTool.UI.ViewModels {
                 }
             }
             TeamListVM.AggregateAll();
-            //mNotService.SendErrorReportAsync(mIssues);
+
             dtos.Clear();
         }
         private Func<IssueViewModel, object> getKeySelector(string header) {
@@ -318,6 +327,19 @@ namespace ValidationTool.UI.ViewModels {
                 });
             } finally {
                 IsBusy = false;
+            }
+        }
+
+        private async Task SendReport(IssueViewModel issue) {
+
+            System.Diagnostics.Debug.WriteLine("🔥 SendReport triggered");
+
+            try {
+                if (issue == null) return;
+                ObservableCollection<IssueViewModel> issueList = new ObservableCollection<IssueViewModel>() { issue};
+                await mNotService.SendErrorReportAsync(issueList, true);
+            } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
             }
         }
     }

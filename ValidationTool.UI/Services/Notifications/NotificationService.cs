@@ -30,16 +30,19 @@ namespace ValidationTool.Services.Notifications {
                 new DiscordNotificationProvider( httpClient, KEY_TOKENS_GITIGNORE.DISCORD_STYOPA_KEY)*/
             };
         }
-        public async Task SendErrorReportAsync(ObservableCollection<IssueViewModel> issues) {
+        public async Task SendErrorReportAsync(ObservableCollection<IssueViewModel> issues, bool force = false) {
             if (issues == null || issues.Count == 0)
                 return;
 
             var errorIssues = issues
                 .Where(i => i.Severity == "ERROR")
                 .ToList();
-
-            if (!errorIssues.Any())
+            
+            if (force) {
+                errorIssues = issues.ToList();
+            } else if (!errorIssues.Any()) {
                 return;
+            }
 
             // GROUP BY ARTIST
             var issuesByArtist = errorIssues

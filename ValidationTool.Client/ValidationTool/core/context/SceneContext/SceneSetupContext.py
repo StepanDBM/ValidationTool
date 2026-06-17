@@ -36,7 +36,6 @@ from core.context.SceneContext.aov_context import AovContext
 @dataclass
 class SceneSetupContext(BaseContext):
     scene_name: str
-    scene_path: str
     project_path: str
 
     dcc_name: str

@@ -15,6 +15,17 @@
                 <DataGridTextColumn Header="Severity" Binding="{Binding Severity}" Width="*" />
                 <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="2*" />
                 <DataGridTextColumn Header="Suggestion" Binding="{Binding Suggestion}" Width="2*" />
+
+                <DataGridTemplateColumn Header="Report" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding ReportButtonText}"
+                                    ToolTip="{Binding ReportToolTip}"
+                                    Command="{Binding DataContext.SendReportCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

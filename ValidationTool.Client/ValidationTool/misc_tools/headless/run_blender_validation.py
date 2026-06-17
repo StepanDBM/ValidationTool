@@ -47,7 +47,7 @@ def process_file(file_path: str, artist: str):
     return run
 
 def main():
-    files = get_dcc_files(absPath.ARTISTS_DIR, "blender")
+    files = get_dcc_files("blender")
 
     total_blendFiles = len(files)
     index = 0

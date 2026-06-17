@@ -12,7 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="Themes/Colors.xaml"/>
-                <ResourceDictionary Source="/Themes/Brushes.xaml"/>
+                <ResourceDictionary Source="Themes/Brushes.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
             <conv:SeverityToBrushConverter
@@ -54,48 +54,51 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="TabItem">
+                            <Grid>
 
-                            <Border x:Name="Bd"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="4,4,0,0"
-                        SnapsToDevicePixels="True">
+                                <!-- Header area -->
+                                <Border x:Name="HeaderBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="4,4,0,0">
 
-                                <ContentPresenter
-                        Margin="10,4"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        RecognizesAccessKey="True"
-                        ContentSource="Header"/>
+                                    <ContentPresenter
+                                        Margin="10,4"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        RecognizesAccessKey="True"
+                                        ContentSource="Header"/>
+                                </Border>
 
-                            </Border>
+                            </Grid>
 
                             <ControlTemplate.Triggers>
 
                                 <!-- Selected -->
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{StaticResource BrushBgMain}" />
+                                    <Setter TargetName="HeaderBorder"
+                                            Property="Background"
+                                            Value="{StaticResource BrushHover}" />
                                     <Setter Property="FontWeight" Value="Bold"/>
                                 </Trigger>
 
-                                <!-- Hover -->
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{StaticResource BrushBgElement}" />
+                                <!-- Hover ONLY on header -->
+                                <Trigger SourceName="HeaderBorder"
+                                         Property="IsMouseOver"
+                                         Value="True">
+
+                                    <Setter TargetName="HeaderBorder"
+                                            Property="Background"
+                                            Value="{StaticResource BrushHover}" />
                                 </Trigger>
 
                                 <!-- Disabled -->
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Foreground"
-                                Value="#777777"/>
+                                    <Setter Property="Foreground" Value="#777777"/>
                                 </Trigger>
 
                             </ControlTemplate.Triggers>
-
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -104,17 +107,54 @@
 
 
             <Style TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource BrushBgPanel}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource BrushText}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource BrushBorder}" />
+                <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+                <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
+                <Setter Property="Background" Value="{StaticResource BrushBgPanel}" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="3">
+
+                                <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+
+                                <!-- Hover -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushHover}" />
+                                </Trigger>
+
+                                <!-- Pressed -->
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushAccent}" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+
+                                <!-- Disabled -->
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
             <Style TargetType="TextBox">
-                <Setter Property="Background"
-                        Value="{StaticResource BrushBgElement}" />
                 <Setter Property="Foreground"
                         Value="{StaticResource BrushText}" />
                 <Setter Property="BorderBrush"
@@ -147,8 +187,6 @@
             </Style>
 
             <Style TargetType="TextBlock">
-                <Setter Property="Background"
-                        Value="{StaticResource BrushBgElement}" />
                 <Setter Property="Foreground"
                         Value="{StaticResource BrushText}" />
             </Style>
@@ -163,14 +201,6 @@
                 <Setter Property="Background"
                         Value="{StaticResource BrushBgPanel}" />
             </Style>
-
-            <Style TargetType="StackPanel">
-                <Setter Property="Background"
-                        Value="{StaticResource BrushBgPanel}" />
-                <Setter Property="Opacity"
-                        Value="1" />
-            </Style>
-
 
             <Style TargetType="DataGrid">
 
@@ -257,6 +287,11 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style TargetType="ToolTip">
+                <Setter Property="Background"
+                        Value="{StaticResource BrushBorder}"/>
             </Style>
             
         </ResourceDictionary>

@@ -28,6 +28,11 @@ namespace ValidationTool.UI.ViewModels {
 
         private readonly ObservableCollection<ValidationRunDto> _runs;
 
+        public string ReportToolTip =>
+            _issues != null && _issues.Any(i => i.Severity == "ERROR")
+            ? "Send report for ERROR issues"
+            : "No errors found. This will force a report of warnings.";
+
         public UC_FileListViewModel(
             ObservableCollection<IssueViewModel> issues,
             ObservableCollection<ValidationRunDto> runs,

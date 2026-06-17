@@ -93,6 +93,3 @@ ARTISTS_DIR = DATA_ROOT / "Artists"
 REPORTS_DIR = DATA_ROOT / "Reports"
 LOGS_DIR = DATA_ROOT / "Logs"
 
-ARTISTS_DIR.mkdir(parents=True, exist_ok=True)
-REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-LOGS_DIR.mkdir(parents=True, exist_ok=True)

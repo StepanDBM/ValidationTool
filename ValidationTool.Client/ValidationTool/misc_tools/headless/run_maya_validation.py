@@ -22,17 +22,18 @@ from misc_tools.DCC.Maya.maya_adapter import extract_maya_scene
 from core.runner import run_pipeline
 from config.validation_profile import ValidationProfile
 
+import config.absolutePaths as absPath
 from fileSearchers.source_finder import get_dcc_files
 
 from reporting.staged_json_reporter import write_session_runs
 import config.dcc_list as myDCCs
 
-import config.absolutePaths as absPath
 
 def process_file(file_path: str, artist: str):
-    cmds.file(file_path, open=True, force=True, ignoreVersion=True)
 
-    
+    artistFilePath = absPath.ARTISTS_DIR / file_path
+    cmds.file(artistFilePath, open=True, force=True, ignoreVersion=True)
+
     scene_setup, objects = extract_maya_scene()
     objects = objects[1:]
     print (f"Extracted {len(objects)} meshes from the scene")
@@ -42,13 +43,12 @@ def process_file(file_path: str, artist: str):
 
     run = run_pipeline(objects, context, profile)
 
-    print(f"[DONE] {file_path} -> {run.summary.run_id}")
+    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}")
     return run
 
 def main():
 
-    files = get_dcc_files(absPath.ARTISTS_DIR, "maya")
-    print(files)
+    files = get_dcc_files("maya")
     total_Mayafiles = len(files)
     index = 0
 
@@ -74,7 +74,7 @@ def main():
     print("PROGRESS: [100%]", flush=True)
     print("ALL FILES DONE")
 
-    write_session_runs(myDCCs.MAYA, myJsonPaths, absPath.REPORTS_DIR, True)
+    write_session_runs(myDCCs.MAYA, myJsonPaths, True)
 
 
 if __name__ == "__main__":

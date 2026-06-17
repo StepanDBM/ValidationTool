@@ -5,6 +5,7 @@ ValidationTool.Client/reports/
 ValidationTool.UI/TOKEN_KEYS_GITIGNORE/
 ValidationTool.UI/bin/
 ValidationTool.UI/obj/
-*/obj/
-*/bin/
-*/__pycache__/
+**/obj/
+**/bin/
+**/__pycache__/
+ValidationTool.Icon/

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ValidationTool.Services.Notifications;
 using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.ViewModels {
@@ -13,5 +14,14 @@ namespace ValidationTool.UI.ViewModels {
         public string Severity { get; set; }
         public string Message { get; set; }
         public string Suggestion { get; set; }
+
+
+        public string ReportButtonText =>
+            Severity == "ERROR" ? "Report" : "Force Report";
+
+        public string ReportToolTip => Severity == "ERROR"
+            ? "Send error report"
+            : "Force report (this is only a warning)";
+
     }
 }

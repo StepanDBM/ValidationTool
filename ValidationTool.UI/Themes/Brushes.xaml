@@ -23,6 +23,9 @@
     <SolidColorBrush x:Key="BrushBorder"
                      Color="{StaticResource ColorBorder}" />
 
+    <!-- Hover -->
+    <SolidColorBrush x:Key="BrushHover"
+                     Color="{StaticResource ColorBorder}" />
     <!-- Accent -->
     <SolidColorBrush x:Key="BrushAccent"
                      Color="{StaticResource ColorAccent}" />

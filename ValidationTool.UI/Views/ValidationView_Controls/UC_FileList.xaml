@@ -51,6 +51,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Report"
+                                    ToolTip="{Binding ReportToolTip}"
                                     Command="{Binding DataContext.SendReportCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                     CommandParameter="{Binding}" />
                         </DataTemplate>

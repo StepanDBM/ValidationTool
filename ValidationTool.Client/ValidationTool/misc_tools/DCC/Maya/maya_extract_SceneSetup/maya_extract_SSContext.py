@@ -92,7 +92,6 @@ def extract_scene_setup_context() -> SceneSetupContext:
         parent="",
 
         scene_name=scene_name,
-        scene_path=scene_path,
         project_path=project_path,
 
         dcc_name="Maya",

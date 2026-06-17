@@ -13,6 +13,7 @@ from pathlib import Path
 from dataclasses import is_dataclass, asdict
 from datetime import datetime
 from enum import Enum
+import config.absolutePaths as absPath
 
 
 def _to_json_safe(value):
@@ -73,7 +74,7 @@ def export_validation_run(run) -> Dict[str, Any]:
         issue_obj = {
             "artist": issue.artist,
             "dcc": issue.dcc,
-            "origin_file": issue.origin_file,
+            "origin_file": _to_json_safe(issue.origin_file),
             "object_name": issue.object_name,
             "check_name": issue.check_name,
             "stage": issue.stage,
@@ -96,17 +97,19 @@ def export_validation_run(run) -> Dict[str, Any]:
         "issues": mIssues
     }
 
-def write_json(run, folder_path: Path, pretty: bool = True):
+def write_json(run, pretty: bool = True):
     
     data = export_validation_run(run)
     
+    
+    run_folder = f"{run.summary.dcc}_runID_{run.summary.run_id}"
+    
+    folder_path = absPath.REPORTS_DIR
     folder_path.mkdir(parents=True, exist_ok=True)
-    
-    run_folder = folder_path / f"{run.summary.dcc}_runID_{run.summary.run_id}"
-    
-    run_folder.mkdir(parents=True, exist_ok=True)
+    folder_path = folder_path / run_folder
+    folder_path.mkdir(parents=True, exist_ok=True)
 
-    report_file = run_folder / "validation_report.json"
+    report_file = folder_path / "validation_report.json"
     
     with report_file.open("w", encoding="utf-8") as f:
         if pretty:
@@ -114,16 +117,16 @@ def write_json(run, folder_path: Path, pretty: bool = True):
         else:
             json.dump(data, f, ensure_ascii=False)
 
-    return str(report_file)
+    return str(run_folder)
 
-def write_session_runs(mydcc, sessionRuns, folder_path: Path, pretty: bool = True):
+def write_session_runs(mydcc, sessionRuns, pretty: bool = True):
 
     data = {
         "dcc": mydcc,
         "runs": sessionRuns
     }
-    folder_path.mkdir(parents=True, exist_ok=True)
-    report_file = folder_path / f"{mydcc}_reports.json"
+        
+    report_file = absPath.REPORTS_DIR / f"{mydcc}_reports.json"
     
     try:
         with report_file.open("w", encoding="utf-8") as f:
