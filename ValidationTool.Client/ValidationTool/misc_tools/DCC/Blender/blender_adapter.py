@@ -21,12 +21,16 @@ from misc_tools.DCC.Blender.blender_reference_extractor import extract_reference
 """
 
 def extract_blender_scene() -> List[BaseContext]:
+
     objects: List[BaseContext] = []
-    
     scene_setup = extract_scene_setup_context()
+    print("exctracted scene setup successfuly")
     objects.extend(extract_meshes())
+    print("exctracted scene meshes successfuly")
     objects.extend(extract_cameras())
+    print("exctracted scene cameras successfuly")
     objects.extend(extract_lights())
+    print("exctracted scene lights successfuly")
     """
     objects.extend(extract_curves())
     objects.extend(extract_nurbs())

@@ -26,15 +26,15 @@ import config.absolutePaths as absPath
 
 
 def load_blend(file_path: str):
-    bpy.ops.wm.open_mainfile(filepath=file_path)
+    bpy.ops.wm.open_mainfile(filepath=str(file_path))
 
 
 def process_file(file_path: str, artist: str):
-    load_blend(file_path)
+    artistFilePath = absPath.ARTISTS_DIR / file_path
+    load_blend(artistFilePath)
     bpy.context.view_layer.update()
     depsgraph = bpy.context.evaluated_depsgraph_get() #forces update of evaluated data,
     #so modifiers are applied and bounding boxes are correct
-
     scene_setup, objects = extract_blender_scene()
     print (f"Extracted {len(objects)} meshes from the scene")
     profile = ValidationProfile(enabled_categories=set())
@@ -43,12 +43,11 @@ def process_file(file_path: str, artist: str):
 
     run = run_pipeline(objects, context, profile)
     
-    print(f"[DONE] {file_path} -> {run.summary.run_id}")
+    print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}")
     return run
 
 def main():
     files = get_dcc_files("blender")
-
     total_blendFiles = len(files)
     index = 0
     
@@ -74,8 +73,7 @@ def main():
 
     print("PROGRESS: [100%]", flush=True)
     print("ALL FILES DONE")
-    
-    write_session_runs(myDCCs.BLENDER, myJsonPaths, absPath.REPORTS_DIR, True)
+    write_session_runs(myDCCs.BLENDER, myJsonPaths, True)
 
 
 if __name__ == "__main__":

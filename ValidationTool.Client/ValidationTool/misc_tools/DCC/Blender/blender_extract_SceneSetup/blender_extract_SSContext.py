@@ -70,30 +70,22 @@ def extract_scene_setup_context() -> SceneSetupContext:
     scene_path = _get_scene_path()
     scene_name = _get_scene_name(scene_path)
     project_path = _get_project_path(scene_path)
-
     render_settings = extract_render_settings()
-    _pretty_print_context("RENDER SETTINGS", render_settings)
-
+    #_pretty_print_context("RENDER SETTINGS", render_settings)
     output_settings = extract_output_settings()
-    _pretty_print_context("OUTPUT SETTINGS", output_settings)
-
+    #_pretty_print_context("OUTPUT SETTINGS", output_settings)
     sampling_settings = extract_sampling_settings()
-    _pretty_print_context("SAMPLING SETTINGS", sampling_settings)
-
+    #_pretty_print_context("SAMPLING SETTINGS", sampling_settings)
     ray_depth_settings = extract_ray_depth_settings()
-    _pretty_print_context("RAY DEPTH SETTINGS", ray_depth_settings)
-
+    #_pretty_print_context("RAY DEPTH SETTINGS", ray_depth_settings)
     color_management = extract_color_management()
-    _pretty_print_context("COLOR MANAGEMENT", color_management)
-
+    #_pretty_print_context("COLOR MANAGEMENT", color_management)
     camera_setup = extract_camera_setup()
-    _pretty_print_context("CAMERA SETUP", camera_setup)
-
+    #_pretty_print_context("CAMERA SETUP", camera_setup)
     render_layers = extract_render_layers()
-    _pretty_print_context("RENDER LAYERS", render_layers)
-
+    #_pretty_print_context("RENDER LAYERS", render_layers)
     aovs = extract_aovs()
-    _pretty_print_context("AOVs", aovs)
+    #_pretty_print_context("AOVs", aovs)
 
     scene_setup = SceneSetupContext(
         name=scene_name,
@@ -102,7 +94,6 @@ def extract_scene_setup_context() -> SceneSetupContext:
         parent="",
 
         scene_name=scene_name,
-        scene_path=scene_path,
         project_path=project_path,
 
         dcc_name="Blender",

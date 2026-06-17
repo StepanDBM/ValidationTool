@@ -63,7 +63,7 @@ def main():
             progress = int((index/total_Mayafiles)*100)
 
             print(f"PROGRESS: [{progress}%]", flush = True)
-            print(f"CURRENT_FILE:{file_path}", flush=True)
+            print(f"PROCESSING .MA:{file_path}", flush=True)
 
             index += 1
             run = process_file(file_path, artist_log)
@@ -73,7 +73,6 @@ def main():
 
     print("PROGRESS: [100%]", flush=True)
     print("ALL FILES DONE")
-
     write_session_runs(myDCCs.MAYA, myJsonPaths, True)
 
 

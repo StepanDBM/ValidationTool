@@ -51,7 +51,7 @@ namespace ValidationTool.Services.Notifications {
             // SUMMARY
             // --------------------------------------------------
             sb.AppendLine("*Summary*");
-            sb.AppendLine($"• Total issues: *{orderedIssues.Count}*");
+            sb.AppendLine($"• Total issues (in this message): *{orderedIssues.Count}*");
             sb.AppendLine($"• Errors: *{errorCount}*");
             sb.AppendLine($"• Warnings: *{warningCount}*");
             sb.AppendLine($"• Info: *{infoCount}*");

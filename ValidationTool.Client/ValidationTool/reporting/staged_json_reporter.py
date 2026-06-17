@@ -117,7 +117,7 @@ def write_json(run, pretty: bool = True):
         else:
             json.dump(data, f, ensure_ascii=False)
 
-    return str(run_folder)
+    return run_folder + "/validation_report.json"
 
 def write_session_runs(mydcc, sessionRuns, pretty: bool = True):
 

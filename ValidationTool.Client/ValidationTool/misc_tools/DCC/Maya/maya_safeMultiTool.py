@@ -20,6 +20,13 @@ MAYA_LIGHT_TYPES = {
     "aiMeshLight": "ARNOLD_MESH",
 }
 
+def _safe_arnold_loaded():
+    try:
+        if not cmds.pluginInfo("mtoa", query=True, loaded=True):
+            cmds.loadPlugin("mtoa")
+    except Exception:
+        pass  # fail silently if Arnold not available
+
 def _pretty_print_context(title: str, obj):
     print(f"\n[{title}]")
     print("-" * (len(title) + 2))

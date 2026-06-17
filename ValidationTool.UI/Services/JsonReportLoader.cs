@@ -15,7 +15,7 @@ namespace ValidationTool.UI.Services {
             foreach (var dcc in lastRuns) {
                 foreach (var reportPath in dcc.Runs) {
                     try {
-                        var json = File.ReadAllText(reportPath);
+                        var json = File.ReadAllText(Path.Combine(Paths.REPORTS_DIR, reportPath));
                         var report = JsonSerializer.Deserialize<ValidationRunDto>(
                             json,
                             new JsonSerializerOptions {
@@ -35,20 +35,17 @@ namespace ValidationTool.UI.Services {
         public static List<LastRunsListDto> LoadLastReportList() {
             var result = new List<LastRunsListDto>();
 
-            // Check directory exists
             if (!Directory.Exists(Paths.REPORTS_DIR))
                 return result;
 
             var reportFiles = Directory.GetFiles(Paths.REPORTS_DIR, "*_reports.json");
 
             foreach (string reportFile in reportFiles) {
-                // Skip missing file (paranoia-safe)
                 if (!File.Exists(reportFile))
                     continue;
 
                 var json = File.ReadAllText(reportFile);
 
-                // Skip empty or whitespace-only files
                 if (string.IsNullOrWhiteSpace(json))
                     continue;
 

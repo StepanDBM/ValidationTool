@@ -10,6 +10,7 @@ from misc_tools.DCC.Maya.maya_safeMultiTool import (
     _safe_get_bool,
     _safe_get_color,
     _get_light_type,
+    _safe_arnold_loaded
 )
 
 try:
@@ -48,7 +49,7 @@ def _collect_light_shapes() -> list[str]:
 def extract_lights() -> List[LightContext]:
     if cmds is None:
         raise RuntimeError("Maya API not available. Run inside Maya.")
-
+    _safe_arnold_loaded()
     light_shapes = _collect_light_shapes()
     lights: List[LightContext] = []
 

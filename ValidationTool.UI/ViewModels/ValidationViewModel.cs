@@ -46,6 +46,7 @@ namespace ValidationTool.UI.ViewModels {
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<string> LogLines { get; } = new ObservableCollection<string>();
 
         private bool _isBusy;
         public bool IsBusy {
@@ -127,8 +128,15 @@ namespace ValidationTool.UI.ViewModels {
             TotalScenes = 0;
             mIssues.Clear();
             var dtos = JsonReportLoader.Load();
-
+            Progress = 0;
+            int length = 0;
+            int current = 0;
             foreach (var scene in dtos) {
+                length++;
+            }
+            foreach (var scene in dtos) {
+                string line = "Loaded [" + Progress + "%]";
+                ProcessLine(line);
                 mRun.Add(scene);
                 TotalAssets += scene.summary.TotalAssets;
                 TotalIssues += scene.summary.TotalIssues;
@@ -158,6 +166,8 @@ namespace ValidationTool.UI.ViewModels {
                         Stage = issue.Stage
                     });
                 }
+                current++;
+                Progress = (int)((double)current / length * 100);
             }
             TeamListVM.AggregateAll();
 
@@ -257,6 +267,17 @@ namespace ValidationTool.UI.ViewModels {
             IssuesView.Refresh();
         }
         private void ProcessLine(string line) {
+            // 1. Always log everything first
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                LogLines.Add(line);
+
+                // Optional: keep log size under control
+                if (LogLines.Count > 500)
+                    LogLines.RemoveAt(0);
+            });
+
+            // 2. Keep your structured parsing
             if (line.StartsWith("PROGRESS:")) {
                 var percentText = line
                     .Replace("PROGRESS:", "")
