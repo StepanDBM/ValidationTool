@@ -81,7 +81,8 @@ def export_validation_run(run) -> Dict[str, Any]:
             "timestamp": str(issue.timestamp),
             "severity": issue.severity.value,
             "message": issue.message,
-            "suggestion": issue.suggestion
+            "suggestion": issue.suggestion,
+            "fix_mode":issue.fix_mode
         }
         mIssues.append(issue_obj)
 

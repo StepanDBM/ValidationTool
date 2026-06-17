@@ -1,0 +1,156 @@
+@startuml
+title Validation Tool - Layered Architecture
+
+top to bottom direction
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+'==============================
+' UI LAYER
+'==============================
+package "UI Layer (C# / WPF)" #BBDEFB {
+
+    [ValidationTool.UI] as UI
+    [ValidationViewModel] as VM
+    [IssueViewModel] as IssueVM
+
+    package "Notifications" #E3F2FD {
+        [NotificationService] as Notify
+        [SlackService] as Slack
+        [DiscordService] as Discord
+        [TeamsService] as Teams
+        [MessageBuilder] as MsgB
+    }
+
+    [JsonLoad] as JSON_L
+
+    package "User Interface" #FFCDD2{
+        [Main View] as MainV
+        [Validation View] as ValV
+
+        [SubViews] as SubViews
+        [Scene View] as SceneV
+    }
+}
+
+'==============================
+' EXECUTION LAYER
+'==============================
+package "Execution Layer (.py)" #C8E6C9 {
+    [Validation Runner (Headless)] as Runner
+    [DCC Launcher] as DCCRunner
+    [Issue Fix runner] as FixRunner
+}
+
+'==============================
+' DCC LAYER
+'==============================
+package "DCC Layer (dcc.py)" #FFF9C4 {
+
+    [Headless Extractor\n(DCC Abstraction)] as DCCExtract
+    [Headless Fixer\n(DCC Abstraction)] as DCCFix
+
+    package "DCC Hosts" {
+        [Maya] as Maya
+        [Blender] as Blender
+        [Houdini] as Houdini
+    }
+
+    [BaseContext] as BC
+    [Derived Contexts\n(Mesh / Camera / Light...)] as Contexts
+
+    package "Fix System" #FFCDD2 {
+        [Maya Fix] as MayaFix
+        [Blender Fix] as BlenderFix
+        [Houdini Fix] as HoudiniFix
+    }
+}
+
+'==============================
+' VALIDATION ENGINE
+'==============================
+package "Validation Engine (.py)" #F8BBD0 {
+
+    [Registry] as Registry
+    [CheckDefinition] as CheckDef
+    [Checks] as Checks
+    [Issue DTO] as IssueDTO
+    [Json Save] as JSON_S
+}
+
+'==============================
+' DATA LAYER
+'==============================
+package "Data Layer" #ECEFF1 {
+    database "JSON Report" {
+        [Report File] as JSON
+    }
+}
+
+'==============================
+' CONTROL FLOW (TOP → DOWN)
+'==============================
+UI --> VM
+VM --> Runner : run validation
+Runner --> DCCRunner : execute headless
+DCCRunner --> DCCExtract
+Runner --> Checks : register checks
+
+DCCExtract --> Maya
+DCCExtract --> Blender
+DCCExtract --> Houdini
+
+Maya --> BC
+Blender --> BC
+Houdini --> BC
+
+BC --> Contexts
+
+Checks --> IssueDTO : create issues
+IssueDTO --> JSON_S : serialize
+JSON_S --> JSON : save report
+VM --> UI
+
+'==============================
+' DATA FLOW (BOTTOM → UP)
+'==============================
+JSON --> JSON_L : load report
+JSON_L --> VM
+
+VM --> IssueVM
+VM --> Notify
+
+Notify --> Slack
+Notify --> Teams
+Notify --> Discord
+
+Slack --> MsgB
+Teams --> MsgB
+Discord --> MsgB
+
+'==============================
+' UI STRUCTURE
+'==============================
+UI --> MainV
+MainV --> ValV
+ValV --> SubViews
+
+SceneV --> SubViews : open scene
+
+'==============================
+' FIX SYSTEM
+'==============================
+VM --> FixRunner
+FixRunner --> DCCRunner
+DCCRunner --> DCCFix
+DCCFix --> MayaFix
+DCCFix --> BlenderFix
+DCCFix --> HoudiniFix
+
+MayaFix --> BC
+BlenderFix --> BC
+HoudiniFix --> BC
+
+@enduml

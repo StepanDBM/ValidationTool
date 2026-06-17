@@ -147,6 +147,7 @@
     <Compile Include="Models\DTOs\SceneSetup\SamplingSettingsDto.cs" />
     <Compile Include="Models\DTOs\SelectionContext.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
+    <Compile Include="Models\FixMode.cs" />
     <Compile Include="Models\Items\SceneSetupNavItem.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />

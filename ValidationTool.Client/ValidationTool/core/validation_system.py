@@ -12,6 +12,10 @@ class ValidationSeverity(Enum):
     ERROR = "ERROR"
     HARD = "ERROR_HARD"  # Subsequent issues should be avoided. IE: no-faces means NO UVs, so no UV check needed.
 
+class FixMode(str, Enum):
+    NONE = "wont"
+    AUTO = "auto"
+    SEMI = "semi"
 
 class ObjectType(Enum):
     MESH = "MESH"
@@ -51,8 +55,6 @@ class ValidationIssue:
     suggestion: str = ""
 
 #NEW CLASS, 13/06/2026 BaseContext is abstracted from and into every context afterwards.
-
-
 
 @dataclass
 class ObjectContext:

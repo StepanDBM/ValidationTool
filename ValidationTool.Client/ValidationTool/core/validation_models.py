@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 from datetime import datetime
 
-from core.validation_system import ValidationSeverity
+from core.validation_system import ValidationSeverity, FixMode
 from core.context.SceneContext.SceneSetupContext import SceneSetupContext
 
 class ArtistDto:
@@ -28,6 +28,7 @@ class ValidationResult:
     severity: ValidationSeverity
     message: str
     suggestion: str = ""
+    fix_mode: str = FixMode.NONE
 
 
 @dataclass

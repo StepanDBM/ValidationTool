@@ -16,7 +16,7 @@ MAX_SCALE = 1000.0
 def check_extreme_scale(mObj: BaseContext,
                          context: ValidationRuntimeContext
                          ) -> ValidationIssue:
-    if any(s < MAX_SCALE for s in mObj.scale):
+    if any(s > MAX_SCALE for s in mObj.scale):
 
         return(ValidationIssue(
             asset_name=mObj.name,

@@ -74,6 +74,9 @@ namespace ValidationTool.UI.Models.DTOs {
 
         [JsonPropertyName("suggestion")]
         public string Suggestion { get; set; }
+
+        [JsonPropertyName("fix_mode")]
+        public string FixMode { get; set; }
     }
 
     public class ArtistDto {

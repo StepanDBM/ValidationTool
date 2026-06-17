@@ -7,6 +7,7 @@ import reporting.staged_json_reporter as json_reporter
 
 import core.validation_models as valMod
 from core.registry import ValidationRegistry
+from core.validation_system import FixMode
 
 from core.context.baseContext import BaseContext
 from core.context import baseContext, mesh_context, camera_context, light_context
@@ -111,7 +112,7 @@ def build_registry() -> ValidationRegistry:
                       category=TRANSFORM, stage=excS.TRANSFORM)
     registry.register(Check_XtrmScl.check_extreme_scale,
                       target_types=[mesh_context.MeshContext, camera_context.CameraContext, light_context.LightContext],
-                      category=TRANSFORM, stage=excS.TRANSFORM)
+                      category=TRANSFORM, stage=excS.TRANSFORM, fix_mode=FixMode.SEMI)
     
     
     registry.register(Check_DefDCCName.check_default_dcc_naming,
@@ -119,7 +120,7 @@ def build_registry() -> ValidationRegistry:
                       category=NAMING, stage=excS.NAMING)
     registry.register(Check_DublUnderscore.check_double_underscore,
                       target_types=[baseContext.BaseContext],
-                      category=NAMING, stage=excS.NAMING)
+                      category=NAMING, stage=excS.NAMING ,fix_mode=FixMode.AUTO)
     registry.register(Check_InvChars.check_invalid_characters,
                       target_types=[baseContext.BaseContext],
                       category=NAMING, stage=excS.NAMING)
@@ -182,8 +183,10 @@ def run_pipeline(objects: List[BaseContext], context, profile=None):
                 timestamp=timestamp,
                 severity=result.severity,
                 message=result.message,
-                suggestion=result.suggestion
+                suggestion=result.suggestion,
+                fix_mode=check.fix_mode
             )
+            #Here the AUTOfixed Checks should be resolved and send a resolution Issue, not an "error" resolution.
             all_issues.append(new_issue)
 
             if result.severity == valMod.ValidationSeverity.HARD:

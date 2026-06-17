@@ -14,7 +14,6 @@ using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.External;
-using ValidationTool.UI.ViewModels.ValidationView_Models;
 
 namespace ValidationTool.UI.ViewModels {
     public class ValidationViewModel : INotifyPropertyChanged {
@@ -135,7 +134,7 @@ namespace ValidationTool.UI.ViewModels {
                 length++;
             }
             foreach (var scene in dtos) {
-                string line = "Loaded [" + Progress + "%]";
+                string line = "Loaded: " + scene.scene_setup.SceneName+ " TOTAL PROGRESS: [" + Progress + "%]";
                 ProcessLine(line);
                 mRun.Add(scene);
                 TotalAssets += scene.summary.TotalAssets;
@@ -157,13 +156,14 @@ namespace ValidationTool.UI.ViewModels {
                         },
                         Dcc = issue.Dcc,
                         OriginFile = issue.OriginFile,
-                        Timestamp = issue.Timestamp.ToString(),
                         Asset_name = issue.ObjectName,
                         Check_name = issue.CheckName,
+                        Stage = issue.Stage,
+                        Timestamp = issue.Timestamp.ToString(),
                         Severity = issue.Severity,
                         Message = issue.Message,
                         Suggestion = issue.Suggestion,
-                        Stage = issue.Stage
+                        FixModeRaw = issue.FixMode
                     });
                 }
                 current++;
@@ -267,17 +267,12 @@ namespace ValidationTool.UI.ViewModels {
             IssuesView.Refresh();
         }
         private void ProcessLine(string line) {
-            // 1. Always log everything first
-            Application.Current.Dispatcher.Invoke(() =>
-            {
+            Application.Current.Dispatcher.Invoke(() => {
                 LogLines.Add(line);
-
-                // Optional: keep log size under control
                 if (LogLines.Count > 500)
                     LogLines.RemoveAt(0);
             });
 
-            // 2. Keep your structured parsing
             if (line.StartsWith("PROGRESS:")) {
                 var percentText = line
                     .Replace("PROGRESS:", "")
@@ -352,9 +347,6 @@ namespace ValidationTool.UI.ViewModels {
         }
 
         private async Task SendReport(IssueViewModel issue) {
-
-            System.Diagnostics.Debug.WriteLine("🔥 SendReport triggered");
-
             try {
                 if (issue == null) return;
                 ObservableCollection<IssueViewModel> issueList = new ObservableCollection<IssueViewModel>() { issue};

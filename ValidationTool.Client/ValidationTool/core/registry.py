@@ -1,10 +1,9 @@
 from typing import List, Callable, Optional
 from dataclasses import dataclass, field
 import config.exec_stages as excS
-from core.validation_system import ObjectContext
 
 from core.context.baseContext import BaseContext
-from core.validation_system import ValidationIssue
+from core.validation_system import ValidationIssue, FixMode
 
 from config.validation_profile import ValidationProfile
 
@@ -25,6 +24,7 @@ class CheckDefinition:
     target_types: List[type]
     category: str = "uncategorized"
     stage: str = "geometry"
+    fix_mode : FixMode = FixMode.NONE
     tags: List[str] = field(default_factory=list)
     enabled: bool = True
 
@@ -41,6 +41,7 @@ class ValidationRegistry:
         check_id: str = None,
         category: str = "uncategorized",
         stage: str = "geometry",
+        fix_mode: FixMode = FixMode.NONE,
         tags: Optional[List[str]] = None
     ):
         definition = CheckDefinition(
@@ -49,6 +50,7 @@ class ValidationRegistry:
             target_types=target_types,
             category=category,
             stage=stage,
+            fix_mode=fix_mode,
             tags=tags or []
         )
 
