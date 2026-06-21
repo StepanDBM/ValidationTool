@@ -2,25 +2,52 @@ import json
 import re
 from pathlib import Path
 
-from config.config_models import (
-    ValidationConfig,
-    NamingRules,
-    MeshBudget,
-    BudgetsConfig
-)
+from config.config_models import ValidationConfig, NamingRules, BudgetConfig
 
 
 class ConfigLoader:
-
     def __init__(self, config_folder):
-        self.config_folder = config_folder
+        self.config_folder = Path(config_folder)
 
-    def load_validation_config(self):
+    # ============================================================
+    # INTERNAL HELPERS
+    # ============================================================
 
-        path = self.config_folder / "configurations" / "validation_config.json"
+    def _load_json(self, path: Path) -> dict:
+        if not path.exists():
+            return {}
 
         with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+            return json.load(f)
+
+    def _save_json(self, path: Path, data: dict) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+
+    def _get_config_path(self, file_name: str) -> Path:
+        return self.config_folder / file_name
+
+    # ============================================================
+    # GENERAL VALIDATION CONFIG
+    # ============================================================
+
+    def load_validation_config(self) -> ValidationConfig:
+        path = self._get_config_path("validation_config.json")
+        data = self._load_json(path)
+
+        if not data:
+            defaults = ValidationConfig(
+                strict_mode=False,
+                fail_on_first_error=False,
+                auto_fix_enabled=False,
+                include_info=True,
+                include_warnings=True,
+                debug_mode=False
+            )
+            self.save_validation_config(defaults)
+            return defaults
 
         return ValidationConfig(
             strict_mode=data.get("StrictMode", False),
@@ -31,12 +58,36 @@ class ConfigLoader:
             debug_mode=data.get("DebugMode", False)
         )
 
-    def load_naming_rules(self):
+    def save_validation_config(self, config: ValidationConfig) -> None:
+        path = self._get_config_path("validation_config.json")
 
-        path = self.config_folder / "configurations" / "naming_rules.json"
+        data = {
+            "StrictMode": config.strict_mode,
+            "FailOnFirstError": config.fail_on_first_error,
+            "AutoFixEnabled": config.auto_fix_enabled,
+            "IncludeInfo": config.include_info,
+            "IncludeWarnings": config.include_warnings,
+            "DebugMode": config.debug_mode
+        }
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        self._save_json(path, data)
+
+    # ============================================================
+    # NAMING RULES
+    # ============================================================
+
+    def load_naming_rules(self) -> NamingRules:
+        path = self._get_config_path("naming_rules.json")
+        data = self._load_json(path)
+
+        if not data:
+            defaults = NamingRules(
+                valid_prefixes=[],
+                default_maya_names=[],
+                name_pattern=re.compile("")
+            )
+            self.save_naming_rules(defaults)
+            return defaults
 
         return NamingRules(
             valid_prefixes=data.get("ValidPrefixes", []),
@@ -44,27 +95,36 @@ class ConfigLoader:
             name_pattern=re.compile(data.get("NamePattern", ""))
         )
 
-    def load_budgets(self):
+    def save_naming_rules(self, naming_rules: NamingRules) -> None:
+        path = self._get_config_path("naming_rules.json")
 
-        path = self.config_folder / "configurations" / "budgets.json"
+        pattern_text = naming_rules.name_pattern.pattern if naming_rules.name_pattern else ""
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = {
+            "ValidPrefixes": naming_rules.valid_prefixes,
+            "DefaultMayaNames": naming_rules.default_maya_names,
+            "NamePattern": pattern_text
+        }
 
-        def budget(name):
+        self._save_json(path, data)
 
-            block = data.get(name, {})
+    # ============================================================
+    # NEW FULL BUDGET CONFIG
+    # ============================================================
 
-            return MeshBudget(
-                max_vertices=block.get("MaxVertices", 0),
-                max_triangles=block.get("MaxTriangles", 0),
-                max_material_slots=block.get("MaxMaterialSlots", 0)
-            )
+    def load_budgets(self) -> BudgetConfig:
+        
+        path = self._get_config_path("budgets.json")
+        data = self._load_json(path)
 
-        return BudgetsConfig(
-            static_mesh=budget("StaticMesh"),
-            character=budget("Character"),
-            weapon=budget("Weapon"),
-            prop=budget("Prop"),
-            environment=budget("Environment")
-        )
+        if not data:
+            defaults = BudgetConfig()
+            self.save_budgets(defaults)
+            return defaults
+
+        return BudgetConfig.from_dict(data)
+
+    def save_budgets(self, budgets: BudgetConfig) -> None:
+        
+        path = self._get_config_path("budgets.json")
+        self._save_json(path, budgets.to_dict())
