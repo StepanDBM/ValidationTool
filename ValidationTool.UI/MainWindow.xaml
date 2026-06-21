@@ -67,7 +67,7 @@
                 </TabItem>
 
                 <TabItem Header="Budgets">
-                    <views:BudgetsView/>
+                    <views:UC_BudgetsMain/>
                 </TabItem>
 
                 <TabItem Header="Configuration">

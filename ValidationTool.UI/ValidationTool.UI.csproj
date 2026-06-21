@@ -136,6 +136,21 @@
     <Compile Include="Models\Config\NamingRulesModel.cs" />
     <Compile Include="Models\Config\ValidationConfigModel.cs" />
     <Compile Include="Models\Config\ValidationProfileModel.cs" />
+    <Compile Include="Models\DTOs\BudgetConfigDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\AnimationBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\CameraBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\ColorManagementBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\ExportBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\GeometryBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\LightingBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\MaterialBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\OutputBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\PerformanceBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\RenderBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\RiggingBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\SceneHygieneBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\TextureBudgetDto.cs" />
+    <Compile Include="Models\DTOs\BudgetConfig\UvBudgetDto.cs" />
     <Compile Include="Models\DTOs\SceneSetupDto.cs" />
     <Compile Include="Models\DTOs\SceneSetup\AovDto.cs" />
     <Compile Include="Models\DTOs\SceneSetup\CameraSetupDto.cs" />
@@ -148,6 +163,8 @@
     <Compile Include="Models\DTOs\SelectionContext.cs" />
     <Compile Include="Models\DTOs\ValidationRunDto.cs" />
     <Compile Include="Models\FixMode.cs" />
+    <Compile Include="Models\Items\BudgetSectionNavItem.cs" />
+    <Compile Include="Models\Items\BudgetSectionType.cs" />
     <Compile Include="Models\Items\SceneSetupNavItem.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
@@ -171,9 +188,26 @@
     <Compile Include="TOKEN_KEYS_GITIGNORE\KEY_TOKENS_GITIGNORE.cs" />
     <Compile Include="ViewModels\ArtistViewModel.cs" />
     <Compile Include="ViewModels\AssetViewModel.cs" />
-    <Compile Include="ViewModels\BudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\BudgetSectionNavItemViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\BudgetsConfigViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\AnimationBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\BudgetSectionViewModelBase.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\CameraBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\ColorManagementBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\ExportBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\GeometryBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\LightingBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\MaterialBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\OutputBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\PerformanceBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\RenderbudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\RiggingudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\SceneHygieneBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\TextureBudgetsViewModel.cs" />
+    <Compile Include="ViewModels\BugetsConfig\Wrappers\UvBudgetsViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\DccViewModel.cs" />
+    <Compile Include="ViewModels\General\ViewModelBase.cs" />
     <Compile Include="ViewModels\IssueViewModel.cs" />
     <Compile Include="ViewModels\ProfilesViewModel.cs" />
     <Compile Include="ViewModels\SceneSetupView_Models\SceneSetupWndwViewModel.cs" />
@@ -195,8 +229,50 @@
     <Compile Include="ViewModels\ValidationView_Models\ArtistStatsViewModel.cs" />
     <Compile Include="ViewModels\ValidationView_Models\FileStatsViewModel.cs" />
     <Compile Include="ViewModels\ValidationView_Models\TeamStatsViewModel.cs" />
-    <Compile Include="Views\BudgetsView.xaml.cs">
-      <DependentUpon>BudgetsView.xaml</DependentUpon>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsAnimation.xaml.cs">
+      <DependentUpon>UC_BudgetsAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsCamera.xaml.cs">
+      <DependentUpon>UC_BudgetsCamera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsColorManagement.xaml.cs">
+      <DependentUpon>UC_BudgetsColorManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsExport.xaml.cs">
+      <DependentUpon>UC_BudgetsExport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsGeometry.xaml.cs">
+      <DependentUpon>UC_BudgetsGeometry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsLighting.xaml.cs">
+      <DependentUpon>UC_BudgetsLighting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_BudgetsMain.xaml.cs">
+      <DependentUpon>UC_BudgetsMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsMaterials.xaml.cs">
+      <DependentUpon>UC_BudgetsMaterials.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsOutput.xaml.cs">
+      <DependentUpon>UC_BudgetsOutput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsPerformance.xaml.cs">
+      <DependentUpon>UC_BudgetsPerformance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsRender.xaml.cs">
+      <DependentUpon>UC_BudgetsRender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsRigging.xaml.cs">
+      <DependentUpon>UC_BudgetsRigging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsSceneHygiene.xaml.cs">
+      <DependentUpon>UC_BudgetsSceneHygiene.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsTextures.xaml.cs">
+      <DependentUpon>UC_BudgetsTextures.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsUv.xaml.cs">
+      <DependentUpon>UC_BudgetsUv.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConfigurationView.xaml.cs">
       <DependentUpon>ConfigurationView.xaml</DependentUpon>
@@ -279,7 +355,63 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BudgetsView.xaml">
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsCamera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsColorManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsExport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsGeometry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsLighting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UC_BudgetsMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsMaterials.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsOutput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsPerformance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsRender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsRigging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsSceneHygiene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsTextures.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsUv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -407,6 +539,7 @@
   <ItemGroup>
     <Resource Include="main_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -27,6 +27,7 @@ namespace ValidationTool.UI.ViewModels {
 
         private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
         public ICommand SendReportCommand { get; }
+        public ICommand FixIssueCommand { get; }
 
         public ICollectionView IssuesView { get; set; }
 
@@ -41,6 +42,7 @@ namespace ValidationTool.UI.ViewModels {
 
 
             SendReportCommand = new AsyncRelayCommand<IssueViewModel>(SendReport);
+            FixIssueCommand = new AsyncRelayCommand<IssueViewModel>(FixIssue);
         }
 
 
@@ -72,7 +74,6 @@ namespace ValidationTool.UI.ViewModels {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Progress)));
             }
         }
-
 
         private int _totalAssets;
         public int TotalAssets {
@@ -355,6 +356,10 @@ namespace ValidationTool.UI.ViewModels {
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
             }
+        }
+
+        private async Task FixIssue(IssueViewModel issue) {
+            Console.WriteLine($"The issue is: {issue.Check_name}, {issue.Message}, {issue.Suggestion}");
         }
     }
 }

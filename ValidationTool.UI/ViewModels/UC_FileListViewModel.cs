@@ -3,14 +3,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ValidationTool.Services.Notifications;
 using ValidationTool.UI.Commands;
 using ValidationTool.UI.Models.DTOs;
-using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.ViewModels.ValidationView_Models;
 using ValidationTool.UI.Views;
 
@@ -25,6 +24,7 @@ namespace ValidationTool.UI.ViewModels {
         public ObservableCollection<FileStatsViewModel> FileList { get; } =new ObservableCollection<FileStatsViewModel>();
 
         public ICommand OpenSceneConfigViewCommand { get; }
+        public bool IsUsable { get; set; } = true;
 
         private readonly ObservableCollection<ValidationRunDto> _runs;
 
@@ -94,6 +94,8 @@ namespace ValidationTool.UI.ViewModels {
                 string filePath = firstIssue.OriginFile;
                 string fileName = Path.GetFileName(filePath);
 
+                Console.WriteLine($"{fileName} file has {errors} errors and comes from {filePath}");
+
                 FileList.Add(new FileStatsViewModel {
                     FileName = fileName,
                     FilePath = filePath,
@@ -116,6 +118,8 @@ namespace ValidationTool.UI.ViewModels {
                 await mNotService.SendErrorReportAsync(fileIssues);
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine($"[ERROR] {ex.Message}");
+            } finally {
+                IsUsable = false;
             }
         }
 

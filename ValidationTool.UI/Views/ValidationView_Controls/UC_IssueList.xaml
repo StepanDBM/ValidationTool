@@ -24,7 +24,7 @@
                             <Button Content="{Binding FixButtonText}"
                                     ToolTip="{Binding FixTooltip}"
                                     Visibility="{Binding ShowFixButton, Converter={StaticResource BoolToVisibilityConverter}}"
-                                    Command="{Binding DataContext.SendReportCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    Command="{Binding DataContext.FixIssueCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                     CommandParameter="{Binding}"/> 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
