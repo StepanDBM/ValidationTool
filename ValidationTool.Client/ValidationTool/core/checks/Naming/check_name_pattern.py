@@ -12,7 +12,7 @@ def check_name_pattern(
         runtime_ctx: ValidationRuntimeContext
         ) -> ValidationIssue:
     name = obj.name
-    pattern = runtime_ctx.naming_rules.name_pattern
+    pattern = runtime_ctx.naming.name_pattern
 
     if pattern.match(name):
         return None

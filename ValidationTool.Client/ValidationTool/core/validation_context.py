@@ -5,6 +5,6 @@ import config.config_models as configModels
 
 @dataclass
 class ValidationRuntimeContext:
-    validation_config: ValidationConfig
-    naming_rules: configModels.NamingRules
+    validation: ValidationConfig
+    naming: configModels.NamingRules
     budgets: configModels.BudgetConfig

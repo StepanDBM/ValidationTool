@@ -1,4 +1,5 @@
 import datetime
+import copy
 import uuid
 import json
 from collections import Counter
@@ -9,6 +10,9 @@ from pathlib import Path
 import core.validation_models as valMod
 from core.registry import ValidationRegistry
 from core.validation_system import FixMode
+
+from core.ProfileManagement.AttributeOverride import apply_overrides
+from core.ProfileManagement.ProfileModels import ProfileConfig
 
 from core.context.baseContext import BaseContext
 from core.context import baseContext, mesh_context, camera_context, light_context
@@ -134,16 +138,25 @@ def build_registry() -> ValidationRegistry:
     
     return registry
 
-def run_pipeline(objects: List[BaseContext], context, profile=None):
+def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None):
     loader = ConfigLoader(absPath.CONFIG_DIR)
     validation_config = loader.load_validation_config()
     naming_rules = loader.load_naming_rules()
     budgets = loader.load_budgets()
 
+    effective_config = valCtx.ValidationRuntimeContext(
+        validation=copy.deepcopy(validation_config),
+        naming=copy.deepcopy(naming_rules),
+        budgets=copy.deepcopy(budgets)
+    )
+
+    if profile is not None and getattr(profile, "overrides", None):
+        apply_overrides(effective_config, profile.overrides)
+
     runtime_ctx = valCtx.ValidationRuntimeContext(
-        validation_config=validation_config,
-        naming_rules=naming_rules,
-        budgets=budgets
+        validation=effective_config.validation,
+        naming=effective_config.naming,
+        budgets=effective_config.budgets
     )
 
     registry = build_registry()

@@ -1,14 +1,193 @@
 ﻿<UserControl x:Class="ValidationTool.UI.Views.ProfilesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ValidationTool.UI.ViewModels.ProfilesView_Models">
 
-    <Grid>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Profiles View"
-                   FontSize="24"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <Border Grid.Column="0"
+                Background="{StaticResource BrushBgPanel}"
+                BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="10">
 
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top">
+                    <TextBlock Text="Profiles"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button Content="New"
+                                Width="80"
+                                Margin="0,0,8,0"
+                                Command="{Binding NewProfileCommand}"/>
+
+                        <Button Content="Delete"
+                                Width="80"
+                                Command="{Binding DeleteProfileCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding Profiles}"
+                         SelectedItem="{Binding SelectedProfile}"
+                         BorderThickness="0"
+                         Background="Transparent">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="6" Margin="0,0,0,6" BorderThickness="1" BorderBrush="{StaticResource BrushBorder}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Id}" FontSize="11" Opacity="0.75"/>
+                                    <TextBlock Text="{Binding DccDisplay}" FontSize="11" Margin="0,4,0,0"/>
+                                    <TextBlock Text="{Binding EnabledOverrideCount, StringFormat=Enabled overrides: {0}}"
+                                               FontSize="11"
+                                               Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </DockPanel>
+        </Border>
+
+
+        <Border Grid.Column="2"
+                Background="{StaticResource BrushBgPanel}"
+                BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="12">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                
+                <GroupBox Header="Profile Details" Grid.Row="0">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Name" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedProfile.Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="ID" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedProfile.Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Description" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedProfile.Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="DCC" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedProfileDccDisplay}" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                
+                <GroupBox Header="Enabled Categories" Grid.Row="2">
+                    <Grid Margin="10">
+                        <TextBlock Text="{Binding SelectedProfileCategoriesDisplay}" TextWrapping="Wrap"/>
+                    </Grid>
+                </GroupBox>
+
+                
+                <GroupBox Header="Override Filters" Grid.Row="4">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Domain" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Column="1"
+                                  ItemsSource="{Binding DomainFilters}"
+                                  SelectedItem="{Binding SelectedDomainFilter}"/>
+
+                        <TextBlock Grid.Column="2" Text="Search" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBox Grid.Column="3"
+                                 Margin="8,0,0,0"
+                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                </GroupBox>
+
+                
+                <StackPanel Grid.Row="6"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Content="+ Add Override"
+                            Width="120"
+                            Command="{Binding AddOverrideCommand}"/>
+                </StackPanel>
+                
+                <GroupBox Header="Overrides" Grid.Row="8">
+                    <Grid Margin="10">
+                        <DataGrid ItemsSource="{Binding FilteredOverrides}"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  IsReadOnly="False"
+                                  HeadersVisibility="Column">
+
+                            <DataGrid.Columns>
+
+                                <DataGridCheckBoxColumn Header="Enabled"
+                                                        Binding="{Binding IsEnabled}"
+                                                        Width="80"/>
+
+                                <DataGridTextColumn Header="Path"
+                                                    Binding="{Binding Path, UpdateSourceTrigger=PropertyChanged}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="Value"
+                                                    Binding="{Binding ValueRaw, UpdateSourceTrigger=PropertyChanged}"
+                                                    Width="220"/>
+
+                                <DataGridTextColumn Header="Domain"
+                                                    Binding="{Binding Domain}"
+                                                    IsReadOnly="True"
+                                                    Width="120"/>
+
+                                <DataGridTemplateColumn Header="Delete" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="🗑"
+                                                    Command="{Binding DataContext.RemoveOverrideCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Border>
     </Grid>
-
 </UserControl>

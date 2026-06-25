@@ -22,10 +22,11 @@ sys.path.insert(0, str(PROJECTROOT))
 import bpy
 
 from core.runner import run_pipeline
-from config.validation_profile import ValidationProfile
+#from config.validation_profile import ValidationProfile
 from misc_tools.DCC.Blender.blender_adapter import extract_blender_scene
 from misc_tools.headless.fileSearchers.source_finder import get_dcc_files
 from reporting.staged_json_reporter import write_session_runs
+from reporting.config_loader import ConfigLoader
 import config.dcc_list as myDCCs
 import config.absolutePaths as absPath
 
@@ -43,8 +44,9 @@ def process_file(file_path: str, artist: str):
     #so modifiers are applied and bounding boxes are correct
     scene_setup, objects = extract_blender_scene()
     print (f"Extracted {len(objects)} meshes from the scene", flush=True)
-    profile = ValidationProfile(enabled_categories=set())
-
+    
+    loader = ConfigLoader(absPath.CONFIG_DIR)
+    profile = loader.load_profile("blender_default")
     context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)

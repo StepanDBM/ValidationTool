@@ -12,7 +12,7 @@ def check_default_dcc_naming(
         ) -> ValidationIssue:
 
     name = obj.name
-    default_names = runtime_ctx.naming_rules.default_maya_names or []
+    default_names = runtime_ctx.naming.default_maya_names or []
 
     for default_name in default_names:
         if name.startswith(default_name):

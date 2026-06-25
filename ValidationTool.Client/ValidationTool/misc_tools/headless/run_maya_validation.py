@@ -26,6 +26,7 @@ import config.absolutePaths as absPath
 from fileSearchers.source_finder import get_dcc_files
 
 from reporting.staged_json_reporter import write_session_runs
+from reporting.config_loader import ConfigLoader
 import config.dcc_list as myDCCs
 
 
@@ -41,7 +42,8 @@ def process_file(file_path: str, artist: str):
     profile = ValidationProfile(enabled_categories=set())
 
     context = {"headless": 1, "dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
-
+    loader = ConfigLoader(absPath.CONFIG_DIR)
+    profile = loader.load_profile("maya_modeling_publish")
     run = run_pipeline(objects, context, profile)
 
     print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}", flush=True)

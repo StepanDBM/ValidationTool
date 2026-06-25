@@ -3,15 +3,12 @@ import re
 from pathlib import Path
 
 from config.config_models import ValidationConfig, NamingRules, BudgetConfig
+from core.ProfileManagement.ProfileModels import ProfileConfig
 
 
 class ConfigLoader:
     def __init__(self, config_folder):
         self.config_folder = Path(config_folder)
-
-    # ============================================================
-    # INTERNAL HELPERS
-    # ============================================================
 
     def _load_json(self, path: Path) -> dict:
         if not path.exists():
@@ -128,3 +125,24 @@ class ConfigLoader:
         
         path = self._get_config_path("budgets.json")
         self._save_json(path, budgets.to_dict())
+
+
+# ============================================================
+# PROFILES
+# ============================================================
+
+    def load_profiles(self) -> list[ProfileConfig]:
+        path = self._get_config_path("profiles.json")
+        data = self._load_json(path)
+
+        raw_profiles = data.get("profiles", [])
+        return [ProfileConfig.from_dict(p) for p in raw_profiles]
+
+    def load_profile(self, profile_id: str) -> ProfileConfig | None:
+        profiles = self.load_profiles()
+
+        for profile in profiles:
+            if profile.id == profile_id:
+                return profile
+
+        return None

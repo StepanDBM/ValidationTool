@@ -14,7 +14,7 @@ def check_valid_prefix(
 
     name = obj.name
     upper_name = name.upper()
-    valid_prefixes = runtime_ctx.naming_rules.valid_prefixes or []
+    valid_prefixes = runtime_ctx.naming.valid_prefixes or []
 
     has_valid_prefix = any(
         upper_name.startswith(prefix.upper() + "_")
