@@ -64,7 +64,7 @@ def apply_transform_issues(meshes, probability=0.3):
             obj.scale = (10000, 10000, 10000)
 
 
-def apply_geometry_issues(meshes, probability=0.3):
+def apply_geometry_issues(meshes, probability=0.5):
     for obj in meshes:
         if random.random() > probability:
             continue
@@ -73,9 +73,12 @@ def apply_geometry_issues(meshes, probability=0.3):
         choice = random.choice(["ngon", "dense", "hidden", "overlap"])
 
         if choice == "dense":
-            mod = obj.modifiers.new(name="Subsurf", type='SUBSURF')
-            mod.levels = 2
-            bpy.ops.object.modifier_apply(modifier=mod.name)
+            mod1 = obj.modifiers.new(name="Subsurf1", type='SUBSURF')
+            mod1.levels = 5
+            mod2 = obj.modifiers.new(name="Subsurf2", type='SUBSURF')
+            mod2.levels = random.randint(1, 3)
+            bpy.ops.object.modifier_apply(modifier=mod1.name)
+            bpy.ops.object.modifier_apply(modifier=mod2.name)
 
         elif choice == "ngon":
             mesh = obj.data
@@ -120,7 +123,7 @@ def apply_uv_issues(meshes, probability=0.3):
                     uv_layer.data[loop.index].uv = (0, 0)
 
         if random.random() < 0.5:
-            for i in range(5):
+            for i in range(random.randint(2, 5)):
                 mesh.uv_layers.new(name=f"UV_extra{i}")
 
 

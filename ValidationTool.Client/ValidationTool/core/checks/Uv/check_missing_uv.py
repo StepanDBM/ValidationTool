@@ -29,11 +29,11 @@ def check_missing_uvs(
             message="Missing secondary UV set (UV1).",
             suggestion="Create a valid UV layout."
         )
-    elif len(mesh.uv_sets) > EXPCT_UV_SETS:
+    elif len(mesh.uv_sets) > runtime_ctx.budgets.uv.uv_sets_max:
         return ValidationIssue(
             asset_name=mesh.name,
             check_name=CHECK_TOO_MANY_UV_SETS,
             severity=ValidationSeverity.ERROR,
-            message="Missing primary UV set (UV0).",
-            suggestion="Create a valid UV layout."
+            message=f"Too many UV sets ({len(mesh.uv_sets)}). Maximum value in this context: {runtime_ctx.budgets.uv.uv_sets_max}.",
+            suggestion="Delete or collapse your UVs into a valid layout."
         )

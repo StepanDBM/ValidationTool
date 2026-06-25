@@ -135,8 +135,7 @@ def build_registry() -> ValidationRegistry:
     return registry
 
 def run_pipeline(objects: List[BaseContext], context, profile=None):
-    loader = ConfigLoader(absPath.get_documents_root())
-
+    loader = ConfigLoader(absPath.CONFIG_DIR)
     validation_config = loader.load_validation_config()
     naming_rules = loader.load_naming_rules()
     budgets = loader.load_budgets()

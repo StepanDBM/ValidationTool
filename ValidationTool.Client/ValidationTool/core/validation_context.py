@@ -7,4 +7,4 @@ import config.config_models as configModels
 class ValidationRuntimeContext:
     validation_config: ValidationConfig
     naming_rules: configModels.NamingRules
-    budgets: configModels.BudgetsConfig
+    budgets: configModels.BudgetConfig

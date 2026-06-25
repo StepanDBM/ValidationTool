@@ -13,7 +13,7 @@ DEFAULT_MAX_BBOX_SIZE = 100.0
 DEFAULT_MIN_BBOX_SIZE = 0.0001
 
 
-def _get_limits_for_asset_type(asset_type: AssetType, budgets):
+"""def _get_limits_for_asset_type(asset_type: AssetType, budgets):
     if budgets is None:
         return None
 
@@ -28,7 +28,7 @@ def _get_limits_for_asset_type(asset_type: AssetType, budgets):
     elif asset_type == AssetType.VEHICLE:
         return getattr(budgets, "vehicle", None)
 
-    return None
+    return None"""
 
 
 def check_bounding_box(
@@ -63,7 +63,8 @@ def check_bounding_box(
             suggestion="Validate transform freeze/export order and bounding box extraction."
         )
 
-    limits = _get_limits_for_asset_type(mesh.asset_type, runtime_ctx.budgets)
+    #limits = _get_limits_for_asset_type(mesh.asset_type, runtime_ctx.budgets)
+    limits = None
 
     max_bbox_size = DEFAULT_MAX_BBOX_SIZE
     min_bbox_size = DEFAULT_MIN_BBOX_SIZE

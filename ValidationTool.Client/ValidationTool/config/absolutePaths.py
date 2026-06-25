@@ -81,7 +81,7 @@ CLIENT_PATH = TOOLS_ROOT / "ValidationTool.Client"
 UI_PATH = TOOLS_ROOT / "ValidationTool.UI"
 SCENESGEN_PATH = TOOLS_ROOT / "ValidationTool.ScenesGen"
 
-CONFIG_DIR = CLIENT_PATH / "config"
+CONFIG_DIR = DATA_ROOT / "Config"
 HEADLESS_DIR = CLIENT_PATH / "ValidationTool" / "misc_tools" / "headless"
 
 

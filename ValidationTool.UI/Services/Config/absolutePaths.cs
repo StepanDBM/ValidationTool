@@ -66,13 +66,13 @@ namespace ValidationTool.UI.Services.Config {
             Path.Combine(TOOLS_ROOT, "ValidationTool.ScenesGen");
 
         public static readonly string CONFIG_DIR =
-            Path.Combine(CLIENT_DIR, "config");
+            Path.Combine(CLIENT_DIR, "Config");
 
         public static readonly string HEADLESS =
             Path.Combine(CLIENT_DIR, "ValidationTool", "misc_tools", "headless");
 
         public static readonly string GEN_CONFIGS =
-            Path.Combine(TOOLS_ROOT, "configurations");
+            Path.Combine(DATA_ROOT, "Config");
 
         // ============================================================
         // DATA PATHS (ALWAYS IN DOCUMENTS)

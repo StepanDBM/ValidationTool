@@ -243,3 +243,66 @@ class BudgetConfig:
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+    def debug_print_budget_config(budgets: "BudgetConfig") -> None:
+        """
+        Pretty-print the full BudgetConfig in a stable, ordered way for debugging.
+        """
+        if budgets is None:
+            print("[BUDGET DEBUG] BudgetConfig is None")
+            return
+
+        data: dict[str, Any] = asdict(budgets)
+
+        section_order = [
+            "geometry",
+            "uv",
+            "materials",
+            "textures",
+            "rigging",
+            "animation",
+            "lighting",
+            "camera",
+            "render",
+            "output",
+            "color_management",
+            "scene_hygiene",
+            "export",
+            "performance",
+        ]
+
+        pretty_names = {
+            "geometry": "Geometry",
+            "uv": "UV",
+            "materials": "Materials",
+            "textures": "Textures",
+            "rigging": "Rigging",
+            "animation": "Animation",
+            "lighting": "Lighting",
+            "camera": "Camera",
+            "render": "Render",
+            "output": "Output",
+            "color_management": "Color Management",
+            "scene_hygiene": "Scene Hygiene",
+            "export": "Export",
+            "performance": "Performance",
+        }
+
+        print("\n" + "=" * 80)
+        print("BUDGET CONFIG DEBUG")
+        print("=" * 80)
+
+        for section_name in section_order:
+            section_data = data.get(section_name, {})
+
+            print(f"\n--- {pretty_names.get(section_name, section_name)} ---")
+
+            if not section_data:
+                print("  <empty>")
+                continue
+
+            for key, value in section_data.items():
+                print(f"  {key:<35} : {value}")
+
+        print("\n" + "=" * 80 + "\n")
