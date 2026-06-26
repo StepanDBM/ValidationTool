@@ -214,8 +214,10 @@
     <Compile Include="ViewModels\DccViewModel.cs" />
     <Compile Include="ViewModels\General\ViewModelBase.cs" />
     <Compile Include="ViewModels\IssueViewModel.cs" />
+    <Compile Include="ViewModels\ProfilesConfig\ProfileOverridePickerViewModel.cs" />
     <Compile Include="ViewModels\ProfilesConfig\ProfilesConfigViewModel.cs" />
     <Compile Include="ViewModels\ProfilesConfig\Wrappers\OverrideItemViewModel.cs" />
+    <Compile Include="ViewModels\ProfilesConfig\Wrappers\OverridePickerOption.cs" />
     <Compile Include="ViewModels\ProfilesConfig\Wrappers\ProfileItemViewModel.cs" />
     <Compile Include="ViewModels\SceneSetupView_Models\SceneSetupWndwViewModel.cs" />
     <Compile Include="ViewModels\SceneSetupView_Models\wrappers\AovsViewModel.cs" />
@@ -253,6 +255,9 @@
     </Compile>
     <Compile Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsLighting.xaml.cs">
       <DependentUpon>UC_BudgetsLighting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfilesViews\OverridePickerWndw.xaml.cs">
+      <DependentUpon>OverridePickerWndw.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_BudgetsMain.xaml.cs">
       <DependentUpon>UC_BudgetsMain.xaml</DependentUpon>
@@ -383,6 +388,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BudgetsViews\BudgetsViews_UCViews\UC_BudgetsLighting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfilesViews\OverridePickerWndw.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

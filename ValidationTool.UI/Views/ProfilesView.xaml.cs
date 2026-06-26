@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using ValidationTool.UI.ViewModels.ProfilesView_Models;
 
 namespace ValidationTool.UI.Views {
@@ -24,5 +25,28 @@ namespace ValidationTool.UI.Views {
 
             e.Handled = true;
         }
+
+
+        private void AddReplaceOverride_Click(object sender, RoutedEventArgs e) {
+            var vm = DataContext as ProfilesViewModel;
+            if (vm == null)
+                return;
+
+            var wnd = new ProfileOverridePickerWndw {
+                Owner = Window.GetWindow(this)
+            };
+
+            bool? result = wnd.ShowDialog();
+
+            if (result != true)
+                return;
+
+            vm.AddOrReplaceOverride(
+                wnd.ResultPath,
+                wnd.ResultValueRaw,
+                wnd.ResultEnabled
+            );
+        }
+
     }
 }

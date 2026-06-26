@@ -227,11 +227,6 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="95"/>
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
@@ -258,7 +253,7 @@
 
                         <Button Grid.Column="5"
                                 Content="+ Add / Replace"
-                                Command="{Binding AddOverrideCommand}"/>
+                                Click="AddReplaceOverride_Click"/>
                     </Grid>
                 </Border>
 
