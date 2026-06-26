@@ -78,12 +78,12 @@ class ValidationRegistry:
 
         return checks
     
-    def resolveByProfileStage(self, profile):
+    def resolveByProfileStage(self, profile: ValidationProfile):
 
         ordered_checks = []
 
         for stage in excS.EXECUTION_STAGES:
-
+            #print(f"This is an execution stage: {stage}")
             stage_checks = self.by_stage.get(stage, [])
             for check in stage_checks:
                 if profile.allows_category(check.category):

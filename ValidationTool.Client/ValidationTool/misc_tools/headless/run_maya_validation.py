@@ -38,12 +38,10 @@ def process_file(file_path: str, artist: str):
 
     scene_setup, objects = extract_maya_scene()
     objects = objects[1:]
-    print (f"Extracted {len(objects)} meshes from the scene", flush=True)
-    profile = ValidationProfile(enabled_categories=set())
 
     context = {"headless": 1, "dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
     loader = ConfigLoader(absPath.CONFIG_DIR)
-    profile = loader.load_profile("maya_modeling_publish")
+    profile = loader.load_profile()
     run = run_pipeline(objects, context, profile)
 
     print(f"[DONE] {run.jsonPath} -> {run.summary.run_id}", flush=True)

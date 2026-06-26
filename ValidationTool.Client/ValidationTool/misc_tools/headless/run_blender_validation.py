@@ -43,10 +43,9 @@ def process_file(file_path: str, artist: str):
     depsgraph = bpy.context.evaluated_depsgraph_get() #forces update of evaluated data,
     #so modifiers are applied and bounding boxes are correct
     scene_setup, objects = extract_blender_scene()
-    print (f"Extracted {len(objects)} meshes from the scene", flush=True)
     
     loader = ConfigLoader(absPath.CONFIG_DIR)
-    profile = loader.load_profile("blender_render_final")
+    profile = loader.load_profile()
     context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)

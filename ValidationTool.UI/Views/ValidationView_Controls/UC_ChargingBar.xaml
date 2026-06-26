@@ -15,36 +15,49 @@
         </Grid.RowDefinitions>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <WrapPanel Grid.Row="0"
+           Orientation="Horizontal"
+           VerticalAlignment="Center">
 
             <Button Content="Run Maya"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="RunMaya_Click"
-                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            Width="120"
+            Height="35"
+            Margin="5"
+            Click="RunMaya_Click"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Button Content="Run Blender"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="RunBlender_Click"
-                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            Width="120"
+            Height="35"
+            Margin="5"
+            Click="RunBlender_Click"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Button Content="Load Report"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="LoadReport_Click"
-                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            Width="120"
+            Height="35"
+            Margin="5"
+            Click="LoadReport_Click"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Button Content="Load Proxy"
-                    Width="120"
-                    Height="35"
-                    Margin="5"
-                    Click="LoadProxy_Click"
-                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
-        </StackPanel>
+            Width="120"
+            Height="35"
+            Margin="5"
+            Click="LoadProxy_Click"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <TextBlock Text="Select Profile:"
+               VerticalAlignment="Center"
+               Margin="18,0,8,0"/>
+
+            <ComboBox Width="230"
+              Height="30"
+              VerticalAlignment="Center"
+              ItemsSource="{Binding AvailableProfiles}"
+              SelectedItem="{Binding SelectedProfile, Mode=TwoWay}"
+              DisplayMemberPath="name"/>
+        </WrapPanel> 
 
         <!-- Current file -->
         <ListBox x:Name="LogList"

@@ -132,17 +132,11 @@ class ConfigLoader:
 # ============================================================
 
     def load_profiles(self) -> list[ProfileConfig]:
-        path = self._get_config_path("profiles.json")
+        path = self._get_config_path("active_profile.json")
         data = self._load_json(path)
 
-        raw_profiles = data.get("profiles", [])
-        return [ProfileConfig.from_dict(p) for p in raw_profiles]
+        return ProfileConfig.from_dict(data)
 
-    def load_profile(self, profile_id: str) -> ProfileConfig | None:
-        profiles = self.load_profiles()
-
-        for profile in profiles:
-            if profile.id == profile_id:
-                return profile
-
-        return None
+    def load_profile(self) -> ProfileConfig | None:
+        active_profile = self.load_profiles()
+        return active_profile

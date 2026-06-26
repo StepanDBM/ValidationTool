@@ -20,9 +20,10 @@ class ValidationProfile:
     strict_mode: bool = True
 
     def allows_category(self, category: str) -> bool:
+        print(f"Category: {category}, self.enabled_categories: {self.enabled_categories}")
         if not self.enabled_categories:
             return True  # no restriction = run all
-
+        print(f"Category: {category}, self.enabled_categories: {self.enabled_categories}")
         return category in self.enabled_categories
 
     def is_check_enabled(self, check_id: str) -> bool:

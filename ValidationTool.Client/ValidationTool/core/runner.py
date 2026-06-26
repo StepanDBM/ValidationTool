@@ -175,6 +175,7 @@ def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None
     all_issues = []
 
     ordered_checks = registry.resolveByProfileStage(profile)
+    
     for obj in objects:
         hard_stop = False
 

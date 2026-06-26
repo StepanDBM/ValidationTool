@@ -170,6 +170,7 @@
     <Compile Include="Models\Items\BudgetSectionType.cs" />
     <Compile Include="Models\Items\SceneSetupNavItem.cs" />
     <Compile Include="Models\ValidationModels.cs" />
+    <Compile Include="Services\Config\ActiveProfileService.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
     <Compile Include="Services\Config\ConfigService.cs" />
     <Compile Include="Services\Config\NamingRulesService.cs" />

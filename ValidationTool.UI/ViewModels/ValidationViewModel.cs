@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,8 +8,9 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using ValidationTool.Services.Notifications;
-using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services;
+using ValidationTool.UI.Models.DTOs.Profiles;
+using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.External;
 
@@ -43,6 +42,8 @@ namespace ValidationTool.UI.ViewModels {
 
             SendReportCommand = new AsyncRelayCommand<IssueViewModel>(SendReport);
             FixIssueCommand = new AsyncRelayCommand<IssueViewModel>(FixIssue);
+
+            LoadProfilesForDropdown();
         }
 
 
@@ -116,6 +117,24 @@ namespace ValidationTool.UI.ViewModels {
             set {
                 _totalScenes = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalScenes)));
+            }
+        }
+
+
+        private readonly ProfilesConfigService _profilesConfigService = new ProfilesConfigService();
+
+        private readonly ActiveProfileService _activeProfileService = new ActiveProfileService();
+
+        public ObservableCollection<ProfileDto> AvailableProfiles { get; } =
+            new ObservableCollection<ProfileDto>();
+
+        private ProfileDto _selectedProfile;
+        public ProfileDto SelectedProfile {
+            get => _selectedProfile;
+            set {
+                _selectedProfile = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedProfile)));
+                WriteActiveProfile();
             }
         }
 
@@ -360,6 +379,31 @@ namespace ValidationTool.UI.ViewModels {
 
         private async Task FixIssue(IssueViewModel issue) {
             Console.WriteLine($"The issue is: {issue.Check_name}, {issue.Message}, {issue.Suggestion}");
+        }
+
+
+        private void LoadProfilesForDropdown() {
+            AvailableProfiles.Clear();
+
+            var profilesFile = _profilesConfigService.Load();
+
+            foreach (var profile in profilesFile.profiles) {
+                AvailableProfiles.Add(profile);
+            }
+
+            SelectedProfile = AvailableProfiles.FirstOrDefault();
+        }
+
+        private void WriteActiveProfile() {
+            try {
+                _activeProfileService.Save(SelectedProfile);
+
+                if (SelectedProfile != null) {
+                    ProcessLine($"ACTIVE_PROFILE: {SelectedProfile.name}");
+                }
+            } catch (Exception ex) {
+                ProcessLine($"[ERR] Could not write active profile: {ex.Message}");
+            }
         }
     }
 }
