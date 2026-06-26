@@ -7,6 +7,7 @@ skinparam shadowing false
 skinparam packageStyle rectangle
 skinparam linetype ortho
 
+
 '==============================
 ' UI LAYER
 '==============================
@@ -26,13 +27,18 @@ package "UI Layer (C# / WPF)" #BBDEFB {
 
     [JsonLoad] as JSON_L
 
-    package "User Interface" #FFCDD2{
+
+    package "User Interface" #FFCDD2 {
         [Main View] as MainV
         [Validation View] as ValV
-
+        [Charging Bar / Run Controls] as ChargingBar
+        [Profiles View] as ProfilesV
+        [Budgets View] as BudgetsV
+        [Configuration View] as ConfigV
         [SubViews] as SubViews
         [Scene View] as SceneV
     }
+
 }
 
 '==============================
@@ -87,6 +93,36 @@ package "Data Layer" #ECEFF1 {
     database "JSON Report" {
         [Report File] as JSON
     }
+
+'==============================
+' CONFIG / PROFILE LAYER
+'==============================
+package "Configuration & Profile Layer" #D1C4E9 {
+
+    package "Static Config JSONs" #EDE7F6 {
+        [validation_config.json] as ValidationConfigJSON
+        [naming_rules.json] as NamingRulesJSON
+        [budgets.json] as BudgetsJSON
+        [profiles.json] as ProfilesJSON
+        [active_profile.json] as ActiveProfileJSON
+    }
+
+    package "Python Config DTOs" #EDE7F6 {
+        [ValidationConfig] as ValidationConfigDTO
+        [NamingRules] as NamingRulesDTO
+        [BudgetConfig] as BudgetConfigDTO
+        [ProfileConfig] as ProfileConfigDTO
+        [AttributeOverride] as AttrOverrideDTO
+    }
+
+    package "Profile Runtime System" #D1C4E9 {
+        [ConfigLoader] as ConfigLoader
+        [EffectiveValidationConfig] as EffectiveConfig
+        [Override Resolver] as OverrideResolver
+    }
+}
+
+
 }
 
 '==============================
@@ -152,5 +188,32 @@ DCCFix --> HoudiniFix
 MayaFix --> BC
 BlenderFix --> BC
 HoudiniFix --> BC
+
+
+'===============================
+' Profile Flow
+'===============================
+
+
+ConfigLoader --> ValidationConfigDTO
+ConfigLoader --> NamingRulesDTO
+ConfigLoader --> BudgetConfigDTO
+ConfigLoader --> ProfileConfigDTO
+
+
+ProfileConfigDTO --> AttrOverrideDTO
+
+Runner --> EffectiveConfig : clone base config
+EffectiveConfig --> ValidationConfigDTO
+EffectiveConfig --> NamingRulesDTO
+EffectiveConfig --> BudgetConfigDTO
+
+Runner --> OverrideResolver : apply active profile overrides
+OverrideResolver --> EffectiveConfig : mutate effective runtime config
+
+Checks --> EffectiveConfig : read effective config/budgets/naming
+Checks --> Contexts : validate extracted objects
+Checks --> IssueDTO : create issues
+
 
 @enduml
