@@ -118,7 +118,7 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
 
                 case JsonValueKind.Array:
                 case JsonValueKind.Object:
-                    return e.GetRawText();
+                    return JsonSerializer.Serialize(e);
 
                 case JsonValueKind.Null:
                 case JsonValueKind.Undefined:

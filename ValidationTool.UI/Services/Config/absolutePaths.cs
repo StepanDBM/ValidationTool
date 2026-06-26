@@ -94,15 +94,6 @@ namespace ValidationTool.UI.Services.Config {
             Path.Combine(REPORTS_DIR, "blender_reports.json");
 
         // ============================================================
-        // LEGACY-COMPAT / SEMANTIC ALIASES
-        // ============================================================
-/*
-        public static readonly string SOURCE_ARTISTS = ARTISTS_DIR;
-        public static readonly string SOURCE_MAYA = ARTISTS_DIR;
-        public static readonly string SOURCE_BLENDER = ARTISTS_DIR;
-        public static readonly string SOURCE_3DSMAX = ARTISTS_DIR;
-*/
-        // ============================================================
         // INIT
         // ============================================================
 

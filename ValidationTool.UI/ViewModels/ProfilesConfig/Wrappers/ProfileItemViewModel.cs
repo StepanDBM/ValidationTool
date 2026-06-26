@@ -30,8 +30,13 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
 
         public string DccDisplay => string.Join(", ", Dcc);
         public string EnabledCategoriesDisplay => string.Join(", ", EnabledCategories);
-
         public int EnabledOverrideCount => Overrides.Count(o => o.IsEnabled);
+
+        public ProfileItemViewModel() {
+            Dcc.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(DccDisplay));
+            EnabledCategories.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(EnabledCategoriesDisplay));
+            Overrides.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(EnabledOverrideCount));
+        }
 
         public static ProfileItemViewModel FromDto(ProfileDto dto) {
             var vm = new ProfileItemViewModel {

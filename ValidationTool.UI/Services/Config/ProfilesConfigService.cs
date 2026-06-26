@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
-using ValidationTool.UI.Models.DTOs.BudgetConfig;
+using ValidationTool.UI.Models.DTOs.Profiles;
 
 namespace ValidationTool.UI.Services.Config {
-    public class BudgetConfigService {
+    public class ProfilesConfigService {
         private readonly string _filePath;
         private readonly JsonSerializerOptions _jsonOptions;
 
-        public BudgetConfigService(string filePath = null) {
-            _filePath = filePath ?? GetDefaultPath();
+        public ProfilesConfigService(string filePath = null) {
+            _filePath = filePath ?? Path.Combine(Paths.GEN_CONFIGS, "profiles.json");
 
             _jsonOptions = new JsonSerializerOptions {
                 WriteIndented = true,
@@ -19,11 +19,11 @@ namespace ValidationTool.UI.Services.Config {
 
         public string FilePath => _filePath;
 
-        public BudgetConfigDto Load() {
+        public ProfilesFileDto Load() {
             EnsureDirectoryExists();
 
             if (!File.Exists(_filePath)) {
-                var defaults = new BudgetConfigDto();
+                var defaults = new ProfilesFileDto();
                 Save(defaults);
                 return defaults;
             }
@@ -31,22 +31,22 @@ namespace ValidationTool.UI.Services.Config {
             var json = File.ReadAllText(_filePath);
 
             if (string.IsNullOrWhiteSpace(json)) {
-                var defaults = new BudgetConfigDto();
+                var defaults = new ProfilesFileDto();
                 Save(defaults);
                 return defaults;
             }
 
-            var loaded = JsonSerializer.Deserialize<BudgetConfigDto>(json, _jsonOptions);
-            return loaded ?? new BudgetConfigDto();
+            var loaded = JsonSerializer.Deserialize<ProfilesFileDto>(json, _jsonOptions);
+            return loaded ?? new ProfilesFileDto();
         }
 
-        public void Save(BudgetConfigDto config) {
-            if (config == null)
-                throw new ArgumentNullException(nameof(config));
+        public void Save(ProfilesFileDto fileDto) {
+            if (fileDto == null)
+                throw new ArgumentNullException(nameof(fileDto));
 
             EnsureDirectoryExists();
 
-            var json = JsonSerializer.Serialize(config, _jsonOptions);
+            var json = JsonSerializer.Serialize(fileDto, _jsonOptions);
             File.WriteAllText(_filePath, json);
         }
 
@@ -54,10 +54,6 @@ namespace ValidationTool.UI.Services.Config {
             var dir = Path.GetDirectoryName(_filePath);
             if (!string.IsNullOrWhiteSpace(dir))
                 Directory.CreateDirectory(dir);
-        }
-
-        private static string GetDefaultPath() {
-            return Path.Combine(Paths.GEN_CONFIGS, "budgets.json");
         }
     }
 }

@@ -6,8 +6,8 @@
     </UserControl.Resources>
     <Grid>
         <DataGrid ItemsSource="{Binding IssuesView}"
-          AutoGenerateColumns="False"
-          IsReadOnly="True">
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Time" Binding="{Binding Timestamp}" Width="*" />

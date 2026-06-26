@@ -166,6 +166,173 @@
                         Value="{StaticResource BrushText}" />
             </Style>
 
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+                <Setter Property="Background" Value="{StaticResource BrushBgElement}" />
+                <Setter Property="Padding" Value="6,4" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBoxItem">
+                            <Border x:Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                                <ContentPresenter />
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushHover}" />
+                                </Trigger>
+
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Bd"
+                                Property="Background"
+                                Value="{StaticResource BrushAccent}" />
+                                    <Setter Property="Foreground"
+                                Value="White" />
+                                </Trigger>
+
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+                <Setter Property="Background" Value="{StaticResource BrushBgElement}" />
+                <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Padding" Value="6,4" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="MaxDropDownHeight" Value="300" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBox">
+                            <Grid SnapsToDevicePixels="True">
+
+                                <!-- FULL clickable area -->
+                                <ToggleButton x:Name="DropDownToggle"
+                                              Focusable="False"
+                                              ClickMode="Press"
+                                              IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                              Background="Transparent"
+                                              BorderThickness="0"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch">
+
+                                    <Border x:Name="Bd"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="3">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="28" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <ContentPresenter x:Name="ContentSite"
+                                                              Width="180"
+                                                              Grid.Column="0"
+                                                              Margin="8,2,4,2"
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                              HorizontalAlignment="Stretch"
+                                                              RecognizesAccessKey="True"
+                                                              Content="{TemplateBinding SelectionBoxItem}"
+                                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                              ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" />
+
+                                            <Border Grid.Column="1"
+                                                    BorderBrush="{StaticResource BrushBorder}"
+                                                    BorderThickness="1,0,0,0"
+                                                    Background="{StaticResource BrushBgPanel}">
+                                                <Path x:Name="DomainArrow"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Fill="{StaticResource BrushText}"
+                                                    Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </ToggleButton>
+
+                                <Popup x:Name="PART_Popup"
+                                       Placement="Bottom"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Slide">
+
+                                    <Border Margin="0,2,0,0"
+                                            MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                            Background="{StaticResource BrushBgElement}"
+                                            BorderBrush="{StaticResource BrushBorder}"
+                                            BorderThickness="1"
+                                            CornerRadius="3">
+
+                                        <ScrollViewer CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd"
+                                            Property="Background"
+                                            Value="{StaticResource BrushHover}" />
+                                </Trigger>
+
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter TargetName="Bd"
+                                            Property="BorderBrush"
+                                            Value="{StaticResource BrushAccent}" />
+                                </Trigger>
+
+                                <Trigger Property="IsDropDownOpen" Value="True">
+                                    <Setter TargetName="Bd"
+                                            Property="Background"
+                                            Value="{StaticResource BrushBgPanel}" />
+                                    <Setter TargetName="DomainArrow"
+                                            Property="Data"
+                                            Value="M 0 4 L 4 0 L 8 4 Z"/>
+                                </Trigger>
+
+                                <Trigger Property="HasItems" Value="False">
+                                    <Setter TargetName="ContentSite"
+                                            Property="Content"
+                                            Value="" />
+                                </Trigger>
+
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+
             <Style TargetType="TreeView">
                 <Setter Property="FontSize"
                         Value="14" />
@@ -205,7 +372,6 @@
             <Style TargetType="DataGrid">
 
                 <Setter Property="AutoGenerateColumns" Value="False"/>
-                <Setter Property="IsReadOnly" Value="True"/>
 
                 <Setter Property="Background" Value="{StaticResource BrushBgElement}"/>
                 <Setter Property="Foreground" Value="{StaticResource BrushText}"/>

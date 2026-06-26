@@ -1,12 +1,16 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
 using ValidationTool.UI.Commands;
-using ValidationTool.UI.ViewModels;
+using ValidationTool.UI.Models.DTOs.Profiles;
+using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.ViewModels.General;
 
 namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
-    public class ProfilesConfigViewModel : ViewModelBase {
+    public class ProfilesViewModel : ViewModelBase {
+        private readonly ProfilesConfigService _profilesService;
+
         public ObservableCollection<ProfileItemViewModel> Profiles { get; } = new ObservableCollection<ProfileItemViewModel>();
 
         private ProfileItemViewModel _selectedProfile;
@@ -17,6 +21,11 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
                     RaisePropertyChanged(nameof(SelectedProfileDccDisplay));
                     RaisePropertyChanged(nameof(SelectedProfileCategoriesDisplay));
                     RefreshFilteredOverrides();
+
+                    if (_selectedProfile != null) {
+                        _selectedProfile.Overrides.CollectionChanged -= SelectedProfileOverrides_CollectionChanged;
+                        _selectedProfile.Overrides.CollectionChanged += SelectedProfileOverrides_CollectionChanged;
+                    }
                 }
             }
         }
@@ -26,8 +35,7 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
 
         public ObservableCollection<OverrideItemViewModel> FilteredOverrides { get; } = new ObservableCollection<OverrideItemViewModel>();
 
-        public ObservableCollection<string> DomainFilters { get; } = new ObservableCollection<string>
-        {
+        public ObservableCollection<string> DomainFilters { get; } = new ObservableCollection<string> {
             "All",
             "Validation",
             "Naming",
@@ -65,61 +73,77 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
             }
         }
 
+        private string _statusMessage;
+        public string StatusMessage {
+            get => _statusMessage;
+            set => SetProperty(ref _statusMessage, value);
+        }
+
+
+        private string _newOverridePath;
+        public string NewOverridePath {
+            get => _newOverridePath;
+            set => SetProperty(ref _newOverridePath, value);
+        }
+
+        private string _newOverrideValueRaw;
+        public string NewOverrideValueRaw {
+            get => _newOverrideValueRaw;
+            set => SetProperty(ref _newOverrideValueRaw, value);
+        }
+
+        private bool _newOverrideEnabled = true;
+        public bool NewOverrideEnabled {
+            get => _newOverrideEnabled;
+            set => SetProperty(ref _newOverrideEnabled, value);
+        }
+
+
+
+        public ICommand LoadCommand { get; }
+        public ICommand SaveCommand { get; }
         public ICommand AddOverrideCommand { get; }
         public ICommand RemoveOverrideCommand { get; }
         public ICommand NewProfileCommand { get; }
         public ICommand DeleteProfileCommand { get; }
 
-        public ProfilesConfigViewModel() {
-            AddOverrideCommand = new RelayCommand(AddOverride);
+        public ProfilesViewModel() {
+            _profilesService = new ProfilesConfigService();
+
+            LoadCommand = new RelayCommand(LoadProfiles);
+            SaveCommand = new RelayCommand(SaveProfiles);
+            AddOverrideCommand = new RelayCommand(AddOrReplaceOverride);
             RemoveOverrideCommand = new RelayCommand<OverrideItemViewModel>(RemoveOverride);
             NewProfileCommand = new RelayCommand(NewProfile);
             DeleteProfileCommand = new RelayCommand(DeleteSelectedProfile);
 
-            // Temporary mock data until service is wired
-            SeedMockData();
+            LoadProfiles();
         }
 
-        private void SeedMockData() {
-            var blender = new ProfileItemViewModel {
-                Id = "blender_default",
-                Name = "Blender Default",
-                Description = "Default validation profile for Blender headless validation."
-            };
-            blender.Dcc.Add("Blender");
-            blender.Overrides.Add(new OverrideItemViewModel { Path = "validation.strict_mode", ValueRaw = "false", IsEnabled = true });
-            blender.Overrides.Add(new OverrideItemViewModel { Path = "budgets.geometry.vertices_max", ValueRaw = "50000", IsEnabled = true });
-            blender.Overrides.Add(new OverrideItemViewModel { Path = "budgets.render.aa_samples_max", ValueRaw = "8", IsEnabled = true });
+        private void LoadProfiles() {
+            Profiles.Clear();
 
-            var maya = new ProfileItemViewModel {
-                Id = "maya_modeling_publish",
-                Name = "Maya Modeling Publish",
-                Description = "Strict Maya modeling profile for publish-ready assets."
-            };
-            maya.Dcc.Add("Maya");
-            maya.EnabledCategories.Add("Geometry");
-            maya.EnabledCategories.Add("UV");
-            maya.EnabledCategories.Add("Transform");
-            maya.EnabledCategories.Add("Naming");
+            var fileDto = _profilesService.Load();
 
-            maya.Overrides.Add(new OverrideItemViewModel { Path = "validation.strict_mode", ValueRaw = "true", IsEnabled = true });
-            maya.Overrides.Add(new OverrideItemViewModel { Path = "budgets.geometry.triangles_max", ValueRaw = "90000", IsEnabled = true });
-            maya.Overrides.Add(new OverrideItemViewModel { Path = "naming.valid_prefixes", ValueRaw = "[\"CH\",\"HERO\",\"WP\",\"WPN\",\"PRP\",\"PROP\",\"ENV\",\"MOD\"]", IsEnabled = true });
-
-            var render = new ProfileItemViewModel {
-                Id = "blender_render_final",
-                Name = "Blender Render Final",
-                Description = "Strict final render validation profile for Blender scenes."
-            };
-            render.Dcc.Add("Blender");
-            render.Overrides.Add(new OverrideItemViewModel { Path = "budgets.render.aa_samples_max", ValueRaw = "6", IsEnabled = true });
-            render.Overrides.Add(new OverrideItemViewModel { Path = "budgets.output.required_multilayer_exr", ValueRaw = "true", IsEnabled = true });
-
-            Profiles.Add(blender);
-            Profiles.Add(maya);
-            Profiles.Add(render);
+            foreach (var dto in fileDto.profiles) {
+                var vm = ProfileItemViewModel.FromDto(dto);
+                vm.Overrides.CollectionChanged += SelectedProfileOverrides_CollectionChanged;
+                Profiles.Add(vm);
+            }
 
             SelectedProfile = Profiles.FirstOrDefault();
+            RefreshFilteredOverrides();
+
+            StatusMessage = $"Loaded: {_profilesService.FilePath}";
+        }
+
+        private void SaveProfiles() {
+            var dto = new ProfilesFileDto {
+                profiles = Profiles.Select(p => p.ToDto()).ToList()
+            };
+
+            _profilesService.Save(dto);
+            StatusMessage = $"Saved: {_profilesService.FilePath}";
         }
 
         private void RefreshFilteredOverrides() {
@@ -130,9 +154,8 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
 
             var items = SelectedProfile.Overrides.AsEnumerable();
 
-            if (!string.IsNullOrWhiteSpace(SelectedDomainFilter) && SelectedDomainFilter != "All") {
+            if (!string.IsNullOrWhiteSpace(SelectedDomainFilter) && SelectedDomainFilter != "All")
                 items = items.Where(o => o.Domain == SelectedDomainFilter);
-            }
 
             if (!string.IsNullOrWhiteSpace(SearchText)) {
                 var search = SearchText.Trim().ToLowerInvariant();
@@ -143,19 +166,71 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
 
             foreach (var item in items)
                 FilteredOverrides.Add(item);
+
+            RaisePropertyChanged(nameof(SelectedProfileDccDisplay));
+            RaisePropertyChanged(nameof(SelectedProfileCategoriesDisplay));
         }
 
-        private void AddOverride() {
+        /// <summary>
+        /// Adds a blank override if there is no path conflict.
+        /// If the user later types a path already present, Save still works,
+        /// but for first UX pass we can also choose to "replace the selected one" in future.
+        /// </summary>
+        private void AddOrReplaceOverride() {
             if (SelectedProfile == null)
                 return;
 
-            var item = new OverrideItemViewModel {
-                Path = "",
-                ValueRaw = "",
-                IsEnabled = true
-            };
+            if (string.IsNullOrWhiteSpace(NewOverridePath)) {
+                StatusMessage = "Override path cannot be empty.";
+                return;
+            }
 
-            SelectedProfile.Overrides.Add(item);
+            var path = NewOverridePath.Trim();
+            var value = NewOverrideValueRaw?.Trim() ?? "";
+
+            var existing = SelectedProfile.Overrides
+                .FirstOrDefault(o => string.Equals(o.Path, path, System.StringComparison.OrdinalIgnoreCase));
+
+            if (existing != null) {
+                existing.ValueRaw = value;
+                existing.IsEnabled = NewOverrideEnabled;
+
+                StatusMessage = $"Updated override: {path}";
+            } else {
+                var item = new OverrideItemViewModel {
+                    Path = path,
+                    ValueRaw = value,
+                    IsEnabled = NewOverrideEnabled
+                };
+
+                SelectedProfile.Overrides.Add(item);
+
+                StatusMessage = $"Added override: {path}";
+            }
+
+            NewOverridePath = "";
+            NewOverrideValueRaw = "";
+            NewOverrideEnabled = true;
+
+            RefreshFilteredOverrides();
+        }
+
+        public void AddOrReplaceOverride(string path, string valueRaw, bool enabled = true) {
+            if (SelectedProfile == null || string.IsNullOrWhiteSpace(path))
+                return;
+
+            var existing = SelectedProfile.Overrides.FirstOrDefault(o => o.Path == path);
+            if (existing != null) {
+                existing.ValueRaw = valueRaw;
+                existing.IsEnabled = enabled;
+            } else {
+                SelectedProfile.Overrides.Add(new OverrideItemViewModel {
+                    Path = path,
+                    ValueRaw = valueRaw,
+                    IsEnabled = enabled
+                });
+            }
+
             RefreshFilteredOverrides();
         }
 
@@ -163,8 +238,10 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
             if (SelectedProfile == null || item == null)
                 return;
 
-            if (SelectedProfile.Overrides.Contains(item))
+            if (SelectedProfile.Overrides.Contains(item)) {
                 SelectedProfile.Overrides.Remove(item);
+                StatusMessage = $"Deleted override: {item.Path}";
+            }
 
             RefreshFilteredOverrides();
         }
@@ -176,8 +253,11 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
                 Description = ""
             };
 
+            profile.Overrides.CollectionChanged += SelectedProfileOverrides_CollectionChanged;
+
             Profiles.Add(profile);
             SelectedProfile = profile;
+            StatusMessage = "New profile created.";
         }
 
         private void DeleteSelectedProfile() {
@@ -187,6 +267,12 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
             var toDelete = SelectedProfile;
             Profiles.Remove(toDelete);
             SelectedProfile = Profiles.FirstOrDefault();
+
+            StatusMessage = "Profile deleted.";
+        }
+
+        private void SelectedProfileOverrides_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
+            RefreshFilteredOverrides();
         }
     }
 }
