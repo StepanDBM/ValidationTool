@@ -171,18 +171,20 @@
                                    Text="DCC"
                                    VerticalAlignment="Center"/>
 
-                        <TextBlock Grid.Row="3"
-                                   Grid.Column="1"
-                                   Text="{Binding SelectedProfileDccDisplay}"
-                                   VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="3"
+                                 Grid.Column="1"
+                                 Text="{Binding SelectedProfile.DccRaw, UpdateSourceTrigger=LostFocus}"
+                                 KeyDown="CommitTextBoxOnEnter"
+                                 VerticalAlignment="Center"/>
                     </Grid>
                 </GroupBox>
 
                 <!-- ENABLED CATEGORIES -->
                 <GroupBox Header="Enabled Categories" Grid.Row="4">
                     <Grid Margin="10">
-                        <TextBlock Text="{Binding SelectedProfileCategoriesDisplay}"
-                                   TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding SelectedProfile.EnabledCategoriesRaw, UpdateSourceTrigger=LostFocus}"
+                                 KeyDown="CommitTextBoxOnEnter"
+                                 TextWrapping="Wrap"/>
                     </Grid>
                 </GroupBox>
 
@@ -279,6 +281,7 @@
                                 <DataGridTextColumn Header="Path"
                                                     Binding="{Binding Path, UpdateSourceTrigger=PropertyChanged}"
                                                     Width="*"
+                                                    MinWidth="120"
                                                     MaxWidth="420">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">

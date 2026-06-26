@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using ValidationTool.UI.Models.DTOs.Profiles;
-using ValidationTool.UI.ViewModels;
 using ValidationTool.UI.ViewModels.General;
 
 namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
@@ -32,10 +32,75 @@ namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
         public string EnabledCategoriesDisplay => string.Join(", ", EnabledCategories);
         public int EnabledOverrideCount => Overrides.Count(o => o.IsEnabled);
 
+        public string DccRaw {
+            get => string.Join(", ", Dcc);
+            set {
+                Dcc.Clear();
+
+                if (!string.IsNullOrWhiteSpace(value)) {
+                    var parts = value
+                        .Split(',')
+                        .Select(x => x.Trim())
+                        .Where(x => !string.IsNullOrWhiteSpace(x));
+
+                    foreach (var part in parts)
+                        Dcc.Add(part);
+                }
+
+                RaisePropertyChanged(nameof(DccRaw));
+                RaisePropertyChanged(nameof(DccDisplay));
+            }
+        }
+
+        public string EnabledCategoriesRaw {
+            get => string.Join(", ", EnabledCategories);
+            set {
+                EnabledCategories.Clear();
+
+                if (!string.IsNullOrWhiteSpace(value)) {
+                    var parts = value
+                        .Split(',')
+                        .Select(x => x.Trim())
+                        .Where(x => !string.IsNullOrWhiteSpace(x));
+
+                    foreach (var part in parts)
+                        EnabledCategories.Add(part);
+                }
+
+                RaisePropertyChanged(nameof(EnabledCategoriesRaw));
+                RaisePropertyChanged(nameof(EnabledCategoriesDisplay));
+            }
+        }
+
         public ProfileItemViewModel() {
-            Dcc.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(DccDisplay));
-            EnabledCategories.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(EnabledCategoriesDisplay));
-            Overrides.CollectionChanged += (_, __) => RaisePropertyChanged(nameof(EnabledOverrideCount));
+            Dcc.CollectionChanged += (_, __) => {
+                RaisePropertyChanged(nameof(DccRaw));
+                RaisePropertyChanged(nameof(DccDisplay));
+            };
+
+            EnabledCategories.CollectionChanged += (_, __) => {
+                RaisePropertyChanged(nameof(EnabledCategoriesRaw));
+                RaisePropertyChanged(nameof(EnabledCategoriesDisplay));
+            };
+
+            Overrides.CollectionChanged += (_, e) => {
+                if (e.NewItems != null) {
+                    foreach (OverrideItemViewModel item in e.NewItems)
+                        item.PropertyChanged += Override_PropertyChanged;
+                }
+
+                if (e.OldItems != null) {
+                    foreach (OverrideItemViewModel item in e.OldItems)
+                        item.PropertyChanged -= Override_PropertyChanged;
+                }
+
+                RaisePropertyChanged(nameof(EnabledOverrideCount));
+            };
+        }
+
+        private void Override_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+            if (e.PropertyName == nameof(OverrideItemViewModel.IsEnabled))
+                RaisePropertyChanged(nameof(EnabledOverrideCount));
         }
 
         public static ProfileItemViewModel FromDto(ProfileDto dto) {

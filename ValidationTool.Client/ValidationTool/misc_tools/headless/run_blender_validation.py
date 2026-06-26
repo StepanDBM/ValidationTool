@@ -46,7 +46,7 @@ def process_file(file_path: str, artist: str):
     print (f"Extracted {len(objects)} meshes from the scene", flush=True)
     
     loader = ConfigLoader(absPath.CONFIG_DIR)
-    profile = loader.load_profile("blender_default")
+    profile = loader.load_profile("blender_render_final")
     context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
 
     run = run_pipeline(objects, context, profile)
