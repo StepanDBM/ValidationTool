@@ -125,8 +125,7 @@ namespace ValidationTool.UI.ViewModels {
 
         private readonly ActiveProfileService _activeProfileService = new ActiveProfileService();
 
-        public ObservableCollection<ProfileDto> AvailableProfiles { get; } =
-            new ObservableCollection<ProfileDto>();
+        public ObservableCollection<ProfileDto> AvailableProfiles { get; } = new ObservableCollection<ProfileDto>();
 
         private ProfileDto _selectedProfile;
         public ProfileDto SelectedProfile {
@@ -315,8 +314,7 @@ namespace ValidationTool.UI.ViewModels {
             IsBusy = true;
 
             try {
-                await Task.Run(() =>
-                {
+                await Task.Run(() => {
                     MayaRunner.Run(
                         Path.Combine(Paths.HEADLESS, "run_maya_validation.py"),
                         line => {
@@ -352,12 +350,9 @@ namespace ValidationTool.UI.ViewModels {
             IsBusy = true;
 
             try {
-                await Task.Run(() =>
-                {
-                    ArtistsDataSetCreator.Run(line =>
-                    {
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
+                await Task.Run(() => {
+                    ArtistsDataSetCreator.Run(line => {
+                        Application.Current.Dispatcher.Invoke(() => {
                             ProcessLine(line);
                         });
                     });

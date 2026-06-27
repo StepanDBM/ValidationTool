@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:ValidationTool.UI.Views"
         xmlns:controls="clr-namespace:ValidationTool.UI.Views.ValidationView_Controls"
         mc:Ignorable="d"
-        Title="ValidationTool - by Styopa DBM" Height="650" Width="800"
+        Title="ValidationTool - by Styopa DBM" Height="650" Width="1000"
         WindowStyle="None"
         ResizeMode="CanResize"
         Background="{StaticResource BrushBgMain}">
