@@ -60,7 +60,6 @@ namespace ValidationTool.UI.Services {
                         result.Add(dto);
                     }
                 } catch (Exception ex) {
-                    // ✅ Skip corrupted JSON instead of crashing
                     System.Diagnostics.Debug.WriteLine(
                         $"[REPORT LOAD ERROR] {reportFile}: {ex.Message}");
                 }

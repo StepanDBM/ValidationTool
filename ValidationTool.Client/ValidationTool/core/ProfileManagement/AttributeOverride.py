@@ -55,7 +55,6 @@ def apply_override(root: object, override):
 
 def apply_overrides(root: object, overrides: list):
     for ov in overrides:
-        print("override ", ov)
         apply_override(root, ov)
 
 

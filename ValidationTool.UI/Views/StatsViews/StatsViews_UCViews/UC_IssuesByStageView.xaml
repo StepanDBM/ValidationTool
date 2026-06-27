@@ -9,11 +9,73 @@
             Padding="12">
 
         <Grid>
-            <TextBlock Text="Issues By Stage&#x0a;&#x0a;Horizontal bar chart showing issue volume grouped by validation stage."
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="6"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="ISSUES BY STAGE"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       Opacity="0.9"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="{Binding Subtitle}"
+                       FontSize="11"
+                       Opacity="0.65"/>
+
+            <ScrollViewer Grid.Row="4"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding Stage}"
+                                           VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis"
+                                           ToolTip="{Binding Stage}"/>
+
+                                <ProgressBar Grid.Column="1"
+                                             Height="16"
+                                             Minimum="0"
+                                             Maximum="100"
+                                             Value="{Binding BarPercent}"
+                                             Background="{StaticResource BrushBgElement}"
+                                             Foreground="{StaticResource BrushAccent}"
+                                             BorderBrush="{StaticResource BrushBorder}"
+                                             BorderThickness="1"
+                                             Margin="8,0,8,0"/>
+
+                                <TextBlock Grid.Column="2"
+                                           Text="{Binding CountDisplay}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           FontWeight="SemiBold"/>
+
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding PercentOfTotalDisplay}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Opacity="0.65"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Border>
 </UserControl>

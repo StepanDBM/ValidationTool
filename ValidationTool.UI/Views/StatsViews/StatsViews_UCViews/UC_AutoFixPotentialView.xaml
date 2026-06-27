@@ -9,11 +9,107 @@
             Padding="12">
 
         <Grid>
-            <TextBlock Text="Auto-Fix Potential&#x0a;&#x0a;Breakdown of Auto / Semi / Manual / None fix modes and estimated saved time."
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="6"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="AUTO-FIX POTENTIAL"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       Opacity="0.9"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="{Binding Subtitle}"
+                       FontSize="11"
+                       Opacity="0.65"/>
+
+            <ScrollViewer Grid.Row="4"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource BrushBgElement}"
+                                    BorderBrush="{StaticResource BrushBorder}"
+                                    BorderThickness="1"
+                                    CornerRadius="4"
+                                    Padding="8"
+                                    Margin="0,0,0,10">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding FixMode}"
+                                                   FontSize="14"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   ToolTip="{Binding FixMode}"/>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding CountDisplay}"
+                                                   FontSize="14"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"/>
+                                    </Grid>
+
+                                    <ProgressBar Grid.Row="2"
+                                                 Height="16"
+                                                 Minimum="0"
+                                                 Maximum="100"
+                                                 Value="{Binding BarPercent}"
+                                                 Background="{StaticResource BrushBgPanel}"
+                                                 Foreground="{StaticResource BrushAccent}"
+                                                 BorderBrush="{StaticResource BrushBorder}"
+                                                 BorderThickness="1"/>
+
+                                    <Grid Grid.Row="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding Description}"
+                                                   VerticalAlignment="Center"
+                                                   Opacity="0.75"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   ToolTip="{Binding Description}"/>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding PercentOfTotalDisplay}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   FontWeight="SemiBold"
+                                                   Opacity="0.8"
+                                                   Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Border>
 </UserControl>

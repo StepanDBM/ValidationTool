@@ -67,7 +67,7 @@
                 </TabItem>
 
                 <TabItem Header="Stats">
-                    <views:StatsView/>
+                    <views:StatsView DataContext="{Binding StatsVM}"/>
                 </TabItem>
 
                 <TabItem Header="Budgets">

@@ -169,6 +169,7 @@
     <Compile Include="Models\Items\BudgetSectionNavItem.cs" />
     <Compile Include="Models\Items\BudgetSectionType.cs" />
     <Compile Include="Models\Items\SceneSetupNavItem.cs" />
+    <Compile Include="Models\Stats\StatsModels.cs" />
     <Compile Include="Models\ValidationModels.cs" />
     <Compile Include="Services\Config\ActiveProfileService.cs" />
     <Compile Include="Services\Config\BudgetsConfigService.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Services\Notifications\SlackChNotificationProvider.cs" />
     <Compile Include="Services\Notifications\SlackDmNotificationProvider.cs" />
     <Compile Include="Services\Notifications\TeamsNotificationProvider.cs" />
+    <Compile Include="Services\Stats\StatsAggregationService.cs" />
     <Compile Include="Services\TypesConverters\BoolToVisibilityConverter.cs" />
     <Compile Include="Themes\SeverityToBrushConverter.cs" />
     <Compile Include="TOKEN_KEYS_GITIGNORE\KEY_TOKENS_GITIGNORE.cs" />

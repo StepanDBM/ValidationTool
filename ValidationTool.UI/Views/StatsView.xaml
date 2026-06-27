@@ -3,6 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:stats="clr-namespace:ValidationTool.UI.Views.StatsView_Controls">
 
+    <UserControl.Resources>
+
+        <Style x:Key="VerticalStatsSplitterStyle" TargetType="GridSplitter">
+            <Setter Property="Height" Value="8"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="{StaticResource BrushBorder}"/>
+            <Setter Property="Opacity" Value="0.45"/>
+            <Setter Property="ResizeDirection" Value="Rows"/>
+            <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
+            <Setter Property="ShowsPreview" Value="True"/>
+        </Style>
+
+        <Style x:Key="HorizontalStatsSplitterStyle" TargetType="GridSplitter">
+            <Setter Property="Width" Value="8"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="{StaticResource BrushBorder}"/>
+            <Setter Property="Opacity" Value="0.45"/>
+            <Setter Property="ResizeDirection" Value="Columns"/>
+            <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
+            <Setter Property="ShowsPreview" Value="True"/>
+        </Style>
+
+    </UserControl.Resources>
+
     <ScrollViewer VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Disabled">
 
@@ -12,18 +38,17 @@
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="260"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="220"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="300"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="260"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="240"/>
+                <RowDefinition Height="260" MinHeight="320"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="220" MinHeight="300"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="300" MinHeight="180"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="260" MinHeight="500"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="240" MinHeight="400"/>
             </Grid.RowDefinitions>
 
-            <!-- HEADER -->
             <Border Grid.Row="0"
                     Background="{StaticResource BrushBgPanel}"
                     BorderBrush="{StaticResource BrushBorder}"
@@ -54,7 +79,8 @@
                         <Button Content="Refresh Stats"
                                 Width="120"
                                 Height="32"
-                                Margin="0,0,8,0"/>
+                                Margin="0,0,8,0"
+                                Command="{Binding RefreshStatsCommand}"/>
 
                         <Button Content="Export Snapshot"
                                 Width="130"
@@ -63,55 +89,92 @@
                 </Grid>
             </Border>
 
-            <!-- KPI STRIP -->
-            <stats:UC_StatsKpiStripView Grid.Row="2"/>
+            <stats:UC_StatsKpiStripView Grid.Row="2"
+                                        DataContext="{Binding KpiStripVM}"/>
 
-            <!-- MAIN OVERVIEW ROW -->
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
                 </Grid.ColumnDefinitions>
 
-                <stats:UC_IssuesByStageView Grid.Column="0"/>
-                <stats:UC_DccComparisonView Grid.Column="2"/>
-                <stats:UC_AutoFixPotentialView Grid.Column="4"/>
+                <stats:UC_IssuesByStageView Grid.Column="0"
+                                            DataContext="{Binding IssuesByStageVM}"/>
+
+                <GridSplitter Grid.Column="1"
+                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+
+                <stats:UC_DccComparisonView Grid.Column="2"
+                                            DataContext="{Binding DccComparisonVM}"/>
+
+                <GridSplitter Grid.Column="3"
+                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+
+                <stats:UC_AutoFixPotentialView Grid.Column="4"
+                                               DataContext="{Binding AutoFixPotentialVM}"/>
             </Grid>
 
-            <!-- TOP OFFENDING CHECKS -->
-            <stats:UC_TopOffendingChecksView Grid.Row="6"/>
+            <GridSplitter Grid.Row="5"
+                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
 
-            <!-- CRITICAL FILE RANKING -->
-            <stats:UC_CriticalFilesRankingView Grid.Row="8"/>
+            <stats:UC_TopOffendingChecksView Grid.Row="6"
+                                             DataContext="{Binding TopOffendingChecksVM}"/>
 
-            <!-- PEOPLE / TEAM ROW -->
+            <GridSplitter Grid.Row="7"
+                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+
+            <stats:UC_CriticalFilesRankingView Grid.Row="8"
+                                               DataContext="{Binding CriticalFilesRankingVM}"/>
+
+            <GridSplitter Grid.Row="9"
+                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+
             <Grid Grid.Row="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" MinWidth="220"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*" MinWidth="220"/>
                 </Grid.ColumnDefinitions>
 
-                <stats:UC_TeamHealthView Grid.Column="0"/>
-                <stats:UC_ArtistSupportSummaryView Grid.Column="2"/>
+                <stats:UC_TeamHealthView Grid.Column="0"
+                                         DataContext="{Binding TeamHealthVM}"/>
+
+                <GridSplitter Grid.Column="1"
+                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+
+                <stats:UC_ArtistSupportSummaryView Grid.Column="2"
+                                                   DataContext="{Binding ArtistSupportSummaryVM}"/>
             </Grid>
 
-            <!-- BOTTOM ANALYTICS ROW -->
+            <GridSplitter Grid.Row="11"
+                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+
             <Grid Grid.Row="12">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*" MinWidth="180"/>
                 </Grid.ColumnDefinitions>
 
-                <stats:UC_SeverityMixView Grid.Column="0"/>
-                <stats:UC_FixModeByStageView Grid.Column="2"/>
-                <stats:UC_PipelineRoiView Grid.Column="4"/>
+                <stats:UC_SeverityMixView Grid.Column="0"
+                                          DataContext="{Binding SeverityMixVM}"/>
+
+                <GridSplitter Grid.Column="1"
+                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+
+                <stats:UC_FixModeByStageView Grid.Column="2"
+                                             DataContext="{Binding FixModeByStageVM}"/>
+
+                <GridSplitter Grid.Column="3"
+                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+
+                <stats:UC_PipelineRoiView Grid.Column="4"
+                                          DataContext="{Binding PipelineRoiVM}"/>
             </Grid>
 
         </Grid>

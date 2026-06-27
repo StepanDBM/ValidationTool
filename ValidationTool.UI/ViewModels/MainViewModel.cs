@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using ValidationTool.UI.Models.DTOs;
-
-using ValidationTool.UI.ViewModels;
+using ValidationTool.UI.ViewModels.StatsView_Models;
 
 namespace ValidationTool.UI.ViewModels {
     public class MainViewModel {
@@ -14,12 +13,8 @@ namespace ValidationTool.UI.ViewModels {
         public ValidationViewModel ValidationVM { get; }
         public StatsViewModel StatsVM { get; }
 
-        // Later:
-        // public StatsViewModel StatsVM { get; }
-
         public MainViewModel() {
             ValidationVM = new ValidationViewModel(Issues, Runs);
-
             StatsVM = new StatsViewModel(Issues, Runs);
         }
     }
