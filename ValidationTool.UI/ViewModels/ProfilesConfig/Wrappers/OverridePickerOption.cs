@@ -1,4 +1,6 @@
-﻿namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
+﻿using System.Xml.Linq;
+
+namespace ValidationTool.UI.ViewModels.ProfilesView_Models {
     public enum OverrideValueKind {
         Boolean,
         Integer,
@@ -15,5 +17,15 @@
         public OverrideValueKind ValueKind { get; set; }
         public string DefaultValueRaw { get; set; }
         public string HelpText { get; set; }
+
+        public override string ToString() {
+            if (!string.IsNullOrWhiteSpace(DisplayName)) {
+                return DisplayName;
+            }
+            if (!string.IsNullOrWhiteSpace(PathSegment)) {
+                return PathSegment;
+            }
+            return base.ToString();
+        }
     }
 }
