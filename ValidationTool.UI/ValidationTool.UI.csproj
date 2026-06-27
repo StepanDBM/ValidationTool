@@ -179,6 +179,7 @@
     <Compile Include="Services\external\ArtistsDataSetCreator.cs" />
     <Compile Include="Services\external\BlenderRunner.cs" />
     <Compile Include="Services\external\MayaRunner.cs" />
+    <Compile Include="Services\external\ValidationReportStore.cs" />
     <Compile Include="Services\JsonReportLoader.cs" />
     <Compile Include="Services\Notifications\DiscordNotificationProvider.cs" />
     <Compile Include="Services\Notifications\EmailNotificationProvider.cs" />
@@ -231,6 +232,18 @@
     <Compile Include="ViewModels\SceneSetupView_Models\wrappers\SceneSetupGeneralViewModel.cs" />
     <Compile Include="ViewModels\StagesViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
+    <Compile Include="ViewModels\Stats\StatsViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_ArtistSupportSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_AutoFixPotentialViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_CriticalFilesRankingViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_DccComparisonViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_FixModeByStageViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_IssuesByStageViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_PipelineRoiViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_SeverityMixViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_StatsKpiStripViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_TeamHealthViewModel.cs" />
+    <Compile Include="ViewModels\Stats\Stats_UCwrappers\UC_TopOffendingChecksViewModel.cs" />
     <Compile Include="ViewModels\UC_ArtistListViewModel.cs" />
     <Compile Include="ViewModels\UC_FileListViewModel.cs" />
     <Compile Include="ViewModels\UC_TeamListViewModel.cs" />
@@ -258,6 +271,42 @@
     </Compile>
     <Compile Include="Views\ProfilesViews\OverridePickerWndw.xaml.cs">
       <DependentUpon>OverridePickerWndw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsView.xaml.cs">
+      <DependentUpon>StatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_ArtistSupportSummaryView.xaml.cs">
+      <DependentUpon>UC_ArtistSupportSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_AutoFixPotentialView.xaml.cs">
+      <DependentUpon>UC_AutoFixPotentialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_CriticalFilesRankingView.xaml.cs">
+      <DependentUpon>UC_CriticalFilesRankingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_DccComparisonView.xaml.cs">
+      <DependentUpon>UC_DccComparisonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_FixModeByStageView.xaml.cs">
+      <DependentUpon>UC_FixModeByStageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_IssuesByStageView.xaml.cs">
+      <DependentUpon>UC_IssuesByStageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_PipelineRoiView.xaml.cs">
+      <DependentUpon>UC_PipelineRoiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_SeverityMixView.xaml.cs">
+      <DependentUpon>UC_SeverityMixView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_StatsKpiStripView.xaml.cs">
+      <DependentUpon>UC_StatsKpiStripView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_TopOffendingChecksView.xaml.cs">
+      <DependentUpon>UC_TopOffendingChecksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsViews\StatsViews_UCViews\UC_TeamHealthView.xaml.cs">
+      <DependentUpon>UC_TeamHealthView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_BudgetsMain.xaml.cs">
       <DependentUpon>UC_BudgetsMain.xaml</DependentUpon>
@@ -392,6 +441,54 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProfilesViews\OverridePickerWndw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_ArtistSupportSummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_AutoFixPotentialView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_CriticalFilesRankingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_DccComparisonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_FixModeByStageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_IssuesByStageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_PipelineRoiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_SeverityMixView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_StatsKpiStripView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_TopOffendingChecksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsViews\StatsViews_UCViews\UC_TeamHealthView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

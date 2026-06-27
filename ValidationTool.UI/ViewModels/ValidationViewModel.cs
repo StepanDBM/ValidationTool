@@ -20,8 +20,8 @@ namespace ValidationTool.UI.ViewModels {
         public UC_TeamListViewModel TeamListVM { get; }
         public UC_ArtistListViewModel ArtistListVM { get; }
         public UC_FileListViewModel FileListVM { get; }
-        public ObservableCollection<IssueViewModel> mIssues { get; set; } = new ObservableCollection<IssueViewModel>();
-        public ObservableCollection<ValidationRunDto> mRun { get; set; } = new ObservableCollection<ValidationRunDto>();
+        public ObservableCollection<IssueViewModel> mIssues { get;}
+        public ObservableCollection<ValidationRunDto> mRun { get;}
 
 
         private NotificationService mNotService = new NotificationService(new NotificationMessageBuilder());
@@ -30,7 +30,11 @@ namespace ValidationTool.UI.ViewModels {
 
         public ICollectionView IssuesView { get; set; }
 
-        public ValidationViewModel() {
+        public ValidationViewModel(
+            ObservableCollection<IssueViewModel> sharedIssues,
+            ObservableCollection<ValidationRunDto> sharedRuns) {
+            mIssues = sharedIssues;
+            mRun = sharedRuns;
 
             IssuesView = CollectionViewSource.GetDefaultView(mIssues);
             TeamListVM = new UC_TeamListViewModel(mIssues, Selection);
@@ -190,6 +194,7 @@ namespace ValidationTool.UI.ViewModels {
                 ProcessLine(line);
             }
             TeamListVM.AggregateAll();
+            IssuesView.Refresh();
 
             dtos.Clear();
         }

@@ -7,7 +7,6 @@ namespace ValidationTool.UI.Views {
     public partial class ValidationView : UserControl {
         public ValidationView() {
             InitializeComponent();
-            DataContext = new ValidationViewModel();
         }
 
         private void loadReportUI(object sender, RoutedEventArgs e) {

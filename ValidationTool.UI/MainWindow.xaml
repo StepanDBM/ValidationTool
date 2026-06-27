@@ -63,7 +63,11 @@
             <TabControl>
 
                 <TabItem Header="Validation">
-                    <views:ValidationView/>
+                    <views:ValidationView DataContext="{Binding ValidationVM}"/>
+                </TabItem>
+
+                <TabItem Header="Stats">
+                    <views:StatsView/>
                 </TabItem>
 
                 <TabItem Header="Budgets">
@@ -77,11 +81,11 @@
                 <TabItem Header="Profiles">
                     <views:ProfilesView/>
                 </TabItem>
-
+                <!--
                 <TabItem Header="Stages">
                     <views:StagesView/>
                 </TabItem>
-
+                -->
             </TabControl>
         </Grid>
 

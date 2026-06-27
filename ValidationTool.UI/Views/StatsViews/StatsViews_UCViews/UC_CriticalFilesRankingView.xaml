@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.StatsView_Controls.UC_CriticalFilesRankingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Background="{StaticResource BrushBgPanel}"
+            BorderBrush="{StaticResource BrushBorder}"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="12">
+
+        <Grid>
+            <TextBlock Text="Critical File Ranking&#x0a;&#x0a;Wide table ranking files by errors, warnings, DCC, artist, team, auto-fix percentage, and top stage."
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"/>
+        </Grid>
+    </Border>
+</UserControl>

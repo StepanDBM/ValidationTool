@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="ValidationTool.UI.Views.StatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:stats="clr-namespace:ValidationTool.UI.Views.StatsView_Controls">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="260"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="220"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="260"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="240"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Border Grid.Row="0"
+                    Background="{StaticResource BrushBgPanel}"
+                    BorderBrush="{StaticResource BrushBorder}"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Padding="14">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Stats"
+                                   FontSize="22"
+                                   FontWeight="Bold"/>
+
+                        <TextBlock Text="Production health overview from currently loaded validation reports"
+                                   Margin="0,4,0,0"
+                                   Opacity="0.75"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+
+                        <Button Content="Refresh Stats"
+                                Width="120"
+                                Height="32"
+                                Margin="0,0,8,0"/>
+
+                        <Button Content="Export Snapshot"
+                                Width="130"
+                                Height="32"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- KPI STRIP -->
+            <stats:UC_StatsKpiStripView Grid.Row="2"/>
+
+            <!-- MAIN OVERVIEW ROW -->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <stats:UC_IssuesByStageView Grid.Column="0"/>
+                <stats:UC_DccComparisonView Grid.Column="2"/>
+                <stats:UC_AutoFixPotentialView Grid.Column="4"/>
+            </Grid>
+
+            <!-- TOP OFFENDING CHECKS -->
+            <stats:UC_TopOffendingChecksView Grid.Row="6"/>
+
+            <!-- CRITICAL FILE RANKING -->
+            <stats:UC_CriticalFilesRankingView Grid.Row="8"/>
+
+            <!-- PEOPLE / TEAM ROW -->
+            <Grid Grid.Row="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <stats:UC_TeamHealthView Grid.Column="0"/>
+                <stats:UC_ArtistSupportSummaryView Grid.Column="2"/>
+            </Grid>
+
+            <!-- BOTTOM ANALYTICS ROW -->
+            <Grid Grid.Row="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <stats:UC_SeverityMixView Grid.Column="0"/>
+                <stats:UC_FixModeByStageView Grid.Column="2"/>
+                <stats:UC_PipelineRoiView Grid.Column="4"/>
+            </Grid>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

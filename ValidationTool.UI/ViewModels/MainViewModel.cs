@@ -1,12 +1,26 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using ValidationTool.UI.Services.External;
-using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Models.DTOs;
+
+using ValidationTool.UI.ViewModels;
 
 namespace ValidationTool.UI.ViewModels {
     public class MainViewModel {
-        public ObservableCollection<IssueViewModel> Assets { get; set; } = new ObservableCollection<IssueViewModel>();
-        public string someText { get; set; }
+        public ObservableCollection<IssueViewModel> Issues { get; } =
+            new ObservableCollection<IssueViewModel>();
+
+        public ObservableCollection<ValidationRunDto> Runs { get; } =
+            new ObservableCollection<ValidationRunDto>();
+
+        public ValidationViewModel ValidationVM { get; }
+        public StatsViewModel StatsVM { get; }
+
+        // Later:
+        // public StatsViewModel StatsVM { get; }
+
+        public MainViewModel() {
+            ValidationVM = new ValidationViewModel(Issues, Runs);
+
+            StatsVM = new StatsViewModel(Issues, Runs);
+        }
     }
 }
