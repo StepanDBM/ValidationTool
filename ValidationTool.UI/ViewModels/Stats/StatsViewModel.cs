@@ -117,7 +117,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
             try {
                 var window = Application.Current.MainWindow;
 
-                // ✅ Find ScrollViewer
+                // Find ScrollViewer
                 var scrollViewer = FindScrollViewer(window);
                 if (scrollViewer == null)
                     throw new Exception("ScrollViewer not found.");
@@ -126,7 +126,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
                 if (content == null)
                     throw new Exception("ScrollViewer content not found.");
 
-                // ✅ Backup + remove ALL row constraints
+                // Backup + remove ALL row constraints
                 var rowBackups = new Dictionary<RowDefinition, (GridLength Height, double MinHeight)>();
 
                 foreach (var row in GetAllRowDefinitions(content)) {
@@ -136,7 +136,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
                     row.MinHeight = 0;
                 }
 
-                // ✅ Force full layout expansion
+                // Force full layout expansion
                 content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 content.Arrange(new Rect(content.DesiredSize));
                 content.UpdateLayout();
@@ -147,7 +147,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
                 if (width <= 0 || height <= 0)
                     throw new Exception("Invalid render size.");
 
-                // ✅ Render full content
+                // Render full content
                 var rtb = new RenderTargetBitmap(
                     width,
                     height,
@@ -158,7 +158,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
 
                 rtb.Render(content);
 
-                // ✅ Restore original layout
+                // Restore original layout
                 foreach (var kv in rowBackups) {
                     kv.Key.Height = kv.Value.Height;
                     kv.Key.MinHeight = kv.Value.MinHeight;
@@ -166,7 +166,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
 
                 content.UpdateLayout();
 
-                // ✅ Save image
+                // Save image
                 var encoder = new PngBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(rtb));
 
