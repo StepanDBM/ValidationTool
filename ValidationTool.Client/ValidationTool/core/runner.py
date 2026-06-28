@@ -189,7 +189,6 @@ def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None
     ordered_checks = registry.resolveByProfileStage(profile)
     for obj in objects:
         hard_stop = False
-        print(type(obj), isinstance(obj, SceneSetupContext))
         if isinstance(obj, SceneSetupContext):
             scene_setup = obj
         for check in ordered_checks:

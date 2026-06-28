@@ -24,13 +24,17 @@ def extract_blender_scene() -> List[BaseContext]:
 
     objects: List[BaseContext] = []
     scene_setup = extract_scene_setup_context()
-    objects.extend(extract_meshes())
-    objects.extend(extract_cameras())
-    objects.extend(extract_lights())
+    objects.append(scene_setup)
+    meshes = extract_meshes()
+    objects.extend(meshes)
+    cameras = extract_cameras()
+    objects.extend(cameras)
+    lights = extract_lights()
+    objects.extend(lights)
     """
     objects.extend(extract_curves())
     objects.extend(extract_nurbs())
     objects.extend(extract_references())
     """
 
-    return scene_setup, objects
+    return objects

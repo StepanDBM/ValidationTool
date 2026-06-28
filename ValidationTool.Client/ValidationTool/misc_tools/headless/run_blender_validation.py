@@ -42,11 +42,11 @@ def process_file(file_path: str, artist: str):
     bpy.context.view_layer.update()
     depsgraph = bpy.context.evaluated_depsgraph_get() #forces update of evaluated data,
     #so modifiers are applied and bounding boxes are correct
-    scene_setup, objects = extract_blender_scene()
+    objects = extract_blender_scene()
     
     loader = ConfigLoader(absPath.CONFIG_DIR)
     profile = loader.load_profile()
-    context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist, "scene_setup": scene_setup}
+    context = {"headless":1, "dcc": "Blender", "path": file_path, "artist": artist}
 
     run = run_pipeline(objects, context, profile)
     

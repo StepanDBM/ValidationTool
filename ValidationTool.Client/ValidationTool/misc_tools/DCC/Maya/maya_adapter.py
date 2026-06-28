@@ -29,16 +29,6 @@ def extract_maya_scene() -> List[BaseContext]:
     objects: List[BaseContext] = []
     ctx = extract_scene_setup_context()
     objects.append(ctx)
-
-    
-    print(type(ctx))
-
-    from core.context.SceneContext.SceneSetupContext import SceneSetupContext
-    print(SceneSetupContext)
-
-    print("This is inside maya_adapter: ", type(ctx) == SceneSetupContext)  # MUST be True
-    print(isinstance(ctx, SceneSetupContext))  # MUST be True
-
     meshes = extract_meshes()
     objects.extend(meshes)
     cameras = extract_cameras()
