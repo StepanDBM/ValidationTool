@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ValidationTool.UI.Commands;
 using ValidationTool.UI.Models.DTOs;
 using ValidationTool.UI.Models.Stats;
+using ValidationTool.UI.Services.Config;
 using ValidationTool.UI.Services.Stats;
 using ValidationTool.UI.ViewModels.General;
+
 
 namespace ValidationTool.UI.ViewModels.StatsView_Models {
     public class StatsViewModel : ViewModelBase {
@@ -26,6 +35,7 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
         public UC_PipelineRoiViewModel PipelineRoiVM { get; }
 
         public ICommand RefreshStatsCommand { get; }
+        public ICommand ScreenShotStatsCommand { get; }
 
         private string _statusMessage;
         public string StatusMessage {
@@ -71,9 +81,138 @@ namespace ValidationTool.UI.ViewModels.StatsView_Models {
             PipelineRoiVM = new UC_PipelineRoiViewModel();
 
             RefreshStatsCommand = new RelayCommand(RefreshStats);
+            ScreenShotStatsCommand = new RelayCommand(ScreenShotStats);
 
             RefreshStats();
         }
+
+        public void ScreenShotStats() {
+            ExportStatsJson();
+            ExportStatsScreenshot();
+        }
+
+        public void ExportStatsJson() {
+            try {
+                var snapshot = _aggregationService.Build(_issues, _runs);
+
+                var json = System.Text.Json.JsonSerializer.Serialize(
+                    snapshot,
+                    new System.Text.Json.JsonSerializerOptions {
+                        WriteIndented = true
+                    });
+
+                var path = Path.Combine(Paths.LOGS_DIR,
+                    $"stats_snapshot_{DateTime.Now:yyyyMMdd_HHmmss}.json"
+                );
+
+                File.WriteAllText(path, json);
+
+                StatusMessage = $"Snapshot exported to: {path}";
+            } catch (Exception ex) {
+                StatusMessage = $"Snapshot export failed: {ex.Message}";
+            }
+        }
+
+        public void ExportStatsScreenshot() {
+            try {
+                var window = Application.Current.MainWindow;
+
+                // ✅ Find ScrollViewer
+                var scrollViewer = FindScrollViewer(window);
+                if (scrollViewer == null)
+                    throw new Exception("ScrollViewer not found.");
+
+                var content = scrollViewer.Content as FrameworkElement;
+                if (content == null)
+                    throw new Exception("ScrollViewer content not found.");
+
+                // ✅ Backup + remove ALL row constraints
+                var rowBackups = new Dictionary<RowDefinition, (GridLength Height, double MinHeight)>();
+
+                foreach (var row in GetAllRowDefinitions(content)) {
+                    rowBackups[row] = (row.Height, row.MinHeight);
+
+                    row.Height = GridLength.Auto;
+                    row.MinHeight = 0;
+                }
+
+                // ✅ Force full layout expansion
+                content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                content.Arrange(new Rect(content.DesiredSize));
+                content.UpdateLayout();
+
+                int width = (int)Math.Ceiling(content.DesiredSize.Width);
+                int height = (int)Math.Ceiling(content.DesiredSize.Height);
+
+                if (width <= 0 || height <= 0)
+                    throw new Exception("Invalid render size.");
+
+                // ✅ Render full content
+                var rtb = new RenderTargetBitmap(
+                    width,
+                    height,
+                    96,
+                    96,
+                    PixelFormats.Pbgra32
+                );
+
+                rtb.Render(content);
+
+                // ✅ Restore original layout
+                foreach (var kv in rowBackups) {
+                    kv.Key.Height = kv.Value.Height;
+                    kv.Key.MinHeight = kv.Value.MinHeight;
+                }
+
+                content.UpdateLayout();
+
+                // ✅ Save image
+                var encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(rtb));
+
+                var path = Path.Combine(Paths.LOGS_DIR,
+                    $"stats_full_{DateTime.Now:yyyyMMdd_HHmmss}.png"
+                );
+
+                using (var stream = File.Create(path))
+                    encoder.Save(stream);
+
+                StatusMessage = $"✅ Stats screenshot saved: {path}";
+            } catch (Exception ex) {
+                StatusMessage = $"❌ Screenshot failed: {ex.Message}";
+            }
+        }
+
+        private ScrollViewer FindScrollViewer(DependencyObject parent) {
+            if (parent == null)
+                return null;
+
+            if (parent is ScrollViewer)
+                return (ScrollViewer)parent;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++) {
+                var result = FindScrollViewer(VisualTreeHelper.GetChild(parent, i));
+                if (result != null)
+                    return result;
+            }
+
+            return null;
+        }
+
+        private IEnumerable<RowDefinition> GetAllRowDefinitions(DependencyObject root) {
+            if (root is Grid grid) {
+                foreach (var row in grid.RowDefinitions)
+                    yield return row;
+            }
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++) {
+                var child = VisualTreeHelper.GetChild(root, i);
+
+                foreach (var r in GetAllRowDefinitions(child))
+                    yield return r;
+            }
+        }
+
 
         public void RefreshStats() {
             try {
