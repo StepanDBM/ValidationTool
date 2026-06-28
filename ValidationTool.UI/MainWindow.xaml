@@ -9,53 +9,19 @@
         mc:Ignorable="d"
         Title="ValidationTool - by Styopa DBM" Height="650" Width="1000"
         WindowStyle="None"
-        ResizeMode="CanResize"
-        Background="{StaticResource BrushBgMain}">
+        ResizeMode="CanResize">
 
 
-    <Grid>
+    <Grid Background="{DynamicResource BrushBgMain}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <!-- Custom title bar -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Custom Title Bar -->
-        <Border Grid.Row="0"
-            Background="{StaticResource BrushBgPanel}"
-            MouseDown="TitleBar_MouseDown">
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Title -->
-                <TextBlock Text="ValidationTool"
-                       VerticalAlignment="Center"
-                       Margin="10,0"
-                       Foreground="{StaticResource BrushText}" />
-
-                <!-- Buttons -->
-                <StackPanel Orientation="Horizontal" Grid.Column="1">
-
-                    <Button Content="_"
-                        Width="40"
-                        Click="Minimize_Click"/>
-
-                    <Button Content="□"
-                        Width="40"
-                        Click="Maximize_Click"/>
-
-                    <Button Content="X"
-                        Width="40"
-                        Click="Close_Click"/>
-
-                </StackPanel>
-            </Grid>
-        </Border>
+        <views:UC_TopBar Grid.Row="0"
+                 TitleText="ValidationTool by Stepan D. Batllori Martinez"/>
 
         <Grid Grid.Row="1">
 

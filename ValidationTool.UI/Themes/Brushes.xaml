@@ -1,50 +1,57 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Main Background -->
     <SolidColorBrush x:Key="BrushBgMain"
-                     Color="{StaticResource ColorBgMain}" />
+                     Color="{DynamicResource ColorBgMain}" />
 
-    <!-- Panels -->
     <SolidColorBrush x:Key="BrushBgPanel"
-                     Color="{StaticResource ColorBgPanel}" />
+                     Color="{DynamicResource ColorBgPanel}" />
+
     <SolidColorBrush x:Key="BrushBgRowAlt"
-                 Color="{StaticResource ColorBgRowAlt}" />
+                     Color="{DynamicResource ColorBgRowAlt}" />
 
-    <!-- Controls -->
     <SolidColorBrush x:Key="BrushBgElement"
-                     Color="{StaticResource ColorBgElement}" />
+                     Color="{DynamicResource ColorBgElement}" />
 
-    <!-- Text -->
+
+    <SolidColorBrush x:Key="BrushTextDisabled"
+                 Color="{DynamicResource ColorTextDisabled}" />
+
+    <SolidColorBrush x:Key="BrushTextOnAccent"
+                 Color="{DynamicResource ColorTextOnAccent}" />
+
+    <SolidColorBrush x:Key="BrushTransparent"
+                 Color="{DynamicResource ColorTransparent}" />
+
+
     <SolidColorBrush x:Key="BrushText"
-                     Color="{StaticResource ColorText}" />
+                     Color="{DynamicResource ColorText}" />
 
-    <!-- Borders -->
+    <SolidColorBrush x:Key="BrushTextMuted"
+                     Color="{DynamicResource ColorTextMuted}" />
+
     <SolidColorBrush x:Key="BrushBorder"
-                     Color="{StaticResource ColorBorder}" />
+                     Color="{DynamicResource ColorBorder}" />
 
-    <!-- Hover -->
     <SolidColorBrush x:Key="BrushHover"
-                     Color="{StaticResource ColorBorder}" />
-    <!-- Accent -->
-    <SolidColorBrush x:Key="BrushAccent"
-                     Color="{StaticResource ColorAccent}" />
+                     Color="{DynamicResource ColorHover}" />
 
-    <!-- Validation Severity -->
+    <SolidColorBrush x:Key="BrushAccent"
+                     Color="{DynamicResource ColorAccent}" />
+
     <SolidColorBrush x:Key="BrushError"
-                     Color="{StaticResource ColorError}" />
+                     Color="{DynamicResource ColorError}" />
 
     <SolidColorBrush x:Key="BrushWarning"
-                     Color="{StaticResource ColorWarning}" />
+                     Color="{DynamicResource ColorWarning}" />
 
     <SolidColorBrush x:Key="BrushInfo"
-                     Color="{StaticResource ColorInfo}" />
+                     Color="{DynamicResource ColorInfo}" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
-                 Color="{Binding Color, Source={StaticResource BrushBgPanel}}" />
+                     Color="{DynamicResource ColorBgPanel}" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}"
-                 Color="{Binding Color, Source={StaticResource BrushText}}" />
-
+                     Color="{DynamicResource ColorText}" />
 
 </ResourceDictionary>

@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Border Background="{StaticResource BrushBgPanel}"
-            BorderBrush="{StaticResource BrushBorder}"
+    <Border Background="{DynamicResource BrushBgPanel}"
+            BorderBrush="{DynamicResource BrushBorder}"
             BorderThickness="1"
             CornerRadius="6"
             Padding="12">
@@ -35,8 +35,8 @@
                 <ItemsControl ItemsSource="{Binding Items}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="{StaticResource BrushBgElement}"
-                                    BorderBrush="{StaticResource BrushBorder}"
+                            <Border Background="{DynamicResource BrushBgElement}"
+                                    BorderBrush="{DynamicResource BrushBorder}"
                                     BorderThickness="1"
                                     CornerRadius="4"
                                     Padding="8"
@@ -84,9 +84,9 @@
                                                  Minimum="0"
                                                  Maximum="100"
                                                  Value="{Binding StageBarPercent}"
-                                                 Background="{StaticResource BrushBgPanel}"
-                                                 Foreground="{StaticResource BrushAccent}"
-                                                 BorderBrush="{StaticResource BrushBorder}"
+                                                 Background="{DynamicResource BrushBgPanel}"
+                                                 Foreground="{DynamicResource BrushAccent}"
+                                                 BorderBrush="{DynamicResource BrushBorder}"
                                                  BorderThickness="1"/>
 
                                     <Grid Grid.Row="4">
@@ -107,9 +107,9 @@
                                                      Minimum="0"
                                                      Maximum="100"
                                                      Value="{Binding AutoPercent}"
-                                                     Background="{StaticResource BrushBgPanel}"
-                                                     Foreground="{StaticResource BrushAccent}"
-                                                     BorderBrush="{StaticResource BrushBorder}"
+                                                     Background="{DynamicResource BrushBgPanel}"
+                                                     Foreground="{DynamicResource BrushAccent}"
+                                                     BorderBrush="{DynamicResource BrushBorder}"
                                                      BorderThickness="1"
                                                      Margin="6,0"/>
 
@@ -144,9 +144,9 @@
                                                      Minimum="0"
                                                      Maximum="100"
                                                      Value="{Binding SemiPercent}"
-                                                     Background="{StaticResource BrushBgPanel}"
-                                                     Foreground="{StaticResource BrushInfo}"
-                                                     BorderBrush="{StaticResource BrushBorder}"
+                                                     Background="{DynamicResource BrushBgPanel}"
+                                                     Foreground="{DynamicResource BrushInfo}"
+                                                     BorderBrush="{DynamicResource BrushBorder}"
                                                      BorderThickness="1"
                                                      Margin="6,0"/>
 
@@ -181,9 +181,9 @@
                                                      Minimum="0"
                                                      Maximum="100"
                                                      Value="{Binding ManualPercent}"
-                                                     Background="{StaticResource BrushBgPanel}"
-                                                     Foreground="{StaticResource BrushWarning}"
-                                                     BorderBrush="{StaticResource BrushBorder}"
+                                                     Background="{DynamicResource BrushBgPanel}"
+                                                     Foreground="{DynamicResource BrushWarning}"
+                                                     BorderBrush="{DynamicResource BrushBorder}"
                                                      BorderThickness="1"
                                                      Margin="6,0"/>
 
@@ -218,9 +218,9 @@
                                                      Minimum="0"
                                                      Maximum="100"
                                                      Value="{Binding NonePercent}"
-                                                     Background="{StaticResource BrushBgPanel}"
-                                                     Foreground="{StaticResource BrushBorder}"
-                                                     BorderBrush="{StaticResource BrushBorder}"
+                                                     Background="{DynamicResource BrushBgPanel}"
+                                                     Foreground="{DynamicResource BrushBorder}"
+                                                     BorderBrush="{DynamicResource BrushBorder}"
                                                      BorderThickness="1"
                                                      Margin="6,0"/>
 

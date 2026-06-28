@@ -12,8 +12,8 @@
 
         <!-- LEFT PROFILE LIST -->
         <Border Grid.Column="0"
-                Background="{StaticResource BrushBgPanel}"
-                BorderBrush="{StaticResource BrushBorder}"
+                Background="{DynamicResource BrushBgPanel}"
+                BorderBrush="{DynamicResource BrushBorder}"
                 BorderThickness="1"
                 CornerRadius="6"
                 Padding="10">
@@ -48,7 +48,7 @@
                             <Border Padding="6"
                                     Margin="0,0,0,6"
                                     BorderThickness="1"
-                                    BorderBrush="{StaticResource BrushBorder}">
+                                    BorderBrush="{DynamicResource BrushBorder}">
                                 <StackPanel>
                                     <TextBlock Text="{Binding Name}"
                                                FontWeight="Bold"/>
@@ -75,8 +75,8 @@
 
         <!-- RIGHT PROFILE EDITOR -->
         <Border Grid.Column="2"
-                Background="{StaticResource BrushBgPanel}"
-                BorderBrush="{StaticResource BrushBorder}"
+                Background="{DynamicResource BrushBgPanel}"
+                BorderBrush="{DynamicResource BrushBorder}"
                 BorderThickness="1"
                 CornerRadius="6"
                 Padding="12">
@@ -219,8 +219,8 @@
 
                 <!-- ADD / REPLACE OVERRIDE ROW -->
                 <Border Grid.Row="8"
-                        Background="{StaticResource BrushBgElement}"
-                        BorderBrush="{StaticResource BrushBorder}"
+                        Background="{DynamicResource BrushBgElement}"
+                        BorderBrush="{DynamicResource BrushBorder}"
                         BorderThickness="1"
                         CornerRadius="4"
                         Padding="8">

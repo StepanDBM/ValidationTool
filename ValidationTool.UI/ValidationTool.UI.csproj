@@ -191,6 +191,7 @@
     <Compile Include="Services\Notifications\SlackDmNotificationProvider.cs" />
     <Compile Include="Services\Notifications\TeamsNotificationProvider.cs" />
     <Compile Include="Services\Stats\StatsAggregationService.cs" />
+    <Compile Include="Services\Themes\ThemeService.cs" />
     <Compile Include="Services\TypesConverters\BoolToVisibilityConverter.cs" />
     <Compile Include="Themes\SeverityToBrushConverter.cs" />
     <Compile Include="TOKEN_KEYS_GITIGNORE\KEY_TOKENS_GITIGNORE.cs" />
@@ -379,6 +380,9 @@
     <Compile Include="Views\StagesView.xaml.cs">
       <DependentUpon>StagesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_TopBar.xaml.cs">
+      <DependentUpon>UC_TopBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ValidationView.xaml.cs">
       <DependentUpon>ValidationView.xaml</DependentUpon>
     </Compile>
@@ -414,7 +418,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Colors.xaml">
+    <Page Include="Themes\Theme_light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Theme_dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -583,6 +591,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UC_TopBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

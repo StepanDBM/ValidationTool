@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:ValidationTool.UI.ViewModels.SceneSetupView_Models"
         xmlns:dto="clr-namespace:ValidationTool.UI.Models.DTOs"
+        xmlns:topViews="clr-namespace:ValidationTool.UI.Views"
         xmlns:views="clr-namespace:ValidationTool.UI.Views.SceneSetupView_Controls"
         Title="Scene Setup"
         Height="500"
@@ -56,34 +57,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0"
-                Background="{StaticResource BrushBgPanel}"
-                MouseDown="TitleBar_MouseDown">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
 
-                <TextBlock VerticalAlignment="Center"
-                           Margin="10,0"
-                           Foreground="{StaticResource BrushText}">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="Scene: {0} on {1}.{2}">
-                            <Binding Path="SceneSetup.SceneName"/>
-                            <Binding Path="SceneSetup.DccName"/>
-                            <Binding Path="SceneSetup.DccVersion"/>
-                        </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
-
-                <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <Button Content="_" Width="40" Click="Minimize_Click"/>
-                    <Button Content="□" Width="40" Click="Maximize_Click"/>
-                    <Button Content="X" Width="40" Click="Close_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+        <!-- Custom Title Bar -->
+        <topViews:UC_TopBar Grid.Row="0"
+                 TitleText="ValidationTool by Stepan D. Batllori Martinez"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

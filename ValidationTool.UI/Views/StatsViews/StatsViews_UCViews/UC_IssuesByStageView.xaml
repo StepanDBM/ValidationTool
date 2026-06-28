@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Border Background="{StaticResource BrushBgPanel}"
-            BorderBrush="{StaticResource BrushBorder}"
+    <Border Background="{DynamicResource BrushBgPanel}"
+            BorderBrush="{DynamicResource BrushBorder}"
             BorderThickness="1"
             CornerRadius="6"
             Padding="12">
@@ -54,9 +54,9 @@
                                              Minimum="0"
                                              Maximum="100"
                                              Value="{Binding BarPercent}"
-                                             Background="{StaticResource BrushBgElement}"
-                                             Foreground="{StaticResource BrushAccent}"
-                                             BorderBrush="{StaticResource BrushBorder}"
+                                             Background="{DynamicResource BrushBgElement}"
+                                             Foreground="{DynamicResource BrushAccent}"
+                                             BorderBrush="{DynamicResource BrushBorder}"
                                              BorderThickness="1"
                                              Margin="8,0,8,0"/>
 

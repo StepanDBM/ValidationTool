@@ -4,8 +4,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
-    <Grid Margin="10"
-          Background="{StaticResource BrushBgPanel}">
+    <Grid Margin="10" Background="{DynamicResource BrushBgPanel}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -63,8 +62,8 @@
         <ListBox x:Name="LogList"
                  Grid.Row="1"
                  ItemsSource="{Binding LogLines}"
-                 Background="{StaticResource BrushBgElement}"
-                 Foreground="{StaticResource BrushText}"
+                 Background="{DynamicResource BrushBgElement}"
+                 Foreground="{DynamicResource BrushText}"
                  FontFamily="Consolas"
                  FontSize="12"
                  Margin="5"
@@ -79,8 +78,8 @@
                          Maximum="100"
                          Width="Auto"
                          
-                         Background="{StaticResource BrushBgElement}"
-                         Foreground="{StaticResource BrushAccent}"
+                         Background="{DynamicResource BrushBgElement}"
+                         Foreground="{DynamicResource BrushAccent}"
 
                          Value="{Binding Progress}"/>
 

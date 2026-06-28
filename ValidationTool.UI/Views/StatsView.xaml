@@ -50,8 +50,8 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="0"
-                    Background="{StaticResource BrushBgPanel}"
-                    BorderBrush="{StaticResource BrushBorder}"
+                    Background="{DynamicResource BrushBgPanel}"
+                    BorderBrush="{DynamicResource BrushBorder}"
                     BorderThickness="1"
                     CornerRadius="6"
                     Padding="14">
@@ -105,32 +105,32 @@
                                             DataContext="{Binding IssuesByStageVM}"/>
 
                 <GridSplitter Grid.Column="1"
-                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+                              Style="{DynamicResource HorizontalStatsSplitterStyle}"/>
 
                 <stats:UC_DccComparisonView Grid.Column="2"
                                             DataContext="{Binding DccComparisonVM}"/>
 
                 <GridSplitter Grid.Column="3"
-                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+                              Style="{DynamicResource HorizontalStatsSplitterStyle}"/>
 
                 <stats:UC_AutoFixPotentialView Grid.Column="4"
                                                DataContext="{Binding AutoFixPotentialVM}"/>
             </Grid>
 
             <GridSplitter Grid.Row="5"
-                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+                          Style="{DynamicResource VerticalStatsSplitterStyle}"/>
 
             <stats:UC_TopOffendingChecksView Grid.Row="6"
                                              DataContext="{Binding TopOffendingChecksVM}"/>
 
             <GridSplitter Grid.Row="7"
-                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+                          Style="{DynamicResource VerticalStatsSplitterStyle}"/>
 
             <stats:UC_CriticalFilesRankingView Grid.Row="8"
                                                DataContext="{Binding CriticalFilesRankingVM}"/>
 
             <GridSplitter Grid.Row="9"
-                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+                          Style="{DynamicResource VerticalStatsSplitterStyle}"/>
 
             <Grid Grid.Row="10">
                 <Grid.ColumnDefinitions>
@@ -143,14 +143,14 @@
                                          DataContext="{Binding TeamHealthVM}"/>
 
                 <GridSplitter Grid.Column="1"
-                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+                              Style="{DynamicResource HorizontalStatsSplitterStyle}"/>
 
                 <stats:UC_ArtistSupportSummaryView Grid.Column="2"
                                                    DataContext="{Binding ArtistSupportSummaryVM}"/>
             </Grid>
 
             <GridSplitter Grid.Row="11"
-                          Style="{StaticResource VerticalStatsSplitterStyle}"/>
+                          Style="{DynamicResource VerticalStatsSplitterStyle}"/>
 
             <Grid Grid.Row="12">
                 <Grid.ColumnDefinitions>
@@ -165,13 +165,13 @@
                                           DataContext="{Binding SeverityMixVM}"/>
 
                 <GridSplitter Grid.Column="1"
-                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+                              Style="{DynamicResource HorizontalStatsSplitterStyle}"/>
 
                 <stats:UC_FixModeByStageView Grid.Column="2"
                                              DataContext="{Binding FixModeByStageVM}"/>
 
                 <GridSplitter Grid.Column="3"
-                              Style="{StaticResource HorizontalStatsSplitterStyle}"/>
+                              Style="{DynamicResource HorizontalStatsSplitterStyle}"/>
 
                 <stats:UC_PipelineRoiView Grid.Column="4"
                                           DataContext="{Binding PipelineRoiVM}"/>
