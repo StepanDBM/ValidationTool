@@ -20,7 +20,6 @@ import maya.cmds as cmds
 
 from misc_tools.DCC.Maya.maya_adapter import extract_maya_scene
 from core.runner import run_pipeline
-from config.validation_profile import ValidationProfile
 
 import config.absolutePaths as absPath
 from fileSearchers.source_finder import get_dcc_files
@@ -36,10 +35,9 @@ def process_file(file_path: str, artist: str):
     artistFilePath = absPath.ARTISTS_DIR / file_path
     cmds.file(artistFilePath, open=True, force=True, ignoreVersion=True)
 
-    scene_setup, objects = extract_maya_scene()
-    objects = objects[1:]
+    objects = extract_maya_scene()
 
-    context = {"headless": 1, "dcc": "Maya", "path": file_path, "artist": artist, "scene_setup": scene_setup}
+    context = {"headless": 1, "dcc": "Maya", "path": file_path, "artist": artist}
     loader = ConfigLoader(absPath.CONFIG_DIR)
     profile = loader.load_profile()
     run = run_pipeline(objects, context, profile)

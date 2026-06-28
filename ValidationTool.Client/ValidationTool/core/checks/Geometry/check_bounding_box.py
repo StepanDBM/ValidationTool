@@ -12,25 +12,6 @@ from core.checks.validation_check_ids import CHECK_BOUNDING_BOX
 DEFAULT_MAX_BBOX_SIZE = 100.0
 DEFAULT_MIN_BBOX_SIZE = 0.0001
 
-
-"""def _get_limits_for_asset_type(asset_type: AssetType, budgets):
-    if budgets is None:
-        return None
-
-    if asset_type == AssetType.CHARACTER:
-        return getattr(budgets, "character", None)
-    elif asset_type == AssetType.WEAPON:
-        return getattr(budgets, "weapon", None)
-    elif asset_type == AssetType.PROP:
-        return getattr(budgets, "prop", None)
-    elif asset_type == AssetType.ENVIRONMENT_MODULAR:
-        return getattr(budgets, "environment", None)
-    elif asset_type == AssetType.VEHICLE:
-        return getattr(budgets, "vehicle", None)
-
-    return None"""
-
-
 def check_bounding_box(
     mesh: MeshContext,
     runtime_ctx: ValidationRuntimeContext

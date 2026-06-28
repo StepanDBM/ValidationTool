@@ -89,7 +89,7 @@ ARTISTS = [
     "Pau Marquez",
     "Pol Garcia",
     "Polina Kotova",
-    "Rafael Moreno",
+    "Rafael Moreno"
 ]
 
 LEADS = [
@@ -106,5 +106,5 @@ LEADS = [
     "Rafater",
     "Roc Esquius",
     "Alex Martinez",
-    "Alvaro Garcia",
+    "Alvaro Garcia"
 ]

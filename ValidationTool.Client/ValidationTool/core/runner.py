@@ -15,6 +15,7 @@ from core.ProfileManagement.AttributeOverride import apply_overrides
 from core.ProfileManagement.ProfileModels import ProfileConfig
 
 from core.context.baseContext import BaseContext
+from core.context.SceneContext.SceneSetupContext import SceneSetupContext
 from core.context import baseContext, mesh_context, camera_context, light_context
 
 
@@ -33,15 +34,15 @@ import core.checks.Geometry.check_vertex_count as Check_VtxCount
 import core.checks.Geometry.check_triangle_count as Check_TrisCount
 #import core.checks.Geometry.check_collision_readiness as Check_CollisionReady
 #import core.checks.Geometry.check_bounding_box as Check_BoundBox
-#import core.checks.Geometry.check_degenerate_faces as Check_DegenFaces
+import core.checks.Geometry.check_degenerate_faces as Check_DegenFaces
 import core.checks.Geometry.check_hard_edges as Check_HardEdges
-#import core.checks.Geometry.check_hidden_geometry as Check_HiddenGeo
+import core.checks.Geometry.check_hidden_geometry as Check_HiddenGeo
 import core.checks.Geometry.check_isolated_vertices as Check_IsolVtx
 import core.checks.Geometry.check_lamina_faces as Check_LaminaFaces
 import core.checks.Geometry.check_ngons as Check_NGons
-#import core.checks.Geometry.check_non_manifold as Check_NonManifold
+import core.checks.Geometry.check_non_manifold as Check_NonManifold
 import core.checks.Geometry.check_normals_exist as Check_NormalsExist
-import core.checks.Geometry.check_normals as Check_Normals
+import core.checks.Geometry.check_broken_normals as Check_BrokenNormals
 import core.checks.Geometry.check_overlapping_geometry as Check_OverlapGeo
 
 import core.checks.Uv.check_empty_uv_set_names as Check_EmptUVSetNames
@@ -72,22 +73,31 @@ def build_registry() -> ValidationRegistry:
     registry.register(Check_TrisCount.check_triangle_count,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_DegenFaces.check_mesh_degenerate_faces,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
     registry.register(Check_HardEdges.check_hard_edges,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_HiddenGeo.check_mesh_hidden_faces,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
     registry.register(Check_IsolVtx.check_isolated_vertices,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
-    registry.register(Check_LaminaFaces.check_lamina_faces,
+    registry.register(Check_LaminaFaces.check_mesh_lamina_faces,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
-    registry.register(Check_NGons.check_ngons,
+    registry.register(Check_NGons.check_mesh_ngons,
+                      target_types=[mesh_context.MeshContext],
+                      category=GEOMETRY, stage=excS.GEOMETRY)
+    registry.register(Check_NonManifold.check_mesh_non_manifold,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
     registry.register(Check_NormalsExist.check_normals_exist,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
-    registry.register(Check_Normals.check_broken_normals,
+    registry.register(Check_BrokenNormals.check_broken_normals,
                       target_types=[mesh_context.MeshContext],
                       category=GEOMETRY, stage=excS.GEOMETRY)
     registry.register(Check_OverlapGeo.check_overlapping_geo,
@@ -139,6 +149,8 @@ def build_registry() -> ValidationRegistry:
     return registry
 
 def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None):
+    scene_setup = None
+
     loader = ConfigLoader(absPath.CONFIG_DIR)
     validation_config = loader.load_validation_config()
     naming_rules = loader.load_naming_rules()
@@ -175,10 +187,11 @@ def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None
     all_issues = []
 
     ordered_checks = registry.resolveByProfileStage(profile)
-    
     for obj in objects:
         hard_stop = False
-
+        print(type(obj), isinstance(obj, SceneSetupContext))
+        if isinstance(obj, SceneSetupContext):
+            scene_setup = obj
         for check in ordered_checks:
             # Skip checks that do not apply to this context type            
             if not isinstance(obj, tuple(check.target_types)):
@@ -225,7 +238,7 @@ def run_pipeline(objects: List[BaseContext], context, profile:ProfileConfig=None
 
     run = valMod.ValidationRun(
         summary=summary,
-        scene_setup=context.get("scene_setup"),
+        scene_setup=scene_setup,
         issues=all_issues,
         jsonPath=""
     )

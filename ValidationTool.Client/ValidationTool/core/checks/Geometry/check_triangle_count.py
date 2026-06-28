@@ -2,31 +2,17 @@ from core.validation_context import ValidationRuntimeContext
 from core.context.mesh_context import MeshContext
 from core.validation_system import (
     ValidationIssue,
-    ValidationSeverity,
-    AssetType
+    ValidationSeverity
 )
 
 from core.checks.validation_check_ids import CHECK_TRIANGLE_COUNT
 
-"""def getLimitsForAssetType(asset_type: AssetType, budgets):
-    if asset_type == AssetType.STATIC_MESH:
-        return budgets.static_mesh
-    elif asset_type == AssetType.CHARACTER:
-        return budgets.character
-    elif asset_type == AssetType.WEAPON:
-        return budgets.weapon
-    elif asset_type == AssetType.PROP:
-        return budgets.prop
-    elif asset_type == AssetType.ENVIRONMENT_MODULAR:
-        return budgets.environment
-    else:
-        return None"""
+
 
 def check_triangle_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext) -> ValidationIssue:
     issue = None
     warning_limit = None
     error_limit = None
-    #limits = getLimitsForAssetType(mesh.asset_type, runtime_ctx.budgets)
     limits = runtime_ctx.budgets.geometry
     if limits:
         warning_limit = limits.triangles_max
