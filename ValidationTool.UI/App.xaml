@@ -151,10 +151,9 @@
             </Style>
 
             <Style TargetType="TextBox">
-                <Setter Property="Foreground"
-                        Value="{DynamicResource BrushText}" />
-                <Setter Property="BorderBrush"
-                        Value="{DynamicResource BrushBorder}" />
+                <Setter Property="Background" Value="{DynamicResource BrushBgElement}"/>
+                <Setter Property="Foreground" Value="{DynamicResource BrushText}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BrushBorder}" />
             </Style>
 
             <Style TargetType="CheckBox">

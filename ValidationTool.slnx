@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="ValidationTool.UI/ValidationTool.UI.csproj" Id="904ca667-ba45-4bbe-a73c-bd2a8d22a13a" />
+  <Project Path="ValidationTool.UI/ValidationTool.UI.csproj" Id="904ca667-ba45-4bbe-a73c-bd2a8d22a13a">
+    <BuildType Solution="Debug|*" Project="UniversityPresentation" />
+  </Project>
 </Solution>
