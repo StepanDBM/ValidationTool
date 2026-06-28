@@ -70,15 +70,13 @@ def apply_geometry_issues(meshes, probability=0.5):
             continue
 
         bpy.context.view_layer.objects.active = obj
-        choice = random.choice(["ngon", "dense", "hidden", "overlap"])
+        choice = random.choice(["ngon", "dense", "hidden", "overlap", "zero_area", "isolated_vertex", "hard_edges"])
 
         if choice == "dense":
             mod1 = obj.modifiers.new(name="Subsurf1", type='SUBSURF')
             mod1.levels = 5
             mod2 = obj.modifiers.new(name="Subsurf2", type='SUBSURF')
             mod2.levels = random.randint(1, 3)
-            bpy.ops.object.modifier_apply(modifier=mod1.name)
-            bpy.ops.object.modifier_apply(modifier=mod2.name)
 
         elif choice == "ngon":
             mesh = obj.data
@@ -102,10 +100,108 @@ def apply_geometry_issues(meshes, probability=0.5):
 
         elif choice == "overlap":
             dup = obj.copy()
-            dup.data = obj.data.copy()
+            dup.data = obj.data
             bpy.context.collection.objects.link(dup)
-            dup.location = obj.location
+        
+        elif choice == "zero_area":
+            bm = bmesh.new()
+            bm.from_mesh(obj.data)
+            
+            bm.faces.ensure_lookup_table()
 
+            if bm.faces:
+                f = bm.faces[0]
+                for v in f.verts:
+                    v.co = f.verts[0].co  # collapse face
+
+            bm.to_mesh(obj.data)
+            bm.free()
+            obj.data.update()
+        
+        elif choice == "isolated_vertex":
+            bm = bmesh.new()
+            bm.from_mesh(obj.data)
+
+            v = bm.verts.new((0, 0, 0))
+            bm.verts.ensure_lookup_table()
+
+            bm.to_mesh(obj.data)
+            bm.free()
+        
+        elif choice == "hard_edges":
+            mesh = obj.data
+            for e in mesh.edges:
+                e.use_edge_sharp = True
+        
+        elif choice == "history":
+            mod = obj.modifiers.new(name="Bevel", type='BEVEL')
+            mod.width = 0.1
+
+
+def apply_topology_issues(meshes, probability=0.3):
+    for obj in meshes:
+        if random.random() > probability or obj.type != 'MESH':
+            continue
+
+        mesh = obj.data
+        bm = bmesh.new()
+        bm.from_mesh(mesh)
+
+        choice = random.choice(["lamina", "non_manifold", "degenerate"])
+
+        try:
+            if choice == "lamina":
+                if bm.faces:
+                    f = bm.faces[0]
+                    new_face = bm.faces.new(f.verts)
+                    bm.faces.ensure_lookup_table()
+
+            elif choice == "non_manifold":
+                if bm.edges:
+                    e = bm.edges[0]
+                    res = bmesh.ops.extrude_edge_only(bm, edges=[e])
+                    verts = [ele for ele in res["geom"] if isinstance(ele, bmesh.types.BMVert)]
+                    for v in verts:
+                        v.co *= 0.001  # collapse → bad topology
+
+            elif choice == "degenerate":
+                if bm.faces:
+                    f = bm.faces[0]
+                    if len(f.verts) >= 2:
+                        v1, v2 = random.sample(list(f.verts), 2)
+                        v2.co = v1.co  # collapse → degenerate
+
+        except Exception:
+            pass
+
+        bm.to_mesh(mesh)
+        bm.free()
+        mesh.update()
+
+def apply_normals_issues(meshes, probability=0.2):
+    for obj in meshes:
+        if random.random() > probability or obj.type != 'MESH':
+            continue
+
+        mesh = obj.data
+
+        choice = random.choice(["delete_normals", "break_normals"])
+
+        try:
+            # DELETE CUSTOM NORMALS
+            if choice == "delete_normals":
+                mesh.use_auto_smooth = False
+                if mesh.has_custom_normals:
+                    mesh.normals_split_custom_set(None)
+
+            # BREAK NORMALS
+            elif choice == "break_normals":
+                mesh.use_auto_smooth = True
+                for p in mesh.polygons:
+                    p.use_smooth = False
+
+        except Exception:
+            pass
 
 def apply_uv_issues(meshes, probability=0.3):
     for obj in meshes:
@@ -163,9 +259,14 @@ def create_blenderScene_with_random_issues(file_path: Path):
 
     apply_transform_issues(meshes, probability=0.4)
     apply_geometry_issues(meshes, probability=0.4)
+    apply_topology_issues(meshes, probability=0.3)
+
+    apply_normals_issues(meshes, probability=0.2)
     apply_uv_issues(meshes, probability=0.4)
     apply_material_issues(meshes, probability=0.3)
+
     meshes = apply_naming_issues(meshes, probability=0.5)
+
 
     apply_scene_issues(probability=0.5)
 

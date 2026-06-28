@@ -22,7 +22,6 @@ def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
         return issue
     
     if mesh.vertex_count >= error_limit:
-        print("First option")
         issue = ValidationIssue(
                 asset_name=mesh.name,
                 check_name=CHECK_VERTEX_COUNT,
@@ -34,7 +33,6 @@ def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
                 suggestion="Reduce mesh complexity."
             )
     elif mesh.vertex_count >= warning_limit:
-        print("Seond option")
         issue = ValidationIssue(
                 asset_name=mesh.name,
                 check_name=CHECK_VERTEX_COUNT,
@@ -46,7 +44,6 @@ def check_vertex_count(mesh: MeshContext, runtime_ctx: ValidationRuntimeContext)
                 suggestion="Review topology density."
             )
     elif mesh.vertex_count < 2:
-        print("Third option")
         issue = ValidationIssue(
                 asset_name=mesh.name,
                 check_name=CHECK_VERTEX_COUNT,

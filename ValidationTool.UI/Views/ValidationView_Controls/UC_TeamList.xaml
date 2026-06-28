@@ -5,7 +5,7 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                  mc:Ignorable="d" 
                  d:DesignHeight="400" d:DesignWidth="300">
-        <Grid Background="Red">
+        <Grid>
             <Label Grid.Row="0" 
                    Content="Team" FontSize="30"
                    Margin="15 15 15 15" />

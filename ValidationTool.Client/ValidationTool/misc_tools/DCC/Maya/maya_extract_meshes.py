@@ -115,6 +115,7 @@ def extract_meshes() -> List[MeshContext]:
 
             has_non_manifold_geo=has_non_manifold,
             has_zeroArea_faces=zero_area_count > 0,
+            zeroArea_quant=zero_area_count,
 
             has_hidden_faces=hidden_faces_count > 0,
             hidden_faces_quant=hidden_faces_count,
@@ -136,6 +137,7 @@ def extract_meshes() -> List[MeshContext]:
             collision_readiness=True,  # later
 
             has_hard_edges=hard_edges_count > 0,
+            hard_edges_count=hard_edges_count,
             has_history=has_history,
 
             skeleton_name="",

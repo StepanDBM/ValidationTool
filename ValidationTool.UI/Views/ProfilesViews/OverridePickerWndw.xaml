@@ -10,7 +10,7 @@
         WindowStyle="None"
         Background="{StaticResource BrushBgMain}">
 
-    <Grid>
+    <Grid Margin="10 0 10 10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -22,7 +22,7 @@
 
         <!-- Custom Title Bar -->
         <topViews:UC_TopBar Grid.Row="0"
-         TitleText="Add / Replace Override"/>
+         TitleText="Override Creation Setup"/>
 
         <!-- Header -->
         <StackPanel Grid.Row="1">

@@ -111,14 +111,14 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="Bd"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="3">
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="3">
 
                                 <ContentPresenter
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
 
                             </Border>
 
@@ -127,15 +127,15 @@
                                 <!-- Hover -->
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{DynamicResource BrushHover}" />
+                                            Property="Background"
+                                            Value="{DynamicResource BrushHover}" />
                                 </Trigger>
 
                                 <!-- Pressed -->
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{DynamicResource BrushAccent}" />
+                                            Property="Background"
+                                            Value="{DynamicResource BrushAccent}" />
                                     <Setter Property="Foreground" Value="{DynamicResource BrushTextOnAccent}"/>
                                 </Trigger>
 
@@ -172,22 +172,22 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="ComboBoxItem">
                             <Border x:Name="Bd"
-                        Background="{TemplateBinding Background}"
-                        Padding="{TemplateBinding Padding}">
+                                    Background="{TemplateBinding Background}"
+                                    Padding="{TemplateBinding Padding}">
                                 <ContentPresenter />
                             </Border>
 
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsHighlighted" Value="True">
                                     <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{DynamicResource BrushHover}" />
+                                            Property="Background"
+                                            Value="{DynamicResource BrushHover}" />
                                 </Trigger>
 
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter TargetName="Bd"
-                                Property="Background"
-                                Value="{DynamicResource BrushAccent}" />
+                                            Property="Background"
+                                            Value="{DynamicResource BrushAccent}" />
                                     <Setter Property="Foreground" Value="{DynamicResource BrushTextOnAccent}" />
                                 </Trigger>
 
@@ -409,34 +409,132 @@
 
 
 
-            <!-- ScrollViewer background -->
-            <Style TargetType="ScrollViewer">
-                <Setter Property="Background" Value="{DynamicResource BrushBgElement}" />
-            </Style>
             <Style TargetType="ScrollBar">
-
-                <Setter Property="Background" Value="{DynamicResource BrushBgPanel}" />
-
-
-            </Style>
-            <!-- Thumb (draggable thingie) -->
-            <Style TargetType="Thumb">
-
-                <Setter Property="Background" Value="{DynamicResource BrushBorder}" />
-
-                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="Width" Value="12"/>
+                <Setter Property="Background" Value="{DynamicResource BrushBgPanel}"/>
 
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="Thumb">
-                            <Border x:Name="Bd" Background="{TemplateBinding Background}"
-                                    CornerRadius="4"/>
+                        <ControlTemplate TargetType="ScrollBar">
+
+                            <Grid Background="{TemplateBinding Background}">
+
+                                <!-- VERTICAL -->
+                                <Grid x:Name="VerticalGrid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- TOP -->
+                                    <RepeatButton Grid.Row="0"
+                                      Height="16"
+                                      Command="ScrollBar.LineUpCommand"
+                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      Content="▲"
+                                      Background="{TemplateBinding Background}"/>
+
+                                    <!-- TRACK -->
+                                    <Track Grid.Row="1"
+                               Name="PART_Track"
+                               IsDirectionReversed="True"
+
+                               Minimum="{TemplateBinding Minimum}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Value="{TemplateBinding Value}"
+                               ViewportSize="{TemplateBinding ViewportSize}">
+
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageUpCommand"
+                                              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="0"/>
+                                        </Track.DecreaseRepeatButton>
+
+                                        <Track.Thumb>
+                                            <Thumb/>
+                                        </Track.Thumb>
+
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageDownCommand"
+                                              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="0"/>
+                                        </Track.IncreaseRepeatButton>
+
+                                    </Track>
+
+                                    <!-- BOTTOM -->
+                                    <RepeatButton Grid.Row="2"
+                                      Height="16"
+                                      Command="ScrollBar.LineDownCommand"
+                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      Content="▼"
+                                      Background="{TemplateBinding Background}"/>
+                                </Grid>
+
+                                <!-- HORIZONTAL -->
+                                <Grid x:Name="HorizontalGrid" Visibility="Collapsed">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- LEFT -->
+                                    <RepeatButton Grid.Column="0"
+                                      Width="16"
+                                      Command="ScrollBar.LineLeftCommand"
+                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      Content="◀"
+                                      Background="{TemplateBinding Background}"/>
+
+                                    <!-- TRACK -->
+                                    <Track Grid.Column="1"
+                               Name="PART_Track_H"
+                               Orientation="Horizontal"
+
+                               Minimum="{TemplateBinding Minimum}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Value="{TemplateBinding Value}"
+                               ViewportSize="{TemplateBinding ViewportSize}">
+
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageLeftCommand"
+                                              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="0"/>
+                                        </Track.DecreaseRepeatButton>
+
+                                        <Track.Thumb>
+                                            <Thumb/>
+                                        </Track.Thumb>
+
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageRightCommand"
+                                              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="0"/>
+                                        </Track.IncreaseRepeatButton>
+
+                                    </Track>
+
+                                    <!-- RIGHT -->
+                                    <RepeatButton Grid.Column="2"
+                                      Width="16"
+                                      Command="ScrollBar.LineRightCommand"
+                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      Content="▶"
+                                      Background="{TemplateBinding Background}"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <!-- ORIENTATION SWITCH -->
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Bd"
-                                            Property="Background" Value="{DynamicResource BrushAccent}" />
+                                <Trigger Property="Orientation" Value="Horizontal">
+                                    <Setter TargetName="VerticalGrid" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="HorizontalGrid" Property="Visibility" Value="Visible"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
+
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

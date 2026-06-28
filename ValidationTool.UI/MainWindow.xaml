@@ -9,10 +9,12 @@
         mc:Ignorable="d"
         Title="ValidationTool - by Styopa DBM" Height="650" Width="1000"
         WindowStyle="None"
-        ResizeMode="CanResize">
+        ResizeMode="CanResize"
+        Background="{DynamicResource BrushBgElement}">
 
 
-    <Grid Background="{DynamicResource BrushBgMain}">
+    <Grid Background="{DynamicResource BrushBgMain}"
+          Margin="10 0 10 10">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>

@@ -19,6 +19,7 @@ class MeshContext(BaseContext):
 
     has_non_manifold_geo: bool
     has_zeroArea_faces: bool
+    zeroArea_quant: int
 
     has_hidden_faces: bool
     hidden_faces_quant: int
@@ -39,6 +40,7 @@ class MeshContext(BaseContext):
     collision_readiness: bool
 
     has_hard_edges: bool
+    hard_edges_count: int
 
     has_history: bool
 

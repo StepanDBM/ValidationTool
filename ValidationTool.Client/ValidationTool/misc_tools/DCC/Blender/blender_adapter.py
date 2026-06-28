@@ -8,10 +8,15 @@ if script_dir not in sys.path:
 
 from core.context.baseContext import BaseContext
 
-from misc_tools.DCC.Blender.blender_extract_SceneSetup.blender_extract_SSContext import extract_scene_setup_context
+
 from misc_tools.DCC.Blender.blender_extract_meshes import extract_meshes
 from misc_tools.DCC.Blender.blender_extract_cameras import extract_cameras
 from misc_tools.DCC.Blender.blender_extract_lights import extract_lights
+
+from misc_tools.DCC.Blender.blender_extract_SceneStats import extract_scene_stats
+from misc_tools.DCC.Blender.blender_extract_SceneHierarchy import extract_scene_hierarchy
+from misc_tools.DCC.Blender.blender_extract_SceneReferences import extract_scene_references
+from misc_tools.DCC.Blender.blender_extract_SceneSetup.blender_extract_SSContext import extract_scene_setup_context
 """
 Future extractors:
 from misc_tools.DCC.Blender.blender_light_extractor import extract_lights
@@ -31,10 +36,17 @@ def extract_blender_scene() -> List[BaseContext]:
     objects.extend(cameras)
     lights = extract_lights()
     objects.extend(lights)
+
+    objects.append(extract_scene_hierarchy())
+    references = extract_scene_references()
+    objects.append(references)
+    objects.append(extract_scene_stats(meshes=meshes,
+                                       cameras=cameras,
+                                       lights=lights,
+                                       references=references))
     """
     objects.extend(extract_curves())
     objects.extend(extract_nurbs())
-    objects.extend(extract_references())
     """
 
     return objects
